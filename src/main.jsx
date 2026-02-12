@@ -7,29 +7,21 @@ import App from './App';
 import './styles/global.css';
 
 async function startApp() {
-  await msalInstance.initialize();
-
-  // Detect if we're running inside an MSAL popup or iframe.
-  // When the popup returns from Microsoft with #code=..., MSAL needs to
-  // process that code and send the result back to the parent window.
-  // If we render the full React app in the popup, it interferes with this.
+  // If we're in a popup window (opened by MSAL loginPopup), do NOTHING.
+  // The parent window's loginPopup() call monitors this popup's URL,
+  // extracts the #code= hash, exchanges it for a token, and closes the popup.
+  // If we call handleRedirectPromise() here, it interferes with that process.
   const isPopup = window.opener && window.opener !== window;
-  const isIframe = window.parent && window.parent !== window;
-  const hasAuthCode = window.location.hash.includes('code=');
-
-  if ((isPopup || isIframe) && hasAuthCode) {
-    // We're in a popup/iframe returning from Microsoft login.
-    // Just let handleRedirectPromise() process the auth code and
-    // communicate it back to the parent window. Don't render the app.
-    try {
-      await msalInstance.handleRedirectPromise();
-    } catch (err) {
-      console.error('MSAL popup redirect error:', err);
-    }
-    return; // Don't render — MSAL will close this popup automatically
+  if (isPopup) {
+    // Don't initialize MSAL, don't call handleRedirectPromise(), don't render.
+    // The parent window handles everything.
+    return;
   }
 
+  await msalInstance.initialize();
+
   // Main window: handle any redirect response (for redirect flow fallback)
+  // This processes #code= if the user was redirected (not popup) back to the app
   try {
     await msalInstance.handleRedirectPromise();
   } catch (err) {
