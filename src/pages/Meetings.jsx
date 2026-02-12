@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useApiFetch } from '../auth/apiFetch';
 
 const MONTH_NAMES = [
   'January', 'February', 'March', 'April', 'May', 'June',
@@ -95,7 +96,128 @@ function getCalendarDays(year, month) {
   return days;
 }
 
-function MeetingCard({ meeting, monthLabel }) {
+/* ── AI Research Widget for Action Items ─────────────────────── */
+function ActionItemAI({ actionItem, meetingContext, apiFetch }) {
+  const [expanded, setExpanded] = useState(false);
+  const [question, setQuestion] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [answer, setAnswer] = useState('');
+  const [error, setError] = useState(null);
+  const [copied, setCopied] = useState(false);
+
+  const handleAsk = async (customQ) => {
+    const q = customQ || question || actionItem;
+    if (!q.trim()) return;
+    setLoading(true);
+    setError(null);
+    setAnswer('');
+    try {
+      const res = await apiFetch('/api/ai/research', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          question: q,
+          context: meetingContext || ''
+        })
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.error || 'Research request failed');
+      }
+      const data = await res.json();
+      setAnswer(data.answer || 'No response received.');
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(answer).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
+
+  return (
+    <div className="action-item-block">
+      <div className="action-item-row">
+        <span className="action-item-text">{actionItem}</span>
+        <button
+          className="btn btn-sm btn-primary"
+          onClick={() => {
+            if (!expanded) {
+              setExpanded(true);
+              if (!answer) handleAsk(actionItem);
+            } else {
+              setExpanded(!expanded);
+            }
+          }}
+        >
+          {expanded ? 'Hide' : 'Ask Claude'}
+        </button>
+      </div>
+
+      {expanded && (
+        <div className="ai-research-panel">
+          {/* Custom question input */}
+          <div className="ai-research-input">
+            <input
+              type="text"
+              placeholder="Ask a follow-up or refine the question..."
+              value={question}
+              onChange={e => setQuestion(e.target.value)}
+              onKeyDown={e => { if (e.key === 'Enter' && question.trim()) handleAsk(); }}
+            />
+            <button
+              className="btn btn-primary btn-sm"
+              onClick={() => handleAsk()}
+              disabled={loading || !question.trim()}
+            >
+              {loading ? 'Researching...' : 'Ask'}
+            </button>
+          </div>
+
+          {/* Loading */}
+          {loading && (
+            <div className="ai-research-loading">
+              <div className="spinner" />
+              <span>Claude is researching this...</span>
+            </div>
+          )}
+
+          {/* Error */}
+          {error && (
+            <div className="ai-research-error">
+              {error}
+            </div>
+          )}
+
+          {/* Answer */}
+          {answer && !loading && (
+            <div className="ai-research-answer">
+              <div className="ai-answer-header">
+                <span>Claude's Research</span>
+                <button
+                  className={`btn btn-sm ${copied ? 'btn-success' : 'btn-secondary'}`}
+                  onClick={handleCopy}
+                >
+                  {copied ? 'Copied!' : 'Copy to Clipboard'}
+                </button>
+              </div>
+              <div className="ai-answer-body">
+                {answer}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function MeetingCard({ meeting, monthLabel, apiFetch }) {
   if (!meeting) {
     return (
       <div className="meeting-card upcoming">
@@ -109,6 +231,13 @@ function MeetingCard({ meeting, monthLabel }) {
       </div>
     );
   }
+
+  // Build context string for AI from the meeting summary and notes
+  const meetingContext = [
+    `Meeting: ${meeting.date} - ${meeting.type}`,
+    meeting.summary,
+    ...(meeting.detailedNotes || []).map(n => `${n.title}: ${n.items.join('; ')}`)
+  ].join('\n');
 
   return (
     <div className={`meeting-card ${meeting.status}`}>
@@ -151,14 +280,17 @@ function MeetingCard({ meeting, monthLabel }) {
       )}
 
       {meeting.decisions && (
-        <details className="meeting-expandable">
+        <details className="meeting-expandable" open>
           <summary>Decisions &amp; Action Items</summary>
           <div className="expandable-content">
-            <ul>
-              {meeting.decisions.map((d, i) => (
-                <li key={i}>{d}</li>
-              ))}
-            </ul>
+            {meeting.decisions.map((d, i) => (
+              <ActionItemAI
+                key={i}
+                actionItem={d}
+                meetingContext={meetingContext}
+                apiFetch={apiFetch}
+              />
+            ))}
           </div>
         </details>
       )}
@@ -186,6 +318,7 @@ function MeetingCard({ meeting, monthLabel }) {
 export default function Meetings() {
   const [calYear, setCalYear] = useState(2026);
   const [calMonth, setCalMonth] = useState(1); // February = 1 (0-indexed)
+  const apiFetch = useApiFetch();
 
   const today = new Date();
   const calDays = getCalendarDays(calYear, calMonth);
@@ -249,10 +382,10 @@ export default function Meetings() {
       </div>
 
       {/* Show February first (the populated one), then Jan, then March-December */}
-      <MeetingCard meeting={months2026[1].data} monthLabel="February" />
-      <MeetingCard meeting={months2026[0].data} monthLabel="January" />
+      <MeetingCard meeting={months2026[1].data} monthLabel="February" apiFetch={apiFetch} />
+      <MeetingCard meeting={months2026[0].data} monthLabel="January" apiFetch={apiFetch} />
       {months2026.slice(2).map((m, i) => (
-        <MeetingCard key={i + 2} meeting={m.data} monthLabel={m.label} />
+        <MeetingCard key={i + 2} meeting={m.data} monthLabel={m.label} apiFetch={apiFetch} />
       ))}
     </div>
   );

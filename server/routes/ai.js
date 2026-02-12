@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import fetch from 'node-fetch';
 import { searchEntries, searchDocuments, get, all } from '../services/database.js';
 import { searchWithAI, summarize, extractReceipt, categorize } from '../services/claude.js';
 import { run, syncEntryFts, syncDocumentFts } from '../services/database.js';
@@ -141,6 +142,55 @@ router.post('/categorize', async (req, res) => {
     } else {
       return res.status(400).json({ error: 'entry_id or document_id required' });
     }
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// POST /api/ai/research — research an action item / question for the committee
+router.post('/research', async (req, res) => {
+  try {
+    const { question, context } = req.body;
+    if (!question) return res.status(400).json({ error: 'question required' });
+
+    const prompt = `You are a research assistant for the Colorado FSA State Technical Committee (STC). A committee member needs help researching an action item from a meeting.
+
+Action item / question:
+"${question}"
+
+${context ? `Additional context from the meeting:\n${context}\n\n` : ''}
+
+Please provide a thorough, well-organized answer that:
+1. Directly addresses the question with factual, useful information
+2. Cites specific USDA/FSA programs, regulations, or policies where relevant
+3. Is written in a professional tone suitable for sharing with the full committee
+4. Includes any relevant numbers, dates, or deadlines
+5. Ends with a brief "Sources & References" section listing relevant USDA/FSA web pages
+
+Format the response so it can be easily copied and shared with the group (e.g., via email or Teams message). Keep it concise but comprehensive.`;
+
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': process.env.ANTHROPIC_API_KEY,
+        'anthropic-version': '2023-06-01'
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 4096,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+
+    if (!response.ok) {
+      const errText = await response.text();
+      throw new Error(`Claude API error (${response.status}): ${errText}`);
+    }
+
+    const data = await response.json();
+    const answer = data.content?.[0]?.text || '';
+    res.json({ answer });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
