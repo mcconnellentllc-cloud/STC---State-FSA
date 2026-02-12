@@ -28,7 +28,7 @@ const committeeMembers = [
     name: 'Joeseph Petrocco',
     role: 'Member',
     location: 'Thornton, CO',
-    phone: '970-326-8614',
+    phone: '303-717-5045',
     email: 'joe@petroccofarms.com',
     bio: 'VP of a 4th-generation vegetable operation focused on sustainability, labor efficiency, and advanced production. CO Fruit and Vegetable Growers Association Board (VP). Expertise in innovative irrigation, crop management, and food safety.',
   },
