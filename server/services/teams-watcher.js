@@ -136,11 +136,17 @@ async function processNewFile(item) {
     // Extract text
     const extractedText = await extractText(filePath, ext);
 
+    // Determine the folder path from the parentReference
+    const watchFolder = process.env.SHAREPOINT_WATCH_FOLDER || 'FSA - State Committee';
+    const teamsFolder = item.parentReference?.path
+      ? item.parentReference.path.replace(/^.*?:\/?/, '').replace(new RegExp(`^${watchFolder.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\/?`), '')
+      : '';
+
     // Save to database
     const result = run(
-      `INSERT INTO documents (filename, original_name, file_type, file_path, file_size, extracted_text, teams_file_id, teams_drive_id, processed_at)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))`,
-      [filename, item.name, ext, filePath, item.size || 0, extractedText, item.id, driveId]
+      `INSERT INTO documents (filename, original_name, file_type, file_path, file_size, extracted_text, teams_file_id, teams_drive_id, teams_folder, processed_at)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))`,
+      [filename, item.name, ext, filePath, item.size || 0, extractedText, item.id, driveId, teamsFolder]
     );
 
     const docId = result.lastInsertRowid;

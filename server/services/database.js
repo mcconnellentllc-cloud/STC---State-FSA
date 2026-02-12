@@ -53,6 +53,14 @@ export async function initDatabase() {
     }
   }
 
+  // Add teams_folder column if it doesn't exist (migration)
+  try {
+    db.run("ALTER TABLE documents ADD COLUMN teams_folder TEXT");
+    saveDatabase();
+  } catch (err) {
+    // Column already exists — ignore
+  }
+
   saveDatabase();
   console.log('Database initialized at', DB_PATH);
 
