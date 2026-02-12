@@ -636,44 +636,19 @@ tr:hover td {
   box-shadow: var(--shadow-md);
 }
 
-.login-brand {
-  margin-bottom: 24px;
-}
-
-.login-brand .usda-label {
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--text-muted);
-  margin-bottom: 2px;
-}
-
-.login-brand .fsa-label {
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--text-muted);
-  margin-bottom: 12px;
-}
-
 .login-title {
   font-size: 2rem;
   font-weight: 700;
   color: var(--nav-bg);
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   margin-bottom: 4px;
 }
 
 .login-subtitle {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  margin-bottom: 4px;
-}
-
-.login-desc {
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: var(--text-muted);
+  font-weight: 600;
+  letter-spacing: 1px;
   margin-bottom: 32px;
 }
 
@@ -693,10 +668,6 @@ tr:hover td {
   border-radius: var(--radius);
 }
 
-.login-note {
-  font-size: 0.7rem;
-  color: var(--text-muted);
-}
 
 /* ========== SIDEBAR USER INFO ========== */
 .sidebar-user {

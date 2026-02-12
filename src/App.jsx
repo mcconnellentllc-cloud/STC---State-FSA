@@ -17,18 +17,12 @@ function LoginScreen() {
   return (
     <div className="login-screen">
       <div className="login-card">
-        <div className="login-brand">
-          <div className="usda-label">United States Department of Agriculture</div>
-          <div className="fsa-label">Farm Service Agency</div>
-        </div>
-        <h1 className="login-title">PFA</h1>
-        <p className="login-subtitle">Project Field Archive</p>
-        <p className="login-desc">Colorado FSA State Committee &mdash; field notes, documents, and resources</p>
+        <h1 className="login-title">Kyle McConnell</h1>
+        <p className="login-subtitle">CO STC</p>
         <button className="btn btn-primary login-btn" onClick={login}>
           Sign in with Microsoft
         </button>
         {error && <p className="login-error">{error}</p>}
-        <p className="login-note">Authorized users only</p>
       </div>
     </div>
   );

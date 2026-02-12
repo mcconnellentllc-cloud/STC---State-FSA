@@ -1,7 +1,18 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
-import { msalInstance, loginRequest, loginRequestFallback } from './msalConfig';
+import { msalInstance, loginRequest } from './msalConfig';
+import { InteractionRequiredAuthError, BrowserAuthError } from '@azure/msal-browser';
 
 const AuthContext = createContext(null);
+
+// Sanitize MSAL errors into user-friendly messages
+function friendlyError(err) {
+  // Never show raw MSAL error codes/messages to users
+  const code = err?.errorCode || '';
+  if (code === 'interaction_in_progress') return null; // Suppress — will retry
+  if (code === 'user_cancelled') return null; // User closed popup, no error needed
+  if (code === 'popup_window_error') return 'Pop-up was blocked. Please allow pop-ups and try again.';
+  return 'Sign-in failed \u2014 please try again';
+}
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
@@ -10,20 +21,24 @@ export function AuthProvider({ children }) {
 
   // Initialize MSAL and check for existing session
   useEffect(() => {
+    let cancelled = false;
     const init = async () => {
       try {
-        // Handle redirect response (if returning from login)
         await msalInstance.initialize();
+
+        // Process any redirect response (if returning from login redirect flow)
         const response = await msalInstance.handleRedirectPromise();
 
-        if (response) {
+        if (cancelled) return;
+
+        if (response?.account) {
           setUser({
             name: response.account.name,
             email: response.account.username,
             account: response.account
           });
         } else {
-          // Check for existing signed-in account
+          // Check for existing signed-in account in cache
           const accounts = msalInstance.getAllAccounts();
           if (accounts.length > 0) {
             setUser({
@@ -35,24 +50,25 @@ export function AuthProvider({ children }) {
         }
       } catch (err) {
         console.error('MSAL init error:', err);
-        setError(err.message);
+        // Don't show init errors to user — they can click Sign In
+        if (err?.errorCode === 'interaction_in_progress') {
+          // Clear stuck interaction state
+          try {
+            msalInstance.clearCache();
+          } catch (_) { /* ignore */ }
+        }
       }
-      setLoading(false);
+      if (!cancelled) setLoading(false);
     };
     init();
+    return () => { cancelled = true; };
   }, []);
 
   const login = useCallback(async () => {
     try {
       setError(null);
-      // Use popup flow (works in development and production)
-      const response = await msalInstance.loginPopup(loginRequest).catch(async (err) => {
-        // If /.default scope fails, try basic scopes
-        if (err.errorCode === 'invalid_resource' || err.errorMessage?.includes('AADSTS')) {
-          return msalInstance.loginPopup(loginRequestFallback);
-        }
-        throw err;
-      });
+
+      const response = await msalInstance.loginPopup(loginRequest);
 
       if (response?.account) {
         setUser({
@@ -63,7 +79,31 @@ export function AuthProvider({ children }) {
       }
     } catch (err) {
       console.error('Login error:', err);
-      setError(err.message || 'Login failed');
+
+      // Handle interaction_in_progress by clearing state and retrying once
+      if (err?.errorCode === 'interaction_in_progress') {
+        try {
+          // Wait a moment then try clearing and retrying
+          await new Promise(r => setTimeout(r, 1000));
+          const response = await msalInstance.loginPopup(loginRequest);
+          if (response?.account) {
+            setUser({
+              name: response.account.name,
+              email: response.account.username,
+              account: response.account
+            });
+            return;
+          }
+        } catch (retryErr) {
+          console.error('Login retry error:', retryErr);
+          const msg = friendlyError(retryErr);
+          if (msg) setError(msg);
+          return;
+        }
+      }
+
+      const msg = friendlyError(err);
+      if (msg) setError(msg);
     }
   }, []);
 
@@ -77,6 +117,7 @@ export function AuthProvider({ children }) {
     } catch (err) {
       console.error('Logout error:', err);
       // Force clear on error
+      try { msalInstance.clearCache(); } catch (_) { /* ignore */ }
       setUser(null);
     }
   }, []);
@@ -90,26 +131,23 @@ export function AuthProvider({ children }) {
         ...loginRequest,
         account: user.account
       });
-      return response.accessToken;
+      return response.idToken || response.accessToken;
     } catch (err) {
-      // If silent fails, try with basic scopes
-      try {
-        const response = await msalInstance.acquireTokenSilent({
-          ...loginRequestFallback,
-          account: user.account
-        });
-        return response.idToken; // Use idToken when access token isn't available
-      } catch (err2) {
-        // If still fails, try popup
+      if (err instanceof InteractionRequiredAuthError ||
+          err instanceof BrowserAuthError) {
+        // Silent failed, try popup
         try {
           const response = await msalInstance.acquireTokenPopup(loginRequest);
-          return response.accessToken || response.idToken;
-        } catch (err3) {
-          console.error('Token acquisition failed:', err3);
+          return response.idToken || response.accessToken;
+        } catch (popupErr) {
+          console.error('Token popup failed:', popupErr);
           setUser(null);
           return null;
         }
       }
+      console.error('Token acquisition failed:', err);
+      setUser(null);
+      return null;
     }
   }, [user]);
 
