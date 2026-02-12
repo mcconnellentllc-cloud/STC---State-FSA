@@ -9,20 +9,26 @@ import Documents from './pages/Documents';
 import Expenses from './pages/Expenses';
 import Search from './pages/Search';
 import Settings from './pages/Settings';
+import Meetings from './pages/Meetings';
+import Contacts from './pages/Contacts';
 
 function LoginScreen() {
   const { login, error } = useAuth();
   return (
     <div className="login-screen">
       <div className="login-card">
+        <div className="login-brand">
+          <div className="usda-label">United States Department of Agriculture</div>
+          <div className="fsa-label">Farm Service Agency</div>
+        </div>
         <h1 className="login-title">PFA</h1>
         <p className="login-subtitle">Project Field Archive</p>
-        <p className="login-desc">FSA State Committee field notes, documents, and expenses</p>
+        <p className="login-desc">Colorado FSA State Committee &mdash; field notes, documents, and resources</p>
         <button className="btn btn-primary login-btn" onClick={login}>
           Sign in with Microsoft
         </button>
         {error && <p className="login-error">{error}</p>}
-        <p className="login-note">Authorized users: kyle@togoag.com, brandi@togoag.com</p>
+        <p className="login-note">Authorized users only</p>
       </div>
     </div>
   );
@@ -64,10 +70,12 @@ export default function App() {
       <main className="main-content">
         <Routes>
           <Route path="/" element={<Dashboard />} />
+          <Route path="/meetings" element={<Meetings />} />
           <Route path="/journal" element={<Journal />} />
           <Route path="/journal/:id" element={<EntryDetail />} />
           <Route path="/documents" element={<Documents />} />
           <Route path="/expenses" element={<Expenses />} />
+          <Route path="/contacts" element={<Contacts />} />
           <Route path="/search" element={<Search />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/auth/callback" element={<AuthCallback />} />
