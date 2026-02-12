@@ -21,7 +21,6 @@ const committeeMembers = [
     name: 'Kyle Dean McConnell',
     role: 'Member',
     location: 'Haxtun, CO',
-    email: 'straft@msn.com',
     bio: '4th-generation family farm operating across multiple counties. Degrees in agriculture. Colorado Corn Growers Association board member.',
   },
   {
@@ -37,7 +36,8 @@ const committeeMembers = [
     role: 'Member',
     location: 'Craig, CO',
     phone: '970-326-8614',
-    bio: 'Managing member of an open-range sheep production operation across private, state, BLM, and USFS lands in Colorado and Wyoming. Past president, American Sheep Industry Association. Former chairman, Wool Council and Lamb Council.',
+    email: 'straft@msn.com',
+    bio: 'Managing member of Two Bar Sheep Co LLC — open-range sheep production across private, state, BLM, and USFS lands in Colorado and Wyoming. Past president, American Sheep Industry Association. Former chairman, Wool Council and Lamb Council.',
   },
 ];
 
