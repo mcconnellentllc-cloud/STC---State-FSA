@@ -36,30 +36,9 @@ export function AuthProvider({ children }) {
     try {
       setError(null);
 
-      // Try popup first — faster UX when popups aren't blocked
-      try {
-        const response = await msalInstance.loginPopup(loginRequest);
-        if (response?.account) {
-          setUser({
-            name: response.account.name,
-            email: response.account.username,
-            account: response.account
-          });
-          return;
-        }
-      } catch (popupErr) {
-        console.warn('Popup login failed, falling back to redirect:', popupErr?.errorCode);
-        // If popup was blocked or failed, fall through to redirect
-        if (popupErr?.errorCode !== 'popup_window_error' &&
-            popupErr?.errorCode !== 'user_cancelled' &&
-            popupErr?.errorCode !== 'interaction_in_progress') {
-          // Unexpected error — still try redirect as fallback
-          console.error('Popup error:', popupErr);
-        }
-      }
-
-      // Fallback: use redirect flow — this navigates away from the page
-      // and returns with #code= in the URL, which main.jsx handles on reload
+      // Use redirect flow — works reliably across Chrome, Edge, Firefox, Safari, mobile.
+      // The page navigates to Microsoft login, then returns with #code= in the URL,
+      // which main.jsx processes via handleRedirectPromise() on reload.
       await msalInstance.loginRedirect(loginRequest);
 
     } catch (err) {

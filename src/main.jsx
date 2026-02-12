@@ -7,23 +7,19 @@ import App from './App';
 import './styles/global.css';
 
 async function startApp() {
-  // If we're in a popup window (opened by MSAL loginPopup), do NOTHING.
-  // The parent window's loginPopup() call monitors this popup's URL,
-  // extracts the #code= hash, exchanges it for a token, and closes the popup.
-  // If we call handleRedirectPromise() here, it interferes with that process.
-  const isPopup = window.opener && window.opener !== window;
-  if (isPopup) {
-    // Don't initialize MSAL, don't call handleRedirectPromise(), don't render.
-    // The parent window handles everything.
-    return;
-  }
-
+  // Initialize MSAL before rendering
   await msalInstance.initialize();
 
-  // Main window: handle any redirect response (for redirect flow fallback)
-  // This processes #code= if the user was redirected (not popup) back to the app
+  // Process any redirect response (user returning from Microsoft login).
+  // This handles the #code= hash in the URL after loginRedirect().
   try {
-    await msalInstance.handleRedirectPromise();
+    const response = await msalInstance.handleRedirectPromise();
+    if (response) {
+      // Successfully authenticated via redirect — clear the hash
+      if (window.location.hash) {
+        window.history.replaceState(null, '', window.location.pathname);
+      }
+    }
   } catch (err) {
     console.error('MSAL redirect error:', err);
   }
