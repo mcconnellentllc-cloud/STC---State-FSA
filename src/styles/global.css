@@ -1091,6 +1091,116 @@ tr:hover td {
   text-align: center;
 }
 
+/* ========== EXPENSE TABS ========== */
+.expense-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 0;
+}
+
+.expense-tab {
+  padding: 10px 20px;
+  border: none;
+  background: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  transition: all 0.15s;
+}
+
+.expense-tab:hover {
+  color: var(--accent);
+  background: var(--accent-light);
+}
+
+.expense-tab.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* ========== TOOL PANELS (mileage, hours, taxes) ========== */
+.tool-panel {
+  max-width: 800px;
+}
+
+.tool-card {
+  border-left: 4px solid var(--accent);
+}
+
+.tool-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.tool-header h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.tool-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: 12px;
+  background: var(--success-light);
+  color: var(--success);
+  letter-spacing: 0.3px;
+}
+
+/* ========== CALC RESULT ========== */
+.calc-result {
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  text-align: center;
+  margin-top: 16px;
+}
+
+.calc-result-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.calc-result-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--success);
+}
+
+.calc-result-detail {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+/* ========== INFO CARD ========== */
+.info-card {
+  background: var(--accent-light);
+  border: 1px solid rgba(0, 94, 162, 0.15);
+}
+
+.info-card h4 {
+  font-size: 0.95rem;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
 /* ========== RESPONSIVE ========== */
 @media (max-width: 1024px) {
   .grid-4 { grid-template-columns: repeat(2, 1fr); }

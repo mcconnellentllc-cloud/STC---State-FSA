@@ -69,6 +69,10 @@ export default function Contacts() {
           <div className="contact-name">Jerry Sonnenberg</div>
           <div className="contact-role">Colorado State Executive Director, USDA FSA</div>
           <div className="contact-detail">
+            <strong>Phone:</strong>{' '}
+            <a href="tel:970-581-8648">970-581-8648</a>
+          </div>
+          <div className="contact-detail">
             <strong>Email:</strong>{' '}
             <a href="mailto:Jerry.Sonnenberg@usda.gov">Jerry.Sonnenberg@usda.gov</a>
           </div>
@@ -122,12 +126,72 @@ export default function Contacts() {
       {/* FSA Staff */}
       <div className="contact-section">
         <h3>FSA Staff</h3>
+
+        <div className="contact-card">
+          <div className="contact-name">Cindy Vukasin</div>
+          <div className="contact-role">FPAC-FSA Colorado</div>
+          <div className="contact-detail">
+            <strong>Email:</strong>{' '}
+            <a href="mailto:cindy.vukasin@usda.gov">cindy.vukasin@usda.gov</a>
+          </div>
+        </div>
+
         <div className="contact-card">
           <div className="contact-name">Jonathan Weishaar</div>
           <div className="contact-role">FPAC-FSA Colorado</div>
           <div className="contact-detail">
+            <strong>Phone:</strong>{' '}
+            <a href="tel:970-295-5665">970-295-5665</a>
+            <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginLeft: 6 }}>(Larimer/Boulder Co. FSA office)</span>
+          </div>
+          <div className="contact-detail">
             <strong>Email:</strong>{' '}
             <a href="mailto:jonathan.weishaar@usda.gov">jonathan.weishaar@usda.gov</a>
+          </div>
+        </div>
+
+        <div className="contact-card">
+          <div className="contact-name">Corey Pelton</div>
+          <div className="contact-role">FPAC-FSA Colorado</div>
+          <div className="contact-detail">
+            <strong>Email:</strong>{' '}
+            <a href="mailto:corey.pelton@usda.gov">corey.pelton@usda.gov</a>
+          </div>
+        </div>
+
+        <div className="contact-card">
+          <div className="contact-name">Julie Sporhase</div>
+          <div className="contact-role">FPAC-FSA Colorado</div>
+          <div className="contact-detail">
+            <strong>Email:</strong>{' '}
+            <a href="mailto:julie.sporhase@usda.gov">julie.sporhase@usda.gov</a>
+          </div>
+        </div>
+
+        <div className="contact-card">
+          <div className="contact-name">Janae Rader</div>
+          <div className="contact-role">FPAC-FSA Colorado</div>
+          <div className="contact-detail">
+            <strong>Email:</strong>{' '}
+            <a href="mailto:janae.rader@usda.gov">janae.rader@usda.gov</a>
+          </div>
+        </div>
+
+        <div className="contact-card">
+          <div className="contact-name">Hunter Cleveland</div>
+          <div className="contact-role">FPAC-FSA Colorado</div>
+          <div className="contact-detail">
+            <strong>Email:</strong>{' '}
+            <a href="mailto:hunter.cleveland@usda.gov">hunter.cleveland@usda.gov</a>
+          </div>
+        </div>
+
+        <div className="contact-card">
+          <div className="contact-name">Douglas R. Andresen</div>
+          <div className="contact-role">FPAC-FSA Colorado</div>
+          <div className="contact-detail">
+            <strong>Email:</strong>{' '}
+            <a href="mailto:doug.andresen@usda.gov">doug.andresen@usda.gov</a>
           </div>
         </div>
       </div>
