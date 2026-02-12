@@ -77,6 +77,15 @@ app.get('*', (req, res) => {
   }
 });
 
+// Prevent unhandled errors from crashing the server (e.g., Tesseract worker errors)
+process.on('unhandledRejection', (err) => {
+  console.error('Unhandled rejection (non-fatal):', err?.message || err);
+});
+process.on('uncaughtException', (err) => {
+  console.error('Uncaught exception (non-fatal):', err?.message || err);
+  // Don't exit — keep the server running
+});
+
 // Start
 async function start() {
   try {
