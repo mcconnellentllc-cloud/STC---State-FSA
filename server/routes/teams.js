@@ -1,6 +1,8 @@
 import { Router } from 'express';
-import { testConnection, graphGet, getSiteId, getDriveId } from '../services/graph.js';
+import { testConnection, graphGet, getSiteId, getDriveId, graphUploadFile } from '../services/graph.js';
 import { getStatus, manualSync, startWatcher, stopWatcher } from '../services/teams-watcher.js';
+import { all } from '../services/database.js';
+import XLSX from 'xlsx';
 
 const router = Router();
 
@@ -140,6 +142,104 @@ router.get('/file/:itemId', async (req, res) => {
       res.setHeader('Content-Disposition', `inline; filename="${meta.name}"`);
       res.send(buffer);
     }
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /api/teams/export-excel
+ * Generate an Excel workbook with Expenses, Meetings/Calendar, and Documents
+ * and upload it to the Teams channel in SharePoint.
+ */
+router.post('/export-excel', async (req, res) => {
+  try {
+    const siteId = await getSiteId();
+    const driveId = await getDriveId(siteId);
+
+    // Fetch all data
+    const expenses = await all('SELECT * FROM expenses ORDER BY date DESC');
+    const documents = await all('SELECT * FROM documents ORDER BY created_at DESC');
+    const calendar = await all('SELECT * FROM calendar_notices ORDER BY date ASC');
+
+    const wb = XLSX.utils.book_new();
+
+    // ── Expenses sheet ──
+    const expData = expenses.map(e => ({
+      Date: e.date || '',
+      Vendor: e.vendor || '',
+      Amount: e.amount || 0,
+      Category: e.category || '',
+      Description: e.description || '',
+      Status: e.status || 'pending'
+    }));
+    const expWs = XLSX.utils.json_to_sheet(expData.length ? expData : [{ Date: '', Vendor: '', Amount: 0, Category: '', Description: '', Status: '' }]);
+    expWs['!cols'] = [{ wch: 12 }, { wch: 25 }, { wch: 12 }, { wch: 15 }, { wch: 40 }, { wch: 10 }];
+    XLSX.utils.book_append_sheet(wb, expWs, 'Expenses');
+
+    // ── Expense Summary sheet ──
+    const categories = {};
+    let total = 0;
+    for (const e of expenses) {
+      const cat = e.category || 'Uncategorized';
+      categories[cat] = (categories[cat] || 0) + (e.amount || 0);
+      total += e.amount || 0;
+    }
+    const summaryData = Object.entries(categories).map(([cat, amt]) => ({ Category: cat, Total: amt }));
+    summaryData.push({ Category: 'GRAND TOTAL', Total: total });
+    const sumWs = XLSX.utils.json_to_sheet(summaryData);
+    sumWs['!cols'] = [{ wch: 20 }, { wch: 15 }];
+    XLSX.utils.book_append_sheet(wb, sumWs, 'Expense Summary');
+
+    // ── Calendar / Notices sheet ──
+    const calData = calendar.map(c => ({
+      Date: c.date || '',
+      Title: c.title || '',
+      Type: c.notice_type || '',
+      Location: c.location || '',
+      Description: c.description || '',
+      'All Day': c.all_day ? 'Yes' : 'No',
+      'Start Time': c.start_time || '',
+      'End Time': c.end_time || ''
+    }));
+    const calWs = XLSX.utils.json_to_sheet(calData.length ? calData : [{ Date: '', Title: '', Type: '', Location: '', Description: '' }]);
+    calWs['!cols'] = [{ wch: 12 }, { wch: 30 }, { wch: 15 }, { wch: 25 }, { wch: 40 }, { wch: 8 }, { wch: 10 }, { wch: 10 }];
+    XLSX.utils.book_append_sheet(wb, calWs, 'Calendar');
+
+    // ── Documents sheet ──
+    const docData = documents.map(d => ({
+      Name: d.original_name || '',
+      Type: d.file_type || '',
+      'Size (KB)': d.file_size ? Math.round(d.file_size / 1024) : 0,
+      Tags: d.tags || '',
+      Folder: d.teams_folder || '',
+      Uploaded: d.created_at ? new Date(d.created_at).toLocaleDateString() : ''
+    }));
+    const docWs = XLSX.utils.json_to_sheet(docData.length ? docData : [{ Name: '', Type: '', 'Size (KB)': 0, Tags: '', Folder: '' }]);
+    docWs['!cols'] = [{ wch: 35 }, { wch: 8 }, { wch: 10 }, { wch: 30 }, { wch: 25 }, { wch: 12 }];
+    XLSX.utils.book_append_sheet(wb, docWs, 'Documents');
+
+    // Generate buffer
+    const xlsxBuffer = XLSX.write(wb, { type: 'buffer', bookType: 'xlsx' });
+
+    // Upload to SharePoint
+    const timestamp = new Date().toISOString().split('T')[0];
+    const fileName = `PFA_Export_${timestamp}.xlsx`;
+
+    const uploadResult = await graphUploadFile(
+      driveId,
+      'STC PFA',
+      fileName,
+      Buffer.from(xlsxBuffer),
+      'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    );
+
+    res.json({
+      message: `Excel exported to Teams: ${fileName}`,
+      fileName,
+      webUrl: uploadResult.webUrl,
+      size: xlsxBuffer.length
+    });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

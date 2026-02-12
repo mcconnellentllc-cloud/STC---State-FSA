@@ -103,6 +103,36 @@ export async function getDriveId(siteId) {
   return drive.id;
 }
 
+/**
+ * Upload a file to SharePoint via Graph API.
+ * Puts the file in the watch folder (Teams channel) under the given subfolder path.
+ */
+export async function graphUploadFile(driveId, folderPath, fileName, fileBuffer, contentType) {
+  const token = await getAccessToken();
+  const watchFolder = process.env.SHAREPOINT_WATCH_FOLDER || 'FSA - State Committee';
+  const fullPath = folderPath ? `${watchFolder}/${folderPath}` : watchFolder;
+  const encodedPath = fullPath.split('/').map(seg => encodeURIComponent(seg)).join('/');
+  const encodedFileName = encodeURIComponent(fileName);
+
+  const url = `${GRAPH_BASE}/drives/${driveId}/root:/${encodedPath}/${encodedFileName}:/content`;
+
+  const response = await fetch(url, {
+    method: 'PUT',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': contentType || 'application/octet-stream'
+    },
+    body: fileBuffer
+  });
+
+  if (!response.ok) {
+    const errText = await response.text();
+    throw new Error(`Graph upload error (${response.status}): ${errText}`);
+  }
+
+  return response.json();
+}
+
 export async function testConnection() {
   try {
     const token = await getAccessToken();

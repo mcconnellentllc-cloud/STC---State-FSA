@@ -100,6 +100,23 @@ async function runSchema() {
     )
   `);
 
+  // Calendar notices table
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS calendar_notices (
+      id SERIAL PRIMARY KEY,
+      title TEXT NOT NULL,
+      date TEXT NOT NULL,
+      notice_type TEXT DEFAULT 'meeting',
+      location TEXT,
+      description TEXT,
+      all_day BOOLEAN DEFAULT true,
+      start_time TEXT,
+      end_time TEXT,
+      created_at TIMESTAMPTZ DEFAULT NOW(),
+      updated_at TIMESTAMPTZ DEFAULT NOW()
+    )
+  `);
+
   // Add teams_folder column if it doesn't exist (migration safety)
   try {
     await pool.query(`ALTER TABLE documents ADD COLUMN IF NOT EXISTS teams_folder TEXT`);

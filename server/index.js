@@ -10,6 +10,7 @@ import documentsRouter from './routes/documents.js';
 import expensesRouter from './routes/expenses.js';
 import aiRouter from './routes/ai.js';
 import teamsRouter from './routes/teams.js';
+import calendarRouter from './routes/calendar.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -35,6 +36,7 @@ app.use('/api/documents', documentsRouter);
 app.use('/api/expenses', expensesRouter);
 app.use('/api/ai', aiRouter);
 app.use('/api/teams', teamsRouter);
+app.use('/api/calendar', calendarRouter);
 
 // Dashboard stats
 app.get('/api/dashboard', async (req, res) => {
