@@ -174,6 +174,30 @@ export default function Documents() {
     } catch (err) { console.error(err); }
   };
 
+  const [reprocessing, setReprocessing] = useState(null); // holds doc id being reprocessed
+
+  const handleReprocess = async (id) => {
+    setReprocessing(id);
+    try {
+      const res = await apiFetch(`/api/documents/${id}/reprocess`, { method: 'POST' });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.error || 'Re-extract failed');
+      }
+      const updated = await res.json();
+      // Update doc in state
+      setDocs(prev => prev.map(d => d.id === id ? updated : d));
+      // Update preview if open
+      if (previewDoc && previewDoc.id === id) setPreviewDoc(updated);
+      const chars = (updated.extracted_text || '').length;
+      alert(chars > 0 ? `Text re-extracted: ${chars} characters found.` : 'Re-extraction completed but no text could be extracted.');
+    } catch (err) {
+      alert('Re-extract failed: ' + err.message);
+    } finally {
+      setReprocessing(null);
+    }
+  };
+
   const handleExtractReceipt = async (id) => {
     try {
       const res = await apiFetch('/api/ai/extract-receipt', {
@@ -488,6 +512,14 @@ export default function Documents() {
                           <button className="btn btn-sm btn-secondary" onClick={() => setPreviewDoc(doc)}>View</button>
                           <button className="btn btn-sm btn-secondary" onClick={() => handleAutoTag(doc.id)}>Tag</button>
                           <button className="btn btn-sm btn-secondary" onClick={() => handleExtractReceipt(doc.id)}>Receipt</button>
+                          <button
+                            className="btn btn-sm btn-secondary"
+                            onClick={() => handleReprocess(doc.id)}
+                            disabled={reprocessing === doc.id}
+                            title="Re-extract text (OCR for scanned documents)"
+                          >
+                            {reprocessing === doc.id ? '...' : 'OCR'}
+                          </button>
                           <button className="btn btn-sm btn-danger" onClick={() => handleDelete(doc.id)}>Del</button>
                         </div>
                       </td>
@@ -515,10 +547,31 @@ export default function Documents() {
                     {previewDoc.extracted_text}
                   </div>
                 ) : (
-                  <p style={{ color: 'var(--text-muted)' }}>No text extracted from this document.</p>
+                  <div style={{ padding: 20, background: 'var(--bg-primary)', borderRadius: 'var(--radius)', textAlign: 'center' }}>
+                    <p style={{ color: 'var(--text-muted)', marginBottom: 12 }}>No text extracted from this document.</p>
+                    <p style={{ color: 'var(--text-muted)', fontSize: '0.82rem', marginBottom: 12 }}>
+                      This may be a scanned/image PDF. Click below to run OCR text extraction.
+                    </p>
+                    <button
+                      className="btn btn-primary"
+                      onClick={() => handleReprocess(previewDoc.id)}
+                      disabled={reprocessing === previewDoc.id}
+                    >
+                      {reprocessing === previewDoc.id ? 'Extracting text (OCR)...' : 'Re-extract Text (OCR)'}
+                    </button>
+                  </div>
                 )}
-                <div style={{ marginTop: 12 }}>
+                <div style={{ marginTop: 12, display: 'flex', gap: 8 }}>
                   <a href={`/api/documents/${previewDoc.id}/file`} className="btn btn-primary" download>Download</a>
+                  {previewDoc.extracted_text && (
+                    <button
+                      className="btn btn-secondary"
+                      onClick={() => handleReprocess(previewDoc.id)}
+                      disabled={reprocessing === previewDoc.id}
+                    >
+                      {reprocessing === previewDoc.id ? 'Re-extracting...' : 'Re-extract Text'}
+                    </button>
+                  )}
                 </div>
               </div>
             </div>

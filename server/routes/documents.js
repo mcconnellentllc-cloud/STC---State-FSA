@@ -158,6 +158,44 @@ router.put('/:id', (req, res) => {
   }
 });
 
+// POST /api/documents/:id/reprocess — re-extract text (useful for OCR after parser update)
+router.post('/:id/reprocess', async (req, res) => {
+  try {
+    const doc = get('SELECT * FROM documents WHERE id = ?', [req.params.id]);
+    if (!doc) return res.status(404).json({ error: 'Document not found' });
+
+    const filePath = doc.file_path;
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).json({ error: 'File not found on disk — cannot re-extract' });
+    }
+
+    let extractedText = '';
+    try {
+      extractedText = await extractText(filePath, doc.file_type);
+    } catch (err) {
+      console.error('Re-extraction failed:', err.message);
+      return res.status(500).json({ error: 'Text extraction failed: ' + err.message });
+    }
+
+    run(
+      'UPDATE documents SET extracted_text = ?, processed_at = datetime(\'now\') WHERE id = ?',
+      [extractedText, req.params.id]
+    );
+
+    syncDocumentFts(req.params.id, {
+      original_name: doc.original_name,
+      extracted_text: extractedText,
+      tags: doc.tags || ''
+    });
+
+    const updated = get('SELECT * FROM documents WHERE id = ?', [req.params.id]);
+    console.log(`Re-processed document ${doc.original_name}: extracted ${extractedText.length} chars`);
+    res.json(updated);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // DELETE /api/documents/:id
 router.delete('/:id', (req, res) => {
   try {
