@@ -25,7 +25,30 @@ async function extractPdf(filePath) {
     const pdfParse = (await import('pdf-parse')).default;
     const buffer = fs.readFileSync(filePath);
     const data = await pdfParse(buffer);
-    return data.text || '';
+    const text = (data.text || '').trim();
+
+    // If pdf-parse found meaningful text, return it
+    if (text.length > 20) {
+      return text;
+    }
+
+    // Otherwise this is likely a scanned/image PDF — try OCR
+    console.log(`PDF has little/no text (${text.length} chars), attempting OCR: ${path.basename(filePath)}`);
+    try {
+      const { createWorker } = await import('tesseract.js');
+      const worker = await createWorker('eng');
+      const { data: { text: ocrText } } = await worker.recognize(filePath);
+      await worker.terminate();
+      if (ocrText && ocrText.trim().length > 0) {
+        console.log(`OCR extracted ${ocrText.trim().length} chars from PDF`);
+        return ocrText.trim();
+      }
+    } catch (ocrErr) {
+      console.error('PDF OCR fallback error:', ocrErr.message);
+    }
+
+    // Return whatever we got from pdf-parse (even if short)
+    return text;
   } catch (err) {
     console.error('PDF extraction error:', err.message);
     return '';
