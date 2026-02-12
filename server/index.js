@@ -79,17 +79,17 @@ async function start() {
     await initDatabase();
     console.log('Database ready');
 
-    // Start Teams watcher (non-blocking, won't crash if credentials are missing)
-    try {
-      const { startWatcher } = await import('./services/teams-watcher.js');
-      await startWatcher();
-    } catch (err) {
-      console.warn('Teams watcher not started:', err.message);
-    }
-
     app.listen(PORT, HOST, () => {
       console.log(`PFA server running at http://${HOST}:${PORT}`);
     });
+
+    // Start Teams watcher AFTER server is listening (non-blocking)
+    try {
+      const { startWatcher } = await import('./services/teams-watcher.js');
+      startWatcher(); // no await - runs in background
+    } catch (err) {
+      console.warn('Teams watcher not started:', err.message);
+    }
   } catch (err) {
     console.error('Failed to start:', err);
     process.exit(1);
