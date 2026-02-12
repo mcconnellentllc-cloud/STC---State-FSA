@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useApiFetch } from '../auth/apiFetch';
 import EntryEditor from '../components/EntryEditor';
 
 export default function EntryDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const apiFetch = useApiFetch();
   const [entry, setEntry] = useState(null);
   const [editing, setEditing] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -13,17 +15,17 @@ export default function EntryDetail() {
 
   const fetchEntry = () => {
     setLoading(true);
-    fetch(`/api/entries/${id}`)
+    apiFetch(`/api/entries/${id}`)
       .then(r => r.json())
       .then(setEntry)
       .catch(err => console.error(err))
       .finally(() => setLoading(false));
   };
 
-  useEffect(() => { fetchEntry(); }, [id]);
+  useEffect(() => { fetchEntry(); }, [id, apiFetch]);
 
   const handleUpdate = async (data) => {
-    const res = await fetch(`/api/entries/${id}`, {
+    const res = await apiFetch(`/api/entries/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
@@ -36,14 +38,14 @@ export default function EntryDetail() {
 
   const handleDelete = async () => {
     if (!confirm('Delete this entry?')) return;
-    await fetch(`/api/entries/${id}`, { method: 'DELETE' });
+    await apiFetch(`/api/entries/${id}`, { method: 'DELETE' });
     navigate('/journal');
   };
 
   const handleSummarize = async () => {
     setSummarizing(true);
     try {
-      const res = await fetch('/api/ai/summarize', {
+      const res = await apiFetch('/api/ai/summarize', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ entry_id: parseInt(id) })
@@ -58,7 +60,7 @@ export default function EntryDetail() {
 
   const handleAutoTag = async () => {
     try {
-      const res = await fetch('/api/ai/categorize', {
+      const res = await apiFetch('/api/ai/categorize', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ entry_id: parseInt(id) })

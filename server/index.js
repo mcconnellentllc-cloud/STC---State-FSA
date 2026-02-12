@@ -4,6 +4,7 @@ import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { initDatabase, all, get } from './services/database.js';
+import { requireAuth } from './middleware/auth.js';
 import entriesRouter from './routes/entries.js';
 import documentsRouter from './routes/documents.js';
 import expensesRouter from './routes/expenses.js';
@@ -20,17 +21,20 @@ app.use(cors());
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
-// API routes
+// Health check — exempt from auth
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
+// Protect all /api/* routes with Microsoft Entra ID authentication
+app.use('/api', requireAuth);
+
+// API routes (all protected by auth middleware above)
 app.use('/api/entries', entriesRouter);
 app.use('/api/documents', documentsRouter);
 app.use('/api/expenses', expensesRouter);
 app.use('/api/ai', aiRouter);
 app.use('/api/teams', teamsRouter);
-
-// Health check
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', timestamp: new Date().toISOString() });
-});
 
 // Dashboard stats
 app.get('/api/dashboard', (req, res) => {

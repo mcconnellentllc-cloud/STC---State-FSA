@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useApiFetch } from '../auth/apiFetch';
 import FileUploader from '../components/FileUploader';
 
 export default function Documents() {
@@ -7,23 +8,24 @@ export default function Documents() {
   const [filter, setFilter] = useState('');
   const [showUpload, setShowUpload] = useState(false);
   const [previewDoc, setPreviewDoc] = useState(null);
+  const apiFetch = useApiFetch();
 
   const fetchDocs = () => {
     setLoading(true);
     const params = filter ? `?type=${encodeURIComponent(filter)}` : '';
-    fetch(`/api/documents${params}`)
+    apiFetch(`/api/documents${params}`)
       .then(r => r.json())
       .then(setDocs)
       .catch(err => console.error(err))
       .finally(() => setLoading(false));
   };
 
-  useEffect(() => { fetchDocs(); }, [filter]);
+  useEffect(() => { fetchDocs(); }, [filter, apiFetch]);
 
   const handleUpload = async (file) => {
     const formData = new FormData();
     formData.append('file', file);
-    const res = await fetch('/api/documents/upload', {
+    const res = await apiFetch('/api/documents/upload', {
       method: 'POST',
       body: formData
     });
@@ -35,14 +37,14 @@ export default function Documents() {
 
   const handleDelete = async (id) => {
     if (!confirm('Delete this document?')) return;
-    await fetch(`/api/documents/${id}`, { method: 'DELETE' });
+    await apiFetch(`/api/documents/${id}`, { method: 'DELETE' });
     fetchDocs();
     setPreviewDoc(null);
   };
 
   const handleAutoTag = async (id) => {
     try {
-      await fetch('/api/ai/categorize', {
+      await apiFetch('/api/ai/categorize', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ document_id: id })
@@ -55,14 +57,14 @@ export default function Documents() {
 
   const handleExtractReceipt = async (id) => {
     try {
-      const res = await fetch('/api/ai/extract-receipt', {
+      const res = await apiFetch('/api/ai/extract-receipt', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ document_id: id })
       });
       const data = await res.json();
       if (data.amount) {
-        const expRes = await fetch('/api/expenses', {
+        const expRes = await apiFetch('/api/expenses', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

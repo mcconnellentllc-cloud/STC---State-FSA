@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useApiFetch } from '../auth/apiFetch';
 
 export default function Dashboard() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const apiFetch = useApiFetch();
 
   useEffect(() => {
-    fetch('/api/dashboard')
+    apiFetch('/api/dashboard')
       .then(r => r.json())
       .then(setData)
       .catch(err => console.error('Dashboard error:', err))
       .finally(() => setLoading(false));
-  }, []);
+  }, [apiFetch]);
 
   if (loading) return <div className="loading"><div className="spinner" /></div>;
 

@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useApiFetch } from '../auth/apiFetch';
 
 export default function Search() {
   const [query, setQuery] = useState('');
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
+  const apiFetch = useApiFetch();
 
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -13,7 +15,7 @@ export default function Search() {
     setResult(null);
 
     try {
-      const res = await fetch('/api/ai/search', {
+      const res = await apiFetch('/api/ai/search', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query })

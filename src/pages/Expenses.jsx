@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useApiFetch } from '../auth/apiFetch';
 
 export default function Expenses() {
   const [expenses, setExpenses] = useState([]);
@@ -7,6 +8,7 @@ export default function Expenses() {
   const [filters, setFilters] = useState({ from: '', to: '', category: '', status: '' });
   const [summary, setSummary] = useState(null);
   const [form, setForm] = useState({ date: new Date().toISOString().split('T')[0], vendor: '', amount: '', category: '', description: '', status: 'pending' });
+  const apiFetch = useApiFetch();
 
   const fetchExpenses = () => {
     setLoading(true);
@@ -18,19 +20,19 @@ export default function Expenses() {
     const q = params.toString();
 
     Promise.all([
-      fetch(`/api/expenses${q ? '?' + q : ''}`).then(r => r.json()),
-      fetch(`/api/expenses/summary${q ? '?' + q : ''}`).then(r => r.json())
+      apiFetch(`/api/expenses${q ? '?' + q : ''}`).then(r => r.json()),
+      apiFetch(`/api/expenses/summary${q ? '?' + q : ''}`).then(r => r.json())
     ])
       .then(([exp, sum]) => { setExpenses(exp); setSummary(sum); })
       .catch(err => console.error(err))
       .finally(() => setLoading(false));
   };
 
-  useEffect(() => { fetchExpenses(); }, [filters]);
+  useEffect(() => { fetchExpenses(); }, [filters, apiFetch]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch('/api/expenses', {
+    const res = await apiFetch('/api/expenses', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ...form, amount: parseFloat(form.amount) })
@@ -44,7 +46,7 @@ export default function Expenses() {
 
   const handleDelete = async (id) => {
     if (!confirm('Delete this expense?')) return;
-    await fetch(`/api/expenses/${id}`, { method: 'DELETE' });
+    await apiFetch(`/api/expenses/${id}`, { method: 'DELETE' });
     fetchExpenses();
   };
 
@@ -55,7 +57,7 @@ export default function Expenses() {
     if (filters.category) params.set('category', filters.category);
     if (filters.status) params.set('status', filters.status);
 
-    const res = await fetch('/api/expenses/export', {
+    const res = await apiFetch('/api/expenses/export', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ format, ...Object.fromEntries(params) })

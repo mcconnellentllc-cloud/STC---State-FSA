@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useApiFetch } from '../auth/apiFetch';
 import EntryEditor from '../components/EntryEditor';
 
 export default function Journal() {
@@ -8,18 +9,19 @@ export default function Journal() {
   const [showEditor, setShowEditor] = useState(false);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const apiFetch = useApiFetch();
 
   const fetchEntries = (q = '') => {
     setLoading(true);
     const url = q ? `/api/entries?search=${encodeURIComponent(q)}` : '/api/entries';
-    fetch(url)
+    apiFetch(url)
       .then(r => r.json())
       .then(setEntries)
       .catch(err => console.error(err))
       .finally(() => setLoading(false));
   };
 
-  useEffect(() => { fetchEntries(); }, []);
+  useEffect(() => { fetchEntries(); }, [apiFetch]);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -27,7 +29,7 @@ export default function Journal() {
   };
 
   const handleSave = async (data) => {
-    const res = await fetch('/api/entries', {
+    const res = await apiFetch('/api/entries', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)

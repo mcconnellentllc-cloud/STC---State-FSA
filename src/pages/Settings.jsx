@@ -1,23 +1,25 @@
 import React, { useState, useEffect } from 'react';
+import { useApiFetch } from '../auth/apiFetch';
 
 export default function Settings() {
   const [teamsStatus, setTeamsStatus] = useState(null);
   const [testing, setTesting] = useState(false);
   const [syncing, setSyncing] = useState(false);
+  const apiFetch = useApiFetch();
 
   const fetchStatus = () => {
-    fetch('/api/teams/status')
+    apiFetch('/api/teams/status')
       .then(r => r.json())
       .then(setTeamsStatus)
       .catch(err => console.error(err));
   };
 
-  useEffect(() => { fetchStatus(); }, []);
+  useEffect(() => { fetchStatus(); }, [apiFetch]);
 
   const testConnection = async () => {
     setTesting(true);
     try {
-      const res = await fetch('/api/teams/test', { method: 'POST' });
+      const res = await apiFetch('/api/teams/test', { method: 'POST' });
       const data = await res.json();
       alert(data.connected ? 'Connection successful!' : `Connection failed: ${data.error}`);
       fetchStatus();
@@ -30,7 +32,7 @@ export default function Settings() {
   const triggerSync = async () => {
     setSyncing(true);
     try {
-      const res = await fetch('/api/teams/sync', { method: 'POST' });
+      const res = await apiFetch('/api/teams/sync', { method: 'POST' });
       const data = await res.json();
       alert(`Sync completed. Files processed: ${data.filesProcessed}`);
       fetchStatus();
@@ -41,12 +43,12 @@ export default function Settings() {
   };
 
   const startWatcher = async () => {
-    await fetch('/api/teams/start', { method: 'POST' });
+    await apiFetch('/api/teams/start', { method: 'POST' });
     fetchStatus();
   };
 
   const stopWatcher = async () => {
-    await fetch('/api/teams/stop', { method: 'POST' });
+    await apiFetch('/api/teams/stop', { method: 'POST' });
     fetchStatus();
   };
 
