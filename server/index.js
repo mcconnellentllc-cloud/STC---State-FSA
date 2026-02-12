@@ -37,21 +37,21 @@ app.use('/api/ai', aiRouter);
 app.use('/api/teams', teamsRouter);
 
 // Dashboard stats
-app.get('/api/dashboard', (req, res) => {
+app.get('/api/dashboard', async (req, res) => {
   try {
-    const recentEntries = all('SELECT id, title, date, location, tags FROM entries ORDER BY created_at DESC LIMIT 5');
-    const recentDocs = all('SELECT id, original_name, file_type, created_at FROM documents ORDER BY created_at DESC LIMIT 5');
+    const recentEntries = await all('SELECT id, title, date, location, tags FROM entries ORDER BY created_at DESC LIMIT 5');
+    const recentDocs = await all('SELECT id, original_name, file_type, created_at FROM documents ORDER BY created_at DESC LIMIT 5');
 
     const now = new Date();
     const monthStart = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-01`;
-    const expenseSummary = get(
+    const expenseSummary = await get(
       'SELECT COUNT(*) as count, COALESCE(SUM(amount), 0) as total FROM expenses WHERE date >= ?',
       [monthStart]
     );
 
-    const totalEntries = get('SELECT COUNT(*) as count FROM entries');
-    const totalDocs = get('SELECT COUNT(*) as count FROM documents');
-    const totalExpenses = get('SELECT COUNT(*) as count FROM expenses');
+    const totalEntries = await get('SELECT COUNT(*) as count FROM entries');
+    const totalDocs = await get('SELECT COUNT(*) as count FROM documents');
+    const totalExpenses = await get('SELECT COUNT(*) as count FROM expenses');
 
     res.json({
       recentEntries,

@@ -5,7 +5,7 @@ import { generateExpenseXlsx, generateExpensePdf } from '../services/export.js';
 const router = Router();
 
 // GET /api/expenses — list with filters
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const { from, to, category, status } = req.query;
     let sql = 'SELECT e.*, d.original_name as receipt_name FROM expenses e LEFT JOIN documents d ON e.document_id = d.id';
@@ -34,14 +34,14 @@ router.get('/', (req, res) => {
     }
     sql += ' ORDER BY e.date DESC';
 
-    res.json(all(sql, params));
+    res.json(await all(sql, params));
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
 
 // GET /api/expenses/summary — totals by category
-router.get('/summary', (req, res) => {
+router.get('/summary', async (req, res) => {
   try {
     const { from, to } = req.query;
     let sql = 'SELECT category, SUM(amount) as total, COUNT(*) as count FROM expenses';
@@ -62,7 +62,7 @@ router.get('/summary', (req, res) => {
     }
     sql += ' GROUP BY category ORDER BY total DESC';
 
-    const summary = all(sql, params);
+    const summary = await all(sql, params);
     const grandTotal = summary.reduce((sum, row) => sum + (row.total || 0), 0);
 
     res.json({ categories: summary, grandTotal });
@@ -72,9 +72,9 @@ router.get('/summary', (req, res) => {
 });
 
 // GET /api/expenses/:id
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
-    const expense = get(
+    const expense = await get(
       'SELECT e.*, d.original_name as receipt_name FROM expenses e LEFT JOIN documents d ON e.document_id = d.id WHERE e.id = ?',
       [req.params.id]
     );
@@ -86,20 +86,20 @@ router.get('/:id', (req, res) => {
 });
 
 // POST /api/expenses — create
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const { date, vendor, amount, category, description, document_id, entry_id, status } = req.body;
     if (!date || amount === undefined) {
       return res.status(400).json({ error: 'Date and amount are required' });
     }
 
-    const result = run(
+    const result = await run(
       `INSERT INTO expenses (date, vendor, amount, category, description, document_id, entry_id, status)
        VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
       [date, vendor || null, amount, category || null, description || null, document_id || null, entry_id || null, status || 'pending']
     );
 
-    const expense = get('SELECT * FROM expenses WHERE id = ?', [result.lastInsertRowid]);
+    const expense = await get('SELECT * FROM expenses WHERE id = ?', [result.lastInsertRowid]);
     res.status(201).json(expense);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -107,14 +107,14 @@ router.post('/', (req, res) => {
 });
 
 // PUT /api/expenses/:id
-router.put('/:id', (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
-    const existing = get('SELECT * FROM expenses WHERE id = ?', [req.params.id]);
+    const existing = await get('SELECT * FROM expenses WHERE id = ?', [req.params.id]);
     if (!existing) return res.status(404).json({ error: 'Expense not found' });
 
     const { date, vendor, amount, category, description, document_id, entry_id, status } = req.body;
 
-    run(
+    await run(
       `UPDATE expenses SET date = ?, vendor = ?, amount = ?, category = ?, description = ?, document_id = ?, entry_id = ?, status = ?
        WHERE id = ?`,
       [
@@ -130,7 +130,7 @@ router.put('/:id', (req, res) => {
       ]
     );
 
-    const expense = get('SELECT * FROM expenses WHERE id = ?', [req.params.id]);
+    const expense = await get('SELECT * FROM expenses WHERE id = ?', [req.params.id]);
     res.json(expense);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -138,12 +138,12 @@ router.put('/:id', (req, res) => {
 });
 
 // DELETE /api/expenses/:id
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
-    const existing = get('SELECT * FROM expenses WHERE id = ?', [req.params.id]);
+    const existing = await get('SELECT * FROM expenses WHERE id = ?', [req.params.id]);
     if (!existing) return res.status(404).json({ error: 'Expense not found' });
 
-    run('DELETE FROM expenses WHERE id = ?', [req.params.id]);
+    await run('DELETE FROM expenses WHERE id = ?', [req.params.id]);
     res.json({ message: 'Expense deleted' });
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -166,7 +166,7 @@ router.post('/export', async (req, res) => {
     if (conditions.length) sql += ' WHERE ' + conditions.join(' AND ');
     sql += ' ORDER BY date ASC';
 
-    const expenses = all(sql, params);
+    const expenses = await all(sql, params);
 
     if (format === 'pdf') {
       const buffer = await generateExpensePdf(expenses);

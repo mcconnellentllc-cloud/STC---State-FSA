@@ -13,8 +13,8 @@ router.post('/search', async (req, res) => {
     if (!query) return res.status(400).json({ error: 'Query is required' });
 
     // Search FTS first
-    const entries = searchEntries(query);
-    const documents = searchDocuments(query);
+    const entries = await searchEntries(query);
+    const documents = await searchDocuments(query);
 
     // Build context from results
     let context = '';
@@ -62,12 +62,12 @@ router.post('/summarize', async (req, res) => {
     let type = 'entry';
 
     if (entry_id) {
-      const entry = get('SELECT * FROM entries WHERE id = ?', [entry_id]);
+      const entry = await get('SELECT * FROM entries WHERE id = ?', [entry_id]);
       if (!entry) return res.status(404).json({ error: 'Entry not found' });
       content = `Title: ${entry.title}\nDate: ${entry.date}\nLocation: ${entry.location || 'N/A'}\nAttendees: ${entry.attendees || 'N/A'}\n\n${entry.content || ''}`;
       type = 'journal entry';
     } else if (document_id) {
-      const doc = get('SELECT * FROM documents WHERE id = ?', [document_id]);
+      const doc = await get('SELECT * FROM documents WHERE id = ?', [document_id]);
       if (!doc) return res.status(404).json({ error: 'Document not found' });
       content = `Document: ${doc.original_name}\n\n${doc.extracted_text || ''}`;
       type = 'document';
@@ -88,7 +88,7 @@ router.post('/extract-receipt', async (req, res) => {
     const { document_id } = req.body;
     if (!document_id) return res.status(400).json({ error: 'document_id required' });
 
-    const doc = get('SELECT * FROM documents WHERE id = ?', [document_id]);
+    const doc = await get('SELECT * FROM documents WHERE id = ?', [document_id]);
     if (!doc) return res.status(404).json({ error: 'Document not found' });
     if (!doc.extracted_text) return res.status(400).json({ error: 'No extracted text available' });
 
@@ -111,7 +111,7 @@ router.post('/categorize', async (req, res) => {
     let type = 'entry';
 
     if (entry_id) {
-      const entry = get('SELECT * FROM entries WHERE id = ?', [entry_id]);
+      const entry = await get('SELECT * FROM entries WHERE id = ?', [entry_id]);
       if (!entry) return res.status(404).json({ error: 'Entry not found' });
       content = `${entry.title}\n${entry.content || ''}`;
 
@@ -120,13 +120,13 @@ router.post('/categorize', async (req, res) => {
       // Update tags
       if (result.tags?.length) {
         const tags = result.tags.join(', ');
-        run('UPDATE entries SET tags = ? WHERE id = ?', [tags, entry_id]);
-        syncEntryFts(entry_id, { ...entry, tags });
+        await run('UPDATE entries SET tags = ? WHERE id = ?', [tags, entry_id]);
+        await syncEntryFts(entry_id, { ...entry, tags });
       }
 
       res.json(result);
     } else if (document_id) {
-      const doc = get('SELECT * FROM documents WHERE id = ?', [document_id]);
+      const doc = await get('SELECT * FROM documents WHERE id = ?', [document_id]);
       if (!doc) return res.status(404).json({ error: 'Document not found' });
       content = `${doc.original_name}\n${doc.extracted_text || ''}`;
 
@@ -134,8 +134,8 @@ router.post('/categorize', async (req, res) => {
 
       if (result.tags?.length) {
         const tags = result.tags.join(', ');
-        run('UPDATE documents SET tags = ? WHERE id = ?', [tags, document_id]);
-        syncDocumentFts(document_id, { ...doc, tags });
+        await run('UPDATE documents SET tags = ? WHERE id = ?', [tags, document_id]);
+        await syncDocumentFts(document_id, { ...doc, tags });
       }
 
       res.json(result);

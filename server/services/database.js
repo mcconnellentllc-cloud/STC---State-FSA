@@ -1,155 +1,216 @@
-import initSqlJs from 'sql.js';
+import pg from 'pg';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = path.join(__dirname, '..', 'data');
-const DB_PATH = path.join(DATA_DIR, 'pfa.db');
 const UPLOADS_DIR = path.join(DATA_DIR, 'uploads');
-const SCHEMA_PATH = path.join(__dirname, '..', 'db', 'schema.sql');
 
-let db = null;
-let SQL = null;
+let pool = null;
 
 function ensureDirectories() {
   if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
   if (!fs.existsSync(UPLOADS_DIR)) fs.mkdirSync(UPLOADS_DIR, { recursive: true });
 }
 
-function saveDatabase() {
-  if (db) {
-    const data = db.export();
-    const buffer = Buffer.from(data);
-    fs.writeFileSync(DB_PATH, buffer);
-  }
-}
-
 export async function initDatabase() {
   ensureDirectories();
-  SQL = await initSqlJs();
 
-  if (fs.existsSync(DB_PATH)) {
-    const fileBuffer = fs.readFileSync(DB_PATH);
-    db = new SQL.Database(fileBuffer);
-  } else {
-    db = new SQL.Database();
+  const connectionString = process.env.DATABASE_URL;
+  if (!connectionString) {
+    throw new Error('DATABASE_URL environment variable is required');
+  }
+
+  pool = new pg.Pool({
+    connectionString,
+    ssl: { rejectUnauthorized: false },
+    max: 10,
+    idleTimeoutMillis: 30000,
+    connectionTimeoutMillis: 10000
+  });
+
+  // Test connection
+  const client = await pool.connect();
+  try {
+    await client.query('SELECT NOW()');
+    console.log('PostgreSQL connected successfully');
+  } finally {
+    client.release();
   }
 
   // Run schema
-  const schema = fs.readFileSync(SCHEMA_PATH, 'utf-8');
-  // Split by semicolons and run each statement — sql.js needs individual statements
-  const statements = schema.split(';').map(s => s.trim()).filter(s => s.length > 0);
-  for (const stmt of statements) {
-    try {
-      db.run(stmt);
-    } catch (err) {
-      // FTS5 not available in sql.js default build — silently skip
-      if (err.message.includes('fts5') || err.message.includes('no such module') || err.message.includes('already exists')) {
-        // Expected — FTS not available, using LIKE fallback
-      } else {
-        console.error('Schema error:', err.message, '\nStatement:', stmt.substring(0, 80));
-      }
-    }
-  }
+  await runSchema();
 
-  // Add teams_folder column if it doesn't exist (migration)
+  console.log('PostgreSQL database initialized');
+  return pool;
+}
+
+async function runSchema() {
+  // Create tables with PostgreSQL syntax
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS entries (
+      id SERIAL PRIMARY KEY,
+      title TEXT NOT NULL,
+      date TEXT NOT NULL,
+      location TEXT,
+      attendees TEXT,
+      tags TEXT,
+      content TEXT,
+      content_fts TEXT,
+      source TEXT DEFAULT 'manual',
+      teams_message_id TEXT,
+      created_at TIMESTAMPTZ DEFAULT NOW(),
+      updated_at TIMESTAMPTZ DEFAULT NOW()
+    )
+  `);
+
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS documents (
+      id SERIAL PRIMARY KEY,
+      filename TEXT NOT NULL,
+      original_name TEXT NOT NULL,
+      file_type TEXT NOT NULL,
+      file_path TEXT NOT NULL,
+      file_size INTEGER,
+      extracted_text TEXT,
+      tags TEXT,
+      entry_id INTEGER REFERENCES entries(id),
+      teams_file_id TEXT,
+      teams_drive_id TEXT,
+      teams_channel TEXT,
+      teams_folder TEXT,
+      processed_at TIMESTAMPTZ,
+      created_at TIMESTAMPTZ DEFAULT NOW()
+    )
+  `);
+
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS expenses (
+      id SERIAL PRIMARY KEY,
+      date TEXT NOT NULL,
+      vendor TEXT,
+      amount REAL NOT NULL,
+      category TEXT,
+      description TEXT,
+      document_id INTEGER REFERENCES documents(id),
+      entry_id INTEGER REFERENCES entries(id),
+      status TEXT DEFAULT 'pending',
+      created_at TIMESTAMPTZ DEFAULT NOW()
+    )
+  `);
+
+  // Add teams_folder column if it doesn't exist (migration safety)
   try {
-    db.run("ALTER TABLE documents ADD COLUMN teams_folder TEXT");
-    saveDatabase();
+    await pool.query(`ALTER TABLE documents ADD COLUMN IF NOT EXISTS teams_folder TEXT`);
   } catch (err) {
-    // Column already exists — ignore
+    // Ignore if column already exists
   }
-
-  saveDatabase();
-  console.log('Database initialized at', DB_PATH);
-
-  // Auto-save periodically
-  setInterval(saveDatabase, 30000);
-
-  return db;
 }
 
-export function getDb() {
-  if (!db) throw new Error('Database not initialized. Call initDatabase() first.');
-  return db;
-}
-
-export function save() {
-  saveDatabase();
+export function getPool() {
+  if (!pool) throw new Error('Database not initialized. Call initDatabase() first.');
+  return pool;
 }
 
 // Helper: run a query and return all results as array of objects
-export function all(sql, params = []) {
-  const stmt = db.prepare(sql);
-  if (params.length) stmt.bind(params);
-  const results = [];
-  while (stmt.step()) {
-    results.push(stmt.getAsObject());
-  }
-  stmt.free();
-  return results;
+export async function all(sql, params = []) {
+  const pgSql = convertPlaceholders(sql);
+  const result = await pool.query(pgSql, params);
+  return result.rows;
 }
 
 // Helper: run a query and return first result as object
-export function get(sql, params = []) {
-  const results = all(sql, params);
+export async function get(sql, params = []) {
+  const results = await all(sql, params);
   return results.length > 0 ? results[0] : null;
 }
 
 // Helper: run an insert/update/delete and return changes info
-export function run(sql, params = []) {
-  db.run(sql, params);
-  const lastId = db.exec("SELECT last_insert_rowid() as id")[0]?.values[0]?.[0];
-  const changes = db.getRowsModified();
-  saveDatabase();
-  return { lastInsertRowid: lastId, changes };
+export async function run(sql, params = []) {
+  const pgSql = convertPlaceholders(sql);
+
+  // For INSERT statements, add RETURNING id to get the last inserted id
+  let finalSql = pgSql;
+  if (/^\s*INSERT\s/i.test(pgSql) && !/RETURNING/i.test(pgSql)) {
+    finalSql = pgSql + ' RETURNING id';
+  }
+
+  const result = await pool.query(finalSql, params);
+  return {
+    lastInsertRowid: result.rows?.[0]?.id || null,
+    changes: result.rowCount
+  };
 }
 
-// FTS helpers — no-ops since sql.js default build lacks FTS5
-// Search uses LIKE-based queries instead (see searchEntries/searchDocuments below)
-export function syncEntryFts(id, entry) {}
-export function deleteEntryFts(id) {}
-export function syncDocumentFts(id, doc) {}
-export function deleteDocumentFts(id) {}
+// Convert SQLite ? placeholders to PostgreSQL $1, $2, etc.
+function convertPlaceholders(sql) {
+  let idx = 0;
+  let converted = sql.replace(/\?/g, () => `$${++idx}`);
 
-// Search entries — uses LIKE since FTS5 isn't available in sql.js default build
-export function searchEntries(query) {
+  // Convert SQLite datetime('now') to PostgreSQL NOW()
+  converted = converted.replace(/datetime\('now'\)/gi, 'NOW()');
+
+  // Convert SQLite last_insert_rowid() — not needed with RETURNING
+  converted = converted.replace(/last_insert_rowid\(\)/gi, 'lastval()');
+
+  return converted;
+}
+
+// FTS helpers — PostgreSQL has native full-text search but we keep LIKE for simplicity
+export async function syncEntryFts(id, entry) {}
+export async function deleteEntryFts(id) {}
+export async function syncDocumentFts(id, doc) {}
+export async function deleteDocumentFts(id) {}
+
+// Search entries — uses ILIKE for case-insensitive search
+export async function searchEntries(query) {
   const terms = query.split(/\s+/).filter(Boolean);
   if (!terms.length) return all('SELECT * FROM entries ORDER BY date DESC');
 
-  // Build WHERE clause matching all terms across any column
-  const conditions = terms.map(() =>
-    "(title LIKE ? OR content LIKE ? OR content_fts LIKE ? OR tags LIKE ? OR location LIKE ? OR attendees LIKE ?)"
-  );
-  const params = terms.flatMap(t => {
-    const like = `%${t}%`;
-    return [like, like, like, like, like, like];
-  });
+  const conditions = [];
+  const params = [];
+  let idx = 0;
 
-  return all(
+  for (const term of terms) {
+    idx++;
+    const p = `$${idx}`;
+    conditions.push(
+      `(title ILIKE ${p} OR content ILIKE ${p} OR content_fts ILIKE ${p} OR tags ILIKE ${p} OR location ILIKE ${p} OR attendees ILIKE ${p})`
+    );
+    params.push(`%${term}%`);
+  }
+
+  const result = await pool.query(
     `SELECT * FROM entries WHERE ${conditions.join(' AND ')} ORDER BY date DESC`,
     params
   );
+  return result.rows;
 }
 
-// Search documents — uses LIKE since FTS5 isn't available in sql.js default build
-export function searchDocuments(query) {
+// Search documents — uses ILIKE for case-insensitive search
+export async function searchDocuments(query) {
   const terms = query.split(/\s+/).filter(Boolean);
   if (!terms.length) return all('SELECT * FROM documents ORDER BY created_at DESC');
 
-  const conditions = terms.map(() =>
-    "(original_name LIKE ? OR extracted_text LIKE ? OR tags LIKE ?)"
-  );
-  const params = terms.flatMap(t => {
-    const like = `%${t}%`;
-    return [like, like, like];
-  });
+  const conditions = [];
+  const params = [];
+  let idx = 0;
 
-  return all(
+  for (const term of terms) {
+    idx++;
+    const p = `$${idx}`;
+    conditions.push(
+      `(original_name ILIKE ${p} OR extracted_text ILIKE ${p} OR tags ILIKE ${p})`
+    );
+    params.push(`%${term}%`);
+  }
+
+  const result = await pool.query(
     `SELECT * FROM documents WHERE ${conditions.join(' AND ')} ORDER BY created_at DESC`,
     params
   );
+  return result.rows;
 }
 
-export { DATA_DIR, DB_PATH, UPLOADS_DIR };
+export { DATA_DIR, UPLOADS_DIR };

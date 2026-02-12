@@ -4,14 +4,14 @@ import { all, get, run, searchEntries, syncEntryFts, deleteEntryFts } from '../s
 const router = Router();
 
 // GET /api/entries — list all, supports ?search= for FTS
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const { search } = req.query;
     let entries;
     if (search) {
-      entries = searchEntries(search);
+      entries = await searchEntries(search);
     } else {
-      entries = all('SELECT * FROM entries ORDER BY date DESC, created_at DESC');
+      entries = await all('SELECT * FROM entries ORDER BY date DESC, created_at DESC');
     }
     res.json(entries);
   } catch (err) {
@@ -20,13 +20,13 @@ router.get('/', (req, res) => {
 });
 
 // GET /api/entries/:id — single entry with linked documents and expenses
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
-    const entry = get('SELECT * FROM entries WHERE id = ?', [req.params.id]);
+    const entry = await get('SELECT * FROM entries WHERE id = ?', [req.params.id]);
     if (!entry) return res.status(404).json({ error: 'Entry not found' });
 
-    const documents = all('SELECT * FROM documents WHERE entry_id = ?', [req.params.id]);
-    const expenses = all('SELECT * FROM expenses WHERE entry_id = ?', [req.params.id]);
+    const documents = await all('SELECT * FROM documents WHERE entry_id = ?', [req.params.id]);
+    const expenses = await all('SELECT * FROM expenses WHERE entry_id = ?', [req.params.id]);
 
     res.json({ ...entry, documents, expenses });
   } catch (err) {
@@ -35,7 +35,7 @@ router.get('/:id', (req, res) => {
 });
 
 // POST /api/entries — create new entry
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const { title, date, location, attendees, tags, content, source } = req.body;
     if (!title || !date) {
@@ -44,16 +44,16 @@ router.post('/', (req, res) => {
 
     const contentFts = [title, content, tags, location, attendees].filter(Boolean).join(' ');
 
-    const result = run(
+    const result = await run(
       `INSERT INTO entries (title, date, location, attendees, tags, content, content_fts, source)
        VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
       [title, date, location || null, attendees || null, tags || null, content || null, contentFts, source || 'manual']
     );
 
     const id = result.lastInsertRowid;
-    syncEntryFts(id, { title, content_fts: contentFts, tags, location, attendees });
+    await syncEntryFts(id, { title, content_fts: contentFts, tags, location, attendees });
 
-    const entry = get('SELECT * FROM entries WHERE id = ?', [id]);
+    const entry = await get('SELECT * FROM entries WHERE id = ?', [id]);
     res.status(201).json(entry);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -61,15 +61,15 @@ router.post('/', (req, res) => {
 });
 
 // PUT /api/entries/:id — update entry
-router.put('/:id', (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
-    const existing = get('SELECT * FROM entries WHERE id = ?', [req.params.id]);
+    const existing = await get('SELECT * FROM entries WHERE id = ?', [req.params.id]);
     if (!existing) return res.status(404).json({ error: 'Entry not found' });
 
     const { title, date, location, attendees, tags, content, source } = req.body;
     const contentFts = [title || existing.title, content || existing.content, tags || existing.tags, location || existing.location, attendees || existing.attendees].filter(Boolean).join(' ');
 
-    run(
+    await run(
       `UPDATE entries SET title = ?, date = ?, location = ?, attendees = ?, tags = ?, content = ?, content_fts = ?, source = ?, updated_at = datetime('now')
        WHERE id = ?`,
       [
@@ -85,7 +85,7 @@ router.put('/:id', (req, res) => {
       ]
     );
 
-    syncEntryFts(req.params.id, {
+    await syncEntryFts(req.params.id, {
       title: title || existing.title,
       content_fts: contentFts,
       tags: tags !== undefined ? tags : existing.tags,
@@ -93,7 +93,7 @@ router.put('/:id', (req, res) => {
       attendees: attendees !== undefined ? attendees : existing.attendees
     });
 
-    const entry = get('SELECT * FROM entries WHERE id = ?', [req.params.id]);
+    const entry = await get('SELECT * FROM entries WHERE id = ?', [req.params.id]);
     res.json(entry);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -101,13 +101,13 @@ router.put('/:id', (req, res) => {
 });
 
 // DELETE /api/entries/:id
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
-    const existing = get('SELECT * FROM entries WHERE id = ?', [req.params.id]);
+    const existing = await get('SELECT * FROM entries WHERE id = ?', [req.params.id]);
     if (!existing) return res.status(404).json({ error: 'Entry not found' });
 
-    run('DELETE FROM entries WHERE id = ?', [req.params.id]);
-    deleteEntryFts(req.params.id);
+    await run('DELETE FROM entries WHERE id = ?', [req.params.id]);
+    await deleteEntryFts(req.params.id);
 
     res.json({ message: 'Entry deleted' });
   } catch (err) {

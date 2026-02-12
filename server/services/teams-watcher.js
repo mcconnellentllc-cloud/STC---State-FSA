@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { graphGet, graphGetBinary, getSiteId, getDriveId } from './graph.js';
 import { extractText } from './parser.js';
 import { categorize, extractReceipt } from './claude.js';
-import { run, syncDocumentFts, UPLOADS_DIR } from './database.js';
+import { all, run, syncDocumentFts, UPLOADS_DIR } from './database.js';
 
 let watcherInterval = null;
 let deltaLink = null;
@@ -107,8 +107,7 @@ async function processNewFile(item) {
 
   // Check if already imported
   try {
-    const { all } = await import('./database.js');
-    const existing = all('SELECT id FROM documents WHERE teams_file_id = ?', [item.id]);
+    const existing = await all('SELECT id FROM documents WHERE teams_file_id = ?', [item.id]);
     if (existing.length > 0) return;
   } catch (err) {
     // Continue if check fails
@@ -143,7 +142,7 @@ async function processNewFile(item) {
       : '';
 
     // Save to database
-    const result = run(
+    const result = await run(
       `INSERT INTO documents (filename, original_name, file_type, file_path, file_size, extracted_text, teams_file_id, teams_drive_id, teams_folder, processed_at)
        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))`,
       [filename, item.name, ext, filePath, item.size || 0, extractedText, item.id, driveId, teamsFolder]
@@ -152,21 +151,21 @@ async function processNewFile(item) {
     const docId = result.lastInsertRowid;
 
     // Update FTS
-    syncDocumentFts(docId, { original_name: item.name, extracted_text: extractedText, tags: '' });
+    await syncDocumentFts(docId, { original_name: item.name, extracted_text: extractedText, tags: '' });
 
     // AI categorization (non-blocking)
     try {
       if (extractedText && process.env.ANTHROPIC_API_KEY) {
         const catResult = await categorize(extractedText, 'document');
         if (catResult.tags?.length) {
-          run('UPDATE documents SET tags = ? WHERE id = ?', [catResult.tags.join(', '), docId]);
-          syncDocumentFts(docId, { original_name: item.name, extracted_text: extractedText, tags: catResult.tags.join(', ') });
+          await run('UPDATE documents SET tags = ? WHERE id = ?', [catResult.tags.join(', '), docId]);
+          await syncDocumentFts(docId, { original_name: item.name, extracted_text: extractedText, tags: catResult.tags.join(', ') });
         }
 
         // Check if it's a receipt
         const receiptData = await extractReceipt(extractedText);
         if (receiptData && receiptData.amount) {
-          run(
+          await run(
             `INSERT INTO expenses (date, vendor, amount, category, description, document_id, status)
              VALUES (?, ?, ?, ?, ?, ?, 'pending')`,
             [receiptData.date || new Date().toISOString().split('T')[0], receiptData.vendor || '', receiptData.amount, receiptData.category || 'other', receiptData.description || '', docId]

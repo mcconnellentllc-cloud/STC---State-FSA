@@ -47,7 +47,7 @@ router.post('/upload', upload.single('file'), async (req, res) => {
       console.error('Text extraction failed:', err.message);
     }
 
-    const result = run(
+    const result = await run(
       `INSERT INTO documents (filename, original_name, file_type, file_path, file_size, extracted_text, tags, entry_id, processed_at)
        VALUES (?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))`,
       [
@@ -63,9 +63,9 @@ router.post('/upload', upload.single('file'), async (req, res) => {
     );
 
     const id = result.lastInsertRowid;
-    syncDocumentFts(id, { original_name: req.file.originalname, extracted_text: extractedText, tags: req.body.tags || '' });
+    await syncDocumentFts(id, { original_name: req.file.originalname, extracted_text: extractedText, tags: req.body.tags || '' });
 
-    const doc = get('SELECT * FROM documents WHERE id = ?', [id]);
+    const doc = await get('SELECT * FROM documents WHERE id = ?', [id]);
     res.status(201).json(doc);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -73,7 +73,7 @@ router.post('/upload', upload.single('file'), async (req, res) => {
 });
 
 // GET /api/documents — list all
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const { type, tag, entry_id } = req.query;
     let sql = 'SELECT * FROM documents';
@@ -98,16 +98,16 @@ router.get('/', (req, res) => {
     }
     sql += ' ORDER BY created_at DESC';
 
-    res.json(all(sql, params));
+    res.json(await all(sql, params));
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
 
 // GET /api/documents/:id
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
-    const doc = get('SELECT * FROM documents WHERE id = ?', [req.params.id]);
+    const doc = await get('SELECT * FROM documents WHERE id = ?', [req.params.id]);
     if (!doc) return res.status(404).json({ error: 'Document not found' });
     res.json(doc);
   } catch (err) {
@@ -116,9 +116,9 @@ router.get('/:id', (req, res) => {
 });
 
 // GET /api/documents/:id/file — serve the actual file
-router.get('/:id/file', (req, res) => {
+router.get('/:id/file', async (req, res) => {
   try {
-    const doc = get('SELECT * FROM documents WHERE id = ?', [req.params.id]);
+    const doc = await get('SELECT * FROM documents WHERE id = ?', [req.params.id]);
     if (!doc) return res.status(404).json({ error: 'Document not found' });
 
     const filePath = doc.file_path;
@@ -133,25 +133,25 @@ router.get('/:id/file', (req, res) => {
 });
 
 // PUT /api/documents/:id — update metadata
-router.put('/:id', (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
-    const doc = get('SELECT * FROM documents WHERE id = ?', [req.params.id]);
+    const doc = await get('SELECT * FROM documents WHERE id = ?', [req.params.id]);
     if (!doc) return res.status(404).json({ error: 'Document not found' });
 
     const { tags, entry_id } = req.body;
 
-    run(
+    await run(
       'UPDATE documents SET tags = ?, entry_id = ? WHERE id = ?',
       [tags !== undefined ? tags : doc.tags, entry_id !== undefined ? entry_id : doc.entry_id, req.params.id]
     );
 
-    syncDocumentFts(req.params.id, {
+    await syncDocumentFts(req.params.id, {
       original_name: doc.original_name,
       extracted_text: doc.extracted_text,
       tags: tags !== undefined ? tags : doc.tags
     });
 
-    const updated = get('SELECT * FROM documents WHERE id = ?', [req.params.id]);
+    const updated = await get('SELECT * FROM documents WHERE id = ?', [req.params.id]);
     res.json(updated);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -161,7 +161,7 @@ router.put('/:id', (req, res) => {
 // POST /api/documents/:id/reprocess — re-extract text (useful for OCR after parser update)
 router.post('/:id/reprocess', async (req, res) => {
   try {
-    const doc = get('SELECT * FROM documents WHERE id = ?', [req.params.id]);
+    const doc = await get('SELECT * FROM documents WHERE id = ?', [req.params.id]);
     if (!doc) return res.status(404).json({ error: 'Document not found' });
 
     const filePath = doc.file_path;
@@ -177,18 +177,18 @@ router.post('/:id/reprocess', async (req, res) => {
       return res.status(500).json({ error: 'Text extraction failed: ' + err.message });
     }
 
-    run(
-      'UPDATE documents SET extracted_text = ?, processed_at = datetime(\'now\') WHERE id = ?',
+    await run(
+      "UPDATE documents SET extracted_text = ?, processed_at = datetime('now') WHERE id = ?",
       [extractedText, req.params.id]
     );
 
-    syncDocumentFts(req.params.id, {
+    await syncDocumentFts(req.params.id, {
       original_name: doc.original_name,
       extracted_text: extractedText,
       tags: doc.tags || ''
     });
 
-    const updated = get('SELECT * FROM documents WHERE id = ?', [req.params.id]);
+    const updated = await get('SELECT * FROM documents WHERE id = ?', [req.params.id]);
     console.log(`Re-processed document ${doc.original_name}: extracted ${extractedText.length} chars`);
     res.json(updated);
   } catch (err) {
@@ -197,9 +197,9 @@ router.post('/:id/reprocess', async (req, res) => {
 });
 
 // DELETE /api/documents/:id
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
-    const doc = get('SELECT * FROM documents WHERE id = ?', [req.params.id]);
+    const doc = await get('SELECT * FROM documents WHERE id = ?', [req.params.id]);
     if (!doc) return res.status(404).json({ error: 'Document not found' });
 
     // Delete file from disk
@@ -207,8 +207,8 @@ router.delete('/:id', (req, res) => {
       fs.unlinkSync(doc.file_path);
     }
 
-    run('DELETE FROM documents WHERE id = ?', [req.params.id]);
-    deleteDocumentFts(req.params.id);
+    await run('DELETE FROM documents WHERE id = ?', [req.params.id]);
+    await deleteDocumentFts(req.params.id);
 
     res.json({ message: 'Document deleted' });
   } catch (err) {
