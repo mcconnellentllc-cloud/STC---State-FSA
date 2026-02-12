@@ -5,30 +5,38 @@ const committeeMembers = [
     name: 'Donald Cleo Brown',
     role: 'Chair',
     location: 'Yuma, CO',
+    phone: '970-630-1193',
+    email: 'dpbrown@anchorfarms.net',
     bio: 'Operates a multi-generational farm and ranch with irrigated and dryland crops, yearling and feedlot cattle. Former Colorado Commissioner of Agriculture. Led regulatory reform and national agricultural policy initiatives.',
   },
   {
     name: 'Darrell Mackey',
     role: 'Member',
     location: 'Springfield, CO',
+    phone: '719-529-4700',
+    email: 'darrellmackey1976@gmail.com',
     bio: '5th-generation dryland wheat farmer. Continuous wheat farming with soil management, fertilization, and herbicide programs. Licensed crop insurance agent across multiple states.',
   },
   {
     name: 'Kyle Dean McConnell',
     role: 'Member',
     location: 'Haxtun, CO',
+    email: 'straft@msn.com',
     bio: '4th-generation family farm operating across multiple counties. Degrees in agriculture. Colorado Corn Growers Association board member.',
   },
   {
     name: 'Joeseph Petrocco',
     role: 'Member',
     location: 'Thornton, CO',
+    phone: '970-326-8614',
+    email: 'joe@petroccofarms.com',
     bio: 'VP of a 4th-generation vegetable operation focused on sustainability, labor efficiency, and advanced production. CO Fruit and Vegetable Growers Association Board (VP). Expertise in innovative irrigation, crop management, and food safety.',
   },
   {
     name: 'Steve George Raftopoulos',
     role: 'Member',
     location: 'Craig, CO',
+    phone: '970-326-8614',
     bio: 'Managing member of an open-range sheep production operation across private, state, BLM, and USFS lands in Colorado and Wyoming. Past president, American Sheep Industry Association. Former chairman, Wool Council and Lamb Council.',
   },
 ];
@@ -60,6 +68,10 @@ export default function Contacts() {
         <div className="contact-card">
           <div className="contact-name">Jerry Sonnenberg</div>
           <div className="contact-role">Colorado State Executive Director, USDA FSA</div>
+          <div className="contact-detail">
+            <strong>Email:</strong>{' '}
+            <a href="mailto:Jerry.Sonnenberg@usda.gov">Jerry.Sonnenberg@usda.gov</a>
+          </div>
           <div className="contact-bio">
             4th-generation farmer/rancher from Logan County. Appointed May 2025 by the Trump Administration. Former Colorado Senate President Pro Tem with 16 years in the legislature. Colorado Agricultural Hall of Fame inductee, 2023.
           </div>
@@ -86,9 +98,38 @@ export default function Contacts() {
             <div className="contact-role">
               {m.role === 'Chair' ? 'Chair' : 'Member'} &mdash; {m.location}
             </div>
+            {(m.phone || m.email) && (
+              <div style={{ marginBottom: 4 }}>
+                {m.phone && (
+                  <div className="contact-detail">
+                    <strong>Phone:</strong>{' '}
+                    <a href={`tel:${m.phone}`}>{m.phone}</a>
+                  </div>
+                )}
+                {m.email && (
+                  <div className="contact-detail">
+                    <strong>Email:</strong>{' '}
+                    <a href={`mailto:${m.email}`}>{m.email}</a>
+                  </div>
+                )}
+              </div>
+            )}
             <div className="contact-bio">{m.bio}</div>
           </div>
         ))}
+      </div>
+
+      {/* FSA Staff */}
+      <div className="contact-section">
+        <h3>FSA Staff</h3>
+        <div className="contact-card">
+          <div className="contact-name">Jonathan Weishaar</div>
+          <div className="contact-role">FPAC-FSA Colorado</div>
+          <div className="contact-detail">
+            <strong>Email:</strong>{' '}
+            <a href="mailto:jonathan.weishaar@usda.gov">jonathan.weishaar@usda.gov</a>
+          </div>
+        </div>
       </div>
 
       {/* Colorado FSA State Office */}
@@ -99,7 +140,8 @@ export default function Contacts() {
             <strong>Address:</strong> Denver Federal Center, Building 56, Room 2760, PO Box 25426, Denver, CO 80225-0426
           </div>
           <div className="contact-detail">
-            <strong>Phone:</strong> (720) 544-2876
+            <strong>Phone:</strong>{' '}
+            <a href="tel:720-544-2876">(720) 544-2876</a>
           </div>
           <div className="contact-links">
             <a href="https://www.fsa.usda.gov/state-offices/colorado" target="_blank" rel="noopener noreferrer" className="contact-link">
@@ -119,7 +161,8 @@ export default function Contacts() {
             <strong>Address:</strong> Building 56, Room E-2300
           </div>
           <div className="contact-detail">
-            <strong>Phone:</strong> (720) 544-2903
+            <strong>Phone:</strong>{' '}
+            <a href="tel:720-544-2903">(720) 544-2903</a>
           </div>
           <div className="contact-detail">
             <strong>Email:</strong>{' '}
