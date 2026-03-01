@@ -19,6 +19,27 @@ const GS_RATES = {
   },
 };
 
+/* ── FY2026 GSA Per Diem Rates ─────────────────────────────────── */
+const PER_DIEM = {
+  denver: { mie: 92.00, lodging: 165.00, mieFirstLast: 69.00 },  // Denver-Aurora NSA
+  standard: { mie: 68.00, lodging: 110.00, mieFirstLast: 51.00 }, // Standard CONUS
+};
+
+/* ── Actual Income Received ────────────────────────────────────── */
+const MEETING_INCOME = [
+  {
+    month: 'February 2026',
+    meetingDate: '2026-02-10',
+    location: 'Federal Building 56, Denver, CO',
+    depositDate: '2026-03-02',
+    payments: [
+      { type: 'salary', label: 'FED SAL (AGRI TREAS 310)', amount: 833.75, description: 'STC compensation — net after withholdings' },
+      { type: 'travel', label: 'Federal Travel Payment', amount: 491.91, description: 'Mileage, per diem, and lodging reimbursement' },
+    ],
+    notes: 'First STC meeting for newly appointed committee. Haxtun → Denver roundtrip.',
+  },
+];
+
 /* ── Main Component ──────────────────────────────────────────────── */
 export default function Expenses() {
   const [expenses, setExpenses] = useState([]);
@@ -49,6 +70,12 @@ export default function Expenses() {
 
   /* ── Tax line-item state (for receipt parsing) ─────────────────── */
   const [taxItems, setTaxItems] = useState([{ label: '', amount: '' }]);
+
+  /* ── Income analysis state ───────────────────────────────────── */
+  const [incomeHours, setIncomeHours] = useState('16');
+  const [incomeGrade, setIncomeGrade] = useState('GS-14 Step 1 (Member)');
+  const [incomeLocality, setIncomeLocality] = useState('denver');
+  const [incomeMiles, setIncomeMiles] = useState('356');
 
   /* ── Data fetching ─────────────────────────────────────────────── */
   const fetchExpenses = () => {
@@ -209,6 +236,9 @@ export default function Expenses() {
         </button>
         <button className={`expense-tab ${activeTab === 'taxes' ? 'active' : ''}`} onClick={() => setActiveTab('taxes')}>
           Tax Line Items
+        </button>
+        <button className={`expense-tab ${activeTab === 'income' ? 'active' : ''}`} onClick={() => setActiveTab('income')}>
+          Income &amp; Actuals
         </button>
       </div>
 
@@ -780,6 +810,289 @@ export default function Expenses() {
               <li>Each type should be a separate line item for federal expense reporting</li>
             </ul>
           </div>
+        </div>
+      )}
+      {/* ════════════════════════════════════════════════════════════════
+          TAB: INCOME & ACTUALS
+          ════════════════════════════════════════════════════════════════ */}
+      {activeTab === 'income' && (
+        <div className="tool-panel">
+          {MEETING_INCOME.map((meeting, mi) => {
+            const salaryPay = meeting.payments.find(p => p.type === 'salary');
+            const travelPay = meeting.payments.find(p => p.type === 'travel');
+            const totalIncome = meeting.payments.reduce((s, p) => s + p.amount, 0);
+
+            // Salary analysis
+            const gsRate = GS_RATES[incomeGrade]?.[incomeLocality] || 0;
+            const hrs = parseFloat(incomeHours) || 0;
+            const estimatedGross = hrs * gsRate;
+            const deductions = estimatedGross - (salaryPay?.amount || 0);
+            const deductionPct = estimatedGross > 0 ? (deductions / estimatedGross) * 100 : 0;
+            const netHourly = hrs > 0 ? (salaryPay?.amount || 0) / hrs : 0;
+
+            // Travel breakdown
+            const mi2 = parseFloat(incomeMiles) || 0;
+            const mileageEst = mi2 * MILEAGE_RATE;
+            const travelTotal = travelPay?.amount || 0;
+            const travelRemainder = travelTotal - mileageEst;
+
+            // Per diem estimate (Denver meeting with overnight)
+            const perDiem = PER_DIEM.denver;
+            const lodgingEst = perDiem.lodging;
+            const mieEst = perDiem.mieFirstLast; // 75% for first/last day
+            const travelEstTotal = mileageEst + lodgingEst + mieEst;
+            const travelDiff = travelTotal - travelEstTotal;
+
+            return (
+              <div key={mi}>
+                {/* Payment summary */}
+                <div className="card tool-card">
+                  <div className="tool-header">
+                    <h3>{meeting.month} — Payments Received</h3>
+                    <span className="tool-badge">Deposited {meeting.depositDate}</span>
+                  </div>
+                  <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: 12 }}>
+                    Meeting: {meeting.meetingDate} &mdash; {meeting.location}
+                  </p>
+
+                  <div className="grid-3" style={{ marginBottom: 16 }}>
+                    <div className="stat-card">
+                      <div className="stat-value" style={{ color: 'var(--success)' }}>
+                        ${(salaryPay?.amount || 0).toFixed(2)}
+                      </div>
+                      <div className="stat-label">Salary (Net)</div>
+                    </div>
+                    <div className="stat-card">
+                      <div className="stat-value" style={{ color: 'var(--info)' }}>
+                        ${(travelPay?.amount || 0).toFixed(2)}
+                      </div>
+                      <div className="stat-label">Travel Reimb.</div>
+                    </div>
+                    <div className="stat-card">
+                      <div className="stat-value">
+                        ${totalIncome.toFixed(2)}
+                      </div>
+                      <div className="stat-label">Total Received</div>
+                    </div>
+                  </div>
+
+                  <div className="table-wrap">
+                    <table>
+                      <thead>
+                        <tr><th>Payment</th><th>Amount</th><th>Description</th></tr>
+                      </thead>
+                      <tbody>
+                        {meeting.payments.map((p, pi) => (
+                          <tr key={pi}>
+                            <td style={{ fontWeight: 600 }}>{p.label}</td>
+                            <td style={{ fontWeight: 600, color: 'var(--success)' }}>${p.amount.toFixed(2)}</td>
+                            <td style={{ fontSize: '0.85rem' }}>{p.description}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                  {meeting.notes && (
+                    <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginTop: 8, fontStyle: 'italic' }}>
+                      {meeting.notes}
+                    </p>
+                  )}
+                </div>
+
+                {/* Salary / compensation analysis */}
+                <div className="card tool-card" style={{ marginTop: 16 }}>
+                  <div className="tool-header">
+                    <h3>Salary Rate Analysis</h3>
+                    <span className="tool-badge">Back-calculate from actual pay</span>
+                  </div>
+                  <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: 12 }}>
+                    Adjust hours and rate below to match your actual work time and see how the
+                    estimated gross compares to your net deposit of <strong>${(salaryPay?.amount || 0).toFixed(2)}</strong>.
+                  </p>
+
+                  <div className="form-row">
+                    <div className="form-group">
+                      <label>GS Grade</label>
+                      <select value={incomeGrade} onChange={e => setIncomeGrade(e.target.value)}>
+                        {Object.keys(GS_RATES).map(k => <option key={k} value={k}>{k}</option>)}
+                      </select>
+                    </div>
+                    <div className="form-group">
+                      <label>Locality</label>
+                      <select value={incomeLocality} onChange={e => setIncomeLocality(e.target.value)}>
+                        <option value="base">Base (no locality)</option>
+                        <option value="denver">Denver-Aurora, CO (+30.52%)</option>
+                        <option value="restOfUS">Rest of US (+17.06%)</option>
+                      </select>
+                    </div>
+                    <div className="form-group">
+                      <label>Hours Worked</label>
+                      <input
+                        type="number" step="0.5" min="0" placeholder="e.g. 16"
+                        value={incomeHours} onChange={e => setIncomeHours(e.target.value)}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="table-wrap" style={{ marginTop: 12 }}>
+                    <table>
+                      <tbody>
+                        <tr>
+                          <td>Gross hourly rate</td>
+                          <td style={{ fontWeight: 600 }}>${gsRate.toFixed(2)}/hr</td>
+                          <td style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>{incomeGrade}, {incomeLocality === 'denver' ? 'Denver' : incomeLocality === 'restOfUS' ? 'Rest of US' : 'Base'}</td>
+                        </tr>
+                        <tr>
+                          <td>Estimated gross pay</td>
+                          <td style={{ fontWeight: 600 }}>${estimatedGross.toFixed(2)}</td>
+                          <td style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>{hrs} hrs &times; ${gsRate.toFixed(2)}</td>
+                        </tr>
+                        <tr>
+                          <td>Actual net received</td>
+                          <td style={{ fontWeight: 600, color: 'var(--success)' }}>${(salaryPay?.amount || 0).toFixed(2)}</td>
+                          <td style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>Deposited {meeting.depositDate}</td>
+                        </tr>
+                        <tr style={{ borderTop: '2px solid var(--border)' }}>
+                          <td>Withholdings (est.)</td>
+                          <td style={{ fontWeight: 600, color: deductions > 0 ? 'var(--danger)' : 'var(--text-muted)' }}>
+                            {deductions > 0 ? `-$${deductions.toFixed(2)}` : '$0.00'}
+                          </td>
+                          <td style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>
+                            {deductionPct > 0 ? `~${deductionPct.toFixed(1)}% effective rate (FICA + fed + state)` : '—'}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Effective net hourly</td>
+                          <td style={{ fontWeight: 600, color: 'var(--accent)' }}>${netHourly.toFixed(2)}/hr</td>
+                          <td style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>What you actually take home per hour</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  {estimatedGross > 0 && deductions > 0 && (
+                    <div className="card info-card" style={{ marginTop: 12 }}>
+                      <h4>Withholding Estimate Breakdown</h4>
+                      <ul style={{ paddingLeft: 18, fontSize: '0.85rem', lineHeight: 1.8 }}>
+                        <li><strong>FICA (Social Security + Medicare):</strong> ~${(estimatedGross * 0.0765).toFixed(2)} (7.65% of ${estimatedGross.toFixed(2)})</li>
+                        <li><strong>Federal income tax:</strong> ~${(deductions - estimatedGross * 0.0765 - estimatedGross * 0.044).toFixed(2)} (withholding per W-4)</li>
+                        <li><strong>Colorado state tax:</strong> ~${(estimatedGross * 0.044).toFixed(2)} (4.4% flat rate)</li>
+                        <li><strong>Total estimated:</strong> ~${(estimatedGross * 0.0765 + (deductions - estimatedGross * 0.0765 - estimatedGross * 0.044) + estimatedGross * 0.044).toFixed(2)} vs actual ${deductions.toFixed(2)}</li>
+                      </ul>
+                    </div>
+                  )}
+                </div>
+
+                {/* Travel analysis */}
+                <div className="card tool-card" style={{ marginTop: 16 }}>
+                  <div className="tool-header">
+                    <h3>Travel Reimbursement Breakdown</h3>
+                    <span className="tool-badge">Tax-free reimbursement</span>
+                  </div>
+                  <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: 12 }}>
+                    Travel reimbursement of <strong>${travelTotal.toFixed(2)}</strong> is not subject to income tax.
+                    Adjust round-trip miles to see the breakdown.
+                  </p>
+
+                  <div className="form-row">
+                    <div className="form-group">
+                      <label>Round-trip Miles</label>
+                      <input
+                        type="number" step="1" min="0" placeholder="e.g. 340"
+                        value={incomeMiles} onChange={e => setIncomeMiles(e.target.value)}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="table-wrap" style={{ marginTop: 12 }}>
+                    <table>
+                      <thead>
+                        <tr><th>Component</th><th>Estimated</th><th>Notes</th></tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Mileage ({mi2} mi &times; ${MILEAGE_RATE})</td>
+                          <td style={{ fontWeight: 600 }}>${mileageEst.toFixed(2)}</td>
+                          <td style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>IRS standard rate</td>
+                        </tr>
+                        <tr>
+                          <td>Lodging (1 night, Denver Feb)</td>
+                          <td style={{ fontWeight: 600 }}>${lodgingEst.toFixed(2)}</td>
+                          <td style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>GSA FY2026 Denver rate</td>
+                        </tr>
+                        <tr>
+                          <td>M&amp;IE (75% partial day)</td>
+                          <td style={{ fontWeight: 600 }}>${mieEst.toFixed(2)}</td>
+                          <td style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>Denver M&amp;IE $92/day, first/last = 75%</td>
+                        </tr>
+                        <tr style={{ borderTop: '2px solid var(--border)' }}>
+                          <td style={{ fontWeight: 600 }}>Estimated total</td>
+                          <td style={{ fontWeight: 600 }}>${travelEstTotal.toFixed(2)}</td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td style={{ fontWeight: 600 }}>Actual received</td>
+                          <td style={{ fontWeight: 600, color: 'var(--success)' }}>${travelTotal.toFixed(2)}</td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td>Difference</td>
+                          <td style={{ fontWeight: 600, color: Math.abs(travelDiff) < 10 ? 'var(--success)' : 'var(--warning, #f0ad4e)' }}>
+                            {travelDiff >= 0 ? '+' : ''}{travelDiff.toFixed(2)}
+                          </td>
+                          <td style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>
+                            {Math.abs(travelDiff) < 10
+                              ? 'Estimates very close to actual'
+                              : 'Adjust miles or check if additional per diem days apply'}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                {/* Overall summary */}
+                <div className="card info-card" style={{ marginTop: 16 }}>
+                  <h4>{meeting.month} — Summary</h4>
+                  <div className="table-wrap" style={{ marginTop: 8 }}>
+                    <table>
+                      <thead>
+                        <tr><th></th><th>Estimated</th><th>Actual</th><th>Diff</th></tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Compensation (gross)</td>
+                          <td>${estimatedGross.toFixed(2)}</td>
+                          <td style={{ color: 'var(--success)' }}>${(salaryPay?.amount || 0).toFixed(2)} net</td>
+                          <td style={{ fontSize: '0.82rem' }}>~${deductions.toFixed(2)} withheld ({deductionPct.toFixed(1)}%)</td>
+                        </tr>
+                        <tr>
+                          <td>Travel</td>
+                          <td>${travelEstTotal.toFixed(2)}</td>
+                          <td style={{ color: 'var(--success)' }}>${travelTotal.toFixed(2)}</td>
+                          <td style={{ color: Math.abs(travelDiff) < 10 ? 'var(--success)' : 'var(--warning, #f0ad4e)' }}>
+                            {travelDiff >= 0 ? '+' : ''}{travelDiff.toFixed(2)}
+                          </td>
+                        </tr>
+                        <tr style={{ borderTop: '2px solid var(--border)' }}>
+                          <td style={{ fontWeight: 600 }}>Total deposited</td>
+                          <td></td>
+                          <td style={{ fontWeight: 600, color: 'var(--success)' }}>${totalIncome.toFixed(2)}</td>
+                          <td></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <ul style={{ paddingLeft: 18, fontSize: '0.85rem', lineHeight: 1.8, marginTop: 8 }}>
+                    <li><strong>Net hourly rate:</strong> ${netHourly.toFixed(2)}/hr (after all withholdings)</li>
+                    <li><strong>Travel reimbursement:</strong> Tax-free — this is dollar-for-dollar what you keep</li>
+                    <li>Salary withholdings include FICA (7.65%), federal income tax, and Colorado state tax (4.4%)</li>
+                    <li>STC members are intermittent employees — no FEHB or TSP deductions</li>
+                  </ul>
+                </div>
+              </div>
+            );
+          })}
         </div>
       )}
     </div>
