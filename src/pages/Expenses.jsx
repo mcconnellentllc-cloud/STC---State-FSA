@@ -19,6 +19,24 @@ const GS_RATES = {
   },
 };
 
+/* ── Actual withholding rate from Feb 2026 pay ─────────────────── */
+// Feb: 16 hrs × $67.19 = $1,075.04 gross → $833.75 net = 22.4% withheld
+const ACTUAL_WITHHOLDING_RATE = 0.2244;   // FICA 7.65% + fed ~10.4% + CO 4.4%
+
+// Net hourly rates (what you actually take home per hour)
+const NET_RATES = {
+  'GS-15 Step 1 (Chair)': {
+    base: +(60.56 * (1 - 0.2244)).toFixed(2),
+    denver: +(79.04 * (1 - 0.2244)).toFixed(2),
+    restOfUS: +(70.89 * (1 - 0.2244)).toFixed(2),
+  },
+  'GS-14 Step 1 (Member)': {
+    base: +(51.48 * (1 - 0.2244)).toFixed(2),
+    denver: +(67.19 * (1 - 0.2244)).toFixed(2),
+    restOfUS: +(60.27 * (1 - 0.2244)).toFixed(2),
+  },
+};
+
 /* ── FY2026 GSA Per Diem Rates ─────────────────────────────────── */
 const PER_DIEM = {
   denver: { mie: 92.00, lodging: 165.00, mieFirstLast: 69.00 },  // Denver-Aurora NSA
@@ -206,6 +224,7 @@ export default function Expenses() {
 
   /* ── Current hourly rate ───────────────────────────────────────── */
   const currentRate = GS_RATES[selectedRate]?.[selectedLocality] || 0;
+  const currentNetRate = NET_RATES[selectedRate]?.[selectedLocality] || 0;
 
   /* ══════════════════════════════════════════════════════════════════
      RENDER
@@ -555,16 +574,29 @@ export default function Expenses() {
               />
             </div>
 
-            {/* Live total */}
-            <div className="calc-result">
-              <div className="calc-result-label">Compensation</div>
-              <div className="calc-result-value">
-                ${hours ? (parseFloat(hours) * currentRate).toFixed(2) : '0.00'}
+            {/* Live total — gross + net */}
+            <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+              <div className="calc-result" style={{ flex: 1, minWidth: 180 }}>
+                <div className="calc-result-label">Gross Pay</div>
+                <div className="calc-result-value">
+                  ${hours ? (parseFloat(hours) * currentRate).toFixed(2) : '0.00'}
+                </div>
+                <div className="calc-result-detail">
+                  {hours
+                    ? `${parseFloat(hours).toFixed(2)} hrs × $${currentRate.toFixed(2)}/hr`
+                    : 'Enter hours above'}
+                </div>
               </div>
-              <div className="calc-result-detail">
-                {hours
-                  ? `${parseFloat(hours).toFixed(2)} hrs × $${currentRate.toFixed(2)}/hr`
-                  : 'Enter hours above'}
+              <div className="calc-result" style={{ flex: 1, minWidth: 180 }}>
+                <div className="calc-result-label">Est. Take-Home</div>
+                <div className="calc-result-value" style={{ color: 'var(--success)' }}>
+                  ${hours ? (parseFloat(hours) * currentNetRate).toFixed(2) : '0.00'}
+                </div>
+                <div className="calc-result-detail">
+                  {hours
+                    ? `${parseFloat(hours).toFixed(2)} hrs × $${currentNetRate.toFixed(2)}/hr net (~${(ACTUAL_WITHHOLDING_RATE * 100).toFixed(1)}% withheld)`
+                    : 'Based on Feb 2026 actual withholdings'}
+                </div>
               </div>
             </div>
 
@@ -618,24 +650,28 @@ export default function Expenses() {
               <div className="table-wrap">
                 <table>
                   <thead>
-                    <tr><th>Date</th><th>Hours</th><th>Rate</th><th>Amount</th><th>Description</th><th></th></tr>
+                    <tr><th>Date</th><th>Hours</th><th>Gross Rate</th><th>Gross</th><th>Est. Net</th><th>Description</th><th></th></tr>
                   </thead>
                   <tbody>
-                    {hoursSessions.map((s, i) => (
-                      <tr key={i}>
-                        <td>{s.date}</td>
-                        <td>{s.hours.toFixed(2)}</td>
-                        <td>${s.rate.toFixed(2)}/hr</td>
-                        <td style={{ fontWeight: 600 }}>${s.total.toFixed(2)}</td>
-                        <td>{s.description}</td>
-                        <td>
-                          <button className="btn btn-sm btn-success" onClick={async () => {
-                            const ok = await saveHoursExpense(s);
-                            if (ok) setHoursSessions(hoursSessions.filter((_, j) => j !== i));
-                          }}>Save</button>
-                        </td>
-                      </tr>
-                    ))}
+                    {hoursSessions.map((s, i) => {
+                      const netTotal = +(s.total * (1 - ACTUAL_WITHHOLDING_RATE)).toFixed(2);
+                      return (
+                        <tr key={i}>
+                          <td>{s.date}</td>
+                          <td>{s.hours.toFixed(2)}</td>
+                          <td>${s.rate.toFixed(2)}/hr</td>
+                          <td style={{ fontWeight: 600 }}>${s.total.toFixed(2)}</td>
+                          <td style={{ fontWeight: 600, color: 'var(--success)' }}>${netTotal.toFixed(2)}</td>
+                          <td>{s.description}</td>
+                          <td>
+                            <button className="btn btn-sm btn-success" onClick={async () => {
+                              const ok = await saveHoursExpense(s);
+                              if (ok) setHoursSessions(hoursSessions.filter((_, j) => j !== i));
+                            }}>Save</button>
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                   <tfoot>
                     <tr>
@@ -643,6 +679,7 @@ export default function Expenses() {
                       <td style={{ fontWeight: 600 }}>{hoursSessions.reduce((s, h) => s + h.hours, 0).toFixed(2)}</td>
                       <td></td>
                       <td style={{ fontWeight: 600 }}>${hoursSessions.reduce((s, h) => s + h.total, 0).toFixed(2)}</td>
+                      <td style={{ fontWeight: 600, color: 'var(--success)' }}>${(hoursSessions.reduce((s, h) => s + h.total, 0) * (1 - ACTUAL_WITHHOLDING_RATE)).toFixed(2)}</td>
                       <td colSpan="2"></td>
                     </tr>
                   </tfoot>
@@ -659,15 +696,23 @@ export default function Expenses() {
                 <thead>
                   <tr>
                     <th>Position</th>
-                    <th>Base $/hr</th>
-                    <th>Denver $/hr</th>
-                    <th>Rest of US $/hr</th>
+                    <th>Base</th>
+                    <th>Denver</th>
+                    <th>Rest of US</th>
                   </tr>
                 </thead>
                 <tbody>
                   {Object.entries(GS_RATES).map(([label, rates]) => (
                     <tr key={label}>
-                      <td>{label}</td>
+                      <td>{label} <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>(gross)</span></td>
+                      <td>${rates.base.toFixed(2)}</td>
+                      <td>${rates.denver.toFixed(2)}</td>
+                      <td>${rates.restOfUS.toFixed(2)}</td>
+                    </tr>
+                  ))}
+                  {Object.entries(NET_RATES).map(([label, rates]) => (
+                    <tr key={`net-${label}`} style={{ color: 'var(--success)' }}>
+                      <td>{label.replace(' (Chair)', '').replace(' (Member)', '')} <span style={{ fontSize: '0.75rem' }}>(net)</span></td>
                       <td>${rates.base.toFixed(2)}</td>
                       <td>${rates.denver.toFixed(2)}</td>
                       <td>${rates.restOfUS.toFixed(2)}</td>
@@ -679,8 +724,10 @@ export default function Expenses() {
             <ul style={{ paddingLeft: 18, fontSize: '0.85rem', lineHeight: 1.8, marginTop: 8 }}>
               <li>Chair compensated at <strong>GS-15 Step 1</strong>; Members at <strong>GS-14 Step 1</strong></li>
               <li>Denver-Aurora locality: <strong>+30.52%</strong> | Rest of US: <strong>+17.06%</strong></li>
+              <li>Net rates based on Feb 2026 actual: <strong>~{(ACTUAL_WITHHOLDING_RATE * 100).toFixed(1)}% withheld</strong> (FICA 7.65% + fed ~10.4% + CO 4.4%)</li>
               <li>STC members are intermittent federal employees paid hourly</li>
               <li>Hourly rate = annual salary &divide; 2,087 hours</li>
+              <li>Travel reimbursement is <strong>tax-free</strong> on top of compensation</li>
               <li>Source: <a href="https://www.opm.gov/policy-data-oversight/pay-leave/salaries-wages/2026/general-schedule" target="_blank" rel="noopener noreferrer">OPM 2026 GS Pay Tables</a></li>
             </ul>
           </div>
