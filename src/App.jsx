@@ -11,6 +11,7 @@ import Search from './pages/Search';
 import Settings from './pages/Settings';
 import Meetings from './pages/Meetings';
 import Contacts from './pages/Contacts';
+import Ethics from './pages/Ethics';
 
 function LoginScreen() {
   const { login, error } = useAuth();
@@ -70,6 +71,7 @@ export default function App() {
           <Route path="/documents" element={<Documents />} />
           <Route path="/expenses" element={<Expenses />} />
           <Route path="/contacts" element={<Contacts />} />
+          <Route path="/ethics" element={<Ethics />} />
           <Route path="/search" element={<Search />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/auth/callback" element={<AuthCallback />} />

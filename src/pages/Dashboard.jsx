@@ -2,6 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useApiFetch } from '../auth/apiFetch';
 
+/* ── Upcoming deadlines ────────────────────────────────────────── */
+const DEADLINES = [
+  { label: 'OGE 450 — Confidential Financial Disclosure', due: '2026-03-13', link: '/ethics' },
+];
+
 const quickLinks = [
   { label: 'FSA Colorado', url: 'https://www.fsa.usda.gov/state-offices/colorado', icon: '\uD83C\uDFDB' },
   { label: 'FSA Programs', url: 'https://www.fsa.usda.gov/resources/programs', icon: '\uD83D\uDCCB' },
@@ -49,6 +54,41 @@ export default function Dashboard() {
         <h2>Colorado FSA State Committee &mdash; Project Field Archive</h2>
         <p>Meeting notes, documents, expenses, and resources for Colorado STC operations.</p>
       </div>
+
+      {/* Deadline alerts */}
+      {DEADLINES.map((dl, i) => {
+        const now = new Date();
+        const due = new Date(dl.due + 'T23:59:59');
+        const days = Math.ceil((due - now) / (1000 * 60 * 60 * 24));
+        if (days < -30) return null; // hide old deadlines after 30 days
+        const isOverdue = days < 0;
+        const isUrgent = days <= 7 && !isOverdue;
+        return (
+          <Link key={i} to={dl.link} className="card" style={{
+            display: 'block',
+            marginBottom: 16,
+            padding: '14px 20px',
+            textDecoration: 'none',
+            color: 'inherit',
+            borderLeft: `4px solid ${isOverdue ? 'var(--danger)' : isUrgent ? 'var(--warning, #f0ad4e)' : 'var(--success)'}`,
+            background: isOverdue ? 'rgba(220,53,69,0.06)' : isUrgent ? 'rgba(240,173,78,0.06)' : undefined,
+          }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div>
+                <span style={{ fontWeight: 700 }}>{dl.label}</span>
+                <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginLeft: 12 }}>Due: {dl.due}</span>
+              </div>
+              <span style={{
+                fontWeight: 700,
+                fontSize: '0.88rem',
+                color: isOverdue ? 'var(--danger)' : isUrgent ? 'var(--warning, #f0ad4e)' : 'var(--success)',
+              }}>
+                {isOverdue ? `OVERDUE (${Math.abs(days)}d)` : `${days} day(s) left`} &rarr;
+              </span>
+            </div>
+          </Link>
+        );
+      })}
 
       {/* Quick Stats */}
       <div className="grid-4" style={{ marginBottom: 24 }}>
