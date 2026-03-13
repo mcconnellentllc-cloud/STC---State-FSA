@@ -12,6 +12,7 @@ const mainLinks = [
 
 const toolLinks = [
   { to: '/contacts', label: 'Committee & Contacts', icon: '\uD83D\uDC65' },
+  { to: '/ethics', label: 'Ethics & OGE 450', icon: '\uD83D\uDCDD' },
   { to: '/search', label: 'Search', icon: '\uD83D\uDD0D' },
   { to: '/settings', label: 'Settings', icon: '\u2699' },
 ];
