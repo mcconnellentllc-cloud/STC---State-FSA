@@ -26,6 +26,62 @@ const WORK_INFO = {
   appointmentDate: '01/13/2026',
 };
 
+/* ── 2026 OGE-450 Filing Record ──────────────────────────────── */
+const FILING_RECORD = {
+  submittedDate: '2026-03-13',
+  reportingPeriod: 'New Entrant (as of filing date)',
+  formVersion: 'OGE Form 450 (08/2024)',
+  assets: [
+    {
+      name: 'Togo Ag',
+      location: 'Haxtun, CO',
+      description: 'Retail Ag Inputs and Farm Fresh Beef',
+      heldBy: 'Joint (by others)',
+      underlyingAssets: 'Cash',
+      stillHeld: true,
+    },
+    {
+      name: 'M77 Ag',
+      location: 'Haxtun, CO',
+      description: 'Production Agriculture',
+      heldBy: 'Joint',
+      underlyingAssets: 'Cash',
+      stillHeld: true,
+    },
+    {
+      name: 'McConnell Enterprises',
+      location: 'Haxtun, CO',
+      description: 'Retail Ag Input Sales',
+      heldBy: 'Joint',
+      underlyingAssets: 'Cash',
+      stillHeld: true,
+    },
+    {
+      name: 'AcreProfit',
+      location: 'Haxtun, CO',
+      description: 'Agriculture',
+      heldBy: 'Self',
+      underlyingAssets: 'Cash',
+      stillHeld: true,
+    },
+  ],
+  spouseIncome: [
+    {
+      employer: 'Northeast Boces',
+      location: 'Haxtun, CO',
+      type: 'Salary',
+    },
+  ],
+  liabilities: [],
+  outsidePositions: [
+    { organization: 'M77 Ag', location: 'Haxtun, CO', position: 'Member' },
+    { organization: 'McConnell Enterprises', location: 'Haxtun, CO', position: 'Member' },
+    { organization: 'Togo Ag', location: 'Haxtun, CO', position: 'Member' },
+    { organization: 'AcreProfit', location: 'Haxtun, CO', position: 'Owner' },
+  ],
+  agreements: [],
+};
+
 const DISCLOSURE_GUIDE = [
   {
     part: 'Part I',
@@ -169,6 +225,150 @@ export default function Ethics() {
           Questions: <a href={`mailto:${FILING_INFO.ethicsEmail}`}>{FILING_INFO.ethicsEmail}</a> &mdash;
           <a href={FILING_INFO.ethicsAdvisors} target="_blank" rel="noopener noreferrer" style={{ marginLeft: 4 }}>Ethics Advisors List</a>
         </div>
+      </div>
+
+      {/* ── 2026 OGE-450 Filing Record ── */}
+      <div className="card" style={{ marginBottom: 20 }}>
+        <div className="card-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <span className="card-title">2026 OGE-450 Filing Record</span>
+          <span style={{
+            background: 'var(--success)',
+            color: '#fff',
+            padding: '3px 10px',
+            borderRadius: 12,
+            fontSize: '0.78rem',
+            fontWeight: 700,
+          }}>
+            SUBMITTED {FILING_RECORD.submittedDate}
+          </span>
+        </div>
+        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: 16 }}>
+          {FILING_RECORD.formVersion} &mdash; {FILING_RECORD.reportingPeriod}
+        </p>
+
+        {/* Part I: Assets */}
+        <details className="meeting-expandable" open>
+          <summary>
+            <strong>Part I: Privately Held Trades or Businesses</strong>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginLeft: 8 }}>
+              {FILING_RECORD.assets.length} reported
+            </span>
+          </summary>
+          <div className="expandable-content">
+            <div className="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Business</th>
+                    <th>Description</th>
+                    <th>Location</th>
+                    <th>Held By</th>
+                    <th>Underlying</th>
+                    <th>Still Held</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {FILING_RECORD.assets.map((a, i) => (
+                    <tr key={i}>
+                      <td style={{ fontWeight: 600 }}>{a.name}</td>
+                      <td>{a.description}</td>
+                      <td>{a.location}</td>
+                      <td>{a.heldBy}</td>
+                      <td>{a.underlyingAssets}</td>
+                      <td>{a.stillHeld ? 'Yes' : 'No'}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+
+        {/* Part I: Spouse Earned Income */}
+        <details className="meeting-expandable" open>
+          <summary>
+            <strong>Part I: Spouse Earned Income</strong>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginLeft: 8 }}>
+              {FILING_RECORD.spouseIncome.length} reported
+            </span>
+          </summary>
+          <div className="expandable-content">
+            <div className="table-wrap">
+              <table>
+                <thead>
+                  <tr><th>Employer</th><th>Location</th><th>Type</th></tr>
+                </thead>
+                <tbody>
+                  {FILING_RECORD.spouseIncome.map((s, i) => (
+                    <tr key={i}>
+                      <td style={{ fontWeight: 600 }}>{s.employer}</td>
+                      <td>{s.location}</td>
+                      <td>{s.type}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+
+        {/* Part II: Liabilities */}
+        <details className="meeting-expandable">
+          <summary>
+            <strong>Part II: Liabilities</strong>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginLeft: 8 }}>
+              None reported
+            </span>
+          </summary>
+          <div className="expandable-content">
+            <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontStyle: 'italic' }}>
+              No reportable liabilities over $10,000.
+            </p>
+          </div>
+        </details>
+
+        {/* Part III: Outside Positions */}
+        <details className="meeting-expandable" open>
+          <summary>
+            <strong>Part III: Outside Positions</strong>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginLeft: 8 }}>
+              {FILING_RECORD.outsidePositions.length} reported
+            </span>
+          </summary>
+          <div className="expandable-content">
+            <div className="table-wrap">
+              <table>
+                <thead>
+                  <tr><th>Organization</th><th>Location</th><th>Position</th></tr>
+                </thead>
+                <tbody>
+                  {FILING_RECORD.outsidePositions.map((p, i) => (
+                    <tr key={i}>
+                      <td style={{ fontWeight: 600 }}>{p.organization}</td>
+                      <td>{p.location}</td>
+                      <td>{p.position}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+
+        {/* Part IV: Agreements */}
+        <details className="meeting-expandable">
+          <summary>
+            <strong>Part IV: Agreements or Arrangements</strong>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginLeft: 8 }}>
+              None reported
+            </span>
+          </summary>
+          <div className="expandable-content">
+            <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontStyle: 'italic' }}>
+              No reportable agreements or arrangements.
+            </p>
+          </div>
+        </details>
       </div>
 
       {/* Work Information — copy-paste ready */}
