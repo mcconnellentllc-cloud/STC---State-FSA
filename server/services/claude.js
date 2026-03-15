@@ -77,6 +77,26 @@ ${text}`;
   return null;
 }
 
+export async function research(question, context) {
+  const prompt = `You are a research assistant for the Colorado FSA State Technical Committee (STC). A committee member needs help researching an action item from a meeting.
+
+Action item / question:
+"${question}"
+
+${context ? `Additional context from the meeting:\n${context}\n\n` : ''}
+
+Please provide a thorough, well-organized answer that:
+1. Directly addresses the question with factual, useful information
+2. Cites specific USDA/FSA programs, regulations, or policies where relevant
+3. Is written in a professional tone suitable for sharing with the full committee
+4. Includes any relevant numbers, dates, or deadlines
+5. Ends with a brief "Sources & References" section listing relevant USDA/FSA web pages
+
+Format the response so it can be easily copied and shared with the group (e.g., via email or Teams message). Keep it concise but comprehensive.`;
+
+  return callClaude(prompt);
+}
+
 export async function categorize(content, type = 'entry') {
   const prompt = `Analyze the following ${type} and suggest appropriate tags/categories. Return ONLY a JSON object with:
 - tags: array of relevant tag strings (e.g., "meeting", "field-visit", "policy", "budget", etc.)
