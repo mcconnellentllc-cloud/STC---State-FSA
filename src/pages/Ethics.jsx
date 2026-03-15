@@ -80,6 +80,22 @@ const FILING_RECORD = {
     { organization: 'AcreProfit', location: 'Haxtun, CO', position: 'Owner' },
   ],
   agreements: [],
+  payments: [
+    {
+      date: '03/02/2026',
+      source: 'US Department of Agriculture',
+      description: 'STC Meeting Pay (net)',
+      amount: 833.75,
+      type: 'Deposit',
+    },
+    {
+      date: '03/02/2026',
+      source: 'Federal Travel Payments',
+      description: 'Travel Reimbursement (mileage & per diem)',
+      amount: 491.91,
+      type: 'Deposit',
+    },
+  ],
 };
 
 const DISCLOSURE_GUIDE = [
@@ -367,6 +383,59 @@ export default function Ethics() {
             <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontStyle: 'italic' }}>
               No reportable agreements or arrangements.
             </p>
+          </div>
+        </details>
+
+        {/* STC Payments Received */}
+        <details className="meeting-expandable" open>
+          <summary>
+            <strong>STC Payments Received</strong>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginLeft: 8 }}>
+              {FILING_RECORD.payments.length} deposits &mdash; ${FILING_RECORD.payments.reduce((sum, p) => sum + p.amount, 0).toFixed(2)} total
+            </span>
+          </summary>
+          <div className="expandable-content">
+            <div className="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Source</th>
+                    <th>Description</th>
+                    <th style={{ textAlign: 'right' }}>Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {FILING_RECORD.payments.map((p, i) => (
+                    <tr key={i}>
+                      <td>{p.date}</td>
+                      <td style={{ fontWeight: 600 }}>{p.source}</td>
+                      <td>{p.description}</td>
+                      <td style={{ textAlign: 'right', fontWeight: 600, color: 'var(--success)' }}>
+                        ${p.amount.toFixed(2)}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+                <tfoot>
+                  <tr style={{ fontWeight: 700, borderTop: '2px solid var(--border)' }}>
+                    <td colSpan={3} style={{ textAlign: 'right' }}>Total Deposited</td>
+                    <td style={{ textAlign: 'right', color: 'var(--success)' }}>
+                      ${FILING_RECORD.payments.reduce((sum, p) => sum + p.amount, 0).toFixed(2)}
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+            <div style={{
+              background: 'rgba(var(--info-rgb, 23,162,184), 0.08)',
+              borderRadius: 6,
+              padding: '10px 14px',
+              marginTop: 8,
+              fontSize: '0.85rem',
+            }}>
+              <strong>Note:</strong> STC meeting gross pay is ~$1,075 (GS-14 Step 1, 8 hrs). Net deposit of $833.75 reflects federal/state tax withholding. Travel reimbursement of $491.91 covers mileage and per diem — non-taxable.
+            </div>
           </div>
         </details>
       </div>

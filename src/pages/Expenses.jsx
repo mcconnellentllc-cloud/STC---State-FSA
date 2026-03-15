@@ -58,6 +58,56 @@ const MEETING_INCOME = [
   },
 ];
 
+/* ── Meeting Ledger (grouped lifecycle view) ─────────────────────── */
+const MEETING_LEDGER = [
+  {
+    month: 'February 2026',
+    meetingDate: '2026-02-10',
+    location: 'Federal Building 56, Denver, CO',
+    groups: [
+      {
+        category: 'Compensation',
+        icon: '\u{1F4B0}',
+        lines: [
+          { action: 'Hours logged',      detail: '16 hrs @ $67.19/hr (GS-14 Step 1, Denver)',  amount: 1075.04, type: 'gross',   date: '2026-02-10', status: 'confirmed' },
+          { action: 'Withholdings',       detail: 'FICA 7.65% + Fed ~10.4% + CO 4.4%',         amount: -241.29, type: 'deduct',  date: '2026-03-02', status: 'confirmed' },
+          { action: 'Net salary deposit', detail: 'FED SAL (AGRI TREAS 310)',                   amount: 833.75,  type: 'deposit', date: '2026-03-02', status: 'confirmed' },
+        ],
+      },
+      {
+        category: 'Lodging',
+        icon: '\u{1F3E8}',
+        lines: [
+          { action: 'Hotel paid (out-of-pocket)', detail: 'Kyle paid — Denver hotel, 1 night',  amount: -165.00, type: 'paid',    date: '2026-02-09', status: 'confirmed' },
+          { action: 'Hotel reimbursed',            detail: 'Included in Federal Travel Payment', amount: 165.00,  type: 'deposit', date: '2026-03-02', status: 'confirmed' },
+        ],
+      },
+      {
+        category: 'Mileage',
+        icon: '\u{1F697}',
+        lines: [
+          { action: 'Miles driven',        detail: 'Haxtun \u2192 Denver roundtrip (356 mi \u00D7 $0.725)', amount: -258.10, type: 'paid',    date: '2026-02-10', status: 'confirmed' },
+          { action: 'Mileage reimbursed',   detail: 'Included in Federal Travel Payment',               amount: 258.10,  type: 'deposit', date: '2026-03-02', status: 'confirmed' },
+        ],
+      },
+      {
+        category: 'Per Diem (M&IE)',
+        icon: '\u{1F37D}\u{FE0F}',
+        lines: [
+          { action: 'M&IE claimed',        detail: 'Denver rate $92/day, 75% partial = $69.00', amount: 0,     type: 'info',    date: '2026-02-10', status: 'confirmed' },
+          { action: 'Per diem reimbursed',  detail: 'Included in Federal Travel Payment',        amount: 68.81, type: 'deposit', date: '2026-03-02', status: 'confirmed' },
+        ],
+      },
+    ],
+    totals: {
+      outOfPocket: 258.10 + 165.00,  // mileage + hotel
+      grossComp: 1075.04,
+      totalDeposited: 833.75 + 491.91,
+      netAfterAll: 833.75 + 491.91,  // salary net + travel (travel is tax-free reimbursement)
+    },
+  },
+];
+
 /* ── Main Component ──────────────────────────────────────────────── */
 export default function Expenses() {
   const [expenses, setExpenses] = useState([]);
@@ -255,6 +305,9 @@ export default function Expenses() {
         </button>
         <button className={`expense-tab ${activeTab === 'taxes' ? 'active' : ''}`} onClick={() => setActiveTab('taxes')}>
           Tax Line Items
+        </button>
+        <button className={`expense-tab ${activeTab === 'ledger' ? 'active' : ''}`} onClick={() => setActiveTab('ledger')}>
+          Ledger
         </button>
         <button className={`expense-tab ${activeTab === 'income' ? 'active' : ''}`} onClick={() => setActiveTab('income')}>
           Income &amp; Actuals
@@ -859,6 +912,146 @@ export default function Expenses() {
           </div>
         </div>
       )}
+      {/* ════════════════════════════════════════════════════════════════
+          TAB: LEDGER
+          ════════════════════════════════════════════════════════════════ */}
+      {activeTab === 'ledger' && (
+        <div className="tool-panel">
+          {MEETING_LEDGER.map((meeting, mi) => (
+            <div key={mi}>
+              {/* Meeting header */}
+              <div className="card tool-card">
+                <div className="tool-header">
+                  <h3>{meeting.month} — Financial Ledger</h3>
+                  <span className="tool-badge">{meeting.meetingDate} &mdash; {meeting.location}</span>
+                </div>
+
+                {/* Summary cards */}
+                <div className="grid-3" style={{ marginBottom: 16, marginTop: 8 }}>
+                  <div className="stat-card">
+                    <div className="stat-value" style={{ color: 'var(--danger)' }}>
+                      ${meeting.totals.outOfPocket.toFixed(2)}
+                    </div>
+                    <div className="stat-label">Out-of-Pocket</div>
+                  </div>
+                  <div className="stat-card">
+                    <div className="stat-value" style={{ color: 'var(--success)' }}>
+                      ${meeting.totals.totalDeposited.toFixed(2)}
+                    </div>
+                    <div className="stat-label">Total Deposited</div>
+                  </div>
+                  <div className="stat-card">
+                    <div className="stat-value" style={{ color: 'var(--accent)' }}>
+                      ${meeting.totals.netAfterAll.toFixed(2)}
+                    </div>
+                    <div className="stat-label">Net Received</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Grouped ledger lines */}
+              {meeting.groups.map((group, gi) => (
+                <div key={gi} className="card tool-card" style={{ marginTop: 12 }}>
+                  <h4 style={{ marginBottom: 8 }}>{group.icon} {group.category}</h4>
+                  <div className="table-wrap">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Date</th>
+                          <th>Action</th>
+                          <th>Detail</th>
+                          <th style={{ textAlign: 'right' }}>Amount</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {group.lines.map((line, li) => (
+                          <tr key={li}>
+                            <td style={{ whiteSpace: 'nowrap', fontSize: '0.85rem' }}>{line.date}</td>
+                            <td style={{ fontWeight: 600 }}>{line.action}</td>
+                            <td style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{line.detail}</td>
+                            <td style={{
+                              textAlign: 'right',
+                              fontWeight: 600,
+                              fontFamily: 'monospace',
+                              color: line.type === 'deposit' ? 'var(--success)'
+                                   : line.type === 'deduct' || line.type === 'paid' ? 'var(--danger)'
+                                   : line.type === 'gross' ? 'var(--text-primary)'
+                                   : 'var(--text-muted)',
+                            }}>
+                              {line.type === 'info' ? '\u2014'
+                                : line.amount >= 0 && line.type === 'deposit' ? `+$${line.amount.toFixed(2)}`
+                                : line.amount < 0 ? `-$${Math.abs(line.amount).toFixed(2)}`
+                                : `$${line.amount.toFixed(2)}`}
+                            </td>
+                            <td>
+                              <span style={{
+                                display: 'inline-block',
+                                padding: '2px 8px',
+                                borderRadius: 12,
+                                fontSize: '0.75rem',
+                                fontWeight: 600,
+                                background: line.status === 'confirmed' ? 'var(--success-bg, #d4edda)' : 'var(--warning-bg, #fff3cd)',
+                                color: line.status === 'confirmed' ? 'var(--success, #28a745)' : 'var(--warning, #856404)',
+                              }}>
+                                {line.status === 'confirmed' ? '\u2713 Confirmed' : 'Pending'}
+                              </span>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+
+                  {/* Category net */}
+                  {(() => {
+                    const catNet = group.lines.reduce((s, l) => s + (l.type !== 'info' && l.type !== 'gross' ? l.amount : 0), 0);
+                    return catNet !== 0 ? (
+                      <div style={{ textAlign: 'right', marginTop: 6, fontSize: '0.85rem', fontWeight: 600, color: catNet >= 0 ? 'var(--success)' : 'var(--danger)' }}>
+                        Category net: {catNet >= 0 ? '+' : ''}{catNet.toFixed(2)}
+                      </div>
+                    ) : null;
+                  })()}
+                </div>
+              ))}
+
+              {/* Deposit summary */}
+              <div className="card info-card" style={{ marginTop: 12 }}>
+                <h4>Bank Deposits</h4>
+                <div className="table-wrap" style={{ marginTop: 8 }}>
+                  <table>
+                    <thead>
+                      <tr><th>Deposit</th><th>Date</th><th style={{ textAlign: 'right' }}>Amount</th></tr>
+                    </thead>
+                    <tbody>
+                      {meeting.deposits.map((d, di) => (
+                        <tr key={di}>
+                          <td style={{ fontWeight: 600 }}>{d.label}</td>
+                          <td>{d.date}</td>
+                          <td style={{ textAlign: 'right', fontWeight: 600, fontFamily: 'monospace', color: 'var(--success)' }}>+${d.amount.toFixed(2)}</td>
+                        </tr>
+                      ))}
+                      <tr style={{ borderTop: '2px solid var(--border)' }}>
+                        <td style={{ fontWeight: 700 }}>Total deposited</td>
+                        <td></td>
+                        <td style={{ textAlign: 'right', fontWeight: 700, fontFamily: 'monospace', color: 'var(--success)' }}>
+                          +${meeting.deposits.reduce((s, d) => s + d.amount, 0).toFixed(2)}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <ul style={{ paddingLeft: 18, fontSize: '0.85rem', lineHeight: 1.8, marginTop: 8 }}>
+                  <li><strong>Salary ($833.75)</strong> is net after withholdings &mdash; taxable income was $1,075.04 gross</li>
+                  <li><strong>Travel ($491.91)</strong> is a tax-free reimbursement &mdash; dollar-for-dollar what you keep</li>
+                  <li><strong>Out-of-pocket</strong> costs (hotel + mileage) were fully reimbursed via the travel payment</li>
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
       {/* ════════════════════════════════════════════════════════════════
           TAB: INCOME & ACTUALS
           ════════════════════════════════════════════════════════════════ */}

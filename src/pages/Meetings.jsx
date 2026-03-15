@@ -105,6 +105,76 @@ const meetingsData = {
       { label: 'Fence Post \u2014 Sonnenberg article', url: 'https://www.thefencepost.com/news/sonnenberg-tapped-to-lead-fsa/' },
     ],
   },
+  '2026-03': {
+    date: 'March 17, 2026',
+    time: '2:00 PM MST',
+    location: 'Virtual / TBD',
+    type: 'STC Special Meeting',
+    status: 'upcoming',
+    calDay: 17,
+    summary: 'Special meeting called to authorize Chairperson Donald Brown to sign Administrative Leave Letters for the Otero/Crowley County Committee (COC) members. Letters prepared by Steve Niemann (HR Specialist, Employee Relations, FPAC-FBC) and forwarded by Colorado Executive Director Jerry Sonnenberg.',
+    detailedNotes: [
+      {
+        title: 'Otero/Crowley COC Administrative Leave Letters',
+        items: [
+          'Administrative Leave Letters prepared for 5 COC members: Alish___, Andr___, Charl___, Dou___, Zach___ (confirm full names with Jerry Sonnenberg)',
+          'Letters prepared by Steve Niemann, HR Specialist (Employee Relations), FPAC-FBC, AZ',
+          'Forwarded to STC by Jerry Sonnenberg, Colorado Executive Director',
+          'CC: Brandi May (ID), Kim Viers (MO), Rick Pinkston (DC)',
+          'NOTE: The file for Alish___ is 0 KB and may be empty/corrupted \u2014 verify before issuing',
+        ],
+      },
+      {
+        title: 'What is Administrative Leave for COC Members?',
+        items: [
+          'Under 7 CFR Part 7, FSA County Committee members can be placed on administrative leave pending investigation or resolution of issues',
+          'Administrative leave is NOT termination \u2014 it is a temporary removal from duties while matters are resolved',
+          'Members placed on leave retain appeal rights under 7 CFR Part 7',
+          'The STC has oversight authority over COC personnel actions in Colorado',
+          'This is a confidential personnel/employee relations matter',
+        ],
+        link: { label: '7 CFR Part 7 \u2014 County Committee Regulations', url: 'https://www.ecfr.gov/current/title-7/subtitle-A/part-7' },
+      },
+      {
+        title: 'Required Actions After STC Approval',
+        items: [
+          'Chairperson Donald Brown signs the letters (digital or wet signature)',
+          'Date of issuance MUST be reflected on the letter (currently dated March 17, 2026)',
+          'Deliver signed letter to each COC member via email',
+          'Have a CO-FSA employee (e.g., District Director) notify each COC member they received a letter',
+          'Mail a copy via USPS with tracking (do NOT send certified/signature required)',
+          'Return signed/dated letter + tracking confirmation to Steve Niemann (Employee Relations)',
+          'Include this action in the STC minutes',
+        ],
+      },
+      {
+        title: 'Otero & Crowley Counties \u2014 Background',
+        items: [
+          'Otero County: Located in southeastern Colorado, county seat is La Junta. Agricultural area known for irrigated farming along the Arkansas River, cattle ranching, and melon/onion production',
+          'Crowley County: Adjacent to Otero, county seat is Ordway. One of the least populated counties in Colorado, heavily agricultural with dryland farming and ranching',
+          'The Otero/Crowley area is served by a combined FSA county office',
+          'FSA COC members in this area serve local producers on farm program administration, disaster programs, and conservation',
+          'COC members are elected by local producers and serve 3-year terms',
+        ],
+      },
+    ],
+    decisions: [
+      'Review Administrative Leave Letters for accuracy before Chairperson signs',
+      'Verify the Alish___ letter file (0 KB / possibly corrupted) with Jerry Sonnenberg',
+      'Confirm full names of all 5 COC members receiving letters',
+      'Authorize Chairperson Donald Brown to sign all letters',
+      'Ensure proper distribution: email + USPS with tracking (not certified)',
+      'Document this action in STC meeting minutes',
+    ],
+    researchLinks: [
+      { label: '7 CFR Part 7 \u2014 COC Regulations', url: 'https://www.ecfr.gov/current/title-7/subtitle-A/part-7' },
+      { label: 'FSA County Committee Elections', url: 'https://www.fsa.usda.gov/coc' },
+      { label: 'Colorado FSA State Office', url: 'https://www.fsa.usda.gov/state-offices/colorado' },
+      { label: 'USDA Leave Administration Handbook', url: 'https://www.fsa.usda.gov/Internet/FSA_File/17-pm_r02_a04.pdf' },
+      { label: 'USDA Administrative Leave Policy (DR 4060-630-002)', url: 'https://www.usda.gov/directives/dr-4060-630-002' },
+      { label: 'FSA CRS Report on Committees', url: 'https://www.congress.gov/crs-product/R40179' },
+    ],
+  },
 };
 
 function getCalendarDays(year, month) {
