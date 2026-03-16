@@ -122,7 +122,7 @@ const allMeetings = [
       {
         title: 'Otero/Crowley COC Administrative Leave Letters',
         items: [
-          'Administrative Leave Letters prepared for 5 COC members: Alisha Knapp, Andrew Walter, Charles Hanagan, Doug Tecklenburg, Zachary Mason',
+          'Administrative Leave Letters prepared for 5 COC members: Alisha Knapp, Andrew Walter Jr, Charles Hanagan, Doug Tecklenburg, Zachary Mason',
           'Letters prepared by Steve Niemann, HR Specialist (Employee Relations), FPAC-FBC, AZ',
           'Forwarded to STC by Jerry Sonnenberg, Colorado Executive Director',
           'CC: Brandi May (ID), Kim Viers (MO), Rick Pinkston (DC)',
@@ -166,7 +166,7 @@ const allMeetings = [
     decisions: [
       'Review Administrative Leave Letters for accuracy before Chairperson signs',
       'Verify the Alisha Knapp letter file (0 KB / possibly corrupted) with Jerry Sonnenberg',
-      'Authorize Chairperson Donald Brown to sign all 5 letters (Knapp, Walter, Hanagan, Tecklenburg, Mason)',
+      'Authorize Chairperson Donald Brown to sign all 5 letters (Knapp, Walter Jr, Hanagan, Tecklenburg, Mason)',
       'Ensure proper distribution: email + USPS with tracking (not certified)',
       'Document this action in STC meeting minutes',
     ],

@@ -46,7 +46,7 @@ ATTENDEES (STC Members):
 OTERO/CROWLEY COC MEMBERS RECEIVING ADMINISTRATIVE LEAVE LETTERS:
 (from files uploaded 3/15/2026)
 1. Alisha Knapp — FILE IS 0 KB / APPEARS EMPTY OR CORRUPTED - flag to Jerry Sonnenberg
-2. Andrew Walter — Letter ready (47.4 KB)
+2. Andrew Walter Jr — Letter ready (47.4 KB)
 3. Charles Hanagan — Letter ready (47.4 KB)
 4. Doug Tecklenburg — Letter ready (47.5 KB)
 5. Zachary Mason — Letter ready (47.4 KB)
