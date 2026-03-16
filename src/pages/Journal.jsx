@@ -80,6 +80,69 @@ This disqualification may only be waived by the State committee or the Deputy Ad
 NOTE: Letters should already be on appropriate letterhead. If edits are needed, contact Steve Niemann before issuing. This is a confidential personnel/employee relations matter.`,
   },
   {
+    id: 'douglas-factors',
+    pinned: false,
+    date: '2026-03-16',
+    title: 'Douglas Factors — Framework for Federal Disciplinary Penalty Determination',
+    location: 'Reference / Legal',
+    tags: 'douglas-factors, discipline, penalty, MSPB, employee-relations, COC, otero-crowley',
+    source: 'Douglas v. Veterans Administration, 5 MSPR 280 (MSPB 1981)',
+    content: `THE DOUGLAS FACTORS — BRIEF SUMMARY
+
+The Douglas Factors are 12 criteria established by the Merit Systems Protection Board (MSPB) in Douglas v. Veterans Administration, 5 MSPR 280 (1981). Federal agencies must consider these factors when determining the appropriate penalty for employee misconduct or performance issues. They apply to adverse actions against federal employees, including removal, suspension, and demotion.
+
+RELEVANCE TO OTERO/CROWLEY COC ACTION:
+While COC members are elected officials (not traditional federal employees), the Douglas Factors provide the accepted federal framework for evaluating whether a proposed penalty is reasonable and consistent. Employee Relations (Steve Niemann, FPAC-FBC) would reference these factors when recommending adverse action under 7 CFR § 7.28.
+
+THE 12 DOUGLAS FACTORS:
+
+1. NATURE AND SERIOUSNESS OF THE OFFENSE
+   How serious is the misconduct? Does it relate to the employee's duties, position, or the agency's mission? The more directly the offense undermines the agency's mission, the more serious.
+
+2. EMPLOYEE'S JOB LEVEL AND TYPE OF EMPLOYMENT
+   Employees in positions of trust or authority are held to a higher standard. COC members carry fiduciary and programmatic responsibilities for FSA program administration.
+
+3. PAST DISCIPLINARY RECORD
+   Prior offenses, warnings, or corrective actions. A pattern of misconduct supports a more severe penalty; a clean record may mitigate.
+
+4. PAST WORK RECORD (LENGTH OF SERVICE)
+   Overall performance history and years of service. Long, satisfactory service can be a mitigating factor.
+
+5. EFFECT ON THE EMPLOYEE'S ABILITY TO PERFORM
+   Does the misconduct impair the employee's ability to carry out their duties? If trust is broken or the working relationship is damaged, this weighs toward removal.
+
+6. CONSISTENCY OF THE PENALTY
+   Is the proposed penalty consistent with how similar offenses have been handled for other employees in the agency? Disparate treatment can be grounds for reversal.
+
+7. CONSISTENCY WITH THE TABLE OF PENALTIES
+   Does the penalty align with the agency's published table of penalties or guidelines? Agencies typically have internal guidance on standard ranges.
+
+8. NOTORIETY OF THE OFFENSE / IMPACT ON AGENCY REPUTATION
+   Did the misconduct become known to the public or other employees? Offenses that embarrass the agency or undermine public confidence weigh toward stricter penalties.
+
+9. CLARITY OF NOTICE
+   Was the employee clearly on notice that the conduct was wrong? Were rules, policies, and expectations communicated? Lack of notice can mitigate.
+
+10. POTENTIAL FOR REHABILITATION
+    Is there reason to believe the employee will correct the behavior? Willingness to accept responsibility and change is mitigating; denial or repeated offenses are aggravating.
+
+11. MITIGATING CIRCUMSTANCES
+    Any other factors that argue for a lesser penalty — personal hardship, unusual stress, provocation, management contributing to the problem, etc.
+
+12. ADEQUACY AND EFFECTIVENESS OF ALTERNATIVE SANCTIONS
+    Could a lesser penalty (reprimand, short suspension, reassignment) adequately address the problem? Removal should not be the default if a lesser action would be effective.
+
+KEY PRINCIPLES:
+- The agency bears the burden of showing the penalty is reasonable.
+- Not all factors will be relevant in every case.
+- The penalty must "promote the efficiency of the service."
+- The MSPB can mitigate (reduce) a penalty if the agency fails to properly weigh these factors.
+- Employees have the right to respond to proposed actions and raise Douglas Factors in their defense (consistent with 7 CFR § 7.28(b) due process requirements).
+
+PRACTICAL APPLICATION FOR STC:
+When reviewing the Otero/Crowley COC administrative leave letters, the STC should be aware that these factors inform the Employee Relations recommendation. If a COC member challenges the action, the MSPB or reviewing authority will evaluate whether the Douglas Factors were properly considered.`,
+  },
+  {
     id: 'personal-fire-story',
     pinned: false,
     date: '2026-03-15',
