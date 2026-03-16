@@ -96,7 +96,7 @@ router.post('/', async (req, res) => {
     const result = await run(
       `INSERT INTO expenses (date, vendor, amount, category, description, document_id, entry_id, status)
        VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
-      [date, vendor || null, amount, category || null, description || null, document_id || null, entry_id || null, status || 'pending']
+      [date, vendor || null, amount, category || null, description || null, document_id || null, entry_id || null, status || 'approved']
     );
 
     const expense = await get('SELECT * FROM expenses WHERE id = ?', [result.lastInsertRowid]);

@@ -117,7 +117,7 @@ export default function Expenses() {
   const [summary, setSummary] = useState(null);
   const [form, setForm] = useState({
     date: new Date().toISOString().split('T')[0],
-    vendor: '', amount: '', category: '', description: '', status: 'pending'
+    vendor: '', amount: '', category: '', description: '', status: 'approved'
   });
   const [activeTab, setActiveTab] = useState('expenses');   // expenses | mileage | hours
   const apiFetch = useApiFetch();
@@ -176,7 +176,7 @@ export default function Expenses() {
     });
     if (res.ok) {
       setShowForm(false);
-      setForm({ date: new Date().toISOString().split('T')[0], vendor: '', amount: '', category: '', description: '', status: 'pending' });
+      setForm({ date: new Date().toISOString().split('T')[0], vendor: '', amount: '', category: '', description: '', status: 'approved' });
       fetchExpenses();
     }
   };
@@ -224,7 +224,7 @@ export default function Expenses() {
         amount: trip.total,
         category: 'mileage',
         description: `${trip.miles} mi @ $${MILEAGE_RATE}/mi — ${trip.description}`,
-        status: 'pending'
+        status: 'approved'
       })
     });
     if (res.ok) fetchExpenses();
@@ -242,7 +242,7 @@ export default function Expenses() {
         amount: session.total,
         category: 'hours',
         description: `${session.hours}h @ $${session.rate.toFixed(2)}/hr (${session.gradeLabel}, ${session.localityLabel}) — ${session.description}`,
-        status: 'pending'
+        status: 'approved'
       })
     });
     if (res.ok) fetchExpenses();
@@ -263,7 +263,7 @@ export default function Expenses() {
           amount: parseFloat(item.amount),
           category: 'lodging-tax',
           description: item.label,
-          status: 'pending'
+          status: 'approved'
         })
       });
       if (res.ok) saved++;
