@@ -45,13 +45,13 @@ ATTENDEES (STC Members):
 
 OTERO/CROWLEY COC MEMBERS RECEIVING ADMINISTRATIVE LEAVE LETTERS:
 (from files uploaded 3/15/2026)
-1. Alish___  — FILE IS 0 KB / APPEARS EMPTY OR CORRUPTED - flag to Jerry Sonnenberg
-2. Andr___   — Letter ready (48 KB)
-3. Charl___  — Letter ready (48 KB)
-4. Dou___    — Letter ready (48 KB)
-5. Zach___   — Letter ready (48 KB)
+1. Alisha Knapp — FILE IS 0 KB / APPEARS EMPTY OR CORRUPTED - flag to Jerry Sonnenberg
+2. Andrew Walter — Letter ready (47.4 KB)
+3. Charles Hanagan — Letter ready (47.4 KB)
+4. Doug Tecklenburg — Letter ready (47.5 KB)
+5. Zachary Mason — Letter ready (47.4 KB)
 
-ACTION: Confirm full names with Jerry Sonnenberg or Steve Niemann. Verify the Alish___ file is not corrupted before Monday.
+ACTION: Verify the Alisha Knapp file is not corrupted before Monday. Contact Jerry Sonnenberg or Steve Niemann if a replacement file is needed.
 
 BACKGROUND — WHAT IS ADMINISTRATIVE LEAVE FOR COC MEMBERS?
 Under 7 CFR Part 7, FSA County Committee members can be placed on administrative leave (effectively suspended from duties) pending investigation or resolution of issues related to performance, misconduct, or impediment to program effectiveness. The STC has authority over COC personnel actions in their state. Administrative leave is not termination — it is a temporary removal from duties while matters are resolved. Members placed on leave retain appeal rights.
