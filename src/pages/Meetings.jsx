@@ -112,13 +112,27 @@ const allMeetings = [
     monthKey: '2026-03',
     id: '2026-03-17',
     date: 'March 17, 2026',
-    time: '2:00 PM MST',
-    location: 'Virtual / TBD',
+    time: '2:00 PM \u2013 3:30 PM MST',
+    location: 'Virtual',
     type: 'STC Special Meeting',
-    status: 'upcoming',
+    status: 'completed',
     calDay: 17,
-    summary: 'Special meeting called to authorize Chairperson Donald Brown to sign Administrative Leave Letters for the Otero/Crowley County Committee (COC) members. Letters prepared by Steve Niemann (HR Specialist, Employee Relations, FPAC-FBC) and forwarded by Colorado Executive Director Jerry Sonnenberg.',
+    summary: 'Special meeting to authorize Chairperson Donald Brown to sign Administrative Leave Letters for the Otero/Crowley County Committee (COC) members. Letters prepared by Steve Niemann (HR Specialist, Employee Relations, FPAC-FBC) and forwarded by Colorado Executive Director Jerry Sonnenberg. Meeting adjourned at 3:30 PM.',
     detailedNotes: [
+      {
+        title: 'Meeting Outcome \u2014 March 17, 2026 (2:00 PM \u2013 3:30 PM)',
+        items: [
+          'Meeting called to order at 2:00 PM MST',
+          'STC reviewed and discussed the Administrative Leave Letters for the five Otero/Crowley COC members',
+          'STC authorized Chairperson Donald Brown to sign all Administrative Leave Letters',
+          'Alisha Knapp letter file (0 KB) flagged for follow-up with Jerry Sonnenberg before issuance',
+          'Distribution plan confirmed: email delivery + USPS with tracking (not certified/signature required)',
+          'Signed/dated letters and tracking confirmations to be returned to Steve Niemann (Employee Relations)',
+          'Action to be documented in official STC minutes',
+          'Next meeting: March 24, 2026 \u2014 agenda and details TBD',
+          'Meeting adjourned at 3:30 PM MST',
+        ],
+      },
       {
         title: 'Otero/Crowley COC Administrative Leave Letters',
         items: [
@@ -187,11 +201,12 @@ const allMeetings = [
       },
     ],
     decisions: [
-      'Review Administrative Leave Letters for accuracy before Chairperson signs',
-      'Verify the Alisha Knapp letter file (0 KB / possibly corrupted) with Jerry Sonnenberg',
-      'Authorize Chairperson Donald Brown to sign all 5 letters (Knapp, Walter Jr, Hanagan, Tecklenburg, Mason)',
-      'Ensure proper distribution: email + USPS with tracking (not certified)',
-      'Document this action in STC meeting minutes',
+      'APPROVED \u2014 Chairperson Donald Brown authorized to sign all 5 Administrative Leave Letters (Knapp, Walter Jr, Hanagan, Tecklenburg, Mason)',
+      'APPROVED \u2014 Distribution via email + USPS with tracking (not certified)',
+      'ACTION \u2014 Verify Alisha Knapp letter file (0 KB / possibly corrupted) with Jerry Sonnenberg before issuance',
+      'ACTION \u2014 Return signed/dated letters + tracking confirmations to Steve Niemann (Employee Relations)',
+      'ACTION \u2014 Document this action in official STC meeting minutes',
+      'NEXT MEETING \u2014 March 24, 2026',
     ],
     researchLinks: [
       { label: '7 CFR Part 7 \u2014 COC Regulations', url: 'https://www.ecfr.gov/current/title-7/subtitle-A/part-7' },
@@ -237,99 +252,7 @@ function getCalendarDays(year, month) {
   return days;
 }
 
-/* ── AI Research Widget for Action Items ─────────────────────── */
-function ActionItemAI({ actionItem, meetingContext, apiFetch }) {
-  const [expanded, setExpanded] = useState(false);
-  const [question, setQuestion] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [answer, setAnswer] = useState('');
-  const [error, setError] = useState(null);
-  const [copied, setCopied] = useState(false);
-
-  const handleAsk = async (customQ) => {
-    const q = customQ || question || actionItem;
-    if (!q.trim()) return;
-    setLoading(true);
-    setError(null);
-    setAnswer('');
-    try {
-      const res = await apiFetch('/api/ai/research', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ question: q, context: meetingContext || '' })
-      });
-      if (!res.ok) {
-        const err = await res.json().catch(() => ({}));
-        throw new Error(err.error || 'Research request failed');
-      }
-      const data = await res.json();
-      setAnswer(data.answer || 'No response received.');
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(answer).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    });
-  };
-
-  return (
-    <div className="action-item-block">
-      <div className="action-item-row">
-        <span className="action-item-text">{actionItem}</span>
-        <button
-          className="btn btn-sm btn-primary"
-          onClick={() => {
-            if (!expanded) {
-              setExpanded(true);
-              if (!answer) handleAsk(actionItem);
-            } else {
-              setExpanded(!expanded);
-            }
-          }}
-        >
-          {expanded ? 'Hide' : 'Ask Claude'}
-        </button>
-      </div>
-      {expanded && (
-        <div className="ai-research-panel">
-          <div className="ai-research-input">
-            <input
-              type="text"
-              placeholder="Ask a follow-up or refine the question..."
-              value={question}
-              onChange={e => setQuestion(e.target.value)}
-              onKeyDown={e => { if (e.key === 'Enter' && question.trim()) handleAsk(); }}
-            />
-            <button className="btn btn-primary btn-sm" onClick={() => handleAsk()} disabled={loading || !question.trim()}>
-              {loading ? 'Researching...' : 'Ask'}
-            </button>
-          </div>
-          {loading && <div className="ai-research-loading"><div className="spinner" /><span>Claude is researching this...</span></div>}
-          {error && <div className="ai-research-error">{error}</div>}
-          {answer && !loading && (
-            <div className="ai-research-answer">
-              <div className="ai-answer-header">
-                <span>Claude's Research</span>
-                <button className={`btn btn-sm ${copied ? 'btn-success' : 'btn-secondary'}`} onClick={handleCopy}>
-                  {copied ? 'Copied!' : 'Copy to Clipboard'}
-                </button>
-              </div>
-              <div className="ai-answer-body">{answer}</div>
-            </div>
-          )}
-        </div>
-      )}
-    </div>
-  );
-}
-
-function MeetingCard({ meeting, monthLabel, apiFetch }) {
+function MeetingCard({ meeting, monthLabel }) {
   if (!meeting) {
     return (
       <div className="meeting-card upcoming">
@@ -343,12 +266,6 @@ function MeetingCard({ meeting, monthLabel, apiFetch }) {
       </div>
     );
   }
-
-  const meetingContext = [
-    `Meeting: ${meeting.date} - ${meeting.type}`,
-    meeting.summary,
-    ...(meeting.detailedNotes || []).map(n => `${n.title}: ${n.items.join('; ')}`)
-  ].join('\n');
 
   return (
     <div className={`meeting-card ${meeting.status}`}>
@@ -384,9 +301,9 @@ function MeetingCard({ meeting, monthLabel, apiFetch }) {
         <details className="meeting-expandable" open>
           <summary>Decisions &amp; Action Items</summary>
           <div className="expandable-content">
-            {meeting.decisions.map((d, i) => (
-              <ActionItemAI key={i} actionItem={d} meetingContext={meetingContext} apiFetch={apiFetch} />
-            ))}
+            <ul>{meeting.decisions.map((d, i) => (
+              <li key={i}>{d}</li>
+            ))}</ul>
           </div>
         </details>
       )}
@@ -793,11 +710,11 @@ export default function Meetings() {
           </div>
           {/* Show all meetings with data (newest first) */}
           {[...allMeetings].reverse().map(m => (
-            <MeetingCard key={m.id} meeting={m} monthLabel={m.date?.split(',')[0]?.replace(/\s+\d+/, '') || m.monthKey} apiFetch={apiFetch} />
+            <MeetingCard key={m.id} meeting={m} monthLabel={m.date?.split(',')[0]?.replace(/\s+\d+/, '') || m.monthKey} />
           ))}
           {/* Show future months without meetings as placeholders (skip Jan, Feb, and months with meetings) */}
           {months2026.slice(3).filter(m => !m.data).map((m, i) => (
-            <MeetingCard key={`future-${i}`} meeting={null} monthLabel={m.label} apiFetch={apiFetch} />
+            <MeetingCard key={`future-${i}`} meeting={null} monthLabel={m.label} />
           ))}
         </div>
       )}
