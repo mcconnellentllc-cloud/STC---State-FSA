@@ -45,18 +45,102 @@ ATTENDEES (STC Members):
 
 OTERO/CROWLEY COC MEMBERS RECEIVING ADMINISTRATIVE LEAVE LETTERS:
 (from files uploaded 3/15/2026)
-1. Alish___  — FILE IS 0 KB / APPEARS EMPTY OR CORRUPTED - flag to Jerry Sonnenberg
-2. Andr___   — Letter ready (48 KB)
-3. Charl___  — Letter ready (48 KB)
-4. Dou___    — Letter ready (48 KB)
-5. Zach___   — Letter ready (48 KB)
+1. Alisha Knapp — FILE IS 0 KB / APPEARS EMPTY OR CORRUPTED - flag to Jerry Sonnenberg
+2. Andrew Walter Jr — Letter ready (47.4 KB)
+3. Charles Hanagan — Letter ready (47.4 KB)
+4. Doug Tecklenburg — Letter ready (47.5 KB)
+5. Zachary Mason — Letter ready (47.4 KB)
 
-ACTION: Confirm full names with Jerry Sonnenberg or Steve Niemann. Verify the Alish___ file is not corrupted before Monday.
+ACTION: Verify the Alisha Knapp file is not corrupted before Monday. Contact Jerry Sonnenberg or Steve Niemann if a replacement file is needed.
 
-BACKGROUND — WHAT IS ADMINISTRATIVE LEAVE FOR COC MEMBERS?
-Under 7 CFR Part 7, FSA County Committee members can be placed on administrative leave (effectively suspended from duties) pending investigation or resolution of issues related to performance, misconduct, or impediment to program effectiveness. The STC has authority over COC personnel actions in their state. Administrative leave is not termination — it is a temporary removal from duties while matters are resolved. Members placed on leave retain appeal rights.
+STC AUTHORITY — 7 CFR PART 7 (POLICY COMPLIANCE ENFORCEMENT):
+Removal of a county committee is a standard practice when committees do not follow policy. The STC has the authority under 7 CFR Part 7 to place members on administrative leave and proceed with removal.
+
+§ 7.28(a) — "Adverse personnel actions involving any county committee member or alternate member, county executive director, or other county office employee will be taken for failing to perform the duties of their office, impeding the effectiveness of any program administered in the county, violating official instructions, or for misconduct."
+
+§ 7.28(b) — "Any person whom FSA proposes to suspend or remove from office or employment must be given advance written notice of the reason for such action and must be advised of the right to reply to such a proposal and any right of further review and appeal if the person is removed or suspended."
+
+§ 7.1(d) — "No provision or delegation to a State or county committee will preclude the FSA Administrator, or designee, from determining any question arising under this part, or from reversing or modifying any determination made by a State or county committee."
+
+Administrative leave is NOT termination — it is a temporary removal from duties while matters are resolved. Removal is the expected next step if policy violations are confirmed.
+
+VACANCY & REPLACEMENT POLICY — 7 CFR § 7.14:
+When COC members are removed, their positions become vacancies filled under § 7.14:
+1. Elected alternates fill vacancies automatically and assume the remainder of the unexpired term.
+2. If no alternate is available, a special election may be held.
+3. If no alternate is available, the State committee may designate a person to serve out the balance of the term.
+
+§ 7.11 — "Alternates will serve, in the order of the number of votes received, as acting members of the county committee in case of the temporary absence of a member, or to become a member of the county committee in that same order elected in case of the resignation, disqualification, removal, or death of a member."
+
+DISQUALIFICATION FROM FUTURE SERVICE — 7 CFR § 7.18:
+Members removed for cause are disqualified from running for or holding COC office again. Under § 7.18, a person is ineligible if they have been "removed as a county committee member, alternate to any county office, or as an employee for: failure to perform the duties of the office; committing, attempting, or conspiring to commit fraud; incompetence; impeding the effectiveness of any program administered in the county; refusal to carry out or failure to comply with the Department's policy relating to equal opportunity and civil rights; or for violation of official instructions."
+
+This disqualification may only be waived by the State committee or the Deputy Administrator.
 
 NOTE: Letters should already be on appropriate letterhead. If edits are needed, contact Steve Niemann before issuing. This is a confidential personnel/employee relations matter.`,
+  },
+  {
+    id: 'douglas-factors',
+    pinned: false,
+    date: '2026-03-16',
+    title: 'Douglas Factors — Framework for Federal Disciplinary Penalty Determination',
+    location: 'Reference / Legal',
+    tags: 'douglas-factors, discipline, penalty, MSPB, employee-relations, COC, otero-crowley',
+    source: 'Douglas v. Veterans Administration, 5 MSPR 280 (MSPB 1981)',
+    content: `THE DOUGLAS FACTORS — BRIEF SUMMARY
+
+The Douglas Factors are 12 criteria established by the Merit Systems Protection Board (MSPB) in Douglas v. Veterans Administration, 5 MSPR 280 (1981). Federal agencies must consider these factors when determining the appropriate penalty for employee misconduct or performance issues. They apply to adverse actions against federal employees, including removal, suspension, and demotion.
+
+RELEVANCE TO OTERO/CROWLEY COC ACTION:
+While COC members are elected officials (not traditional federal employees), the Douglas Factors provide the accepted federal framework for evaluating whether a proposed penalty is reasonable and consistent. Employee Relations (Steve Niemann, FPAC-FBC) would reference these factors when recommending adverse action under 7 CFR § 7.28.
+
+THE 12 DOUGLAS FACTORS:
+
+1. NATURE AND SERIOUSNESS OF THE OFFENSE
+   How serious is the misconduct? Does it relate to the employee's duties, position, or the agency's mission? The more directly the offense undermines the agency's mission, the more serious.
+
+2. EMPLOYEE'S JOB LEVEL AND TYPE OF EMPLOYMENT
+   Employees in positions of trust or authority are held to a higher standard. COC members carry fiduciary and programmatic responsibilities for FSA program administration.
+
+3. PAST DISCIPLINARY RECORD
+   Prior offenses, warnings, or corrective actions. A pattern of misconduct supports a more severe penalty; a clean record may mitigate.
+
+4. PAST WORK RECORD (LENGTH OF SERVICE)
+   Overall performance history and years of service. Long, satisfactory service can be a mitigating factor.
+
+5. EFFECT ON THE EMPLOYEE'S ABILITY TO PERFORM
+   Does the misconduct impair the employee's ability to carry out their duties? If trust is broken or the working relationship is damaged, this weighs toward removal.
+
+6. CONSISTENCY OF THE PENALTY
+   Is the proposed penalty consistent with how similar offenses have been handled for other employees in the agency? Disparate treatment can be grounds for reversal.
+
+7. CONSISTENCY WITH THE TABLE OF PENALTIES
+   Does the penalty align with the agency's published table of penalties or guidelines? Agencies typically have internal guidance on standard ranges.
+
+8. NOTORIETY OF THE OFFENSE / IMPACT ON AGENCY REPUTATION
+   Did the misconduct become known to the public or other employees? Offenses that embarrass the agency or undermine public confidence weigh toward stricter penalties.
+
+9. CLARITY OF NOTICE
+   Was the employee clearly on notice that the conduct was wrong? Were rules, policies, and expectations communicated? Lack of notice can mitigate.
+
+10. POTENTIAL FOR REHABILITATION
+    Is there reason to believe the employee will correct the behavior? Willingness to accept responsibility and change is mitigating; denial or repeated offenses are aggravating.
+
+11. MITIGATING CIRCUMSTANCES
+    Any other factors that argue for a lesser penalty — personal hardship, unusual stress, provocation, management contributing to the problem, etc.
+
+12. ADEQUACY AND EFFECTIVENESS OF ALTERNATIVE SANCTIONS
+    Could a lesser penalty (reprimand, short suspension, reassignment) adequately address the problem? Removal should not be the default if a lesser action would be effective.
+
+KEY PRINCIPLES:
+- The agency bears the burden of showing the penalty is reasonable.
+- Not all factors will be relevant in every case.
+- The penalty must "promote the efficiency of the service."
+- The MSPB can mitigate (reduce) a penalty if the agency fails to properly weigh these factors.
+- Employees have the right to respond to proposed actions and raise Douglas Factors in their defense (consistent with 7 CFR § 7.28(b) due process requirements).
+
+PRACTICAL APPLICATION FOR STC:
+When reviewing the Otero/Crowley COC administrative leave letters, the STC should be aware that these factors inform the Employee Relations recommendation. If a COC member challenges the action, the MSPB or reviewing authority will evaluate whether the Douglas Factors were properly considered.`,
   },
   {
     id: 'personal-fire-story',

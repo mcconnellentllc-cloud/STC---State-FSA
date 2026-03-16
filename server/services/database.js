@@ -123,6 +123,24 @@ async function runSchema() {
   } catch (err) {
     // Ignore if column already exists
   }
+
+  // One-time cleanup: remove duplicate expenses and mark all as approved
+  await deduplicateAndApproveExpenses();
+}
+
+async function deduplicateAndApproveExpenses() {
+  // Remove duplicate expenses (keep the one with the lowest id for each unique combo)
+  await pool.query(`
+    DELETE FROM expenses
+    WHERE id NOT IN (
+      SELECT MIN(id)
+      FROM expenses
+      GROUP BY date, vendor, amount, category, description
+    )
+  `);
+
+  // Mark all remaining expenses as approved (nothing is pending)
+  await pool.query(`UPDATE expenses SET status = 'approved' WHERE status = 'pending'`);
 }
 
 export function getPool() {
