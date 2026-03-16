@@ -237,99 +237,7 @@ function getCalendarDays(year, month) {
   return days;
 }
 
-/* ── AI Research Widget for Action Items ─────────────────────── */
-function ActionItemAI({ actionItem, meetingContext, apiFetch }) {
-  const [expanded, setExpanded] = useState(false);
-  const [question, setQuestion] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [answer, setAnswer] = useState('');
-  const [error, setError] = useState(null);
-  const [copied, setCopied] = useState(false);
-
-  const handleAsk = async (customQ) => {
-    const q = customQ || question || actionItem;
-    if (!q.trim()) return;
-    setLoading(true);
-    setError(null);
-    setAnswer('');
-    try {
-      const res = await apiFetch('/api/ai/research', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ question: q, context: meetingContext || '' })
-      });
-      if (!res.ok) {
-        const err = await res.json().catch(() => ({}));
-        throw new Error(err.error || 'Research request failed');
-      }
-      const data = await res.json();
-      setAnswer(data.answer || 'No response received.');
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(answer).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    });
-  };
-
-  return (
-    <div className="action-item-block">
-      <div className="action-item-row">
-        <span className="action-item-text">{actionItem}</span>
-        <button
-          className="btn btn-sm btn-primary"
-          onClick={() => {
-            if (!expanded) {
-              setExpanded(true);
-              if (!answer) handleAsk(actionItem);
-            } else {
-              setExpanded(!expanded);
-            }
-          }}
-        >
-          {expanded ? 'Hide' : 'Ask Claude'}
-        </button>
-      </div>
-      {expanded && (
-        <div className="ai-research-panel">
-          <div className="ai-research-input">
-            <input
-              type="text"
-              placeholder="Ask a follow-up or refine the question..."
-              value={question}
-              onChange={e => setQuestion(e.target.value)}
-              onKeyDown={e => { if (e.key === 'Enter' && question.trim()) handleAsk(); }}
-            />
-            <button className="btn btn-primary btn-sm" onClick={() => handleAsk()} disabled={loading || !question.trim()}>
-              {loading ? 'Researching...' : 'Ask'}
-            </button>
-          </div>
-          {loading && <div className="ai-research-loading"><div className="spinner" /><span>Claude is researching this...</span></div>}
-          {error && <div className="ai-research-error">{error}</div>}
-          {answer && !loading && (
-            <div className="ai-research-answer">
-              <div className="ai-answer-header">
-                <span>Claude's Research</span>
-                <button className={`btn btn-sm ${copied ? 'btn-success' : 'btn-secondary'}`} onClick={handleCopy}>
-                  {copied ? 'Copied!' : 'Copy to Clipboard'}
-                </button>
-              </div>
-              <div className="ai-answer-body">{answer}</div>
-            </div>
-          )}
-        </div>
-      )}
-    </div>
-  );
-}
-
-function MeetingCard({ meeting, monthLabel, apiFetch }) {
+function MeetingCard({ meeting, monthLabel }) {
   if (!meeting) {
     return (
       <div className="meeting-card upcoming">
@@ -343,12 +251,6 @@ function MeetingCard({ meeting, monthLabel, apiFetch }) {
       </div>
     );
   }
-
-  const meetingContext = [
-    `Meeting: ${meeting.date} - ${meeting.type}`,
-    meeting.summary,
-    ...(meeting.detailedNotes || []).map(n => `${n.title}: ${n.items.join('; ')}`)
-  ].join('\n');
 
   return (
     <div className={`meeting-card ${meeting.status}`}>
@@ -384,9 +286,9 @@ function MeetingCard({ meeting, monthLabel, apiFetch }) {
         <details className="meeting-expandable" open>
           <summary>Decisions &amp; Action Items</summary>
           <div className="expandable-content">
-            {meeting.decisions.map((d, i) => (
-              <ActionItemAI key={i} actionItem={d} meetingContext={meetingContext} apiFetch={apiFetch} />
-            ))}
+            <ul>{meeting.decisions.map((d, i) => (
+              <li key={i}>{d}</li>
+            ))}</ul>
           </div>
         </details>
       )}
@@ -793,11 +695,11 @@ export default function Meetings() {
           </div>
           {/* Show all meetings with data (newest first) */}
           {[...allMeetings].reverse().map(m => (
-            <MeetingCard key={m.id} meeting={m} monthLabel={m.date?.split(',')[0]?.replace(/\s+\d+/, '') || m.monthKey} apiFetch={apiFetch} />
+            <MeetingCard key={m.id} meeting={m} monthLabel={m.date?.split(',')[0]?.replace(/\s+\d+/, '') || m.monthKey} />
           ))}
           {/* Show future months without meetings as placeholders (skip Jan, Feb, and months with meetings) */}
           {months2026.slice(3).filter(m => !m.data).map((m, i) => (
-            <MeetingCard key={`future-${i}`} meeting={null} monthLabel={m.label} apiFetch={apiFetch} />
+            <MeetingCard key={`future-${i}`} meeting={null} monthLabel={m.label} />
           ))}
         </div>
       )}
