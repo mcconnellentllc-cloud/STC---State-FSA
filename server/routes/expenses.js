@@ -85,12 +85,21 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// POST /api/expenses — create
+// POST /api/expenses — create (with duplicate prevention)
 router.post('/', async (req, res) => {
   try {
     const { date, vendor, amount, category, description, document_id, entry_id, status } = req.body;
     if (!date || amount === undefined) {
       return res.status(400).json({ error: 'Date and amount are required' });
+    }
+
+    // Check for duplicate: same date, vendor, amount, and category
+    const existing = await get(
+      `SELECT * FROM expenses WHERE date = ? AND vendor = ? AND amount = ? AND category = ?`,
+      [date, vendor || null, amount, category || null]
+    );
+    if (existing) {
+      return res.status(200).json(existing); // Return existing instead of creating duplicate
     }
 
     const result = await run(
@@ -145,6 +154,33 @@ router.delete('/:id', async (req, res) => {
 
     await run('DELETE FROM expenses WHERE id = ?', [req.params.id]);
     res.json({ message: 'Expense deleted' });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// POST /api/expenses/deduplicate — remove duplicate rows, keeping the oldest
+router.post('/deduplicate', async (req, res) => {
+  try {
+    const dupes = await all(
+      `SELECT GROUP_CONCAT(id) as ids, date, vendor, amount, category, COUNT(*) as cnt
+       FROM expenses
+       GROUP BY date, vendor, amount, category
+       HAVING cnt > 1`
+    );
+
+    let removed = 0;
+    for (const row of dupes) {
+      const ids = row.ids.split(',').map(Number);
+      const keep = Math.min(...ids); // keep the oldest (lowest id)
+      const toDelete = ids.filter(id => id !== keep);
+      for (const id of toDelete) {
+        await run('DELETE FROM expenses WHERE id = ?', [id]);
+        removed++;
+      }
+    }
+
+    res.json({ removed, duplicateGroups: dupes.length });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
