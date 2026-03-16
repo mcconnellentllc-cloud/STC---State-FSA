@@ -284,6 +284,14 @@ export default function Expenses() {
       <div className="page-header">
         <h2>Expenses</h2>
         <div style={{ display: 'flex', gap: 8 }}>
+          <button className="btn btn-secondary" onClick={async () => {
+            const res = await apiFetch('/api/expenses/deduplicate', { method: 'POST' });
+            if (res.ok) {
+              const data = await res.json();
+              alert(`Removed ${data.removed} duplicate(s)`);
+              fetchExpenses();
+            }
+          }}>Remove Duplicates</button>
           <button className="btn btn-secondary" onClick={() => handleExport('xlsx')}>Export XLSX</button>
           <button className="btn btn-secondary" onClick={() => handleExport('pdf')}>Export PDF</button>
           <button className="btn btn-primary" onClick={() => setShowForm(!showForm)}>
