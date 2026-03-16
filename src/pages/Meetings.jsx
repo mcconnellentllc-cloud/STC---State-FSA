@@ -28,8 +28,11 @@ const TYPE_COLORS = {
 };
 
 // Pre-populated meeting data (kept as reference notes)
-const meetingsData = {
-  '2026-02': {
+// Array of all meetings — supports multiple meetings per month
+const allMeetings = [
+  {
+    monthKey: '2026-02',
+    id: '2026-02-10',
     date: 'February 10, 2026',
     time: '9:00 AM MST',
     location: 'Federal Building 56, Denver, CO',
@@ -105,7 +108,9 @@ const meetingsData = {
       { label: 'Fence Post \u2014 Sonnenberg article', url: 'https://www.thefencepost.com/news/sonnenberg-tapped-to-lead-fsa/' },
     ],
   },
-  '2026-03': {
+  {
+    monthKey: '2026-03',
+    id: '2026-03-17',
     date: 'March 17, 2026',
     time: '2:00 PM MST',
     location: 'Virtual / TBD',
@@ -175,7 +180,27 @@ const meetingsData = {
       { label: 'FSA CRS Report on Committees', url: 'https://www.congress.gov/crs-product/R40179' },
     ],
   },
-};
+  {
+    monthKey: '2026-03',
+    id: '2026-03-24',
+    date: 'March 24, 2026',
+    time: 'TBD',
+    location: 'TBD',
+    type: 'STC Meeting',
+    status: 'upcoming',
+    calDay: 24,
+    summary: 'STC meeting scheduled for March 24, 2026. Agenda and details to be confirmed.',
+    detailedNotes: [],
+    decisions: [],
+    researchLinks: [],
+  },
+];
+
+// Build lookup: monthKey -> first meeting (for calendar highlighting)
+const meetingsData = {};
+allMeetings.forEach(m => {
+  if (!meetingsData[m.monthKey]) meetingsData[m.monthKey] = m;
+});
 
 function getCalendarDays(year, month) {
   const firstDay = new Date(year, month, 1).getDay();
@@ -448,7 +473,8 @@ export default function Meetings() {
   const calDays = getCalendarDays(calYear, calMonth);
   const monthKey = `${calYear}-${String(calMonth + 1).padStart(2, '0')}`;
   const currentMeeting = meetingsData[monthKey];
-  const meetingDay = currentMeeting?.calDay;
+  const monthMeetings = allMeetings.filter(m => m.monthKey === monthKey);
+  const meetingDays = monthMeetings.map(m => m.calDay);
 
   // Fetch calendar notices
   const fetchNotices = useCallback(async () => {
@@ -609,7 +635,7 @@ export default function Meetings() {
               {calDays.map((day, i) => {
                 if (day === null) return <div key={`e${i}`} className="cal-day empty" />;
                 const isToday = calYear === today.getFullYear() && calMonth === today.getMonth() && day === today.getDate();
-                const isMeeting = day === meetingDay;
+                const isMeeting = meetingDays.includes(day);
                 const dayNotices = getNoticesForDay(day);
                 const hasNotice = dayNotices.length > 0;
                 const isSelected = selectedDay === day;
@@ -739,10 +765,13 @@ export default function Meetings() {
           <div className="card-header" style={{ marginBottom: 16 }}>
             <span className="card-title" style={{ fontSize: '1.15rem' }}>2026 STC Meetings</span>
           </div>
-          <MeetingCard meeting={months2026[1].data} monthLabel="February" apiFetch={apiFetch} />
-          <MeetingCard meeting={months2026[0].data} monthLabel="January" apiFetch={apiFetch} />
-          {months2026.slice(2).map((m, i) => (
-            <MeetingCard key={i + 2} meeting={m.data} monthLabel={m.label} apiFetch={apiFetch} />
+          {/* Show all meetings with data (newest first) */}
+          {[...allMeetings].reverse().map(m => (
+            <MeetingCard key={m.id} meeting={m} monthLabel={m.date?.split(',')[0]?.replace(/\s+\d+/, '') || m.monthKey} apiFetch={apiFetch} />
+          ))}
+          {/* Show future months without meetings as placeholders (skip Jan, Feb, and months with meetings) */}
+          {months2026.slice(3).filter(m => !m.data).map((m, i) => (
+            <MeetingCard key={`future-${i}`} meeting={null} monthLabel={m.label} apiFetch={apiFetch} />
           ))}
         </div>
       )}
