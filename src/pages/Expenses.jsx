@@ -79,8 +79,8 @@ const MEETING_LEDGER = [
         category: 'Lodging',
         icon: '\u{1F3E8}',
         lines: [
-          { action: 'Hotel paid (out-of-pocket)', detail: 'Kyle paid — Denver hotel, 1 night',  amount: -165.00, type: 'paid',    date: '2026-02-09', status: 'confirmed' },
-          { action: 'Hotel reimbursed',            detail: 'Included in Federal Travel Payment', amount: 165.00,  type: 'deposit', date: '2026-03-02', status: 'confirmed' },
+          { action: 'Hotel paid (out-of-pocket)', detail: 'Kyle paid — Denver hotel, 1 night ($102.46 room + $10.75 taxes)',  amount: -113.21, type: 'paid',    date: '2026-02-09', status: 'confirmed' },
+          { action: 'Hotel reimbursed (GSA rate)', detail: 'Included in Federal Travel Payment — GSA flat rate $165.00',       amount: 165.00,  type: 'deposit', date: '2026-03-02', status: 'confirmed' },
         ],
       },
       {
@@ -95,17 +95,21 @@ const MEETING_LEDGER = [
         category: 'Per Diem (M&IE)',
         icon: '\u{1F37D}\u{FE0F}',
         lines: [
-          { action: 'M&IE claimed',        detail: 'Denver rate $92/day, 75% partial = $69.00', amount: 0,     type: 'info',    date: '2026-02-10', status: 'confirmed' },
+          { action: 'M&IE claimed',        detail: 'Denver rate $92/day, 75% first/last = $69.00 (received $68.81 — $0.19 short)', amount: 0,     type: 'info',    date: '2026-02-10', status: 'confirmed' },
           { action: 'Per diem reimbursed',  detail: 'Included in Federal Travel Payment',        amount: 68.81, type: 'deposit', date: '2026-03-02', status: 'confirmed' },
         ],
       },
     ],
     totals: {
-      outOfPocket: 258.10 + 165.00,  // mileage + hotel
+      outOfPocket: 258.10 + 113.21,  // mileage + actual hotel ($102.46 room + $10.75 taxes)
       grossComp: 1075.04,
       totalDeposited: 833.75 + 491.91,
       netAfterAll: 833.75 + 491.91,  // salary net + travel (travel is tax-free reimbursement)
     },
+    deposits: [
+      { label: 'FED SAL (AGRI TREAS 310)', date: '2026-03-02', amount: 833.75 },
+      { label: 'FED TVL (USDA TREAS 310)', date: '2026-03-02', amount: 491.91 },
+    ],
   },
 ];
 
