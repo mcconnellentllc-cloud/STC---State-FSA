@@ -126,6 +126,9 @@ async function runSchema() {
 
   // One-time cleanup: remove duplicate expenses and mark all as approved
   await deduplicateAndApproveExpenses();
+
+  // Correct Feb 2026 meeting expenses to match actual ledger
+  await correctFeb2026Expenses();
 }
 
 async function deduplicateAndApproveExpenses() {
@@ -141,6 +144,48 @@ async function deduplicateAndApproveExpenses() {
 
   // Mark all remaining expenses as approved (nothing is pending)
   await pool.query(`UPDATE expenses SET status = 'approved' WHERE status = 'pending'`);
+}
+
+async function correctFeb2026Expenses() {
+  // Fix mileage: one-way (170 mi / $123.25) → roundtrip (356 mi / $258.10)
+  await pool.query(`
+    UPDATE expenses
+    SET amount = 258.10,
+        description = '356 mi roundtrip @ $0.725/mi — Haxtun ↔ Denver'
+    WHERE vendor = 'Mileage Reimbursement'
+      AND category = 'mileage'
+      AND date = '2026-02-09'
+      AND amount < 200
+  `);
+
+  // Add 7.5h meeting day hours if missing
+  const meetingHours = await pool.query(`
+    SELECT id FROM expenses
+    WHERE vendor = 'STC Compensation' AND category = 'hours'
+      AND date = '2026-02-10'
+      AND description ILIKE '%meeting day%'
+  `);
+  if (meetingHours.rows.length === 0) {
+    await pool.query(`
+      INSERT INTO expenses (date, vendor, amount, category, description, status)
+      VALUES ('2026-02-10', 'STC Compensation', 503.93, 'hours',
+              '7.5h @ $67.19/hr (GS-14 Step 1 (Member), Denver) — Meeting Day', 'approved')
+    `);
+  }
+
+  // Add per diem if missing
+  const perDiem = await pool.query(`
+    SELECT id FROM expenses
+    WHERE category = 'per-diem'
+      AND date = '2026-02-10'
+  `);
+  if (perDiem.rows.length === 0) {
+    await pool.query(`
+      INSERT INTO expenses (date, vendor, amount, category, description, status)
+      VALUES ('2026-02-10', 'Per Diem (M&IE)', 68.81, 'per-diem',
+              'Denver rate $92/day, 75% partial = $69.00 — adjusted to $68.81', 'approved')
+    `);
+  }
 }
 
 export function getPool() {

@@ -21,6 +21,7 @@ const GS_RATES = {
 
 /* ── Actual withholding rate from Feb 2026 pay ─────────────────── */
 // Feb: 16 hrs × $67.19 = $1,075.04 gross → $833.75 net = 22.4% withheld
+// Breakdown: 6h prework + 2.5h drive + 7.5h meeting = 16h
 const ACTUAL_WITHHOLDING_RATE = 0.2244;   // FICA 7.65% + fed ~10.4% + CO 4.4%
 
 // Net hourly rates (what you actually take home per hour)
@@ -69,7 +70,7 @@ const MEETING_LEDGER = [
         category: 'Compensation',
         icon: '\u{1F4B0}',
         lines: [
-          { action: 'Hours logged',      detail: '16 hrs @ $67.19/hr (GS-14 Step 1, Denver)',  amount: 1075.04, type: 'gross',   date: '2026-02-10', status: 'confirmed' },
+          { action: 'Hours logged',      detail: '16 hrs @ $67.19/hr (GS-14 Step 1, Denver) — 6h prework + 2.5h drive + 7.5h meeting',  amount: 1075.04, type: 'gross',   date: '2026-02-10', status: 'confirmed' },
           { action: 'Withholdings',       detail: 'FICA 7.65% + Fed ~10.4% + CO 4.4%',         amount: -241.29, type: 'deduct',  date: '2026-03-02', status: 'confirmed' },
           { action: 'Net salary deposit', detail: 'FED SAL (AGRI TREAS 310)',                   amount: 833.75,  type: 'deposit', date: '2026-03-02', status: 'confirmed' },
         ],
@@ -78,8 +79,8 @@ const MEETING_LEDGER = [
         category: 'Lodging',
         icon: '\u{1F3E8}',
         lines: [
-          { action: 'Hotel paid (out-of-pocket)', detail: 'Kyle paid — Denver hotel, 1 night',  amount: -165.00, type: 'paid',    date: '2026-02-09', status: 'confirmed' },
-          { action: 'Hotel reimbursed',            detail: 'Included in Federal Travel Payment', amount: 165.00,  type: 'deposit', date: '2026-03-02', status: 'confirmed' },
+          { action: 'Hotel paid (out-of-pocket)', detail: 'Kyle paid — Denver hotel, 1 night ($102.46 room + $10.75 taxes)',  amount: -113.21, type: 'paid',    date: '2026-02-09', status: 'confirmed' },
+          { action: 'Hotel reimbursed (GSA rate)', detail: 'Included in Federal Travel Payment — GSA flat rate $165.00',       amount: 165.00,  type: 'deposit', date: '2026-03-02', status: 'confirmed' },
         ],
       },
       {
@@ -94,17 +95,21 @@ const MEETING_LEDGER = [
         category: 'Per Diem (M&IE)',
         icon: '\u{1F37D}\u{FE0F}',
         lines: [
-          { action: 'M&IE claimed',        detail: 'Denver rate $92/day, 75% partial = $69.00', amount: 0,     type: 'info',    date: '2026-02-10', status: 'confirmed' },
+          { action: 'M&IE claimed',        detail: 'Denver rate $92/day, 75% first/last = $69.00 (received $68.81 — $0.19 short)', amount: 0,     type: 'info',    date: '2026-02-10', status: 'confirmed' },
           { action: 'Per diem reimbursed',  detail: 'Included in Federal Travel Payment',        amount: 68.81, type: 'deposit', date: '2026-03-02', status: 'confirmed' },
         ],
       },
     ],
     totals: {
-      outOfPocket: 258.10 + 165.00,  // mileage + hotel
+      outOfPocket: 258.10 + 113.21,  // mileage + actual hotel ($102.46 room + $10.75 taxes)
       grossComp: 1075.04,
       totalDeposited: 833.75 + 491.91,
       netAfterAll: 833.75 + 491.91,  // salary net + travel (travel is tax-free reimbursement)
     },
+    deposits: [
+      { label: 'FED SAL (AGRI TREAS 310)', date: '2026-03-02', amount: 833.75 },
+      { label: 'FED TVL (USDA TREAS 310)', date: '2026-03-02', amount: 491.91 },
+    ],
   },
 ];
 
@@ -211,7 +216,7 @@ export default function Expenses() {
     }
   };
 
-  const categories = ['travel', 'mileage', 'meals', 'supplies', 'lodging', 'lodging-tax', 'fuel', 'parking', 'hours', 'other'];
+  const categories = ['travel', 'mileage', 'meals', 'supplies', 'lodging', 'lodging-tax', 'per-diem', 'fuel', 'parking', 'hours', 'other'];
 
   /* ── Save mileage trip as an expense ───────────────────────────── */
   const saveMileageExpense = async (trip) => {
