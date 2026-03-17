@@ -21,6 +21,7 @@ const GS_RATES = {
 
 /* ── Actual withholding rate from Feb 2026 pay ─────────────────── */
 // Feb: 16 hrs × $67.19 = $1,075.04 gross → $833.75 net = 22.4% withheld
+// Breakdown: 6h prework + 2.5h drive + 7.5h meeting = 16h
 const ACTUAL_WITHHOLDING_RATE = 0.2244;   // FICA 7.65% + fed ~10.4% + CO 4.4%
 
 // Net hourly rates (what you actually take home per hour)
@@ -69,7 +70,7 @@ const MEETING_LEDGER = [
         category: 'Compensation',
         icon: '\u{1F4B0}',
         lines: [
-          { action: 'Hours logged',      detail: '16 hrs @ $67.19/hr (GS-14 Step 1, Denver)',  amount: 1075.04, type: 'gross',   date: '2026-02-10', status: 'confirmed' },
+          { action: 'Hours logged',      detail: '16 hrs @ $67.19/hr (GS-14 Step 1, Denver) — 6h prework + 2.5h drive + 7.5h meeting',  amount: 1075.04, type: 'gross',   date: '2026-02-10', status: 'confirmed' },
           { action: 'Withholdings',       detail: 'FICA 7.65% + Fed ~10.4% + CO 4.4%',         amount: -241.29, type: 'deduct',  date: '2026-03-02', status: 'confirmed' },
           { action: 'Net salary deposit', detail: 'FED SAL (AGRI TREAS 310)',                   amount: 833.75,  type: 'deposit', date: '2026-03-02', status: 'confirmed' },
         ],
@@ -211,7 +212,7 @@ export default function Expenses() {
     }
   };
 
-  const categories = ['travel', 'mileage', 'meals', 'supplies', 'lodging', 'lodging-tax', 'fuel', 'parking', 'hours', 'other'];
+  const categories = ['travel', 'mileage', 'meals', 'supplies', 'lodging', 'lodging-tax', 'per-diem', 'fuel', 'parking', 'hours', 'other'];
 
   /* ── Save mileage trip as an expense ───────────────────────────── */
   const saveMileageExpense = async (trip) => {
