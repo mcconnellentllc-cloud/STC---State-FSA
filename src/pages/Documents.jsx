@@ -163,17 +163,6 @@ export default function Documents() {
     setPreviewDoc(null);
   };
 
-  const handleAutoTag = async (id) => {
-    try {
-      await apiFetch('/api/ai/categorize', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ document_id: id })
-      });
-      fetchDocs();
-    } catch (err) { console.error(err); }
-  };
-
   const [reprocessing, setReprocessing] = useState(null); // holds doc id being reprocessed
 
   const handleReprocess = async (id) => {
@@ -195,36 +184,6 @@ export default function Documents() {
       alert('Re-extract failed: ' + err.message);
     } finally {
       setReprocessing(null);
-    }
-  };
-
-  const handleExtractReceipt = async (id) => {
-    try {
-      const res = await apiFetch('/api/ai/extract-receipt', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ document_id: id })
-      });
-      const data = await res.json();
-      if (data.amount) {
-        const expRes = await apiFetch('/api/expenses', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            date: data.date || new Date().toISOString().split('T')[0],
-            vendor: data.vendor || '',
-            amount: data.amount,
-            category: data.category || 'other',
-            description: data.description || '',
-            document_id: id
-          })
-        });
-        if (expRes.ok) alert(`Expense created: $${data.amount} at ${data.vendor}`);
-      } else {
-        alert('Could not extract receipt data from this document.');
-      }
-    } catch {
-      alert('Receipt extraction failed.');
     }
   };
 
@@ -510,8 +469,6 @@ export default function Documents() {
                       <td>
                         <div style={{ display: 'flex', gap: 4 }}>
                           <button className="btn btn-sm btn-secondary" onClick={() => setPreviewDoc(doc)}>View</button>
-                          <button className="btn btn-sm btn-secondary" onClick={() => handleAutoTag(doc.id)}>Tag</button>
-                          <button className="btn btn-sm btn-secondary" onClick={() => handleExtractReceipt(doc.id)}>Receipt</button>
                           <button
                             className="btn btn-sm btn-secondary"
                             onClick={() => handleReprocess(doc.id)}

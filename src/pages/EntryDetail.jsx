@@ -10,8 +10,6 @@ export default function EntryDetail() {
   const [entry, setEntry] = useState(null);
   const [editing, setEditing] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [summary, setSummary] = useState('');
-  const [summarizing, setSummarizing] = useState(false);
 
   const fetchEntry = () => {
     setLoading(true);
@@ -42,35 +40,6 @@ export default function EntryDetail() {
     navigate('/journal');
   };
 
-  const handleSummarize = async () => {
-    setSummarizing(true);
-    try {
-      const res = await apiFetch('/api/ai/summarize', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ entry_id: parseInt(id) })
-      });
-      const data = await res.json();
-      setSummary(data.summary || 'No summary generated.');
-    } catch (err) {
-      setSummary('Error generating summary.');
-    }
-    setSummarizing(false);
-  };
-
-  const handleAutoTag = async () => {
-    try {
-      const res = await apiFetch('/api/ai/categorize', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ entry_id: parseInt(id) })
-      });
-      if (res.ok) fetchEntry();
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
   if (loading) return <div className="loading"><div className="spinner" /></div>;
   if (!entry) return <div className="empty-state"><h3>Entry not found</h3></div>;
 
@@ -84,10 +53,6 @@ export default function EntryDetail() {
           <h2>{entry.title}</h2>
         </div>
         <div style={{ display: 'flex', gap: 8 }}>
-          <button className="btn btn-sm btn-secondary" onClick={handleAutoTag}>Auto-Tag</button>
-          <button className="btn btn-sm btn-secondary" onClick={handleSummarize}>
-            {summarizing ? 'Summarizing...' : 'AI Summary'}
-          </button>
           <button className="btn btn-sm btn-secondary" onClick={() => setEditing(!editing)}>
             {editing ? 'Cancel' : 'Edit'}
           </button>
@@ -121,13 +86,6 @@ export default function EntryDetail() {
               {entry.content}
             </div>
           </div>
-
-          {summary && (
-            <div className="ai-section" style={{ marginBottom: 16 }}>
-              <h4 style={{ marginBottom: 8, color: 'var(--accent)' }}>AI Summary</h4>
-              <div className="ai-response">{summary}</div>
-            </div>
-          )}
 
           {entry.documents?.length > 0 && (
             <div className="card">
