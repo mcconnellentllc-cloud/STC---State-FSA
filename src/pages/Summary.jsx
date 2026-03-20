@@ -253,8 +253,8 @@ const AGENDA = [
         title: 'NAP — NCT Dates and Factors Data (Informational)',
         type: 'informational',
         time: '~5 min',
-        summary: 'Presenter: Janae Rader. NCT dates and factors data uploaded into Box for STC review per prior request. No action required.',
-        prep: 'Data is in Box — review before meeting if possible. This is background for the Executive Session NCT crop table action (E4c).',
+        summary: 'Presenter: Janae Rader. NCT dates and factors data uploaded into Box for STC review per prior request. Full dataset: 3,353 records across 64 counties and 73 crops. No action required.',
+        prep: 'Data is now loaded into this app (see NCT Reference section below). 73 crops include grazing (AUD), grain (BU/CWT), forage (TON), and specialty crops. This is background for the Executive Session NCT crop table action (E4c).',
       },
       {
         num: 'R8',
@@ -339,8 +339,8 @@ const AGENDA = [
         title: '2026 NCT Colorado — Crop Table Action (21 crops)',
         type: 'executive',
         time: '~25 min',
-        summary: 'Presenter: Janae Rader, Farm Program Specialist. STC to take action on 2026 NCT data for 21 crops: Beets (p.335), Broccoli (p.347), Cabbage (p.357), Cantaloupes (p.369), Carrots (p.389), Cauliflower (p.399), Corn (p.407), Crenshaw Melon (p.459), Cucumber (p.467), Eggplant (p.481), Flowers (p.489), Gourds (p.505), Greens (p.513), Herbs (p.539), Honeydew (p.553), Okra (p.567), Soybeans (p.575), Squash (p.589), Strawberries (p.615), Turnips (p.623), Watermelon (p.631).',
-        prep: 'Review each crop\'s NCT data at the referenced pages. Check for any yields that look out of line with prior years. This is the Executive Session counterpart to the Regular Session NAP NCT item — these 21 specialty crops require individual STC action.',
+        summary: 'Presenter: Janae Rader, Farm Program Specialist. STC to take action on 2026 NCT data for 21 crops (subset of 73 total crops across 64 counties, 3,353 records): Beets (p.335), Broccoli (p.347), Cabbage (p.357), Cantaloupes (p.369), Carrots (p.389), Cauliflower (p.399), Corn (p.407), Crenshaw Melon (p.459), Cucumber (p.467), Eggplant (p.481), Flowers (p.489), Gourds (p.505), Greens (p.513), Herbs (p.539), Honeydew (p.553), Okra (p.567), Soybeans (p.575), Squash (p.589), Strawberries (p.615), Turnips (p.623), Watermelon (p.631).',
+        prep: 'Review each crop\'s NCT data at the referenced pages. Full dataset loaded in NCT Reference section below. NOTE: No prior year data is in the source file — year-over-year comparison not possible from the spreadsheet alone. These 21 specialty crops are a subset of 73 total crops requiring individual STC action. Key data points per crop: NAP CEY (yield), market price, PP factor, UH factor, planting/harvest dates.',
       },
       {
         num: 'E5',
@@ -485,16 +485,16 @@ const VOTING_GUIDE = [
     title: 'E4c: 2026 NCT Colorado — 21 Crop Action Items',
     type: 'decision',
     motion: 'STC to approve 2026 NCT (Normally Counted Tons/Yields) data for 21 specialty crops across Colorado.',
-    background: 'Presenter: Janae Rader. 21 crops requiring individual action: Beets, Broccoli, Cabbage, Cantaloupes, Carrots, Cauliflower, Corn, Crenshaw Melon, Cucumber, Eggplant, Flowers, Gourds, Greens, Herbs, Honeydew, Okra, Soybeans, Squash, Strawberries, Turnips, Watermelon. Page refs range from 335–631. 25 minutes allocated.',
+    background: 'Presenter: Janae Rader. 21 specialty crops (subset of 73 total in the full 3,353-record NCT dataset) requiring individual STC action: Beets, Broccoli, Cabbage, Cantaloupes, Carrots, Cauliflower, Corn, Crenshaw Melon, Cucumber, Eggplant, Flowers, Gourds, Greens, Herbs, Honeydew, Okra, Soybeans, Squash, Strawberries, Turnips, Watermelon. Page refs 335–631. 25 minutes allocated. NOTE: Source file contains no prior year data for comparison.',
     pros: [
       'NCTs are prepared by staff using historical data — professional recommendation',
       'Timely approval needed for producers to have NAP coverage during growing season',
       'This item was informed by the E4b informational presentation on grazing periods and carrying capacity',
     ],
     cons: [
-      'With 21 crops to review, ensure none have dramatic year-over-year changes without explanation',
-      'Any errors in NCTs directly affect disaster payment calculations for producers',
-      'Review whether the Dec 2025 Honey/Alfalfa clerical error (from the county issues tracker) affects any of these specialty crops',
+      'With 21 crops to review, ensure none have dramatic year-over-year changes without explanation — NOTE: source file has no prior year data, so staff should provide verbal comparison',
+      'Any errors in NCTs directly affect disaster payment calculations for producers — key fields: NAP CEY, market price, PP factor, UH factor',
+      'Review whether the Dec 2025 Honey/Alfalfa clerical error (from the county issues tracker) affects any of these specialty crops — Honeydew (p.553) IS on this list',
     ],
     recommendation: 'Review the page references for each crop before meeting. Flag any yields that changed significantly from prior year. Approve in bulk if all look reasonable, or pull specific crops for individual discussion.',
   },
@@ -602,15 +602,18 @@ function daysUntil(dateStr) {
 export default function Summary() {
   const apiFetch = useApiFetch();
   const [issues, setIssues] = useState([]);
+  const [nctSummary, setNctSummary] = useState(null);
   const [loading, setLoading] = useState(true);
   const [expandedItems, setExpandedItems] = useState({});
 
   useEffect(() => {
-    apiFetch('/api/issues')
-      .then(r => r.ok ? r.json() : [])
-      .then(setIssues)
-      .catch(() => {})
-      .finally(() => setLoading(false));
+    Promise.all([
+      apiFetch('/api/issues').then(r => r.ok ? r.json() : []).catch(() => []),
+      apiFetch('/api/nct').then(r => r.ok ? r.json() : null).catch(() => null),
+    ]).then(([issuesData, nctData]) => {
+      setIssues(issuesData);
+      setNctSummary(nctData);
+    }).finally(() => setLoading(false));
   }, [apiFetch]);
 
   const openIssues = useMemo(() =>
@@ -1034,6 +1037,76 @@ export default function Summary() {
           );
         })}
       </div>
+
+      {/* ── NCT Data Reference ── */}
+      {nctSummary && (
+        <div className="card" style={{ marginBottom: 20, padding: 0, overflow: 'hidden' }}>
+          <div style={{
+            padding: '12px 20px', fontWeight: 700, fontSize: '0.9rem',
+            background: 'linear-gradient(135deg, #2c3e50 0%, #34495e 100%)',
+            color: '#fff', textTransform: 'uppercase', letterSpacing: '0.5px',
+          }}>
+            2026 NAP NCT Reference — All Crops, All Counties
+          </div>
+          <div style={{ padding: '10px 20px 4px', fontSize: '0.78rem', color: 'var(--text-muted)', borderBottom: '1px solid var(--border)' }}>
+            Source: {nctSummary.metadata?.sourceFile || 'NAP NCT Spreadsheet'} | As of: {nctSummary.metadata?.asOfDate || 'N/A'}
+          </div>
+
+          {/* Stats row */}
+          <div style={{ display: 'flex', gap: 8, padding: '14px 20px', flexWrap: 'wrap', borderBottom: '1px solid var(--border)' }}>
+            {[
+              { label: 'Counties', value: nctSummary.metadata?.totalCounties || nctSummary.summary?.countiesLoaded || 0, color: 'var(--accent)' },
+              { label: 'Crops', value: nctSummary.metadata?.totalCrops || nctSummary.summary?.cropsLoaded || 0, color: 'var(--success)' },
+              { label: 'Total Records', value: nctSummary.metadata?.totalRows || nctSummary.summary?.totalRecords || 0, color: 'var(--warning, #f0ad4e)' },
+              { label: 'Grazing', value: nctSummary.summary?.grazingRecords || '—', color: '#9b59b6' },
+              { label: 'Grain', value: nctSummary.summary?.grainRecords || '—', color: '#e67e22' },
+              { label: 'Other', value: nctSummary.summary?.otherRecords || '—', color: 'var(--text-muted)' },
+            ].map((s, i) => (
+              <div key={i} style={{
+                flex: '1 1 80px', padding: '8px 12px', borderRadius: 6,
+                background: 'var(--bg)', textAlign: 'center', minWidth: 80,
+              }}>
+                <div style={{ fontSize: '1.2rem', fontWeight: 800, color: s.color }}>{s.value}</div>
+                <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>{s.label}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Data notes */}
+          <div
+            style={{ padding: '10px 20px', cursor: 'pointer', fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-secondary)' }}
+            onClick={() => toggleItem('nct-notes')}
+          >
+            Data Notes & Field Mapping {expandedItems['nct-notes'] ? '\u25B2' : '\u25BC'}
+          </div>
+          {expandedItems['nct-notes'] && (
+            <div style={{ padding: '0 20px 14px' }}>
+              {nctSummary.metadata?.notes?.map((note, i) => (
+                <div key={i} style={{ fontSize: '0.82rem', lineHeight: 1.6, padding: '2px 0', display: 'flex', gap: 6 }}>
+                  <span style={{ color: 'var(--text-muted)', flexShrink: 0 }}>&bull;</span>
+                  <span>{note}</span>
+                </div>
+              ))}
+              <div style={{ marginTop: 8, padding: '8px 12px', background: 'var(--bg)', borderRadius: 6, fontSize: '0.8rem' }}>
+                <strong>Key Fields:</strong> county, crop, cropType, intendedUse (GZ/GR/FH), practice (I/N), unitOfMeasure, napCEY, marketPrice, ppFactor, uhFactor, animalAcres, grazingDays, finalPlantingDate, normalHarvestDate, applicationClosingDate, certifiedOrganicYieldFactor, transitionalYieldFactor
+              </div>
+            </div>
+          )}
+
+          {/* Meeting relevance callout */}
+          <div style={{
+            padding: '10px 20px 14px', borderTop: '1px solid var(--border)',
+          }}>
+            <div style={{
+              background: 'rgba(var(--warning-rgb, 240,173,78), 0.08)',
+              borderLeft: '3px solid var(--warning, #f0ad4e)',
+              borderRadius: '0 6px 6px 0', padding: '10px 14px', fontSize: '0.84rem', lineHeight: 1.6,
+            }}>
+              <strong>Meeting Context:</strong> NCT data is referenced in 3 agenda items: <strong>R7a</strong> (NAP grazing loss assessments), <strong>R7b</strong> (NCT dates/factors informational), and <strong>E4c</strong> (21-crop action items requiring STC approval). The 21 Executive Session crops are a subset of these 73 total crops. Check that no NCT values show unexplained year-over-year changes before approving.
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ── Session Documents ── */}
       <div className="card" style={{ marginBottom: 20, padding: 20 }}>
