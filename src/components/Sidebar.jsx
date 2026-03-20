@@ -4,6 +4,7 @@ import { useAuth } from '../auth/AuthContext';
 
 const mainLinks = [
   { to: '/', label: 'Dashboard', icon: '\u25A3' },
+  { to: '/summary', label: 'Summary of Events', icon: '\uD83D\uDCCB' },
   { to: '/meetings', label: 'Meetings', icon: '\uD83D\uDCC5' },
   { to: '/journal', label: 'Journal', icon: '\u270E' },
   { to: '/documents', label: 'Documents', icon: '\uD83D\uDCC4' },
@@ -13,7 +14,7 @@ const mainLinks = [
 
 const toolLinks = [
   { to: '/contacts', label: 'Committee & Contacts', icon: '\uD83D\uDC65' },
-  { to: '/ethics', label: 'Ethics & OGE 450', icon: '\uD83D\uDCDD' },
+  { to: '/ethics', label: 'Ethics & OGE 450', icon: '\uD83D\uDCDD', external: true },
   { to: '/search', label: 'Search', icon: '\uD83D\uDD0D' },
   { to: '/settings', label: 'Settings', icon: '\u2699' },
 ];
@@ -47,15 +48,26 @@ export default function Sidebar() {
           </NavLink>
         ))}
         <div className="sidebar-divider">Resources</div>
-        {toolLinks.map(({ to, label, icon }) => (
-          <NavLink
-            key={to}
-            to={to}
-            className={({ isActive }) => isActive ? 'active' : ''}
-          >
-            <span className="icon">{icon}</span>
-            <span>{label}</span>
-          </NavLink>
+        {toolLinks.map(({ to, label, icon, external }) => (
+          external ? (
+            <NavLink
+              key={to}
+              to={to}
+              className={({ isActive }) => isActive ? 'active' : ''}
+            >
+              <span className="icon">{icon}</span>
+              <span>{label}</span>
+            </NavLink>
+          ) : (
+            <NavLink
+              key={to}
+              to={to}
+              className={({ isActive }) => isActive ? 'active' : ''}
+            >
+              <span className="icon">{icon}</span>
+              <span>{label}</span>
+            </NavLink>
+          )
         ))}
       </nav>
       {user && (
