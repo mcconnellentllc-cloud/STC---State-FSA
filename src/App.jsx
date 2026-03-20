@@ -13,6 +13,7 @@ import Meetings from './pages/Meetings';
 import Contacts from './pages/Contacts';
 import Ethics from './pages/Ethics';
 import Issues from './pages/Issues';
+import Summary from './pages/Summary';
 
 function LoginScreen() {
   const { login, error } = useAuth();
@@ -66,6 +67,7 @@ export default function App() {
       <main className="main-content">
         <Routes>
           <Route path="/" element={<Dashboard />} />
+          <Route path="/summary" element={<Summary />} />
           <Route path="/meetings" element={<Meetings />} />
           <Route path="/journal" element={<Journal />} />
           <Route path="/journal/:id" element={<EntryDetail />} />
