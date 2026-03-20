@@ -8,6 +8,7 @@ const mainLinks = [
   { to: '/journal', label: 'Journal', icon: '\u270E' },
   { to: '/documents', label: 'Documents', icon: '\uD83D\uDCC4' },
   { to: '/expenses', label: 'Expenses', icon: '\uD83D\uDCB2' },
+  { to: '/issues', label: 'County Issues', icon: '\u26A0' },
 ];
 
 const toolLinks = [
