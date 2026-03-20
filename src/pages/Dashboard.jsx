@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 import { useApiFetch } from '../auth/apiFetch';
 
 /* ── Upcoming deadlines ────────────────────────────────────────── */
-const DEADLINES = [
-  { label: 'OGE 450 — Confidential Financial Disclosure', due: '2026-03-13', link: '/ethics' },
-];
+const DEADLINES = [];
 
 const quickLinks = [
   { label: 'FSA Colorado', url: 'https://www.fsa.usda.gov/state-offices/colorado', icon: '\uD83C\uDFDB' },
@@ -18,7 +16,7 @@ const quickLinks = [
   { label: 'FSA Fact Sheets', url: 'https://www.fsa.usda.gov/tools/informational/fact-sheets', icon: '\uD83D\uDCC4' },
   { label: 'FSA Handbooks', url: 'https://www.fsa.usda.gov/news-events/laws-regulations/fsa-handbooks', icon: '\uD83D\uDCD6' },
   { label: 'NRCS Colorado', url: 'https://www.nrcs.usda.gov/conservation-basics/conservation-by-state/colorado', icon: '\uD83C\uDF31' },
-  { label: 'USDA Box', url: 'https://usda.app.box.com', icon: '\uD83D\uDCC1' },
+  { label: 'USDA Box \u2014 300...!12', url: 'https://usda.app.box.com', icon: '\uD83D\uDCC1' },
 ];
 
 const committeeMembers = [
