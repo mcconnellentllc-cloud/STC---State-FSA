@@ -4,7 +4,7 @@ import { useApiFetch } from '../auth/apiFetch';
 
 export default function Search() {
   const [query, setQuery] = useState('');
-  const [result, setResult] = useState(null);
+  const [results, setResults] = useState(null);
   const [loading, setLoading] = useState(false);
   const apiFetch = useApiFetch();
 
@@ -12,18 +12,19 @@ export default function Search() {
     e.preventDefault();
     if (!query.trim()) return;
     setLoading(true);
-    setResult(null);
+    setResults(null);
 
     try {
-      const res = await apiFetch('/api/ai/search', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query })
-      });
-      const data = await res.json();
-      setResult(data);
+      const params = new URLSearchParams({ q: query });
+      const [entriesRes, docsRes] = await Promise.all([
+        apiFetch(`/api/entries?${params}`),
+        apiFetch(`/api/documents?search=${encodeURIComponent(query)}`)
+      ]);
+      const entries = await entriesRes.json();
+      const documents = await docsRes.json();
+      setResults({ entries: entries || [], documents: documents || [] });
     } catch (err) {
-      setResult({ answer: 'Search failed. Please try again.', sources: { entries: [], documents: [] } });
+      setResults({ entries: [], documents: [], error: 'Search failed. Please try again.' });
     }
     setLoading(false);
   };
@@ -35,13 +36,13 @@ export default function Search() {
       </div>
 
       <p style={{ color: 'var(--text-muted)', marginBottom: 16, fontSize: '0.9rem' }}>
-        Search across all journal entries, documents, and expenses using natural language. AI will synthesize an answer from your archive.
+        Search across all journal entries and documents.
       </p>
 
       <form className="search-bar" onSubmit={handleSearch}>
         <input
           type="text"
-          placeholder="Ask anything about your field archive..."
+          placeholder="Search your field archive..."
           value={query}
           onChange={e => setQuery(e.target.value)}
           style={{ fontSize: '1rem', padding: '12px 16px' }}
@@ -54,39 +55,63 @@ export default function Search() {
       {loading && (
         <div className="loading" style={{ marginTop: 40 }}>
           <div className="spinner" />
-          <p style={{ marginTop: 12 }}>Searching your archive and generating response...</p>
+          <p style={{ marginTop: 12 }}>Searching...</p>
         </div>
       )}
 
-      {result && (
+      {results && (
         <div style={{ marginTop: 24 }}>
-          <div className="ai-section">
-            <h4 style={{ color: 'var(--accent)', marginBottom: 8 }}>AI Response</h4>
-            <div className="ai-response">{result.answer}</div>
-          </div>
+          {results.error && (
+            <div className="card" style={{ borderLeft: '4px solid var(--danger)', marginBottom: 16 }}>
+              <p style={{ color: 'var(--danger)' }}>{results.error}</p>
+            </div>
+          )}
 
-          {(result.sources?.entries?.length > 0 || result.sources?.documents?.length > 0) && (
-            <div className="sources-list" style={{ marginTop: 16 }}>
-              <h4>Sources</h4>
-              {result.sources.entries?.map(e => (
-                <Link key={`e-${e.id}`} to={`/journal/${e.id}`}>
-                  Journal: {e.title} ({e.date})
-                </Link>
+          {results.entries.length > 0 && (
+            <div style={{ marginBottom: 24 }}>
+              <h4 style={{ marginBottom: 12 }}>Journal Entries ({results.entries.length})</h4>
+              {results.entries.map(e => (
+                <div key={e.id} className="card" style={{ marginBottom: 8, padding: '12px 16px' }}>
+                  <Link to={`/journal/${e.id}`} style={{ color: 'var(--info)', fontWeight: 600, textDecoration: 'none' }}>
+                    {e.title}
+                  </Link>
+                  <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: 4 }}>
+                    {e.date}{e.location ? ` | ${e.location}` : ''}
+                  </div>
+                </div>
               ))}
-              {result.sources.documents?.map(d => (
-                <a key={`d-${d.id}`} href={`/api/documents/${d.id}/file`}>
-                  Document: {d.name} ({d.type})
-                </a>
+            </div>
+          )}
+
+          {results.documents.length > 0 && (
+            <div>
+              <h4 style={{ marginBottom: 12 }}>Documents ({results.documents.length})</h4>
+              {results.documents.map(d => (
+                <div key={d.id} className="card" style={{ marginBottom: 8, padding: '12px 16px' }}>
+                  <a href={`/api/documents/${d.id}/file`} style={{ color: 'var(--info)', fontWeight: 600, textDecoration: 'none' }}>
+                    {d.original_name}
+                  </a>
+                  <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: 4 }}>
+                    {d.file_type}{d.teams_folder ? ` | ${d.teams_folder}` : ''}
+                  </div>
+                </div>
               ))}
+            </div>
+          )}
+
+          {!results.error && results.entries.length === 0 && results.documents.length === 0 && (
+            <div className="empty-state" style={{ marginTop: 40 }}>
+              <h3>No results found</h3>
+              <p>Try different search terms.</p>
             </div>
           )}
         </div>
       )}
 
-      {!loading && !result && (
+      {!loading && !results && (
         <div className="empty-state" style={{ marginTop: 60 }}>
-          <h3>Ask a question</h3>
-          <p>Try: "What meetings did I have in January?" or "Show me all travel expenses"</p>
+          <h3>Search your archive</h3>
+          <p>Try: "meeting" or "travel expenses" or "field visit"</p>
         </div>
       )}
     </div>

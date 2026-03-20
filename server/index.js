@@ -8,7 +8,7 @@ import { requireAuth } from './middleware/auth.js';
 import entriesRouter from './routes/entries.js';
 import documentsRouter from './routes/documents.js';
 import expensesRouter from './routes/expenses.js';
-import aiRouter from './routes/ai.js';
+
 import teamsRouter from './routes/teams.js';
 import calendarRouter from './routes/calendar.js';
 import issuesRouter from './routes/issues.js';
@@ -35,7 +35,7 @@ app.use('/api', requireAuth);
 app.use('/api/entries', entriesRouter);
 app.use('/api/documents', documentsRouter);
 app.use('/api/expenses', expensesRouter);
-app.use('/api/ai', aiRouter);
+
 app.use('/api/teams', teamsRouter);
 app.use('/api/calendar', calendarRouter);
 app.use('/api/issues', issuesRouter);
