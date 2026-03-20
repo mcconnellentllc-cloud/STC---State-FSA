@@ -3,6 +3,188 @@ import { Link } from 'react-router-dom';
 import { useApiFetch } from '../auth/apiFetch';
 
 /* ══════════════════════════════════════════════════════════════════
+   EBRIGHT CRP APPEAL — CASE BRIEF (Exhibit 1, 386 pages)
+   ══════════════════════════════════════════════════════════════════ */
+const CASE_BRIEF = {
+  title: 'Ebright CRP Grassland Appeal — Case Brief',
+  caption: 'Bent County | Contracts 11071, 11075, 11101, 11114, 11115, 11116, 11117 | STC Review: March 24, 2026',
+  parties: {
+    appellants: 'John and Stephanie Ebright',
+    poa: 'Kris Demoss (Power of Attorney)',
+    county: 'Bent County FSA Office',
+    cocMembers: 'Bent County Committee of Certification (COC)',
+    program: 'Conservation Reserve Program (CRP) — Grassland Signups 204 & 206',
+  },
+  contracts: [
+    { id: '11101', tract: '751', pages: '80–93' },
+    { id: '11075', tract: '772', pages: '94–132' },
+    { id: '11115', tract: '2386', pages: '133–146' },
+    { id: '11071', tract: '4297', pages: '147–187' },
+    { id: '11116', tract: '2396', pages: '188–233' },
+    { id: '11117', tract: '4328', pages: '234–273' },
+    { id: '11114', tract: '4034', pages: '274–284' },
+  ],
+  timeline: [
+    { date: 'Signups 204 & 206', event: 'Ebrights offered and had Grassland CRP contracts accepted. CRP-1 contracts, NRCS Conservation Plans (CPA-1155), and 528 CRP Grasslands Prescribed Grazing Plans signed and filed timely.', type: 'neutral' },
+    { date: 'Jan 31, 2025', event: 'NRCS field visit #1 conducted. Field worksheets indicated bare ground; status review sheets indicated contracts were grazed hard. Photos showed no height to grass.', type: 'agency' },
+    { date: 'Feb 10, 2025', event: 'Bent County CED sent letter requesting producers\' grazing records required under the 528 Prescribed Grazing Plan. Producers later claim they never received this letter.', type: 'agency' },
+    { date: 'Feb 26, 2025', event: 'NRCS field visit #2 conducted.', type: 'agency' },
+    { date: 'Mar 11, 2025', event: 'NRCS field visit #3 conducted.', type: 'agency' },
+    { date: 'Mar 18, 2025', event: 'Bent County COC Executive Session — initial review of noncompliance findings. (pp. 25)', type: 'agency' },
+    { date: 'Apr 22, 2025', event: 'Bent County CED sent noncompliance letter informing producers their contracts were out of compliance with signed grazing plans. Gave 15 days to provide written explanation of good faith effort.', type: 'agency' },
+    { date: 'May 5, 2025', event: 'Producers submitted written good-faith explanation letter to Bent County office.', type: 'producer' },
+    { date: 'May 20, 2025', event: 'COC meeting: Reviewed NRCS status reviews, photos, 528 Grazing Plans, and producer\'s good faith letter. COC DETERMINED: (1) No good faith effort to maintain cover, (2) Failed to leave required 4"–6" stubble height, (3) Species diversity requirements not met (offered 30-point stand with 5 species/3 native grasses — not found in field), (4) Grazing records never provided.', type: 'decision' },
+    { date: 'Jun 17, 2025', event: 'Two termination letters sent to producers notifying them of COC determination and contract termination.', type: 'agency' },
+    { date: 'Jul 1, 2025', event: 'Producers took photographs of contract acreage showing representative cover samples.', type: 'producer' },
+    { date: 'Jul 10, 2025', event: 'Producers requested COC reconsideration of the termination determination.', type: 'producer' },
+    { date: 'Aug 5, 2025', event: 'COC reconsideration hearing — Ebrights and POA Kris Demoss attended. Producers stated: (1) did not receive Feb 10 letter, (2) could provide grazing records, (3) received 2 feet of snow in December, (4) sold 40 head of cattle, (5) moved others to another location. Provided July 1 photos. However, grazing records were never provided. COC UPHELD original determination — denied reconsideration.', type: 'decision' },
+    { date: 'Sep 2, 2025', event: 'Final termination letter and reconsideration denial letter sent to producers.', type: 'agency' },
+    { date: 'Mar 24, 2026', event: 'STC APPEAL HEARING — State Committee reviews full agency record.', type: 'stc' },
+  ],
+  issues: [
+    {
+      num: 1,
+      question: 'Are the CRP contracts out of compliance with the terms and conditions?',
+      agencyPosition: [
+        'Three NRCS field visits (Jan 31, Feb 26, Mar 11) documented bare ground and no stubble height remaining',
+        'CRP field worksheets indicated bare ground; status review sheets confirmed contracts were grazed hard',
+        'Photos taken by NRCS showed no remaining grass height',
+        'The 528 Grazing Plans required 4"–6" minimum stubble height as the indicator to remove livestock — this was not met',
+        'Species diversity requirements (30-point stand, 5 species, minimum 3 native grasses) were not represented in the field',
+        'Grazing records required by the 528 Prescribed Grazing Plan were never provided despite multiple requests',
+      ],
+      appellantPosition: [
+        'Compliance review was conducted while grass was dormant (Jan–Mar) — did not reflect true cover condition during growing season',
+        'Producers moved cattle to other locations after being notified of noncompliance',
+        'Producers received 2 feet of snow in December which may have impacted grazing conditions',
+        'Sold 40 head of cattle to reduce stocking pressure',
+        'July 1, 2025 photos showed representative cover samples (taken during growing season)',
+        'Claim they never received the February 10, 2025 letter requesting grazing records',
+      ],
+      regulation: '2-CRP (Rev.6) Par. 427 — Maintaining Approved Cover; Par. 603B — Examples of Noncompliance',
+      analysis: 'The 528 Grazing Plans specifically state: "stubble height may be used as an indicator to remove livestock in introduced pasture or seeded stands with minimal diversity, minimal stubble height to remove livestock is 4-6 inches." Three independent NRCS field visits across a 6-week period documented no compliance with this requirement. The dormant-grass argument may have merit for species identification but does not explain the complete absence of stubble height.',
+    },
+    {
+      num: 2,
+      question: 'Did the appellants show a good faith effort to comply with the terms and conditions?',
+      agencyPosition: [
+        'COC reviewed all documentation and determined NO good faith effort on two separate occasions (May 20 and Aug 5)',
+        'Grazing records — required to be kept each year for each pasture — were never provided despite being requested Feb 10 and again during the process',
+        'Without grazing records, COC could not determine if producers followed recommended stocking rates in the conservation plan',
+        'The extent of overgrazing (bare ground, no stubble) across ALL 7 contracts suggests systematic non-compliance, not an isolated incident',
+        'Species diversity shortfall indicates the offered 30-point stand was never established or maintained',
+      ],
+      appellantPosition: [
+        'Submitted written good faith explanation on May 5, 2025',
+        'Took corrective action: sold 40 head, moved remaining cattle to other locations',
+        'Claim they never received the Feb 10 letter requesting records — thus absence of records should not be held against them',
+        'Provided photos from Jul 1, 2025 showing cover had recovered during growing season',
+        'Environmental factors: 2 feet of snow in December created unusual conditions',
+        'Attended reconsideration hearing with POA to present their case',
+      ],
+      regulation: '2-CRP (Rev.6) Par. 603A, 603D, 603E, 603F — Noncompliance and Good Faith Determinations',
+      analysis: 'Good faith under Par. 603 requires COC to consider: (1) whether the participant submitted an explanation (they did — May 5 letter), (2) whether the noncompliance issue was corrected (partial — sold cattle and moved others, but grazing records were never produced). The COC considered all of this twice and twice determined no good faith. Key question for STC: Was the COC\'s determination reasonable given the evidence? The dormant-season timing of field visits is a legitimate concern, but 4"–6" stubble height should be measurable regardless of growth season.',
+    },
+    {
+      num: 3,
+      question: 'Was the termination of all 7 contracts the correct remedy?',
+      agencyPosition: [
+        'Under Par. 571A, COC must terminate ALL land under CRP-1 when participant is out of compliance on all land and COC determines no good faith effort',
+        'All 7 contracts were found out of compliance — not just some',
+        'Termination is mandatory ("must terminate"), not discretionary, when the conditions are met',
+      ],
+      appellantPosition: [
+        'Termination of all 7 contracts is the most severe penalty',
+        'Under Par. 574A, termination requires refund of ALL annual rental payments plus interest, ALL cost-share payments plus interest, CRP-SIP plus interest, PIP plus interest, and potentially liquidated damages',
+        'The financial impact is substantial across 7 contracts and multiple tracts',
+      ],
+      regulation: '2-CRP (Rev.6) Par. 571A — Terminations; Par. 574A — Required Refunds',
+      analysis: 'If all contracts were out of compliance and the COC\'s not-good-faith determination stands, Par. 571A makes termination mandatory — the COC had no discretion to impose a lesser remedy. The STC\'s decision therefore hinges on Issues 1 and 2. If STC finds good faith, Par. 603E allows a standard payment reduction instead of termination. If STC finds no good faith, the termination and full refund requirement under Par. 574A is mandatory.',
+    },
+    {
+      num: 4,
+      question: 'Were proper procedures followed by the county office?',
+      agencyPosition: [
+        'Feb 10 letter sent requesting grazing records',
+        'Three NRCS field visits conducted (Jan 31, Feb 26, Mar 11)',
+        'Apr 22 noncompliance letter gave 15-day response window per Par. 603D',
+        'Producer explanation reviewed at May 20 COC meeting',
+        'Termination notice sent Jun 17',
+        'Reconsideration hearing held Aug 5 per producer request',
+        'Final termination letter Sep 2',
+      ],
+      appellantPosition: [
+        'Producers claim they never received the Feb 10 letter requesting grazing records',
+        'If not received, producers were denied the opportunity to provide records before the noncompliance determination',
+        'All field visits occurred during dormant season (Jan–Mar) — questions whether this provides an accurate assessment of cover condition',
+      ],
+      regulation: '2-CRP (Rev.6) Par. 603A, 603D — Noncompliance notification and determination procedures',
+      analysis: 'The procedural sequence appears complete: notification, response opportunity, COC review, determination, reconsideration opportunity, and final determination. The Feb 10 letter claim is significant — if the letter was not received, the producers had no notice that records were being requested until the Apr 22 noncompliance letter. However, the 528 Grazing Plans themselves require that records be kept, so the obligation to maintain records existed independent of the Feb 10 letter. STC should examine whether the letter was sent certified/tracked.',
+    },
+    {
+      num: 5,
+      question: 'Does the timing of field visits (dormant season) affect the validity of the noncompliance finding?',
+      agencyPosition: [
+        'Stubble height (4"–6" minimum) should be measurable in any season — it is a physical measurement of remaining plant material, not dependent on active growth',
+        'Three visits across 6 weeks (Jan 31 – Mar 11) showed consistent bare ground conditions',
+        'Bare ground is an objective measure that is not season-dependent',
+      ],
+      appellantPosition: [
+        'Species diversity (5 species, 3 native grasses) cannot be reliably assessed when grass is dormant',
+        'Cover appearance in dormant season does not represent growing-season conditions',
+        'July 1 photos show cover recovery during growing season',
+      ],
+      regulation: '2-CRP (Rev.6) Par. 427A — Practice Maintenance; 528 CRP Grasslands Prescribed Grazing Plan',
+      analysis: 'This is the appellants\' strongest argument. While stubble height is season-independent (it measures what\'s physically there), species diversity assessment is more reliable during the growing season. However, the stubble height issue alone constitutes noncompliance — the 528 Plan explicitly sets 4"–6" as the indicator to remove livestock. The species diversity issue, while real, may be secondary to the stubble height violation. STC should weigh whether the July 1 photos are relevant to the noncompliance period or show recovery after livestock removal.',
+    },
+    {
+      num: 6,
+      question: 'What is the financial exposure to the appellants if termination is upheld?',
+      agencyPosition: [
+        'Per Par. 574A, termination requires refund of: all annual rental payments + interest, all cost-share payments + interest, CRP-SIP + interest, PIP + interest, and liquidated damages per Par. 577',
+        'Liquidated damages = 25% of rental rate x acres in violation (Par. 10 of CRP-1 Appendix)',
+        'All 7 contracts, all tracts are subject to full refund',
+      ],
+      appellantPosition: [
+        'The cumulative financial impact across 7 contracts covering tracts 751, 772, 2386, 4297, 2396, 4328, and 4034 is severe',
+        'This includes every payment received since contract inception plus interest',
+      ],
+      regulation: '2-CRP (Rev.6) Par. 574A — Required Refunds; CRP-1 Appendix Par. 10 — Liquidated Damages',
+      analysis: 'The exact dollar amounts are in the contract-specific supporting documentation (pp. 80–284) for each CRP-1. If STC upholds, the full refund is mandatory. If STC reverses to good-faith, Par. 603E limits the penalty to a standard payment reduction on affected acres not exceeding the annual rental payment for the year of violation — a dramatically different financial outcome. This is the practical stakes of the STC\'s decision.',
+    },
+  ],
+  stcOptions: [
+    {
+      option: 'AFFIRM — Uphold Bent County COC Determination',
+      effect: 'All 7 contracts terminated. Producers must refund all annual rental payments, cost-share, SIP, PIP, plus interest and liquidated damages across all contracts.',
+      basis: 'COC followed proper procedures; three NRCS field visits documented bare ground; grazing records never provided; COC reviewed the evidence twice and reached the same conclusion.',
+      risk: 'Producer\'s only recourse is NAD appeal. If NAD reverses, it suggests STC missed procedural or substantive errors.',
+    },
+    {
+      option: 'REVERSE — Find Good Faith, Overturn Termination',
+      effect: 'Contracts reinstated. COC must assess a standard payment reduction per Par. 603E (not to exceed annual rental for the year of violation). No refund of prior payments. Producers advised subsequent violations may result in termination.',
+      basis: 'Producers took corrective action (sold 40 head, moved cattle); dormant-season visits may not reflect true cover condition; producers submitted written explanation and attended reconsideration hearing; Feb 10 letter may not have been received.',
+      risk: 'Could strain relationship with Bent County COC. Sets precedent that overgrazing without records can receive good-faith determination. Other producers may interpret this as lenient enforcement.',
+    },
+    {
+      option: 'MODIFY — Partial Remedy or Remand',
+      effect: 'Examples: (1) Remand to COC with instructions to conduct a growing-season field visit before terminating, (2) Find good faith on some contracts but not others, (3) Direct COC to consider the dormant-season timing in their determination.',
+      basis: 'The dormant-season field visit concern has merit for species diversity assessment. The record may be incomplete without a growing-season evaluation. Remand allows the county to build a more complete record.',
+      risk: 'Delays resolution. Producer remains in limbo. May appear indecisive. Partial treatment of 7 identical-situation contracts creates inconsistency.',
+    },
+  ],
+  keyEvidence: [
+    { item: '528 Grazing Plans (all 7 contracts)', note: 'Signed by producers — establishes: 4"–6" stubble height requirement, stocking rate recommendations, and obligation to keep grazing records each year for each pasture' },
+    { item: 'NRCS Field Visit Reports (Jan 31, Feb 26, Mar 11)', note: 'Three independent visits across 6 weeks — CRP field worksheets show bare ground, status review sheets show hard grazing, photos show no remaining grass height' },
+    { item: 'Producer Good Faith Letter (May 5, 2025)', note: 'Written explanation provided within the 15-day window — contents should be in the record (pp. 33–45)' },
+    { item: 'Producer Photos (Jul 1, 2025)', note: 'Representative cover samples taken during growing season — shows recovery after livestock removal. KEY QUESTION: Does post-removal recovery demonstrate good faith or just that grass grows back when not overgrazed?' },
+    { item: 'COC Executive Minutes (Mar 18, May 20, Aug 5)', note: 'Three separate COC meetings documenting the review process and both determinations (pp. 25, 26–32, 285–290)' },
+    { item: 'Grazing Records', note: 'NEVER PROVIDED — despite being required by the 528 Plans, requested Feb 10, and producers stating at Aug 5 hearing they could provide them' },
+    { item: 'CRP-1 Contracts & NRCS-CPA-1155 Plans', note: 'Signed contracts and conservation plans for all 7 contracts (pp. 337–369) — establish the specific terms and conditions being enforced' },
+  ],
+};
+
+/* ══════════════════════════════════════════════════════════════════
    MARCH 24, 2026 MEETING AGENDA — Structured from session packets
    ══════════════════════════════════════════════════════════════════ */
 const AGENDA = [
@@ -37,9 +219,9 @@ const AGENDA = [
         num: '4',
         title: 'CRP Bent/Ebright STC Appeal — Agency Review',
         type: 'decision',
-        time: '~15 min',
-        summary: 'Exhibit 1: CRP appeal from Bent County. Ebright producer appealing a CRP contract decision. STC must review agency record and render a decision. This is a formal administrative appeal under 7 CFR Part 780.',
-        prep: 'Review Exhibit 1 document (45.8 MB — substantial record). Understand the specific relief requested, FSA county office determination being appealed, and applicable CRP regulations. STC has authority to affirm, reverse, or modify the county committee decision.',
+        time: '~30 min',
+        summary: 'Exhibit 1 (386 pages): John & Stephanie Ebright appeal termination of ALL 7 Grassland CRP contracts (11071, 11075, 11101, 11114, 11115, 11116, 11117) by Bent County COC. COC found no good faith effort to comply with grazing plans — contracts overgrazed to bare ground, no 4"–6" stubble height maintained, species diversity requirements unmet, grazing records never provided. Producers argue: dormant-season field visits, took corrective action, never received Feb 10 records request. Full case brief available below.',
+        prep: 'CRITICAL DECISION: STC must affirm, reverse, or modify. If affirmed: full refund of all payments + interest + liquidated damages on all 7 contracts. If reversed (good faith found): only a standard payment reduction. See detailed Case Brief section below for complete issue analysis, timeline, and STC options.',
       },
       {
         num: '5',
@@ -201,22 +383,29 @@ const VOTING_GUIDE = [
   },
   {
     id: 'crp-appeal',
-    title: 'CRP Bent/Ebright Appeal Decision',
+    title: 'CRP Bent/Ebright Appeal — 7 Grassland Contracts Terminated',
     type: 'decision',
-    motion: 'STC to render a decision on the Ebright CRP appeal from Bent County — affirm, reverse, or modify the county committee determination.',
-    background: 'A Bent County producer (Ebright) is appealing a CRP contract decision made by the county committee. Under 7 CFR Part 780, the STC has authority to review and decide administrative appeals of county committee actions. The record is extensive (45.8 MB exhibit).',
+    motion: 'STC to render a decision on the Ebright CRP appeal: AFFIRM termination of all 7 contracts, REVERSE (find good faith — reduce to payment reduction), or MODIFY/REMAND to Bent County COC.',
+    background: 'John & Stephanie Ebright appeal termination of 7 CRP Grassland contracts (11071, 11075, 11101, 11114, 11115, 11116, 11117) in Bent County. COC conducted 3 NRCS field visits (Jan 31–Mar 11, 2025) finding bare ground across all contracts, no 4"–6" stubble height, unmet species diversity, and no grazing records provided. COC determined no good faith twice (May 20 & Aug 5). Full refund of all payments + interest + liquidated damages required if affirmed.',
     pros: [
-      'FOR AFFIRMING: County committee is closest to the facts and local conditions; deference to their judgment preserves the system',
-      'FOR AFFIRMING: Overturning sets a precedent that may encourage more appeals',
-      'FOR REVERSING/MODIFYING: If procedural errors occurred, correcting them protects producer rights and program integrity',
-      'FOR REVERSING/MODIFYING: STC oversight is the exact purpose of the appeal process — rubber-stamping undermines it',
+      'FOR AFFIRMING: Three independent NRCS field visits over 6 weeks consistently documented bare ground and hard grazing — strong evidence across all 7 contracts',
+      'FOR AFFIRMING: Grazing records were required by the signed 528 Plans and were NEVER provided — even after producers said at the Aug 5 hearing they could provide them',
+      'FOR AFFIRMING: COC followed proper procedures: notification, 15-day response window, producer letter review, determination, reconsideration hearing, final determination',
+      'FOR AFFIRMING: The overgrazing was not isolated — ALL 7 contracts across multiple tracts were in the same condition, suggesting systematic non-compliance',
+      'FOR REVERSING: Producers took corrective action — sold 40 head, moved remaining cattle, submitted good faith letter within 15-day window',
+      'FOR REVERSING: All field visits occurred during dormant season (Jan–Mar) — dormant grass may appear more degraded than growing-season conditions warrant',
+      'FOR REVERSING: Producers claim they never received Feb 10 letter requesting records — if true, they were not put on notice until Apr 22',
+      'FOR REVERSING: July 1 photos showed cover recovery during growing season — suggests grass was present but dormant during winter visits',
+      'FOR MODIFYING/REMAND: Dormant-season species diversity assessment has legitimate limitations — a growing-season field visit would strengthen the record',
     ],
     cons: [
-      'RISK OF AFFIRMING: If the county made an error, affirming it means the producer\'s only recourse is NAD (National Appeals Division) — more costly and adversarial',
-      'RISK OF REVERSING: Could strain relationship with Bent County COC/CED',
-      'RISK OF MODIFYING: Partial remedies can create ambiguity in implementation',
+      'RISK OF AFFIRMING: Financial devastation — producers must refund ALL payments + interest + cost-share + SIP + PIP + liquidated damages across 7 contracts',
+      'RISK OF AFFIRMING: If NAD later reverses, it suggests STC missed the dormant-season timing concern',
+      'RISK OF REVERSING: Sets precedent that overgrazing to bare ground without records = good faith if corrective action taken after discovery',
+      'RISK OF REVERSING: Undermines Bent County COC\'s enforcement credibility — they reviewed this twice',
+      'RISK OF MODIFYING: Delays resolution, keeps producer in limbo, may appear indecisive',
     ],
-    recommendation: 'Decision must be based on the administrative record (Exhibit 1). Review for: (1) Were proper procedures followed? (2) Is the determination supported by evidence? (3) Was the correct regulation applied? Personal knowledge of parties should not influence — decide on the record.',
+    recommendation: 'KEY QUESTIONS: (1) Is 4"–6" stubble height measurable in dormant season? (Yes — it\'s a physical measurement, not growth-dependent.) (2) Does corrective action after noncompliance discovery constitute good faith? (Par. 603D requires both explanation AND correction before COC decides.) (3) Were grazing records maintained? (Never provided, even after hearing promise.) (4) Was Feb 10 letter sent certified? (Check record.) See the full Case Brief section below for detailed issue-by-issue analysis.',
   },
   {
     id: 'nap-nct',
@@ -523,6 +712,191 @@ export default function Summary() {
           })}
         </div>
       ))}
+
+      {/* ── CASE BRIEF: Ebright CRP Appeal ── */}
+      <div className="card" style={{ marginBottom: 20, padding: 0, overflow: 'hidden' }}>
+        <div style={{
+          padding: '14px 20px', fontWeight: 700, fontSize: '0.95rem',
+          background: 'linear-gradient(135deg, #8B0000 0%, #B22222 100%)',
+          color: '#fff', letterSpacing: '0.5px',
+        }}>
+          CASE BRIEF — {CASE_BRIEF.title}
+        </div>
+        <div style={{ padding: '10px 20px 4px', fontSize: '0.82rem', color: 'var(--text-muted)', borderBottom: '1px solid var(--border)' }}>
+          {CASE_BRIEF.caption}
+        </div>
+
+        {/* Parties */}
+        <div style={{ padding: '14px 20px', borderBottom: '1px solid var(--border)' }}>
+          <div style={{ fontWeight: 700, fontSize: '0.85rem', marginBottom: 8, textTransform: 'uppercase', color: 'var(--text-muted)', letterSpacing: '0.5px' }}>Parties & Program</div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4px 20px', fontSize: '0.85rem' }}>
+            <div><strong>Appellants:</strong> {CASE_BRIEF.parties.appellants}</div>
+            <div><strong>POA:</strong> {CASE_BRIEF.parties.poa}</div>
+            <div><strong>County Office:</strong> {CASE_BRIEF.parties.county}</div>
+            <div><strong>Program:</strong> {CASE_BRIEF.parties.program}</div>
+          </div>
+        </div>
+
+        {/* Contracts table */}
+        <div style={{ padding: '14px 20px', borderBottom: '1px solid var(--border)' }}>
+          <div style={{ fontWeight: 700, fontSize: '0.85rem', marginBottom: 8, textTransform: 'uppercase', color: 'var(--text-muted)', letterSpacing: '0.5px' }}>7 Contracts at Issue</div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+            {CASE_BRIEF.contracts.map(c => (
+              <div key={c.id} style={{
+                padding: '6px 12px', borderRadius: 6, fontSize: '0.82rem',
+                background: 'var(--bg)', border: '1px solid var(--border)',
+              }}>
+                <strong>{c.id}</strong> <span style={{ color: 'var(--text-muted)' }}>Tract {c.tract}</span> <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>pp.{c.pages}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Timeline */}
+        <div style={{ padding: '14px 20px', borderBottom: '1px solid var(--border)' }}>
+          <div
+            style={{ fontWeight: 700, fontSize: '0.85rem', marginBottom: 10, textTransform: 'uppercase', color: 'var(--text-muted)', letterSpacing: '0.5px', cursor: 'pointer' }}
+            onClick={() => toggleItem('cb-timeline')}
+          >
+            Timeline of Events {expandedItems['cb-timeline'] ? '\u25B2' : '\u25BC'}
+          </div>
+          {expandedItems['cb-timeline'] && (
+            <div style={{ position: 'relative', paddingLeft: 20 }}>
+              <div style={{ position: 'absolute', left: 6, top: 0, bottom: 0, width: 2, background: 'var(--border)' }} />
+              {CASE_BRIEF.timeline.map((evt, i) => (
+                <div key={i} style={{ position: 'relative', paddingBottom: 12, paddingLeft: 16 }}>
+                  <div style={{
+                    position: 'absolute', left: -2, top: 4, width: 10, height: 10, borderRadius: '50%',
+                    background: evt.type === 'decision' ? 'var(--danger)' : evt.type === 'producer' ? 'var(--success)' : evt.type === 'stc' ? 'var(--accent)' : 'var(--warning, #f0ad4e)',
+                    border: '2px solid var(--card-bg, #fff)',
+                  }} />
+                  <div style={{ fontSize: '0.78rem', fontWeight: 700, color: evt.type === 'decision' ? 'var(--danger)' : evt.type === 'stc' ? 'var(--accent)' : 'var(--text-muted)' }}>
+                    {evt.date}
+                  </div>
+                  <div style={{ fontSize: '0.84rem', lineHeight: 1.6 }}>{evt.event}</div>
+                </div>
+              ))}
+            </div>
+          )}
+          {!expandedItems['cb-timeline'] && (
+            <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>
+              15 events from contract signup through March 24, 2026 STC hearing. Click to expand.
+            </div>
+          )}
+        </div>
+
+        {/* Issues */}
+        <div style={{ padding: '14px 20px', borderBottom: '1px solid var(--border)' }}>
+          <div style={{ fontWeight: 700, fontSize: '0.85rem', marginBottom: 10, textTransform: 'uppercase', color: 'var(--text-muted)', letterSpacing: '0.5px' }}>
+            Issues for STC Determination ({CASE_BRIEF.issues.length})
+          </div>
+          {CASE_BRIEF.issues.map((issue) => {
+            const isExp = expandedItems['cb-issue-' + issue.num];
+            return (
+              <div key={issue.num} style={{
+                marginBottom: 8, borderRadius: 6, border: '1px solid var(--border)', overflow: 'hidden',
+              }}>
+                <div
+                  style={{
+                    padding: '10px 14px', cursor: 'pointer', display: 'flex', alignItems: 'flex-start', gap: 10,
+                    background: isExp ? 'rgba(var(--danger-rgb, 220,53,69), 0.03)' : 'var(--bg)',
+                  }}
+                  onClick={() => toggleItem('cb-issue-' + issue.num)}
+                >
+                  <span style={{
+                    display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                    width: 24, height: 24, borderRadius: '50%', fontSize: '0.75rem', fontWeight: 800,
+                    background: 'var(--danger)', color: '#fff', flexShrink: 0,
+                  }}>{issue.num}</span>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ fontWeight: 700, fontSize: '0.9rem' }}>{issue.question}</div>
+                    <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: 2 }}>{issue.regulation}</div>
+                  </div>
+                  <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{isExp ? '\u25B2' : '\u25BC'}</span>
+                </div>
+                {isExp && (
+                  <div style={{ padding: '0 14px 14px' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 10 }}>
+                      <div style={{
+                        background: 'rgba(var(--warning-rgb, 240,173,78), 0.06)',
+                        borderLeft: '3px solid var(--warning, #f0ad4e)',
+                        borderRadius: '0 6px 6px 0', padding: '10px 12px',
+                      }}>
+                        <div style={{ fontWeight: 700, fontSize: '0.78rem', color: 'var(--warning, #f0ad4e)', marginBottom: 6, textTransform: 'uppercase' }}>Agency Position (COC)</div>
+                        {issue.agencyPosition.map((p, j) => (
+                          <div key={j} style={{ fontSize: '0.82rem', lineHeight: 1.5, padding: '2px 0', display: 'flex', gap: 6 }}>
+                            <span style={{ color: 'var(--warning, #f0ad4e)', flexShrink: 0, fontWeight: 700 }}>&bull;</span>
+                            <span>{p}</span>
+                          </div>
+                        ))}
+                      </div>
+                      <div style={{
+                        background: 'rgba(var(--accent-rgb, 0,123,255), 0.06)',
+                        borderLeft: '3px solid var(--accent)',
+                        borderRadius: '0 6px 6px 0', padding: '10px 12px',
+                      }}>
+                        <div style={{ fontWeight: 700, fontSize: '0.78rem', color: 'var(--accent)', marginBottom: 6, textTransform: 'uppercase' }}>Appellant Position (Ebright)</div>
+                        {issue.appellantPosition.map((p, j) => (
+                          <div key={j} style={{ fontSize: '0.82rem', lineHeight: 1.5, padding: '2px 0', display: 'flex', gap: 6 }}>
+                            <span style={{ color: 'var(--accent)', flexShrink: 0, fontWeight: 700 }}>&bull;</span>
+                            <span>{p}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div style={{
+                      background: 'rgba(var(--danger-rgb, 220,53,69), 0.05)',
+                      borderLeft: '3px solid var(--danger)',
+                      borderRadius: '0 6px 6px 0', padding: '10px 12px', fontSize: '0.84rem', lineHeight: 1.6,
+                    }}>
+                      <strong>Analysis:</strong> {issue.analysis}
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* STC Decision Options */}
+        <div style={{ padding: '14px 20px', borderBottom: '1px solid var(--border)' }}>
+          <div style={{ fontWeight: 700, fontSize: '0.85rem', marginBottom: 10, textTransform: 'uppercase', color: 'var(--text-muted)', letterSpacing: '0.5px' }}>
+            STC Decision Options
+          </div>
+          {CASE_BRIEF.stcOptions.map((opt, i) => (
+            <div key={i} style={{
+              marginBottom: 10, padding: '12px 14px', borderRadius: 6,
+              background: i === 0 ? 'rgba(var(--danger-rgb, 220,53,69), 0.04)' : i === 1 ? 'rgba(40, 167, 69, 0.04)' : 'rgba(var(--accent-rgb, 0,123,255), 0.04)',
+              border: `1px solid ${i === 0 ? 'rgba(220,53,69,0.2)' : i === 1 ? 'rgba(40,167,69,0.2)' : 'rgba(0,123,255,0.2)'}`,
+            }}>
+              <div style={{ fontWeight: 700, fontSize: '0.88rem', marginBottom: 6 }}>{opt.option}</div>
+              <div style={{ fontSize: '0.82rem', lineHeight: 1.6, marginBottom: 4 }}><strong>Effect:</strong> {opt.effect}</div>
+              <div style={{ fontSize: '0.82rem', lineHeight: 1.6, marginBottom: 4 }}><strong>Basis:</strong> {opt.basis}</div>
+              <div style={{ fontSize: '0.82rem', lineHeight: 1.6, color: 'var(--danger)' }}><strong>Risk:</strong> {opt.risk}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Key Evidence */}
+        <div style={{ padding: '14px 20px' }}>
+          <div
+            style={{ fontWeight: 700, fontSize: '0.85rem', marginBottom: 10, textTransform: 'uppercase', color: 'var(--text-muted)', letterSpacing: '0.5px', cursor: 'pointer' }}
+            onClick={() => toggleItem('cb-evidence')}
+          >
+            Key Evidence in the Record ({CASE_BRIEF.keyEvidence.length} items) {expandedItems['cb-evidence'] ? '\u25B2' : '\u25BC'}
+          </div>
+          {expandedItems['cb-evidence'] && CASE_BRIEF.keyEvidence.map((ev, i) => (
+            <div key={i} style={{
+              display: 'flex', gap: 10, padding: '8px 0',
+              borderBottom: i < CASE_BRIEF.keyEvidence.length - 1 ? '1px solid var(--border)' : 'none',
+              fontSize: '0.84rem',
+            }}>
+              <span style={{ fontWeight: 700, flexShrink: 0, minWidth: 200 }}>{ev.item}</span>
+              <span style={{ color: 'var(--text-secondary)', lineHeight: 1.5 }}>{ev.note}</span>
+            </div>
+          ))}
+        </div>
+      </div>
 
       {/* ── Voting Guide — Pros & Cons ── */}
       <div className="card" style={{ marginBottom: 20, padding: 0, overflow: 'hidden' }}>
