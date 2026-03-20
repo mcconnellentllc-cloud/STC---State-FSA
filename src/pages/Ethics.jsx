@@ -194,24 +194,17 @@ function CopyField({ label, value }) {
 
 /* ── Main Component ────────────────────────────────────────────── */
 export default function Ethics() {
-  const now = new Date();
-  const due = new Date(FILING_INFO.dueDate + 'T23:59:59');
-  const daysLeft = Math.ceil((due - now) / (1000 * 60 * 60 * 24));
-  const isOverdue = daysLeft < 0;
-  const isUrgent = daysLeft <= 3 && !isOverdue;
-
   return (
     <div>
       <div className="page-header">
         <h2>Ethics &amp; OGE 450</h2>
       </div>
 
-      {/* Deadline banner */}
+      {/* Filed confirmation banner */}
       <div className="card" style={{
         marginBottom: 20,
         padding: '16px 24px',
-        borderLeft: `4px solid ${isOverdue ? 'var(--danger)' : isUrgent ? 'var(--warning, #f0ad4e)' : 'var(--success)'}`,
-        background: isOverdue ? 'rgba(220,53,69,0.06)' : isUrgent ? 'rgba(240,173,78,0.06)' : undefined,
+        borderLeft: '4px solid var(--success)',
       }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
           <div>
@@ -219,25 +212,20 @@ export default function Ethics() {
               {FILING_INFO.formType}
             </div>
             <div style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', marginTop: 2 }}>
-              {FILING_INFO.filingType} &mdash; Due: <strong>{FILING_INFO.dueDate}</strong>
-              {isOverdue
-                ? <span style={{ color: 'var(--danger)', marginLeft: 8, fontWeight: 700 }}>OVERDUE by {Math.abs(daysLeft)} day(s)</span>
-                : <span style={{ color: isUrgent ? 'var(--warning, #f0ad4e)' : 'var(--success)', marginLeft: 8, fontWeight: 600 }}>{daysLeft} day(s) remaining</span>
-              }
+              {FILING_INFO.filingType} &mdash; <span style={{ color: 'var(--success)', fontWeight: 700 }}>FILED {FILING_RECORD.submittedDate}</span>
             </div>
           </div>
           <a
             href={FILING_INFO.filingUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-primary"
+            className="btn btn-secondary"
           >
-            File OGE 450 &rarr;
+            View Filing &rarr;
           </a>
         </div>
         <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginTop: 8 }}>
           Username: <strong>{FILING_INFO.username}</strong> &mdash;
-          Password: <em>on GTK spreadsheet</em> &mdash;
           Questions: <a href={`mailto:${FILING_INFO.ethicsEmail}`}>{FILING_INFO.ethicsEmail}</a> &mdash;
           <a href={FILING_INFO.ethicsAdvisors} target="_blank" rel="noopener noreferrer" style={{ marginLeft: 4 }}>Ethics Advisors List</a>
         </div>

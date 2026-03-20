@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 import { useApiFetch } from '../auth/apiFetch';
 
 /* ── Upcoming deadlines ────────────────────────────────────────── */
-const DEADLINES = [
-  { label: 'OGE 450 — Confidential Financial Disclosure', due: '2026-03-13', link: '/ethics' },
-];
+const DEADLINES = [];
 
 const quickLinks = [
   { label: 'FSA Colorado', url: 'https://www.fsa.usda.gov/state-offices/colorado', icon: '\uD83C\uDFDB' },
