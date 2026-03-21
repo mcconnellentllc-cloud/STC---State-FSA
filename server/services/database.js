@@ -1,5 +1,5 @@
 import pg from 'pg';
-import initSqlJs from 'sql.js';
+import Database from 'better-sqlite3';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -55,28 +55,15 @@ export async function initDatabase() {
     console.warn('No DATABASE_URL set — using SQLite fallback');
   }
 
-  // Fallback to SQLite
-  const SQL = await initSqlJs();
-  if (fs.existsSync(SQLITE_PATH)) {
-    const buf = fs.readFileSync(SQLITE_PATH);
-    sqliteDb = new SQL.Database(buf);
-    console.log('SQLite loaded from', SQLITE_PATH);
-  } else {
-    sqliteDb = new SQL.Database();
-    console.log('SQLite new database created');
-  }
+  // Fallback to better-sqlite3 (native C binding — much lower memory than sql.js WASM)
+  sqliteDb = new Database(SQLITE_PATH);
+  sqliteDb.pragma('journal_mode = WAL');
+  console.log('SQLite (better-sqlite3) loaded from', SQLITE_PATH);
 
   usingPostgres = false;
-  await runSchemaSQLite();
-  saveSQLite();
+  runSchemaSQLite();
   console.log('SQLite database initialized');
   return sqliteDb;
-}
-
-function saveSQLite() {
-  if (!sqliteDb) return;
-  const data = sqliteDb.export();
-  fs.writeFileSync(SQLITE_PATH, Buffer.from(data));
 }
 
 // ---- PostgreSQL schema ----
@@ -211,8 +198,8 @@ async function correctFeb2026ExpensesPg() {
 }
 
 // ---- SQLite schema ----
-async function runSchemaSQLite() {
-  sqliteDb.run(`
+function runSchemaSQLite() {
+  sqliteDb.exec(`
     CREATE TABLE IF NOT EXISTS entries (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       title TEXT NOT NULL,
@@ -229,7 +216,7 @@ async function runSchemaSQLite() {
     )
   `);
 
-  sqliteDb.run(`
+  sqliteDb.exec(`
     CREATE TABLE IF NOT EXISTS documents (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       filename TEXT NOT NULL,
@@ -249,7 +236,7 @@ async function runSchemaSQLite() {
     )
   `);
 
-  sqliteDb.run(`
+  sqliteDb.exec(`
     CREATE TABLE IF NOT EXISTS expenses (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       date TEXT NOT NULL,
@@ -264,7 +251,7 @@ async function runSchemaSQLite() {
     )
   `);
 
-  sqliteDb.run(`
+  sqliteDb.exec(`
     CREATE TABLE IF NOT EXISTS calendar_notices (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       title TEXT NOT NULL,
@@ -303,21 +290,21 @@ export async function all(sql, params = []) {
     const result = await pool.query(pgSql, params);
     return result.rows;
   }
-  // SQLite
+  // better-sqlite3: prepare + all
   const stmt = sqliteDb.prepare(sql);
-  stmt.bind(params);
-  const rows = [];
-  while (stmt.step()) {
-    rows.push(stmt.getAsObject());
-  }
-  stmt.free();
-  return rows;
+  return stmt.all(...params);
 }
 
 // Helper: run a query and return first result as object
 export async function get(sql, params = []) {
-  const results = await all(sql, params);
-  return results.length > 0 ? results[0] : null;
+  if (usingPostgres) {
+    const pgSql = convertPlaceholders(sql);
+    const result = await pool.query(pgSql, params);
+    return result.rows.length > 0 ? result.rows[0] : null;
+  }
+  // better-sqlite3: prepare + get
+  const stmt = sqliteDb.prepare(sql);
+  return stmt.get(...params) || null;
 }
 
 // Helper: run an insert/update/delete and return changes info
@@ -334,14 +321,12 @@ export async function run(sql, params = []) {
       changes: result.rowCount
     };
   }
-  // SQLite
-  sqliteDb.run(sql, params);
-  saveSQLite();
-  const lastId = sqliteDb.exec('SELECT last_insert_rowid() as id');
-  const changes = sqliteDb.getRowsModified();
+  // better-sqlite3: prepare + run (auto-persists to disk, no manual save needed)
+  const stmt = sqliteDb.prepare(sql);
+  const result = stmt.run(...params);
   return {
-    lastInsertRowid: lastId[0]?.values[0]?.[0] || null,
-    changes
+    lastInsertRowid: result.lastInsertRowid || null,
+    changes: result.changes
   };
 }
 
