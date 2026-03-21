@@ -14,6 +14,7 @@ import Contacts from './pages/Contacts';
 import Ethics from './pages/Ethics';
 import Issues from './pages/Issues';
 import Summary from './pages/Summary';
+import RobertsRules from './pages/RobertsRules';
 
 function LoginScreen() {
   const { login, error } = useAuth();
@@ -76,6 +77,7 @@ export default function App() {
           <Route path="/issues" element={<Issues />} />
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/ethics" element={<Ethics />} />
+          <Route path="/roberts-rules" element={<RobertsRules />} />
           <Route path="/search" element={<Search />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/auth/callback" element={<AuthCallback />} />
