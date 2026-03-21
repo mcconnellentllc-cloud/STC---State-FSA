@@ -57,12 +57,9 @@ async function readIssues() {
 
     throw new Error(`Graph read error (${response.status})`);
   } catch (err) {
-    // If Graph is not configured, fall back to seed data in memory
-    if (err.message.includes('not configured')) {
-      console.warn('Graph not configured — using in-memory seed data');
-      return [...SEED_DATA];
-    }
-    throw err;
+    // If Graph is unavailable for any reason, fall back to seed data in memory
+    console.warn('Graph unavailable — using in-memory seed data:', err.message);
+    return [...SEED_DATA];
   }
 }
 
