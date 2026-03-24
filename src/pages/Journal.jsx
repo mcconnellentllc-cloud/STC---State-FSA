@@ -72,7 +72,11 @@ ACTION TAKEN:
 - All future STC meetings will be conducted via Zoom.
 - Effective immediately.
 
-NOTE: Meeting is ongoing. Additional agenda items and actions will be recorded as they occur.`,
+─────────────────────────────────────────────
+RECESS called at 10:55 AM.
+─────────────────────────────────────────────
+
+NOTE: Meeting in recess. Additional agenda items and actions will be recorded when session resumes.`,
   },
   {
     id: 'upcoming-otero-crowley',
