@@ -35,6 +35,10 @@ REGULAR SESSION
 
 Chairman Donald Brown called the regular session to order at 9:15 AM.
 
+AGENDA ITEM: Approval of Sonnenberg Report
+- Executive Director Jerry Sonnenberg's report presented for approval.
+- Status: Awaiting motion/vote.
+
 NOTE: Meeting is ongoing. Additional agenda items and actions will be recorded as they occur.`,
   },
   {
