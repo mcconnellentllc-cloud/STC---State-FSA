@@ -29,6 +29,12 @@ CONTEXT:
 
 STATUS: Motion made — awaiting second, discussion, and vote.
 
+─────────────────────────────────────────────
+REGULAR SESSION
+─────────────────────────────────────────────
+
+Chairman Donald Brown called the regular session to order at 9:15 AM.
+
 NOTE: Meeting is ongoing. Additional agenda items and actions will be recorded as they occur.`,
   },
   {
