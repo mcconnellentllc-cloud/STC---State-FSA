@@ -61,6 +61,17 @@ COLORADO ANALYSIS:
 
 STATUS: Question noted — exact percentage to be confirmed via FSA disbursement reports.
 
+─────────────────────────────────────────────
+AGENDA ITEM: Travel Budget — Overspent
+─────────────────────────────────────────────
+
+REPORTED: The travel budget is overspent.
+
+ACTION TAKEN:
+- No more State Committee travel authorized.
+- All future STC meetings will be conducted via Zoom.
+- Effective immediately.
+
 NOTE: Meeting is ongoing. Additional agenda items and actions will be recorded as they occur.`,
   },
   {
