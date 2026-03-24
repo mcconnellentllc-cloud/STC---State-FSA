@@ -39,6 +39,28 @@ AGENDA ITEM: Approval of Sonnenberg Report
 - Executive Director Jerry Sonnenberg's report presented for approval.
 - Status: Awaiting motion/vote.
 
+─────────────────────────────────────────────
+AGENDA ITEM: FBA Program — Colorado Payment Status
+─────────────────────────────────────────────
+
+QUESTION RAISED: What percentage of Colorado's FBA program has been paid? Over $117,000,000 has been paid.
+
+RESEARCH FINDINGS:
+- National FBA Program: $11 billion in one-time bridge payments ($12B total with specialty crops)
+- Enrollment period: Feb 23 – April 17, 2026; payments began Feb 28, 2026
+- Top states by projected payments: TX ($1.1B), IA ($893M), KS ($888M), IL ($832M)
+- Western states (including CO) receive a smaller share (~10% of $11B split among western/northeast states)
+- Colorado's key eligible crops: Wheat ($39.35/acre), Corn ($44.36/acre), Sorghum ($48.11/acre)
+
+COLORADO ANALYSIS:
+- If $117M has been paid to Colorado producers, that represents approximately 1.06% of the $11B national FBA program
+- Enrollment is still open through April 17, 2026 — final Colorado total expected to be higher
+- Payment cap: $155,000 per producer / AGI limit: $900,000
+- Exact Colorado percentage of eligible acres paid vs. remaining requires FSA weekly state disbursement data
+- Recommended source: FSA weekly state-by-state payment tracker or CO FSA State Office
+
+STATUS: Question noted — exact percentage to be confirmed via FSA disbursement reports.
+
 NOTE: Meeting is ongoing. Additional agenda items and actions will be recorded as they occur.`,
   },
   {
