@@ -6,6 +6,32 @@ import EntryEditor from '../components/EntryEditor';
 /* ── Static Reference Entries ────────────────────────────────────── */
 const PINNED_ENTRIES = [
   {
+    id: 'march-24-meeting-otero-delegation',
+    pinned: true,
+    date: '2026-03-24',
+    title: 'STC Meeting — Special Session: Otero County Delegation Authorization',
+    location: 'Colorado STC Meeting',
+    tags: 'meeting, special-session, otero-county, delegation, motion, COC',
+    source: 'Live Meeting — March 24, 2026',
+    content: `COLORADO STC MEETING — MARCH 24, 2026
+
+OPENING: Special Session — Otero County Official Business
+
+MOTION:
+Motion to confirm and authorize the Otero County delegation to affirm the STC to handle affairs on behalf of Otero County.
+
+This motion delegates authority from the Otero County COC to the State Committee (STC) to manage and administer Otero County FSA affairs during the period in which COC members are on administrative leave.
+
+CONTEXT:
+- Follows the March 17, 2026 special meeting where Chairperson Donald Brown signed Administrative Leave Letters for Otero/Crowley COC members
+- Under 7 CFR Part 7, the STC has authority to oversee county operations when the COC is unable to perform duties
+- This delegation ensures continuity of FSA program administration in Otero County
+
+STATUS: Motion made — awaiting second, discussion, and vote.
+
+NOTE: Meeting is ongoing. Additional agenda items and actions will be recorded as they occur.`,
+  },
+  {
     id: 'upcoming-otero-crowley',
     pinned: true,
     date: '2026-03-17',
