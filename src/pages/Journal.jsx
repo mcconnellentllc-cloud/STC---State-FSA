@@ -76,7 +76,115 @@ ACTION TAKEN:
 RECESS called at 10:55 AM.
 ─────────────────────────────────────────────
 
+─────────────────────────────────────────────
+ACTION ITEM — APRIL MEETING PREP
+─────────────────────────────────────────────
+
+EMAIL FROM JONATHAN WEISHAAR (received during recess):
+Subject: STC Cost Share Rates to Review
+
+Hunter Cleveland has prepared tables for STC review before the April meeting:
+1. CRP Cost Share Rates — 50% cost share
+2. EFRP (Emergency Forest Restoration Program) Cost Share Rates — 75% cost share
+
+Tables are available in Box for review.
+ACTION: STC members to review CRP and EFRP cost share rate tables prior to April meeting and be prepared to vote on approval.
+
 NOTE: Meeting in recess. Additional agenda items and actions will be recorded when session resumes.`,
+  },
+  {
+    id: 'appeals-training-april-8',
+    pinned: true,
+    date: '2026-04-08',
+    title: 'Appeals Training — STC Members',
+    location: 'Virtual / Zoom',
+    tags: 'training, appeals, NAD, CRP, procedures',
+    source: 'STC Training Session — April 8, 2026',
+    content: `APPEALS TRAINING — APRIL 8, 2026 (MORNING SESSION)
+
+TRAINING NOTES:
+(To be recorded during session)
+
+─────────────────────────────────────────────
+TOPICS TO COVER:
+─────────────────────────────────────────────
+
+- NAD (National Appeals Division) appeal procedures
+- STC role and authority in appeals process
+- Evidence review and record-building
+- Hearing procedures and participant roles
+- Timeline requirements and deadlines
+- CRP appeal case studies (reference: Ebright appeal from March 24 meeting)
+- 7 CFR Part 780 — Appeals regulations
+- Best practices for STC deliberation on appeal cases
+
+─────────────────────────────────────────────
+NOTES:
+─────────────────────────────────────────────
+
+(Live notes will be added during the training session)`,
+  },
+  {
+    id: 'april-stc-meeting',
+    pinned: true,
+    date: '2026-04-TBD',
+    title: 'STC Meeting — April 2026',
+    location: 'Virtual / Zoom (no travel authorized)',
+    tags: 'meeting, STC, april, CRP, EFRP, cost-share, appeals',
+    source: 'Upcoming — April 2026',
+    content: `COLORADO STC MEETING — APRIL 2026
+(Date TBD — will update when scheduled)
+
+─────────────────────────────────────────────
+ANTICIPATED AGENDA ITEMS
+─────────────────────────────────────────────
+
+1. APPROVAL OF MARCH 24 MEETING MINUTES
+
+2. CRP COST SHARE RATES — REVIEW & VOTE
+   - Hunter Cleveland prepared rate tables (50% cost share)
+   - Tables available in Box for pre-meeting review
+   - STC to approve/modify rates for Colorado
+
+3. EFRP COST SHARE RATES — REVIEW & VOTE
+   - Emergency Forest Restoration Program (75% cost share)
+   - Hunter Cleveland prepared rate tables
+   - Tables available in Box for pre-meeting review
+
+4. OTERO/CROWLEY COUNTY UPDATE
+   - Status of COC administrative leave
+   - County operations continuity report
+   - Any actions needed under delegation authority
+
+5. FBA PROGRAM UPDATE
+   - Updated Colorado payment figures (enrollment closed April 17)
+   - Final state percentage of $11B national program
+   - Producer participation numbers
+
+6. TRAVEL BUDGET STATUS
+   - All meetings via Zoom (no STC travel authorized)
+   - Budget reconciliation update
+
+7. EBRIGHT CRP APPEAL — FOLLOW-UP
+   - Status of appeal decision from March 24 session
+   - Any outstanding actions
+
+8. EXECUTIVE DIRECTOR REPORT — Jerry Sonnenberg
+
+─────────────────────────────────────────────
+PRE-MEETING ACTION ITEMS
+─────────────────────────────────────────────
+
+□ Review CRP cost share rate tables in Box (Hunter Cleveland)
+□ Review EFRP cost share rate tables in Box (Hunter Cleveland)
+□ Review March 24 meeting minutes when distributed
+□ Complete appeals training (April 8)
+
+─────────────────────────────────────────────
+NOTES:
+─────────────────────────────────────────────
+
+(Will be updated as agenda is finalized and meeting occurs)`,
   },
   {
     id: 'upcoming-otero-crowley',
