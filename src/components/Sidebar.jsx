@@ -10,6 +10,7 @@ const mainLinks = [
   { to: '/documents', label: 'Documents', icon: '\uD83D\uDCC4' },
   { to: '/expenses', label: 'Expenses', icon: '\uD83D\uDCB2' },
   { to: '/issues', label: 'County Issues', icon: '\u26A0' },
+  { to: '/cost-share-rates', label: 'Cost Share Rates', icon: '\u0024' },
 ];
 
 const toolLinks = [

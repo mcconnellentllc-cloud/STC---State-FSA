@@ -143,13 +143,17 @@ ANTICIPATED AGENDA ITEMS
 
 2. CRP COST SHARE RATES — REVIEW & VOTE
    - Hunter Cleveland prepared rate tables (50% cost share)
-   - Tables available in Box for pre-meeting review
+   - 49 total components: 4 retired, 2 new for 2026
+   - Tables available in Box AND on PFA site (/cost-share-rates)
+   - Key increases: water wells (+120-370%), burning (+270%), fencing (+50-100%)
    - STC to approve/modify rates for Colorado
 
 3. EFRP COST SHARE RATES — REVIEW & VOTE
    - Emergency Forest Restoration Program (75% cost share)
+   - 29 total components: 14 new items added for 2026
    - Hunter Cleveland prepared rate tables
-   - Tables available in Box for pre-meeting review
+   - Tables available in Box AND on PFA site (/cost-share-rates)
+   - Significant new items: flood sediment removal, site prep, conservation cover
 
 4. OTERO/CROWLEY COUNTY UPDATE
    - Status of COC administrative leave
@@ -175,8 +179,8 @@ ANTICIPATED AGENDA ITEMS
 PRE-MEETING ACTION ITEMS
 ─────────────────────────────────────────────
 
-□ Review CRP cost share rate tables in Box (Hunter Cleveland)
-□ Review EFRP cost share rate tables in Box (Hunter Cleveland)
+□ Review CRP cost share rate tables — Box or PFA /cost-share-rates (Hunter Cleveland)
+□ Review EFRP cost share rate tables — Box or PFA /cost-share-rates (Hunter Cleveland)
 □ Review March 24 meeting minutes when distributed
 □ Complete appeals training (April 8)
 
