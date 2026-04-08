@@ -16,6 +16,7 @@ import Issues from './pages/Issues';
 import Summary from './pages/Summary';
 import RobertsRules from './pages/RobertsRules';
 import CostShareRates from './pages/CostShareRates';
+import AppealsTraining from './pages/AppealsTraining';
 
 function LoginScreen() {
   const { login, error } = useAuth();
@@ -80,6 +81,7 @@ export default function App() {
           <Route path="/ethics" element={<Ethics />} />
           <Route path="/roberts-rules" element={<RobertsRules />} />
           <Route path="/cost-share-rates" element={<CostShareRates />} />
+          <Route path="/appeals-training" element={<AppealsTraining />} />
           <Route path="/search" element={<Search />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/auth/callback" element={<AuthCallback />} />

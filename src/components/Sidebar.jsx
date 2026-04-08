@@ -16,7 +16,8 @@ const mainLinks = [
 const toolLinks = [
   { to: '/contacts', label: 'Committee & Contacts', icon: '\uD83D\uDC65' },
   { to: '/ethics', label: 'Ethics & OGE 450', icon: '\uD83D\uDCDD', external: true },
-  { to: '/roberts-rules', label: 'Roberts Rules', icon: '\u2696\uFE0F' },
+  { to: '/appeals-training', label: 'Appeals Training', icon: '\u2696\uFE0F' },
+  { to: '/roberts-rules', label: 'Roberts Rules', icon: '\u00A7' },
   { to: '/search', label: 'Search', icon: '\uD83D\uDD0D' },
   { to: '/settings', label: 'Settings', icon: '\u2699' },
 ];
