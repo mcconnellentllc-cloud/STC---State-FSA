@@ -57,6 +57,19 @@ const MEETING_INCOME = [
     ],
     notes: 'First STC meeting for newly appointed committee. Haxtun → Denver roundtrip.',
   },
+  {
+    month: 'March 2026',
+    meetingDate: '2026-03-24',
+    location: 'Federal Building 56, Denver, CO',
+    depositDate: '2026-04-13',
+    payments: [
+      { type: 'hotel', label: 'Hotel Reimbursement (US Dept of Agriculture)', amount: 118.85, description: 'Lodging reimbursement — deposited 2026-03-30', depositDate: '2026-03-30' },
+      { type: 'salary', label: 'FED SAL (AGRI TREAS 310)', amount: 800.09, description: 'STC compensation — net after withholdings (~15.35 hrs @ $67.19/hr Denver)', depositDate: '2026-04-13' },
+      { type: 'travel', label: 'Federal Travel Payment (RMR*IV*A2LBVG003)', amount: 499.96, description: 'Mileage + per diem reimbursement', depositDate: '2026-04-13' },
+    ],
+    totalReceived: 118.85 + 800.09 + 499.96,
+    notes: 'Ebright CRP appeal session + Otero delegation + regular business. Meeting recessed at 10:55 AM. Travel budget reported overspent — future meetings moved to Zoom. Hotel reimbursed separately ($118.85, 3/30) from travel payment ($499.96, 4/13).',
+  },
 ];
 
 /* ── Meeting Ledger (grouped lifecycle view) ─────────────────────── */
@@ -109,6 +122,49 @@ const MEETING_LEDGER = [
     deposits: [
       { label: 'FED SAL (AGRI TREAS 310)', date: '2026-03-02', amount: 833.75 },
       { label: 'FED TVL (USDA TREAS 310)', date: '2026-03-02', amount: 491.91 },
+    ],
+  },
+  {
+    month: 'March 2026',
+    meetingDate: '2026-03-24',
+    location: 'Federal Building 56, Denver, CO',
+    groups: [
+      {
+        category: 'Compensation',
+        icon: '\u{1F4B0}',
+        lines: [
+          { action: 'Hours logged',      detail: '~15.35 hrs @ $67.19/hr (GS-14 Step 1, Denver) — estimated from net deposit',  amount: 1031.52, type: 'gross',   date: '2026-03-24', status: 'confirmed' },
+          { action: 'Withholdings',       detail: 'FICA 7.65% + Fed ~10.4% + CO 4.4% (22.44%)',         amount: -231.43, type: 'deduct',  date: '2026-04-13', status: 'confirmed' },
+          { action: 'Net salary deposit', detail: 'FED SAL (AGRI TREAS 310) #522478481124000',          amount: 800.09,  type: 'deposit', date: '2026-04-13', status: 'confirmed' },
+        ],
+      },
+      {
+        category: 'Lodging',
+        icon: '\u{1F3E8}',
+        lines: [
+          { action: 'Hotel paid (out-of-pocket)', detail: 'Kyle paid — Denver hotel',                        amount: -118.85, type: 'paid',    date: '2026-03-23', status: 'confirmed' },
+          { action: 'Hotel reimbursed (actual)', detail: 'US Department of Agriculture direct deposit',     amount: 118.85,  type: 'deposit', date: '2026-03-30', status: 'confirmed' },
+        ],
+      },
+      {
+        category: 'Travel (Mileage + Per Diem)',
+        icon: '\u{1F697}',
+        lines: [
+          { action: 'Miles driven',        detail: 'Haxtun \u2192 Denver roundtrip (356 mi \u00D7 $0.725)', amount: -258.10, type: 'paid',    date: '2026-03-24', status: 'confirmed' },
+          { action: 'Travel payment',      detail: 'FED TVL USDA TREAS 310 RMR*IV*A2LBVG003 (mileage + per diem combined)', amount: 499.96, type: 'deposit', date: '2026-04-13', status: 'confirmed' },
+        ],
+      },
+    ],
+    totals: {
+      outOfPocket: 258.10 + 118.85,
+      grossComp: 1031.52,
+      totalDeposited: 800.09 + 499.96 + 118.85,
+      netAfterAll: 800.09 + 499.96 + 118.85,
+    },
+    deposits: [
+      { label: 'Hotel (US Dept of Agriculture)', date: '2026-03-30', amount: 118.85 },
+      { label: 'FED SAL (AGRI TREAS 310)', date: '2026-04-13', amount: 800.09 },
+      { label: 'FED TVL (USDA TREAS 310)', date: '2026-04-13', amount: 499.96 },
     ],
   },
 ];

@@ -10,6 +10,7 @@ const mainLinks = [
   { to: '/documents', label: 'Documents', icon: '\uD83D\uDCC4' },
   { to: '/expenses', label: 'Expenses', icon: '\uD83D\uDCB2' },
   { to: '/issues', label: 'County Issues', icon: '\u26A0' },
+  { to: '/appeals-tracker', label: 'Appeals Tracker', icon: '\u2696' },
   { to: '/cost-share-rates', label: 'Cost Share Rates', icon: '\u0024' },
 ];
 
@@ -18,6 +19,7 @@ const toolLinks = [
   { to: '/ethics', label: 'Ethics & OGE 450', icon: '\uD83D\uDCDD', external: true },
   { to: '/appeals-training', label: 'Appeals Training', icon: '\u2696\uFE0F' },
   { to: '/roberts-rules', label: 'Roberts Rules', icon: '\u00A7' },
+  { to: '/appeals-training', label: 'Appeals Training', icon: '\u2696' },
   { to: '/search', label: 'Search', icon: '\uD83D\uDD0D' },
   { to: '/settings', label: 'Settings', icon: '\u2699' },
 ];
