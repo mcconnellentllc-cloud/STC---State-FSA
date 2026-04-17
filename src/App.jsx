@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from './auth/AuthContext';
 import Sidebar from './components/Sidebar';
 import Dashboard from './pages/Dashboard';
@@ -16,6 +16,8 @@ import Issues from './pages/Issues';
 import Summary from './pages/Summary';
 import RobertsRules from './pages/RobertsRules';
 import CostShareRates from './pages/CostShareRates';
+import AppealsTraining from './pages/AppealsTraining';
+import Appeals from './pages/Appeals';
 
 function LoginScreen() {
   const { login, error } = useAuth();
@@ -80,6 +82,9 @@ export default function App() {
           <Route path="/ethics" element={<Ethics />} />
           <Route path="/roberts-rules" element={<RobertsRules />} />
           <Route path="/cost-share-rates" element={<CostShareRates />} />
+          <Route path="/appeals-training" element={<AppealsTraining />} />
+          <Route path="/appeals/*" element={<Appeals />} />
+          <Route path="/appeals-tracker" element={<Navigate to="/appeals" replace />} />
           <Route path="/search" element={<Search />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/auth/callback" element={<AuthCallback />} />
