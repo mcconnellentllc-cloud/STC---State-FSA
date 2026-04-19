@@ -1,0 +1,381 @@
+[
+  {
+    "id": "APPEAL-1-2026-EBRIGHT",
+    "caseId": "Appeal 1",
+    "meetingDate": "2026-04-23",
+    "agendaItem": "Exec Session Item 3",
+    "title": "CRP Appeal — Bent County — Grassland Contracts",
+    "appellants": "John and Stephanie Ebright",
+    "county": "Bent",
+    "program": "CRP",
+    "presenter": "Corey Pelton, Agricultural Program Chief",
+    "meetingTimeMin": 90,
+    "overviewTime": "9:00 AM",
+    "producerTime": "9:30 AM",
+    "status": "OPEN",
+    "archived": false,
+    "guestsAtMeeting": true,
+    "voteRecorded": null,
+    "advisoryNotes": "",
+    "dateCreated": "2026-04-15",
+    "issueSummary": "Bent County COC terminated 7 CRP grassland contracts (11071, 11075, 11101, 11114, 11115, 11116, 11117) for noncompliance with grazing plans. All NRCS field visits occurred during winter dormancy (Jan–Mar 2025). Producers never provided grazing records despite multiple requests. COC found insufficient stubble height, missing species diversity, and no good faith effort. Full refund of all payments assessed. Continued from March 24 STC.",
+    "fullText": "Appellants John and Stephanie Ebright had Grassland CRP contracts accepted for sign-ups 204 and 206. All contracts, conservation plans (NRCS-CPA-1155), and 528 CRP Grasslands Prescribed Grazing Plans were signed timely.\n\nFeb 10, 2025 — Baca County CED requested grazing records. No records received.\nApr 22, 2025 — Noncompliance letter. NRCS visits Jan 31, Feb 26, Mar 11, 2025 (all winter dormancy) showed bare ground and hard-grazed fields.\nMay 6, 2025 — Producers provided good faith letter.\nMay 20, 2025 — COC determined no good faith: stubble height below 4–6\", species diversity insufficient, no grazing records.\nJun 17, 2025 — Termination letters issued.\nJul 10, 2025 — Producers requested reconsideration.\nAug 5, 2025 — Reconsideration hearing. Producers stated they did not receive Feb 10 letter. Showed July 1 photos. Noted 2 ft snow in December, sold 40 head.\nCOC upheld termination.\nMar 24, 2026 — First STC review. Continued to April 23, 2026.",
+    "theGood": [
+      "All three NRCS field visits were during winter dormancy (Jan 31, Feb 26, Mar 11). Dormant-season stubble height is not an accurate measure of growing-season grazing compliance. The 4–6 inch standard in the 528 plan is an active-grazing indicator, not a post-dormancy measurement.",
+      "Producers provided July 1, 2025 photos showing representative cover on the contracts — reviewed and dismissed by COC without documented rebuttal in the record.",
+      "Producers stated they did not receive the February 10 letter requesting grazing records. If not received, failure to produce records cannot be characterized as willful noncompliance.",
+      "Producers sold 40 head and moved others to another location after noncompliance notification — documented responsive corrective action.",
+      "Two feet of December snow provides a plausible, verifiable explanation for suppressed ground cover appearance in January–March field visits.",
+      "Prior STC (Dec 2025) granted equitable relief in Moffat County CRP misaction case — direct Colorado STC precedent for relief exists.",
+      "Seven active CRP contracts represents substantial ongoing program engagement and economic incentive to comply.",
+      "Case was continued from March 24 STC — sufficient complexity already recognized by prior STC panel."
+    ],
+    "theBad": [
+      "Grazing records were NEVER produced — not after the Feb request, May COC meeting, August reconsideration, or March STC hearing. This is the most damaging fact in the record.",
+      "All 528 plans were signed by the producers — explicit written acknowledgment of stocking limits and stubble height requirements.",
+      "Three independent NRCS field visits on separate dates all produced consistent findings of bare ground and hard-grazed fields.",
+      "Species diversity failure (30-point stand, 5 species, 3 native grasses) is a separate independent basis for noncompliance beyond grazing.",
+      "COC reviewed July 1 photos at reconsideration and upheld their finding — COC did not find the producers' explanation credible.",
+      "Claim of not receiving Feb 10 letter was not raised until the August 5 hearing, six months after the fact.",
+      "Grazing records request was sent by Baca County CED but records were still never produced even after the April noncompliance notice."
+    ],
+    "redFlags": [
+      {
+        "type": "PROCEDURAL",
+        "text": "All three NRCS field visits occurred during winter dormancy (Jan 31, Feb 26, Mar 11). Measuring stubble height during dormancy may not meet the evidentiary standard for a growing-season noncompliance determination. The 528 plan 4–6 inch standard is an active-grazing management indicator, not a post-dormancy measurement."
+      },
+      {
+        "type": "DOCUMENTATION",
+        "text": "The grazing records request letter (Feb 10) was sent by Baca County CED, not Bent County CED. The record should clarify whether this was procedurally appropriate and whether certified delivery was used."
+      },
+      {
+        "type": "REGULATORY",
+        "text": "2-CRP (Rev.6) paragraph 603 requires COC to document the specific factors weighed in concluding no good faith effort — not just the absence of records. Affirmative in-season evidence of noncompliance should be present in the record."
+      },
+      {
+        "type": "PROCEDURAL",
+        "text": "Contract 11117/Tract 4328 has TWO 528 plans on file with no written FSA determination of which plan governed. Citing noncompliance against an unresolved standard is administratively defective for this contract."
+      },
+      {
+        "type": "DUE PROCESS",
+        "text": "If producers genuinely did not receive the February 10 letter, FSA cannot demonstrate adequate notice and opportunity to comply before the April 22 noncompliance determination was issued."
+      }
+    ],
+    "commonSense": [
+      "Seven contracts out of compliance simultaneously with zero grazing records produced over 14 months. The pattern is difficult to explain by accident — but winter dormancy measurements are not adequate physical evidence of growing-season violations.",
+      "The July 1 producer photos deserve more than a general dismissal. If they show adequate cover, that evidence should be specifically rebutted in the COC and STC record.",
+      "A producer managing 2,400+ CRP acres has substantial rental income at stake. Producing no grazing records over 14 months and multiple requests is either a profound oversight or intentional — that distinction is central to the good faith determination.",
+      "The two-feet-of-snow and 40-head-sale statements are independently verifiable. Neither was corroborated in the agency record prior to the determination."
+    ],
+    "contracts": [
+      { "contract": "11101", "tract": "751", "acres": null, "maxHead": null, "daysPlanned": null, "totalAUDs": null, "note": "528 plan data not recovered from file split" },
+      { "contract": "11075", "tract": "772", "acres": 312.07, "maxHead": 10, "daysPlanned": 180, "totalAUDs": 1778.799 },
+      { "contract": "11115", "tract": "2386", "acres": 306.29, "maxHead": 11, "daysPlanned": 120, "totalAUDs": 1286.418 },
+      { "contract": "11071", "tract": "4297", "acres": 306.29, "maxHead": 9, "daysPlanned": 180, "totalAUDs": 1470.192 },
+      { "contract": "11116", "tract": "2396", "acres": 158.80, "maxHead": 5, "daysPlanned": 120, "totalAUDs": 666.96 },
+      { "contract": "11117", "tract": "4328", "acres": 1047.81, "maxHead": 41, "daysPlanned": 120, "totalAUDs": 5029.488, "note": "TWO 528 plans on file — no written FSA determination of operative plan" },
+      { "contract": "11114", "tract": "4034", "acres": 315.35, "maxHead": 11, "daysPlanned": 120, "totalAUDs": 1324.47 }
+    ],
+    "resolutionOptions": [
+      {
+        "label": "Grant Full Relief",
+        "description": "Reinstate all 7 contracts. Waive refund. Find dormant-season measurements insufficient for a compliance determination without in-season corroboration.",
+        "fsaRisk": "HIGH — establishes precedent that CRP termination requires in-season evidence, not dormant-season spot checks.",
+        "appellantRisk": "None if granted.",
+        "nadRisk": "LOW if denied — dormant-season measurement standard is a strong appellate argument."
+      },
+      {
+        "label": "Grant Partial Relief",
+        "description": "Reinstate contracts where agency evidence is weakest. Negotiate refund only on contracts with the clearest in-season documentation.",
+        "fsaRisk": "MODERATE — requires contract-by-contract analysis at STC level.",
+        "appellantRisk": "Partial refund on remaining contracts.",
+        "nadRisk": "MODERATE."
+      },
+      {
+        "label": "Table — Require In-Season Monitoring",
+        "description": "Suspend determination. Direct NRCS to conduct May–Sep 2026 monitoring visits to establish current condition baseline before final vote.",
+        "fsaRisk": "LOW — produces a better evidentiary record.",
+        "appellantRisk": "Contracts remain suspended pending monitoring.",
+        "nadRisk": "LOW."
+      },
+      {
+        "label": "Refer to Mediation",
+        "description": "Refer to Colorado FSA mediation program before STC renders final determination.",
+        "fsaRisk": "LOW.",
+        "appellantRisk": "LOW — appeal rights preserved if mediation fails.",
+        "nadRisk": "LOW."
+      },
+      {
+        "label": "Deny — Document Thoroughly",
+        "description": "Affirm COC determination. Explicitly address dormant-season measurement issue and dual 528 plan issue for Contract 11117 in the STC written decision.",
+        "fsaRisk": "HIGH NAD reversal risk if red flags not explicitly addressed in STC decision text.",
+        "appellantRisk": "Must escalate to NAD to pursue further relief.",
+        "nadRisk": "HIGH — dormant-season measurement and dual-plan issues are strong appellate arguments."
+      }
+    ]
+  },
+  {
+    "id": "APPEAL-2-2026-3RLAMB",
+    "caseId": "Appeal 2",
+    "meetingDate": "2026-04-23",
+    "agendaItem": "Exec Session Item 4",
+    "title": "LDP Appeal — Washington County",
+    "appellants": "3R Lamb Feeding LLC; Connie Rule; Spence Rule; Sumner Rule",
+    "county": "Washington",
+    "program": "LDP",
+    "presenter": "Corey Pelton, Agricultural Program Chief",
+    "meetingTimeMin": 90,
+    "overviewTime": "10:30 AM",
+    "producerTime": "11:00 AM",
+    "status": "PENDING DATA",
+    "archived": false,
+    "guestsAtMeeting": true,
+    "voteRecorded": null,
+    "advisoryNotes": "",
+    "dateCreated": "2026-04-15",
+    "issueSummary": "3R Lamb Feeding LLC and individual appellants Connie, Spence, and Sumner Rule are appealing a Loan Deficiency Payment (LDP) determination by Washington County FSA. Case file is password-protected — Steve Raptopoulos must recuse from this appeal. Full analysis pending receipt of the unlocked case file.",
+    "fullText": "[PENDING DATA] — Appeal 2 case file is password-protected. Contact Jon Weishaar for the password. Steve Raptopoulos is recused and must not have access to this file.",
+    "theGood": ["[PENDING DATA] — Unlock Appeal 2 case file to populate appellant arguments."],
+    "theBad": ["[PENDING DATA] — Unlock Appeal 2 case file to populate agency arguments."],
+    "redFlags": [
+      { "type": "PROCEDURAL", "text": "[PENDING DATA] — Review case file for procedural issues once unlocked." }
+    ],
+    "commonSense": ["[PENDING DATA] — Populate after reviewing Appeal 2 case file."],
+    "contracts": [],
+    "resolutionOptions": [
+      {
+        "label": "Grant Relief",
+        "description": "[PENDING DATA]",
+        "fsaRisk": "[PENDING DATA]",
+        "appellantRisk": "[PENDING DATA]",
+        "nadRisk": "[PENDING DATA]"
+      },
+      {
+        "label": "Deny",
+        "description": "[PENDING DATA]",
+        "fsaRisk": "[PENDING DATA]",
+        "appellantRisk": "[PENDING DATA]",
+        "nadRisk": "[PENDING DATA]"
+      }
+    ]
+  },
+  {
+    "id": "APPEAL-3-2026-PROCTOR",
+    "caseId": "Appeal 3",
+    "meetingDate": "2026-04-23",
+    "agendaItem": "Exec Session Item 5a",
+    "title": "NAP Appeal — Otero County — 2024 Mixed Forage IGS",
+    "appellants": "Leonard Joseph Proctor",
+    "county": "Otero",
+    "program": "NAP",
+    "presenter": "Janae Rader, Farm Program Specialist",
+    "meetingTimeMin": 90,
+    "overviewTime": "12:30 PM",
+    "producerTime": "1:00 PM",
+    "status": "OPEN",
+    "archived": false,
+    "guestsAtMeeting": false,
+    "voteRecorded": null,
+    "advisoryNotes": "",
+    "dateCreated": "2026-04-15",
+    "cropInfo": {
+      "Crop": "Mixed Forage (Mixfg) Interseeded Grass (IGS)",
+      "Practice": "Irrigated",
+      "Coverage": "65/100 buy-up",
+      "Unit": "Unit 482",
+      "Crop Year": "2024",
+      "Acres": "52.16",
+      "Claimed Disaster": "Heat, Wind/Excess Wind",
+      "Disaster Period": "Jul 1 – Oct 30, 2024",
+      "NOL Filed": "Nov 5, 2024",
+      "Days Late": "21",
+      "Normal Harvest Date": "Oct 15, 2024",
+      "Bales Counted by LA": "17",
+      "Avg Bale Weight (lbs)": "1,410",
+      "Total Production (tons)": "11.99",
+      "Irrigation": "7.75 Highline Canal shares — adequate for 55–60 ac",
+      "Unit 1528 History": "No documented growing history for 65/100 buy-up on file"
+    },
+    "issueSummary": "Proctor filed a late notice of loss (21 days after normal harvest date) on 52.16 acres of irrigated mixed forage in Otero County, claiming heat and wind caused the 2024 production loss. A winter storm before the November 22 inspection made it impossible to verify the claimed disaster — the loss adjustor's FSA-501 Statement of Facts was left blank on the disaster cause question, an agency documentation failure. COC disapproved the NOL and AFP. A POA signature deficiency caused a 42-day procedural delay in 2025. Case pending since June 2025 awaiting STC appointment.",
+    "fullText": "Proctor holds 65/100 buy-up NAP coverage on Mixfg IGS. Original filing Oct 27, 2023 at 50/55; upgraded to 65/100 on Jan 19, 2024, before the Dec 1, 2023 application closing date — timely.\n\nNov 5, 2024 — NOL filed claiming Heat/Wind Jul 1–Oct 30, apparent Oct 31. Filed 21 days after Oct 15 normal harvest date. Late-filed. Mandatory field inspection triggered.\nNov 22, 2024 — LA inspection. Fields harvested. LA counted 17 bales. FSA-501 Statement of Facts did NOT address any disaster event — left blank on this critical question. Photos showed snow-covered fields. No evidence of heat or wind damage visible.\nDec 11, 2024 — COC disapproved NOL: (1) inadequate proof of disaster; (2) Otero County did not exceed D1 drought; (3) LA did not indicate disaster caused loss; (4) not similar to other producers.\nDec 10, 2024 — AFP filed.\nJan 13, 2025 — COC disapproved AFP — no acceptable NOL on file.\nJan 29, 2025 — POA Kris Demoss emailed reconsideration request.\nMar 12, 2025 — Reconsideration hearing. COC upheld disapproval.\nApr 15, 2025 — Proctor filed STC appeal request.\nJun 4–5, 2025 — STO rejected documents — signatures did not match FSA-211 POA on file.\nJun 16, 2025 — Corrected signatures received. Appeal deemed timely filed.\nApr 8, 2026 — STC hearing scheduled April 23, 2026 at 1:00 PM.",
+    "theGood": [
+      "NOL filed only 21 days late — a narrow window that arguably still permitted meaningful inspection if a winter storm had not intervened.",
+      "The Loss Adjustor's FSA-501 Statement of Facts was LEFT BLANK on the disaster cause question. 1-NAP paragraph 575C requires the LA to document findings on late-filed NOLs. A blank FSA-501 is an agency documentation failure, not just a producer failure.",
+      "Producer has adequate and documented irrigation capacity (7.75 Highline Canal shares for 55–60 acres) — the inadequate irrigation resources ineligible cause of loss does not apply.",
+      "Consistent NAP participant with 5-year APH and documented production history — not an opportunistic first-time filer.",
+      "D1 drought was documented in Otero County during the claimed period.",
+      "Production loss was real and substantial: 11.99 tons actual versus historical average of 44–58 tons on comparable acres — approximately 75–80% yield reduction.",
+      "Unit 1528 may have been improperly granted 65/100 buy-up coverage by FSA without documented growing history — an agency processing error favoring the producer under equitable relief principles.",
+      "POA signature deficiency was a correctable technical defect. Producer re-filed within the required window. No substantive right was forfeited."
+    ],
+    "theBad": [
+      "NOL filed 21 days late. Winter storm before the November 22 inspection made it physically impossible to verify heat or wind damage. 1-NAP paragraph 575C explicitly provides for denial when late-filed NOLs cannot be inspected to verify the claimed disaster condition.",
+      "The 1-NAP manual example is directly on point: snow fell before field inspection — COC cannot approve because the disaster condition cannot be verified by a field visit.",
+      "COC found the claimed event not similar to other producers in the area — a significant factual finding difficult to overcome without independent weather corroboration.",
+      "Producer initially reported 24 bales then corrected to 17, explaining the discrepancy as accidentally including alfalfa bales. Correction was accepted but affects production record credibility.",
+      "No corroborating producer claims in the area for the same heat/wind event during the claimed period."
+    ],
+    "redFlags": [
+      {
+        "type": "DOCUMENTATION",
+        "text": "The LA's FSA-501 Statement of Facts was blank on the disaster cause question. 1-NAP paragraph 575C requires specific documentation of damage findings on late-filed NOLs. A payment denial based on lack of inspection verification is undermined when the agency's own inspector failed to complete the required documentation."
+      },
+      {
+        "type": "REGULATORY",
+        "text": "Unit 1528 growing history: the case file states no documentation exists to determine if the producer met the growing history requirement for 65/100 buy-up (paragraph 50.5, 7 CFR 1437.5(e)). If FSA accepted buy-up coverage on Unit 1528 without documented history, that is an FSA processing error. Under equitable relief principles, the producer should not be denied benefits due to the agency's own failure to verify eligibility at application."
+      },
+      {
+        "type": "PROCEDURAL",
+        "text": "Initial appeal documents were rejected for improper POA signature — a 42-day administrative delay attributable to a technical requirement, not producer bad faith. The appeal was ultimately accepted as timely filed after correction."
+      }
+    ],
+    "commonSense": [
+      "A producer with 5+ years of documented irrigated mixed forage production, adequate water rights, and consistent NAP participation takes 1 cutting (17 bales) in a year with historical production of 55+ bales. That is a genuine production loss regardless of whether every procedural box was checked.",
+      "The FSA-501 blank is the most consequential fact in this case. The agency's field inspection was the gatekeeper for the late-filed NOL — and the agency's own inspector failed to document their findings on the key question. Placing the full burden of that failure on the producer is difficult to justify.",
+      "The Unit 1528 growing history issue should be investigated before a final denial is issued. If FSA accepted buy-up service fees for coverage that should not have been granted, that is a FSA misaction — not a producer error."
+    ],
+    "contracts": [],
+    "resolutionOptions": [
+      {
+        "label": "Grant Full Relief",
+        "description": "Find the LA's blank FSA-501 constitutes an agency documentation failure that undermines the basis for NOL disapproval. Find D1 drought conditions and the producer's production history support the claim. Approve both the NOL and AFP.",
+        "fsaRisk": "HIGH — establishes precedent for approving late-filed NOLs where inspection timing was beyond producer control.",
+        "appellantRisk": "None if granted.",
+        "nadRisk": "MODERATE if denied — blank FSA-501 is a strong appellate argument."
+      },
+      {
+        "label": "Grant Partial Relief",
+        "description": "Approve the NOL on D1 drought basis. Direct COC to recalculate AFP at confirmed production (17 bales). Address Unit 1528 coverage history issue through programmatic relief if buy-up was improperly granted.",
+        "fsaRisk": "MODERATE.",
+        "appellantRisk": "Reduced payment, but some recovery.",
+        "nadRisk": "LOW to MODERATE."
+      },
+      {
+        "label": "Remand — Investigate Unit 1528",
+        "description": "Remand to Otero COC to determine whether 65/100 buy-up on Unit 1528 was properly granted. Direct COC to reconsider the NOL with specific attention to the blank FSA-501 documentation gap.",
+        "fsaRisk": "LOW — produces a better record for either outcome.",
+        "appellantRisk": "Continued delay.",
+        "nadRisk": "LOW."
+      },
+      {
+        "label": "Deny — Late Filed NOL",
+        "description": "Affirm COC. Late-filed NOL could not be properly inspected due to snow. 1-NAP paragraph 575C explicitly contemplates denial in this circumstance.",
+        "fsaRisk": "LOW procedurally. MODERATE if blank FSA-501 and Unit 1528 coverage issues are raised at NAD.",
+        "appellantRisk": "Loss of 2024 NAP payment on 52 acres.",
+        "nadRisk": "MODERATE — blank FSA-501 and Unit 1528 improper coverage grant are viable NAD arguments."
+      }
+    ]
+  },
+  {
+    "id": "APPEAL-4-2026-RIVEREDGE",
+    "caseId": "Appeal 4",
+    "meetingDate": "2026-04-23",
+    "agendaItem": "Exec Session Item 5b",
+    "title": "NAP Appeal — La Plata County — 2025 Non-Irrigated Safflower",
+    "appellants": "River Edge Dairy and Farm, LLC (DeRon Gillen)",
+    "county": "La Plata",
+    "program": "NAP",
+    "presenter": "Janae Rader, Farm Program Specialist",
+    "meetingTimeMin": 90,
+    "overviewTime": "2:00 PM",
+    "producerTime": "2:30 PM",
+    "phoneJoin": "(970) 769-4304",
+    "status": "OPEN",
+    "archived": false,
+    "guestsAtMeeting": true,
+    "voteRecorded": null,
+    "advisoryNotes": "",
+    "dateCreated": "2026-04-15",
+    "cropInfo": {
+      "Crop": "Safflower for Seed (Non-Irrigated)",
+      "Coverage": "65/100 buy-up",
+      "Units": "Unit 328 (38.01 ac) + Unit 1528 (147.47 ac) = 185.48 ac total",
+      "Crop Year": "2025",
+      "Plant Dates": "May 3–5, 2025",
+      "Claimed Disaster": "Drought",
+      "Disaster Date": "May 28, 2025",
+      "Seeding Rate": "~30,000 seeds/ac (~2.5 lbs/ac). Recommended: 15–30 lbs/ac.",
+      "Rainfall Apr–Jun 2025": "3.48 in (vs 1.12 in 2023, 1.21 in 2024 — years with successful crops)",
+      "Drought Monitor": "D1 in parts of La Plata County; D2 in SW region (field area) as of May 6, 2025",
+      "Unit 1528 EQIP": "Enrolled in active EQIP contract — safflower was EQIP-approved broadleaf rotation crop",
+      "Unit 1528 History": "No documented growing history for 65/100 buy-up on file",
+      "Neighbor Comparison": "Blue Horizons Farm planted Apr 18–May 1, apparent loss Jun 23 (month later), NOL approved",
+      "Late Documents": "Appellant submitted additional documents to Box before April 23 meeting — review before 2:00 PM"
+    },
+    "issueSummary": "River Edge Dairy planted non-irrigated safflower for seed on 185.48 acres near Hesperus, La Plata County in May 2025. Seeds sprouted then died — claimed cause is drought combined with high winds drying seed furrows faster than roots could develop. COC disapproved: (1) 2025 had more precipitation than 2023 and 2024, years when River Edge successfully grew safflower; (2) seeding rate of ~2.5 lbs/acre was dramatically below the recommended 15–30 lbs/acre; (3) neighbor Blue Horizons Farm had a different, later loss timeline. Unit 1528 has no documented growing history for buy-up coverage. Appellant submitted late documents to Box before the April 23 meeting.",
+    "fullText": "River Edge Dairy has successfully grown safflower in 2023 and 2024. Planted non-irrigated safflower May 3–5, 2025 near Hesperus in SW La Plata County.\n\nJun 4, 2025 — NOL filed claiming drought beginning May 28, apparent May 28.\nJun 11, 2025 — LA Anita Lazor inspected. Photos show only seeds and weeds — no safflower plants visible.\nJul 31, 2025 — COC discussed NOL. Requested soil moisture tests or farming practices statement.\nAug 27, 2025 — Producer provided documentation on farming practices. No formal soil moisture tests submitted.\nSep 22, 2025 — COC disapproved NOL and AFP as action between meetings per 1-NAP paragraph 51E.\nDec 4, 2025 — Full reconsideration hearing. DeRon and Jordan Gillen attended in person.\n\nHearing detail: DeRon passed around safflower seeds and provided agronomic context. Planting method: double disc opener, 30-inch rows, seeds planted into furrow groove. High May winds dried out furrows faster than roots could grow. Seeds sprouted initially then died. Soil moisture assessed by shovel (dig 12–18 inches, make a dirt ball) plus probe in March showing 21 inches of moisture. Seeds were 1 year old from 2024 crop — viability tested by germination in wet rag.\n\nRainfall at Kline station Apr 1–Jun 30: 2025 = 3.48 in, 2024 = 1.21 in, 2023 = 1.12 in. COC noted 2025 had more precipitation than years with successful crops.\n\nSeeding rate: Producer stated 30,000 seeds/acre in 30-inch rows, approximately 2.5 lbs/acre. COC noted recommended rate is 15–30 lbs/acre. Blue Horizons Farm uses approximately 15 lbs/acre.\n\nNeighbor comparison: Blue Horizons Farm planted Apr 18–May 1, apparent loss not until Jun 23, appraisal showed partially grown plants. River Edge apparent loss May 28, appraisal showed only seeds and weeds.\n\nUnit 1528: approximately 150 acres on F2083 enrolled in EQIP year 2 of 3-year contract requiring a broadleaf rotating crop. Safflower was on the EQIP-approved list.\n\nCOC deliberated: Could not conclude drought was sole cause of loss per 1-NAP paragraph 51E. Upheld disapproval.",
+    "theGood": [
+      "D2 drought designation existed in the SW La Plata County field area as of May 6, 2025. D2 is Severe Drought on the US Drought Monitor scale — a significant documented drought condition.",
+      "Seeds sprouted and then died — confirmed at the hearing. Post-germination desiccation from wind-driven furrow moisture loss is a legitimate mechanism of drought-related crop failure.",
+      "River Edge has documented safflower success in 2023 and 2024 on the same land — not a speculative crop choice or an area unsuited for production.",
+      "Unit 1528 is enrolled in an active EQIP contract requiring a broadleaf rotating crop. Safflower was EQIP-approved. Producer had a USDA conservation obligation to plant this field.",
+      "All other drought NOLs in La Plata County in 2025 were approved — safflower on River Edge was the ONLY disapproval. Producer was treated differently from every other 2025 drought claimant in the county.",
+      "Neighboring producer Blue Horizons Farm experienced safflower damage with an approved NOL — confirming drought and wind conditions were legitimately damaging to safflower in the area.",
+      "Denying NAP coverage for a crop planted to fulfill a separate USDA EQIP conservation obligation creates an inequitable cross-program outcome.",
+      "Producer demonstrated detailed safflower agronomy at the hearing — 40 years of farming experience, multi-year crop history, documented seed viability testing."
+    ],
+    "theBad": [
+      "2025 April–June precipitation (3.48 inches) was HIGHER than 2023 (1.12 in) and 2024 (1.21 in) — years when River Edge successfully grew safflower. This is COC's strongest factual argument.",
+      "Seeding rate of approximately 2.5 lbs/acre versus the recommended 15–30 lbs/acre. River Edge planted at roughly 10–15% of recommended density. Failure to follow good farming practices is an ineligible cause of loss under 1-NAP paragraph 51F.",
+      "River Edge's loss was apparent May 28 — only 23–25 days after planting. Blue Horizons Farm planted earlier in April but had no apparent loss until June 23, a full month later despite being neighbors within a few miles.",
+      "LA appraisal photos on June 11 showed only seeds and weeds — no growing plants at all. Blue Horizons appraisal showed partially grown plants plus dead seeds.",
+      "Unit 1528 has no documented growing history for 65/100 buy-up coverage. Coverage eligibility on this unit is unverified.",
+      "COC requested formal soil moisture tests. Producer provided only a description of their hand-shovel method — not documented soil moisture data."
+    ],
+    "redFlags": [
+      {
+        "type": "REGULATORY",
+        "text": "Unit 1528 growing history: the case file states no documentation exists to determine if the producer met the growing history requirement for 65/100 buy-up (paragraph 50.5, 7 CFR 1437.5(e)). If FSA accepted buy-up coverage on Unit 1528 without documented history, that is an FSA processing error. Under equitable relief principles, the producer should not be denied benefits due to the agency's failure to verify eligibility at application."
+      },
+      {
+        "type": "REGULATORY",
+        "text": "EQIP cross-program conflict: Unit 1528 is in an active EQIP contract that approved safflower as the required broadleaf rotation crop. Denying NAP coverage for a crop planted in compliance with a separate USDA conservation contract obligation creates an adverse inter-program outcome that should be reviewed under USDA equity principles."
+      },
+      {
+        "type": "PROCEDURAL",
+        "text": "COC cited 1-NAP paragraph 51E drought timing analysis but the record does not include a formal agronomic analysis of safflower's specific moisture requirements during the planting-to-rosette stage at dryland elevations near Hesperus. General precipitation comparisons from a nearby weather station are not a crop-specific drought analysis."
+      },
+      {
+        "type": "DOCUMENTATION",
+        "text": "COC disapproved the NOL as action between meetings on September 22 — over 3 months after the LA inspection on June 11. The extended timeline between inspection and COC action should be documented in COC minutes explaining the delay."
+      }
+    ],
+    "commonSense": [
+      "Total seasonal precipitation comparison is not a complete drought analysis for dryland strip-till safflower planted in late May. The critical question is whether 0.66 inches between April 28 and May 28, combined with documented high winds, was sufficient for germinated seeds in an exposed 30-inch furrow near Hesperus to develop root depth before desiccating. That is a different question from whether the season had adequate total rainfall.",
+      "The seeding rate issue is legally the cleanest basis for COC's denial. At 2.5 lbs/acre versus 15–30 recommended, the stand density question is real. However, the producer provided a detailed agronomic explanation for why they use lower density in their specific conditions — this deserved expert agronomic evaluation, not just a citation to general recommendations.",
+      "The EQIP obligation on Unit 1528 is the most sympathetic fact. The federal government required this producer to plant a broadleaf crop on those specific acres as part of an active conservation contract, the producer planted safflower from the EQIP-approved list, and now the government is denying insurance coverage for that crop's failure.",
+      "All other drought claims in La Plata County in 2025 were approved. River Edge was the only one denied. When a producer is treated differently from every other claimant in the same county in the same year, the basis for that distinction needs to be clearly documented in the record."
+    ],
+    "contracts": [],
+    "resolutionOptions": [
+      {
+        "label": "Grant Full Relief",
+        "description": "Find D2 drought plus documented high winds constitutes an eligible cause of loss. Find that post-germination seed death satisfies the directly cause destruction standard. Find that seeding rate is not determinative when seeds did in fact germinate.",
+        "fsaRisk": "HIGH — establishes precedent that non-standard seeding rates do not preclude drought loss approval.",
+        "appellantRisk": "None if granted.",
+        "nadRisk": "MODERATE if denied."
+      },
+      {
+        "label": "Grant Partial Relief — Unit 328 Only",
+        "description": "Approve Unit 328 (38.01 ac with documented growing history). Deny or remand Unit 1528 (147.47 ac with no documented growing history) for growing history documentation review.",
+        "fsaRisk": "MODERATE.",
+        "appellantRisk": "Partial recovery — the larger unit is denied.",
+        "nadRisk": "LOW to MODERATE."
+      },
+      {
+        "label": "Remand — Growing History and Agronomy Review",
+        "description": "Remand to La Plata COC: (1) determine whether 65/100 buy-up on Unit 1528 was properly granted; (2) obtain agronomic expert input on low-density safflower seeding in this specific growing region; (3) revisit drought analysis using field-specific precipitation data.",
+        "fsaRisk": "LOW — produces a better record.",
+        "appellantRisk": "Continued delay.",
+        "nadRisk": "LOW."
+      },
+      {
+        "label": "Deny — Precipitation and Seeding Rate",
+        "description": "Affirm COC. 2025 precipitation exceeded successful prior years. Seeding rate at approximately 2.5 lbs/acre versus 15–30 recommended constitutes failure to follow good farming practices — an ineligible cause of loss under 1-NAP paragraph 51F.",
+        "fsaRisk": "LOW procedurally. MODERATE if EQIP conflict and Unit 1528 improper coverage grant are raised at NAD.",
+        "appellantRisk": "Loss of 2025 NAP payment on 185 acres.",
+        "nadRisk": "MODERATE — EQIP obligation and Unit 1528 improper coverage grant are viable NAD arguments."
+      }
+    ]
+  }
+]
