@@ -16,23 +16,40 @@ import React, { useState, useEffect, useCallback } from "react";
 import { Routes, Route, Link, useNavigate, useParams, Navigate } from "react-router-dom";
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   SEED DATA — Ebright fully populated from rate_justification.json
+   MEETING CONTEXT — upcoming April 23, 2026 STC meeting
+   ───────────────────────────────────────────────────────────────────────────── */
+const NEXT_MEETING = {
+  date: "2026-04-23",
+  dateLabel: "April 23, 2026",
+  label: "Colorado STC Meeting",
+  location: "Virtual via Teams (no STC travel authorized)",
+  notes: "Appeals carried over from March 24 session, cost-share rate actions, and Otero/Crowley COC status are the primary agenda items.",
+};
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SEED DATA — Open appeals and carry-over matters before the STC
+   Ordered logically: active OPEN items (longest-allocated first), then READY,
+   PENDING DATA, and finally RESOLVED follow-up items.
    ───────────────────────────────────────────────────────────────────────────── */
 const SEED_APPEALS = [
+  /* ─────────── 1. CRP — Ebright (carry-over from March 24) ─────────── */
   {
     id: "EX-1-2026-EBRIGHT",
     caseId: "EX-1",
-    title: "CRP Appeal — Bent County",
+    title: "CRP Appeal — Bent County (Follow-up)",
     appellants: "John Ebright & Stepanie Ebright",
     county: "Bent",
     program: "CRP",
     presenter: "Corey Pelton, Agricultural Program Chief",
     meetingTimeMin: 90,
     status: "OPEN",
+    meetingDate: "2026-04-23",
+    priorHearing: "2026-03-24",
+    priority: 1,
     guestsAtMeeting: true,
     dateCreated: "2026-03-24",
     issueSummary:
-      "John and Stepanie Ebright are appealing a CRP noncompliance determination by Bent County COC across 7 contracts. The COC determined overgrazing occurred based on stubble height violations and absence of required grazing records. The Ebrights dispute the determination.",
+      "Carried over from March 24. John and Stepanie Ebright appealed a CRP noncompliance determination by Bent County COC across 7 contracts (11071, 11075, 11101, 11114, 11115, 11116, 11117). The COC terminated all 7 contracts after three NRCS field visits documented bare ground, no 4\"–6\" stubble height, and species-diversity shortfalls; grazing records required under the 528 Prescribed Grazing Plans were never produced. April 23 agenda item is a follow-up to confirm decision documentation, NAD right-to-appeal notice, and any outstanding actions from the March 24 hearing.",
     fullText:
       "Bent County COC issued a noncompliance determination against John and Stepanie Ebright covering CRP contracts 11101 (Tract 751), 11075 (Tract 772), 11115 (Tract 2386), 11071 (Tract 4297), 11116 (Tract 2396), 11117 (Tract 4328), and 11114 (Tract 4034). The determination cited: (1) stubble height measurements below the 4–6 inch minimum required under each contract's 528 CRP Grasslands Prescribed Grazing Plan; (2) failure to provide grazing records when requested by the county office. The COC assessed refunds and placed contracts in violation status. The Ebrights filed a timely appeal. This matter comes before the STC as EX-1 on the March 24, 2026 Executive Session agenda with 90 minutes allocated. The Ebrights are guests and are present only for this item.",
     theGood: [
@@ -109,17 +126,222 @@ const SEED_APPEALS = [
       { contract: "11117", tract: "4328", acres: 1047.81, maxHead: 41, daysPlanned: 120, totalAUDs: 5029.488, note: "Two 528 plans on file. Plan A: 3 head/30 days (small fields). Plan B operative: 41 head/120 days all 1047.81 ac." },
       { contract: "11114", tract: "4034", acres: 315.35, maxHead: 11, daysPlanned: 120, totalAUDs: 1324.47 },
     ],
-    advisoryNotes: "",
+    advisoryNotes: "Heard March 24, 2026. April 23 follow-up: confirm written STC decision text (must address dual-528-plan ambiguity on Contract 11117 and missing 528 page for Contract 11101), confirm NAD right-to-appeal notice delivered to producers within 30 days of final determination, confirm Bent County CED has refund-calculation worksheet if affirmed.",
     voteRecorded: null,
     exhibits: [], // [PENDING DATA] — OneDrive IDs / file hashes TBD
     calculatorUrl: null, // [PENDING DATA] — URL or component name of compliance calculator
+  },
+
+  /* ─────────── 2. CRP — Payne Legacy LLC Standard Payment Reduction Waiver ─────────── */
+  {
+    id: "EX-5-2026-PAYNE",
+    caseId: "EX-5",
+    title: "CRP Payment Reduction Waiver — El Paso County",
+    appellants: "Payne Legacy LLC",
+    county: "El Paso",
+    program: "CRP",
+    presenter: "Hunter A. Cleveland, Farm Program Specialist",
+    meetingTimeMin: 15,
+    status: "OPEN",
+    meetingDate: "2026-04-23",
+    priorHearing: "2026-03-24",
+    priority: 2,
+    guestsAtMeeting: false,
+    dateCreated: "2026-03-24",
+    issueSummary:
+      "Payne Legacy LLC (El Paso County) requested a waiver of the CRP Standard Payment Reduction assessed by the COC after a documented noncompliance event. The STC was asked to waive the reduction or affirm the COC assessment. Carried forward to April 23 for final determination and recording of the vote.",
+    fullText:
+      "El Paso County COC assessed a Standard Payment Reduction against Payne Legacy LLC under 2-CRP Par. 603E following a noncompliance event on the producer's Grassland CRP tract. Payne Legacy requested relief via a waiver, asserting that the circumstances were outside the producer's reasonable control and that corrective action was promptly taken. The STC reviewed the request at its March 24, 2026 Executive Session (15 min allocated, page 659). Final vote was not recorded in the March 24 minutes and the item was carried to April 23, 2026 for determination. If granted, no refund of prior payments is required; if denied, the COC's payment reduction stands and Payne Legacy's NAD appeal rights are preserved.",
+    theGood: [
+      "Producer requested waiver through proper channels — good-faith procedural posture",
+      "Staff (Hunter Cleveland) prepared the case for STC consideration with full documentation",
+      "Penalty at issue is a standard payment reduction, not contract termination — the lesser remedy under Par. 603E",
+      "Waiver, if granted, preserves the underlying CRP contract and avoids triggering refund of prior payments",
+    ],
+    theBad: [
+      "Granting a waiver sets precedent — STC must ensure consistency with prior waiver decisions",
+      "COC's underlying noncompliance finding was not challenged — only the reduction amount",
+      "Program integrity concern: serial waivers undermine COC enforcement authority",
+    ],
+    redFlags: [
+      { type: "PROCEDURAL", text: "Confirm whether Payne Legacy LLC was afforded the full 30-day notice and response window under 2-CRP Par. 603D before the reduction was assessed." },
+      { type: "REGULATORY", text: "Apply the same good-faith analytical framework used in the Ebright case (2-CRP Par. 603A, 603D, 603E, 603F) — inconsistent treatment across the same meeting creates NAD-reversal exposure for the more severe decision." },
+      { type: "DOCUMENTATION", text: "Waiver decisions must be documented in writing with the basis cited — STC minutes must recite the factual findings that support or deny the waiver." },
+    ],
+    commonSense: [
+      "A standard payment reduction is the mid-range remedy between full compliance and contract termination. If the producer corrected the issue promptly and the violation was narrow in scope, a waiver may serve program objectives better than a punitive reduction.",
+      "Ensure this case is decided on the same factual record standard as Ebright — both are CRP noncompliance matters reviewed the same day.",
+      "If the waiver is granted, document in the minutes the specific mitigating facts that justified it, so the decision does not read as arbitrary.",
+    ],
+    resolutionOptions: [
+      {
+        label: "Grant Waiver",
+        description: "Waive the standard payment reduction. Document mitigating facts in minutes. Contract continues on normal payment schedule.",
+        fsaRisk: "Moderate — precedent for future waiver requests",
+        appellantRisk: "None if granted",
+        nadRisk: "N/A — producer has no NAD grievance if granted",
+      },
+      {
+        label: "Grant Partial Waiver",
+        description: "Reduce the payment reduction by a specified percentage in recognition of mitigating circumstances but preserve some program consequence.",
+        fsaRisk: "Low — proportional remedy",
+        appellantRisk: "Producer absorbs a smaller reduction",
+        nadRisk: "LOW",
+      },
+      {
+        label: "Deny Waiver — Affirm COC",
+        description: "Affirm the COC-assessed standard payment reduction. Producer retains NAD appeal rights within 30 days.",
+        fsaRisk: "Low if COC record is complete and the Par. 603 factors are cited in the decision text",
+        appellantRisk: "Reduction applied to next annual payment",
+        nadRisk: "LOW–MEDIUM — depends on quality of COC record",
+      },
+    ],
+    contracts: [],
+    advisoryNotes: "Carry-over from March 24, 2026 Executive Session, page 659. Confirm the final vote is recorded at the April 23 meeting and that the written decision cites the specific Par. 603 factors considered.",
+    voteRecorded: null,
+    exhibits: [],
+    calculatorUrl: null,
+  },
+
+  /* ─────────── 3. CRP — Moffat County Equitable Relief (active precedent) ─────────── */
+  {
+    id: "REF-DEC2025-MOFFAT",
+    caseId: "REF-1",
+    title: "CRP Misaction — Moffat County (Precedent Reference)",
+    appellants: "[PENDING DATA] Moffat County producer",
+    county: "Moffat",
+    program: "CRP",
+    presenter: "Reference only — no presenter",
+    meetingTimeMin: 0,
+    status: "RESOLVED",
+    meetingDate: null,
+    priorHearing: "2025-12",
+    priority: 99,
+    guestsAtMeeting: false,
+    dateCreated: "2025-12-01",
+    issueSummary:
+      "December 2025 STC granted equitable relief in a Moffat County CRP misaction case. Retained in this registry as a direct controlling precedent for the Ebright and Payne Legacy matters — both CRP noncompliance cases where the producer asserts agency error or incomplete agency record.",
+    fullText:
+      "Prior STC action in December 2025: equitable relief granted in a Moffat County CRP misaction case. This is the nearest direct Colorado precedent for relief in a CRP compliance dispute and should be cited in the written determinations for any current CRP appeal where the STC grants relief. [PENDING DATA] — full case name, contract numbers, and written decision text not yet attached to this record.",
+    theGood: [
+      "Direct Colorado precedent for CRP equitable relief within the last 6 months",
+      "Establishes that this STC will grant relief when the agency record is incomplete or contains material error",
+    ],
+    theBad: [
+      "[PENDING DATA] — cannot confirm the scope or facts of the Moffat case without the written decision",
+    ],
+    redFlags: [
+      { type: "DOCUMENTATION", text: "Attach the December 2025 written determination to this record before citing it as precedent in any current appeal." },
+    ],
+    commonSense: [
+      "Precedent carries weight only when the facts are known. Retrieve the December 2025 decision from the minutes and link it here before using it in deliberation.",
+    ],
+    resolutionOptions: [],
+    contracts: [],
+    advisoryNotes: "Reference only. No action at April 23 meeting. Attach the December 2025 written determination when available.",
+    voteRecorded: "Equitable Relief Granted (Dec 2025)",
+    exhibits: [],
+    calculatorUrl: null,
+  },
+
+  /* ─────────── 4. April 23 — Placeholder slot for any newly filed appeals ─────────── */
+  {
+    id: "EX-APRIL-2026-NEW-APPEAL",
+    caseId: "EX-A",
+    title: "[Placeholder] New appeals filed since March 24 — awaiting staff docket",
+    appellants: "[PENDING DATA] — confirm with Corey Pelton / Cindy Vukasin",
+    county: "[PENDING DATA]",
+    program: "Common Provisions",
+    presenter: "[PENDING DATA]",
+    meetingTimeMin: 0,
+    status: "PENDING DATA",
+    meetingDate: "2026-04-23",
+    priorHearing: null,
+    priority: 50,
+    guestsAtMeeting: false,
+    dateCreated: "2026-04-19",
+    issueSummary:
+      "Reserved slot for any producer appeals filed between March 24 and the April 23 meeting. No new appeal dockets have been distributed to STC members as of the training session on April 8. Before the April 23 meeting, confirm with the State Office whether any new CRP, NAP, LFP, ELAP, or Common Provisions appeals have been received and require STC hearing.",
+    fullText:
+      "[PENDING DATA] — This record is a placeholder. When a new appeal is docketed, duplicate this record using the New Appeal form and populate the full case brief. Confirm timing: 30-day filing window from written COC decision (7 CFR 780.9); STC hearing scheduled at next regular meeting where time permits.",
+    theGood: ["[PENDING DATA]"],
+    theBad: ["[PENDING DATA]"],
+    redFlags: [
+      { type: "PROCEDURAL", text: "Verify with Jon Weishaar and Corey Pelton before the April 23 meeting whether any new appeals have been filed and need to be added to the Executive Session agenda." },
+    ],
+    commonSense: [
+      "Do not remove this placeholder until confirmation from State Office that the April 23 Executive Session will have no new appeals.",
+    ],
+    resolutionOptions: [],
+    contracts: [],
+    advisoryNotes: "Administrative placeholder. Delete once confirmed with State Office or replace with real case when docketed.",
+    voteRecorded: null,
+    exhibits: [],
+    calculatorUrl: null,
+  },
+
+  /* ─────────── 5. Otero/Crowley COC Administrative Matter — NOT an appeal, retained for context ─────────── */
+  {
+    id: "REF-OTERO-CROWLEY-COC",
+    caseId: "REF-2",
+    title: "Otero/Crowley COC Administrative Action (NOT an appeal — context only)",
+    appellants: "Not applicable — personnel matter",
+    county: "Otero / Crowley",
+    program: "Common Provisions",
+    presenter: "Jerry Sonnenberg, SED",
+    meetingTimeMin: 0,
+    status: "RESOLVED",
+    meetingDate: "2026-04-23",
+    priorHearing: "2026-03-17",
+    priority: 100,
+    guestsAtMeeting: false,
+    dateCreated: "2026-03-17",
+    issueSummary:
+      "NOT AN APPEAL — retained here for cross-reference only. March 17 special meeting ceased administrative leave action against 5 Otero/Crowley COC members and delegated daily operations to the CED. April 23 agenda includes a status report on COC operations continuity, not an appeal hearing. If any of the 5 members ultimately file a personal grievance under 7 CFR § 7.28(b), that would be a separate adverse-action appeal handled through Employee Relations (Steve Niemann, FPAC-FBC), not the STC CRP/NAP appeal track.",
+    fullText:
+      "Background: Administrative Leave Letters for 5 Otero/Crowley COC members (Knapp, Walter Jr, Hanagan, Tecklenburg, Mason) were prepared by Steve Niemann (HR Specialist, FPAC-FBC) and forwarded to the STC in March 2026. At the March 17 special meeting the STC voted to (1) send a cease-administrative-action letter, and (2) delegate daily operations to the CED pending resolution. The April 23 agenda item is a status report, not an appeal. The appeal-track citations to § 7.28(b) (advance written notice, right to reply, right of further review) apply only if any of the 5 members formally contests the original adverse action — no such filing has been received as of this record.",
+    theGood: [
+      "STC acted promptly on March 17 to preserve county-office operations via CED delegation",
+      "No individual § 7.28(b) grievance has been received — the matter has not escalated to an appeal",
+    ],
+    theBad: [
+      "If the cease-action is later reversed by the FSA Administrator under § 7.1(d), the STC should be prepared to re-open the personnel file",
+    ],
+    redFlags: [
+      { type: "DUE PROCESS", text: "If any of the 5 members files a § 7.28(b) reply or appeal, it must be handled as a confidential personnel matter — NOT processed through the CRP/NAP appeal track." },
+      { type: "PROCEDURAL", text: "April 23 agenda should confirm: all 5 letters delivered and tracked, CED notified of delegation scope, Niemann/Sonnenberg/DC reporting complete, Alisha Knapp 0-KB file resolved before delivery." },
+    ],
+    commonSense: [
+      "Keep this record cross-referenced but do not conflate it with producer program appeals. Separate decision-making frameworks apply.",
+    ],
+    resolutionOptions: [
+      {
+        label: "Status Report Only (no vote required)",
+        description: "Accept staff status report at April 23 meeting. No motion needed unless reinstatement timeline or CED delegation rescission is on the agenda.",
+        fsaRisk: "None",
+        appellantRisk: "N/A",
+        nadRisk: "N/A",
+      },
+      {
+        label: "Motion: Set COC Reinstatement Effective Date",
+        description: "If staff reports the 5 members are ready to resume duties, STC motion to set effective date and clarify CED delegation rollback under 7 CFR § 7.23.",
+        fsaRisk: "Low — routine",
+        appellantRisk: "N/A",
+        nadRisk: "N/A",
+      },
+    ],
+    contracts: [],
+    advisoryNotes: "Cross-reference only. Handle any personnel grievance through Employee Relations channel (Steve Niemann, 816-926-6448), not the STC appeal docket.",
+    voteRecorded: "March 17, 2026 — Motion to cease administrative action PASSED. Motion to delegate CED authority PASSED.",
+    exhibits: [],
+    calculatorUrl: null,
   },
 ];
 
 /* ─────────────────────────────────────────────────────────────────────────────
    PERSISTENCE
    ───────────────────────────────────────────────────────────────────────────── */
-const STORAGE_KEY = "fsa_appeals_v1";
+const STORAGE_KEY = "fsa_appeals_v2";
 
 function loadAppeals() {
   try {
@@ -844,11 +1066,44 @@ function NewAppealForm({ onAdd }) {
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
+   ORDERING — logical sort for the appeals docket
+   Status priority: OPEN (needs decision) → READY → PENDING DATA → TABLED → RESOLVED.
+   Inside the same status bucket, the `priority` field (lower = earlier) governs,
+   then meeting time allocation (longer first), then dateCreated.
+   ───────────────────────────────────────────────────────────────────────────── */
+const STATUS_SORT_RANK = {
+  OPEN: 0,
+  READY: 1,
+  "PENDING DATA": 2,
+  TABLED: 3,
+  RESOLVED: 4,
+};
+
+function sortAppeals(list) {
+  return [...list].sort((a, b) => {
+    const statusA = STATUS_SORT_RANK[a.status] ?? 99;
+    const statusB = STATUS_SORT_RANK[b.status] ?? 99;
+    if (statusA !== statusB) return statusA - statusB;
+    const prA = a.priority ?? 50;
+    const prB = b.priority ?? 50;
+    if (prA !== prB) return prA - prB;
+    const tA = a.meetingTimeMin || 0;
+    const tB = b.meetingTimeMin || 0;
+    if (tA !== tB) return tB - tA;
+    return (b.dateCreated || "").localeCompare(a.dateCreated || "");
+  });
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
    APPEALS INDEX
    ───────────────────────────────────────────────────────────────────────────── */
 function AppealsIndex({ appeals }) {
+  const ordered = sortAppeals(appeals);
   const openCount = appeals.filter(a => a.status === "OPEN").length;
   const pendingCount = appeals.filter(a => a.status === "PENDING DATA").length;
+  const resolvedCount = appeals.filter(a => a.status === "RESOLVED").length;
+  const aprilDocket = ordered.filter(a => a.meetingDate === NEXT_MEETING.date && a.status === "OPEN");
+  const totalAprilMinutes = aprilDocket.reduce((s, a) => s + (a.meetingTimeMin || 0), 0);
 
   return (
     <div style={{ background: T.cream, minHeight: "100vh" }}>
@@ -866,6 +1121,7 @@ function AppealsIndex({ appeals }) {
               { label: "Total Cases", val: appeals.length, color: "#fff" },
               { label: "Open", val: openCount, color: T.goldLight },
               { label: "Pending Data", val: pendingCount, color: T.slateLight },
+              { label: "Resolved", val: resolvedCount, color: T.slateLight },
             ].map(s => (
               <div key={s.label} style={{ display: "flex", alignItems: "baseline", gap: 6 }}>
                 <span style={{ fontSize: 24, fontWeight: 800, color: s.color, fontFamily: "'IBM Plex Mono', monospace" }}>{s.val}</span>
@@ -876,9 +1132,52 @@ function AppealsIndex({ appeals }) {
         </div>
       </div>
 
+      {/* April 23 Meeting Banner */}
+      <div style={{
+        background: "#fff",
+        borderBottom: `1px solid ${T.border}`,
+        padding: "20px 24px",
+      }}>
+        <div style={{ maxWidth: 900, margin: "0 auto", display: "flex", gap: 20, alignItems: "flex-start", flexWrap: "wrap" }}>
+          <div style={{
+            background: T.gold, color: "#fff",
+            padding: "10px 14px", borderRadius: 6,
+            fontFamily: "'IBM Plex Mono', monospace",
+            fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase",
+            flexShrink: 0,
+          }}>
+            Next Meeting
+          </div>
+          <div style={{ flex: 1, minWidth: 260 }}>
+            <div style={{ fontFamily: "Georgia, serif", fontSize: 20, fontWeight: 800, color: T.navy, marginBottom: 4 }}>
+              {NEXT_MEETING.label} — {NEXT_MEETING.dateLabel}
+            </div>
+            <div style={{ fontSize: 13, color: T.slate, marginBottom: 8, fontFamily: "'IBM Plex Mono', monospace" }}>
+              {NEXT_MEETING.location}
+            </div>
+            <div style={{ fontSize: 14, color: T.navy, lineHeight: 1.6, marginBottom: 8 }}>
+              {NEXT_MEETING.notes}
+            </div>
+            <div style={{ display: "flex", gap: 16, flexWrap: "wrap", fontSize: 12, fontFamily: "'IBM Plex Mono', monospace", color: T.slate }}>
+              <span><strong style={{ color: T.navy }}>{aprilDocket.length}</strong> open appeal{aprilDocket.length === 1 ? "" : "s"} on docket</span>
+              <span><strong style={{ color: T.navy }}>{totalAprilMinutes}</strong> min allocated</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Cards */}
       <div style={{ maxWidth: 900, margin: "0 auto", padding: "32px 24px" }}>
-        <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 20 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20, flexWrap: "wrap", gap: 10 }}>
+          <div style={{
+            fontSize: 12,
+            fontFamily: "'IBM Plex Mono', monospace",
+            color: T.slate,
+            letterSpacing: "0.08em",
+            textTransform: "uppercase",
+          }}>
+            Sorted: Open → Ready → Pending → Resolved, then priority
+          </div>
           <Link
             to="/appeals/new"
             style={{
@@ -898,7 +1197,14 @@ function AppealsIndex({ appeals }) {
           </div>
         )}
 
-        {appeals.map(appeal => (
+        {ordered.map(appeal => {
+          const borderColor =
+            appeal.status === "OPEN" ? T.red
+            : appeal.status === "RESOLVED" ? T.green
+            : appeal.status === "PENDING DATA" ? T.amber
+            : appeal.status === "TABLED" ? T.purple
+            : T.slate;
+          return (
           <Link
             key={appeal.id}
             to={`/appeals/${appeal.id}`}
@@ -907,7 +1213,7 @@ function AppealsIndex({ appeals }) {
             <div style={{
               background: "#fff",
               border: `1px solid ${T.border}`,
-              borderLeft: `5px solid ${appeal.status === "OPEN" ? T.red : appeal.status === "RESOLVED" ? T.green : T.amber}`,
+              borderLeft: `5px solid ${borderColor}`,
               borderRadius: 8,
               padding: "20px 24px",
               transition: "box-shadow 0.15s, transform 0.1s",
@@ -917,30 +1223,46 @@ function AppealsIndex({ appeals }) {
               onMouseLeave={e => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.transform = "none"; }}
             >
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 8, marginBottom: 8 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
                   <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, fontWeight: 700, color: T.slate, letterSpacing: "0.08em" }}>{appeal.caseId}</span>
                   <StatusBadge status={appeal.status} />
+                  {appeal.meetingDate === NEXT_MEETING.date && appeal.status === "OPEN" && (
+                    <span style={{ background: T.gold, color: "#fff", fontSize: 10, fontWeight: 700, padding: "2px 8px", borderRadius: 3, fontFamily: "'IBM Plex Mono', monospace", letterSpacing: "0.08em" }}>
+                      APR 23 DOCKET
+                    </span>
+                  )}
+                  {appeal.priorHearing && appeal.status === "OPEN" && (
+                    <span style={{ background: "#EFF6FF", color: T.blue, fontSize: 10, fontWeight: 700, padding: "2px 8px", borderRadius: 3, fontFamily: "'IBM Plex Mono', monospace", letterSpacing: "0.08em" }}>
+                      CARRY-OVER FROM {appeal.priorHearing}
+                    </span>
+                  )}
                   {appeal.voteRecorded && (
                     <span style={{ background: T.greenLight, color: T.green, fontSize: 11, fontWeight: 700, padding: "1px 8px", borderRadius: 3, fontFamily: "'IBM Plex Mono', monospace" }}>
                       ✓ {appeal.voteRecorded}
                     </span>
                   )}
                 </div>
-                <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, color: T.slate }}>⏱ {appeal.meetingTimeMin} min</span>
+                {appeal.meetingTimeMin > 0 && (
+                  <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, color: T.slate }}>⏱ {appeal.meetingTimeMin} min</span>
+                )}
               </div>
               <h2 style={{ color: T.navy, fontSize: 18, fontWeight: 700, margin: "0 0 6px", fontFamily: "Georgia, serif" }}>{appeal.title}</h2>
               <div style={{ display: "flex", gap: 16, flexWrap: "wrap", marginBottom: 10 }}>
                 <span style={{ fontSize: 13, color: T.slate }}>👤 {appeal.appellants}</span>
                 <span style={{ fontSize: 13, color: T.slate }}>📋 {appeal.program}</span>
                 <span style={{ fontSize: 13, color: T.slate }}>📍 {appeal.county} County</span>
+                {appeal.presenter && appeal.presenter !== "Reference only — no presenter" && (
+                  <span style={{ fontSize: 13, color: T.slate }}>🎙 {appeal.presenter}</span>
+                )}
                 {appeal.guestsAtMeeting && <span style={{ fontSize: 13, color: T.amber, fontWeight: 600 }}>⚠ Guests present</span>}
               </div>
               <p style={{ margin: 0, fontSize: 13, color: T.slate, lineHeight: 1.6 }}>
-                {appeal.issueSummary.length > 180 ? appeal.issueSummary.slice(0, 180) + "…" : appeal.issueSummary}
+                {appeal.issueSummary.length > 240 ? appeal.issueSummary.slice(0, 240) + "…" : appeal.issueSummary}
               </p>
             </div>
           </Link>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

@@ -383,8 +383,8 @@ const FOLLOWUPS = [
 ];
 
 const KEY_DATES = [
-  { date: '2026-03-24', label: 'STC Meeting (Regular + Executive)', type: 'meeting' },
   { date: '2026-04-17', label: 'General CRP Signup 65 closes', type: 'deadline' },
+  { date: '2026-04-23', label: 'STC Meeting (Appeals follow-up, Cost Share Rates)', type: 'meeting' },
   { date: '2026-09-30', label: 'CRP authority expires (no Farm Bill)', type: 'deadline' },
 ];
 
@@ -647,9 +647,9 @@ export default function Summary() {
             <div style={{ fontSize: '0.78rem', textTransform: 'uppercase', fontWeight: 700, color: 'var(--accent)', marginBottom: 4 }}>
               Next Meeting
             </div>
-            <h3 style={{ margin: 0 }}>Colorado STC Meeting — March 24, 2026</h3>
+            <h3 style={{ margin: 0 }}>Colorado STC Meeting — April 23, 2026</h3>
             <div style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', marginTop: 4 }}>
-              Regular Session + Executive Session | {daysUntil('2026-03-24')} days away
+              Appeals follow-up · Cost share rates · Otero/Crowley COC status | {daysUntil('2026-04-23')} days away · <Link to="/appeals" style={{ color: 'var(--accent)' }}>Full Appeals docket →</Link>
             </div>
           </div>
           <Link to="/meetings" className="btn btn-secondary">Full Meeting Notes</Link>
