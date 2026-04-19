@@ -6,6 +6,191 @@ import EntryEditor from '../components/EntryEditor';
 /* ── Static Reference Entries ────────────────────────────────────── */
 const PINNED_ENTRIES = [
   {
+    id: 'march-24-meeting-otero-delegation',
+    pinned: true,
+    date: '2026-03-24',
+    title: 'STC Meeting — Special Session: Otero County Delegation Authorization',
+    location: 'Colorado STC Meeting',
+    tags: 'meeting, special-session, otero-county, delegation, motion, COC',
+    source: 'Live Meeting — March 24, 2026',
+    content: `COLORADO STC MEETING — MARCH 24, 2026
+
+OPENING: Special Session — Otero County Official Business
+
+MOTION:
+Motion to confirm and authorize the Otero County delegation to affirm the STC to handle affairs on behalf of Otero County.
+
+This motion delegates authority from the Otero County COC to the State Committee (STC) to manage and administer Otero County FSA affairs during the period in which COC members are on administrative leave.
+
+CONTEXT:
+- Follows the March 17, 2026 special meeting where Chairperson Donald Brown signed Administrative Leave Letters for Otero/Crowley COC members
+- Under 7 CFR Part 7, the STC has authority to oversee county operations when the COC is unable to perform duties
+- This delegation ensures continuity of FSA program administration in Otero County
+
+STATUS: Motion made — awaiting second, discussion, and vote.
+
+─────────────────────────────────────────────
+REGULAR SESSION
+─────────────────────────────────────────────
+
+Chairman Donald Brown called the regular session to order at 9:15 AM.
+
+AGENDA ITEM: Approval of Sonnenberg Report
+- Executive Director Jerry Sonnenberg's report presented for approval.
+- Status: Awaiting motion/vote.
+
+─────────────────────────────────────────────
+AGENDA ITEM: FBA Program — Colorado Payment Status
+─────────────────────────────────────────────
+
+QUESTION RAISED: What percentage of Colorado's FBA program has been paid? Over $117,000,000 has been paid.
+
+RESEARCH FINDINGS:
+- National FBA Program: $11 billion in one-time bridge payments ($12B total with specialty crops)
+- Enrollment period: Feb 23 – April 17, 2026; payments began Feb 28, 2026
+- Top states by projected payments: TX ($1.1B), IA ($893M), KS ($888M), IL ($832M)
+- Western states (including CO) receive a smaller share (~10% of $11B split among western/northeast states)
+- Colorado's key eligible crops: Wheat ($39.35/acre), Corn ($44.36/acre), Sorghum ($48.11/acre)
+
+COLORADO ANALYSIS:
+- If $117M has been paid to Colorado producers, that represents approximately 1.06% of the $11B national FBA program
+- Enrollment is still open through April 17, 2026 — final Colorado total expected to be higher
+- Payment cap: $155,000 per producer / AGI limit: $900,000
+- Exact Colorado percentage of eligible acres paid vs. remaining requires FSA weekly state disbursement data
+- Recommended source: FSA weekly state-by-state payment tracker or CO FSA State Office
+
+STATUS: Question noted — exact percentage to be confirmed via FSA disbursement reports.
+
+─────────────────────────────────────────────
+AGENDA ITEM: Travel Budget — Overspent
+─────────────────────────────────────────────
+
+REPORTED: The travel budget is overspent.
+
+ACTION TAKEN:
+- No more State Committee travel authorized.
+- All future STC meetings will be conducted via Zoom.
+- Effective immediately.
+
+─────────────────────────────────────────────
+RECESS called at 10:55 AM.
+─────────────────────────────────────────────
+
+─────────────────────────────────────────────
+ACTION ITEM — APRIL MEETING PREP
+─────────────────────────────────────────────
+
+EMAIL FROM JONATHAN WEISHAAR (received during recess):
+Subject: STC Cost Share Rates to Review
+
+Hunter Cleveland has prepared tables for STC review before the April meeting:
+1. CRP Cost Share Rates — 50% cost share
+2. EFRP (Emergency Forest Restoration Program) Cost Share Rates — 75% cost share
+
+Tables are available in Box for review.
+ACTION: STC members to review CRP and EFRP cost share rate tables prior to April meeting and be prepared to vote on approval.
+
+NOTE: Meeting in recess. Additional agenda items and actions will be recorded when session resumes.`,
+  },
+  {
+    id: 'appeals-training-april-8',
+    pinned: true,
+    date: '2026-04-08',
+    title: 'Appeals Training — STC Members',
+    location: 'Virtual / Zoom',
+    tags: 'training, appeals, NAD, CRP, procedures',
+    source: 'STC Training Session — April 8, 2026',
+    content: `APPEALS TRAINING — APRIL 8, 2026 (MORNING SESSION)
+
+TRAINING NOTES:
+(To be recorded during session)
+
+─────────────────────────────────────────────
+TOPICS TO COVER:
+─────────────────────────────────────────────
+
+- NAD (National Appeals Division) appeal procedures
+- STC role and authority in appeals process
+- Evidence review and record-building
+- Hearing procedures and participant roles
+- Timeline requirements and deadlines
+- CRP appeal case studies (reference: Ebright appeal from March 24 meeting)
+- 7 CFR Part 780 — Appeals regulations
+- Best practices for STC deliberation on appeal cases
+
+─────────────────────────────────────────────
+NOTES:
+─────────────────────────────────────────────
+
+(Live notes will be added during the training session)`,
+  },
+  {
+    id: 'april-stc-meeting',
+    pinned: true,
+    date: '2026-04-TBD',
+    title: 'STC Meeting — April 2026',
+    location: 'Virtual / Zoom (no travel authorized)',
+    tags: 'meeting, STC, april, CRP, EFRP, cost-share, appeals',
+    source: 'Upcoming — April 2026',
+    content: `COLORADO STC MEETING — APRIL 2026
+(Date TBD — will update when scheduled)
+
+─────────────────────────────────────────────
+ANTICIPATED AGENDA ITEMS
+─────────────────────────────────────────────
+
+1. APPROVAL OF MARCH 24 MEETING MINUTES
+
+2. CRP COST SHARE RATES — REVIEW & VOTE
+   - Hunter Cleveland prepared rate tables (50% cost share)
+   - 49 total components: 4 retired, 2 new for 2026
+   - Tables available in Box AND on PFA site (/cost-share-rates)
+   - Key increases: water wells (+120-370%), burning (+270%), fencing (+50-100%)
+   - STC to approve/modify rates for Colorado
+
+3. EFRP COST SHARE RATES — REVIEW & VOTE
+   - Emergency Forest Restoration Program (75% cost share)
+   - 29 total components: 14 new items added for 2026
+   - Hunter Cleveland prepared rate tables
+   - Tables available in Box AND on PFA site (/cost-share-rates)
+   - Significant new items: flood sediment removal, site prep, conservation cover
+
+4. OTERO/CROWLEY COUNTY UPDATE
+   - Status of COC administrative leave
+   - County operations continuity report
+   - Any actions needed under delegation authority
+
+5. FBA PROGRAM UPDATE
+   - Updated Colorado payment figures (enrollment closed April 17)
+   - Final state percentage of $11B national program
+   - Producer participation numbers
+
+6. TRAVEL BUDGET STATUS
+   - All meetings via Zoom (no STC travel authorized)
+   - Budget reconciliation update
+
+7. EBRIGHT CRP APPEAL — FOLLOW-UP
+   - Status of appeal decision from March 24 session
+   - Any outstanding actions
+
+8. EXECUTIVE DIRECTOR REPORT — Jerry Sonnenberg
+
+─────────────────────────────────────────────
+PRE-MEETING ACTION ITEMS
+─────────────────────────────────────────────
+
+□ Review CRP cost share rate tables — Box or PFA /cost-share-rates (Hunter Cleveland)
+□ Review EFRP cost share rate tables — Box or PFA /cost-share-rates (Hunter Cleveland)
+□ Review March 24 meeting minutes when distributed
+□ Complete appeals training (April 8)
+
+─────────────────────────────────────────────
+NOTES:
+─────────────────────────────────────────────
+
+(Will be updated as agenda is finalized and meeting occurs)`,
+  },
+  {
     id: 'upcoming-otero-crowley',
     pinned: true,
     date: '2026-03-17',
