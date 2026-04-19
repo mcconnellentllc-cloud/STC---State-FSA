@@ -1,5 +1,9 @@
 import fs from 'fs';
 
+function sanitize(s) {
+  return (s || '').replace(/\u0000/g, '').trim();
+}
+
 export async function extractText(filePath, fileType) {
   const ext = fileType.toLowerCase();
 
@@ -25,7 +29,7 @@ async function extractPdf(filePath) {
     const pdfParse = (await import('pdf-parse')).default;
     const buffer = fs.readFileSync(filePath);
     const data = await pdfParse(buffer);
-    return (data.text || '').trim();
+    return sanitize(data.text);
   } catch (err) {
     console.error('PDF extraction error:', err.message);
     return '';
@@ -36,7 +40,7 @@ async function extractDocx(filePath) {
   try {
     const mammoth = await import('mammoth');
     const result = await mammoth.extractRawText({ path: filePath });
-    return result.value || '';
+    return sanitize(result.value);
   } catch (err) {
     console.error('DOCX extraction error:', err.message);
     return '';
@@ -53,7 +57,7 @@ async function extractXlsx(filePath) {
       text += `--- ${sheetName} ---\n`;
       text += XLSX.utils.sheet_to_csv(sheet) + '\n\n';
     }
-    return text;
+    return sanitize(text);
   } catch (err) {
     console.error('XLSX extraction error:', err.message);
     return '';
