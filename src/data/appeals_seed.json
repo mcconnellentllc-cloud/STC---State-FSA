@@ -26,14 +26,14 @@
       "All three NRCS field visits were during winter dormancy (Jan 31, Feb 26, Mar 11). Dormant-season stubble height is not an accurate measure of growing-season grazing compliance. The 4–6 inch standard in the 528 plan is an active-grazing indicator, not a post-dormancy measurement.",
       "Producers provided July 1, 2025 photos showing representative cover on the contracts — reviewed and dismissed by COC without documented rebuttal in the record.",
       "Producers stated they did not receive the February 10 letter requesting grazing records. If not received, failure to produce records cannot be characterized as willful noncompliance.",
-      "Producers sold 40 head and moved others to another location after noncompliance notification — documented responsive corrective action.",
+      "Sale tickets from La Junta Livestock Commission document 39 head of Ebright cattle sold between February 5 and March 12, 2025 (checks #100519, #101096, #101530; total weight 39,460 lbs). This is documentary corroboration of the 'sold 40 head' corrective-action claim in the COC record — a verifiable step-down in stocking following agency notification. Check #101096 shows FSA and Fellowship Credit Union listed as lienholders, further confirming the sale was formal and disclosed.",
       "Two feet of December snow provides a plausible, verifiable explanation for suppressed ground cover appearance in January–March field visits.",
       "Prior STC (Dec 2025) granted equitable relief in Moffat County CRP misaction case — direct Colorado STC precedent for relief exists.",
       "Seven active CRP contracts represents substantial ongoing program engagement and economic incentive to comply.",
       "Case was continued from March 24 STC — sufficient complexity already recognized by prior STC panel."
     ],
     "theBad": [
-      "Grazing records were NEVER produced — not after the Feb request, May COC meeting, August reconsideration, or March STC hearing. This is the most damaging fact in the record.",
+      "Grazing records were not provided contemporaneously — they were submitted on August 11, 2025 via email from Stephanie Ebright, 6 days AFTER the reconsideration hearing and nearly 4 months after the termination decision. The cover email explicitly states the records were 'pieced together from memory' because the originals 'got deleted' from a computer and could not be recovered. COC never had these records during the dispositive decisions. When produced, the records documented stocking at 400%–900% of planned capacity on multiple tracts — which undercuts any good-faith compliance claim.",
       "All 528 plans were signed by the producers — explicit written acknowledgment of stocking limits and stubble height requirements.",
       "Three independent NRCS field visits on separate dates all produced consistent findings of bare ground and hard-grazed fields.",
       "Species diversity failure (30-point stand, 5 species, 3 native grasses) is a separate independent basis for noncompliance beyond grazing.",
@@ -61,6 +61,10 @@
       {
         "type": "DUE PROCESS",
         "text": "If producers genuinely did not receive the February 10 letter, FSA cannot demonstrate adequate notice and opportunity to comply before the April 22 noncompliance determination was issued."
+      },
+      {
+        "type": "REGULATORY",
+        "text": "Producer-submitted grazing records (Stephanie Ebright, email 2025-08-11) document stocking substantially above 528 Prescribed Grazing Plan limits on multiple tracts for the 2024–2025 grazing period: Tract 772 / Contract 11075 — 40 head for ~4 months against a 10-head plan (~400%); Tract 2396 / Contract 11116 — 40–45 head for 4+ months against a 5-head plan (~800–900%); Tract 4328 / Contract 11117 — 46 head for ~7 weeks against a 41-head plan (~112%). The photographic evidence at winter visit dates showing zero or at-plan stocking captures only the post-reduction state (following the Feb–Mar 2025 sales), not the substantially overstocked condition documented by the producer's own records during the main grazing period."
       }
     ],
     "commonSense": [
@@ -254,23 +258,31 @@
       {
         "label": "Approved max head capacity",
         "value": "87",
-        "note": "Aggregate of signed 528 Prescribed Grazing Plans across 6 of 7 contracts. Tract 751 (Contract 11101) pending — 528 data not recovered from file split. Tract 4328 (Contract 11117) has two 528 plans on file with no written FSA determination of which governs; Plan B (41 head / 120 days / all 1,047.81 ac) is operative in this total — if Plan A governs instead, total drops to 49.",
+        "note": "Aggregate of signed 528 Prescribed Grazing Plans across 6 of 7 contracts. Tract 751 (Contract 11101) pending — 528 data not recovered from file split. Tract 4328 (Contract 11117) has two 528 plans on file with no written FSA determination of which governs; Plan B (41 head / 120 days / all 1,047.81 ac) is operative in this total; Plan A would drop total to 49.",
         "sources": [
           "Signed 528 Prescribed Grazing Plans, Tracts 772/2386/4297/2396/4328/4034"
         ]
       },
       {
-        "label": "Head sold in good faith",
-        "value": "40",
-        "note": "Producers stated at the August 5, 2025 reconsideration hearing that they sold 40 head after receiving the noncompliance notification. Supports the Misaction/Misinformation 'subsequent corrective action' factor under 2-CRP Par. 603.",
+        "label": "Peak over-plan stocking (per producer records)",
+        "value": "900%",
+        "note": "Tract 2396 / Contract 11116 — producer's own records show 40–45 head for 4+ months against a 5-head plan. Tract 772 / Contract 11075 shows ~400% of plan. Tract 4328 / Contract 11117 shows ~112% of plan. Source: grazing records submitted Aug 11, 2025 (reconstructed from memory per producer cover email).",
         "sources": [
-          "Aug 5, 2025 Bent County COC reconsideration hearing minutes"
+          "Producer grazing records, Stephanie Ebright email 2025-08-11"
+        ]
+      },
+      {
+        "label": "Head sold (documented)",
+        "value": "39",
+        "note": "La Junta Livestock Commission sale tickets — check #100519 (1 head, 2/5), #101096 (10 head, 2/26), #101530 (28 head, 3/12). Total 39,460 lbs. Documentary corroboration of the 'sold 40 head' corrective-action claim.",
+        "sources": [
+          "La Junta Livestock Commission sale tickets #100519, #101096, #101530"
         ]
       },
       {
         "label": "Head remaining in operation",
         "value": "60",
-        "note": "Head still in the producers' overall operation after the 40-head sale. Read against the 100-head starting total (40 sold + 60 left), the producers shed 40% of the herd in response to the noncompliance letter — a significant corrective action relative to operation size.",
+        "note": "Head still in the producers' overall operation after the sales. Against the ~99–100-head starting total (39–40 sold + 60 left), the producers shed ~40% of the herd in response to the noncompliance letter.",
         "sources": [
           "Aug 5, 2025 reconsideration hearing minutes (producer statements)"
         ]
@@ -278,12 +290,172 @@
       {
         "label": "Head currently on Ebright CRP ground",
         "value": "30",
-        "note": "Of the 60 head remaining in the operation, 30 are currently on the CRP land covered by this appeal; the other ~30 were moved to other locations. Current stocking of 30 head against an approved max of 87 puts the Ebright operation at ~35% of approved capacity.",
+        "note": "Of the 60 remaining, 30 on the CRP ground at issue; the other ~30 moved to other locations. Current stocking of 30 against approved max of 87 is ~35% of capacity — post-reduction state only.",
         "sources": [
           "Aug 5, 2025 reconsideration hearing minutes (producer statements)"
         ]
       }
-    ]
+    ],
+    "grazingRecords": [
+      {
+        "tractNumbers": [
+          "4328"
+        ],
+        "contractId": "11117",
+        "tractDescription": "Across Rd from Wagner",
+        "startDate": "2025-01-10",
+        "endDate": "2025-02-28",
+        "reportedHead": 46,
+        "stockingSplit": null,
+        "source": "Producer-submitted grazing records (Stephanie Ebright email, 2025-08-11)",
+        "sourceNote": "Records reconstructed from memory per producer cover email; originals reportedly deleted from computer",
+        "snowfallNote": "11/2024 received 2 ft of snow"
+      },
+      {
+        "tractNumbers": [
+          "2396"
+        ],
+        "contractId": "11116",
+        "tractDescription": "E + W of Rd 26 (east side)",
+        "startDate": "2024-11-25",
+        "endDate": "2025-02-28",
+        "reportedHead": 45,
+        "stockingSplit": "east side",
+        "source": "Producer-submitted grazing records (Stephanie Ebright email, 2025-08-11)",
+        "sourceNote": "Records reconstructed from memory per producer cover email"
+      },
+      {
+        "tractNumbers": [
+          "2396"
+        ],
+        "contractId": "11116",
+        "tractDescription": "E + W of Rd 26 (west side)",
+        "startDate": "2024-11-25",
+        "endDate": "2025-02-22",
+        "reportedHead": 40,
+        "stockingSplit": "west side",
+        "source": "Producer-submitted grazing records (Stephanie Ebright email, 2025-08-11)",
+        "sourceNote": "Records reconstructed from memory per producer cover email"
+      },
+      {
+        "tractNumbers": [
+          "2396"
+        ],
+        "contractId": "11116",
+        "tractDescription": "E + W of Rd 26 (west side)",
+        "startDate": "2025-06-15",
+        "endDate": null,
+        "reportedHead": 40,
+        "stockingSplit": "west side",
+        "source": "Producer-submitted grazing records (Stephanie Ebright email, 2025-08-11)",
+        "sourceNote": "Records reconstructed from memory; end date open"
+      },
+      {
+        "tractNumbers": [
+          "772"
+        ],
+        "contractId": "11075",
+        "tractDescription": "South past School House",
+        "startDate": "2025-02-22",
+        "endDate": "2025-06-15",
+        "reportedHead": 40,
+        "stockingSplit": null,
+        "source": "Producer-submitted grazing records (Stephanie Ebright email, 2025-08-11)",
+        "sourceNote": "Records reconstructed from memory per producer cover email",
+        "snowfallNote": "11/2024 received 2 ft of snow"
+      },
+      {
+        "tractNumbers": [
+          "4297",
+          "2386"
+        ],
+        "contractId": "11071+11115",
+        "tractDescription": "Horse Pasture North + North of House (combined)",
+        "startDate": "2024-11-25",
+        "endDate": "2025-03-28",
+        "reportedHead": 28,
+        "stockingSplit": "combined tract grouping — no per-tract split in producer records",
+        "source": "Producer-submitted grazing records (Stephanie Ebright email, 2025-08-11)",
+        "sourceNote": "Records reported cattle across two tracts jointly; cannot attribute head count to individual contract without further documentation"
+      },
+      {
+        "tractNumbers": [
+          "4297",
+          "2386"
+        ],
+        "contractId": "11071+11115",
+        "tractDescription": "Horse Pasture North + North of House (combined)",
+        "startDate": "2024-11-01",
+        "endDate": null,
+        "reportedHead": 4,
+        "stockingSplit": "horses — combined tract grouping",
+        "source": "Producer-submitted grazing records (Stephanie Ebright email, 2025-08-11)",
+        "sourceNote": "Horses, not cattle. End date open."
+      },
+      {
+        "tractNumbers": [
+          "751",
+          "4034"
+        ],
+        "contractId": "11101+11114",
+        "tractDescription": "Smith + Wagner Home Place (combined)",
+        "startDate": "2024-06-15",
+        "endDate": "2024-08-15",
+        "reportedHead": 46,
+        "stockingSplit": "combined tract grouping",
+        "source": "Producer-submitted grazing records (Stephanie Ebright email, 2025-08-11)",
+        "sourceNote": "Records reported cattle across two tracts jointly"
+      },
+      {
+        "tractNumbers": [
+          "751",
+          "4034"
+        ],
+        "contractId": "11101+11114",
+        "tractDescription": "Smith + Wagner Home Place (combined)",
+        "startDate": "2025-06-04",
+        "endDate": null,
+        "reportedHead": 46,
+        "stockingSplit": "combined tract grouping",
+        "source": "Producer-submitted grazing records (Stephanie Ebright email, 2025-08-11)",
+        "sourceNote": "Records reported cattle across two tracts jointly; end date open"
+      }
+    ],
+    "cattleSales": [
+      {
+        "saleDate": "2025-02-05",
+        "saleYard": "La Junta Livestock Commission",
+        "checkNumber": "100519",
+        "headCount": 1,
+        "weightTotal": 960,
+        "source": "Sale ticket, check #100519",
+        "note": null
+      },
+      {
+        "saleDate": "2025-02-26",
+        "saleYard": "La Junta Livestock Commission",
+        "checkNumber": "101096",
+        "headCount": 10,
+        "weightTotal": 10150,
+        "source": "Sale ticket, check #101096",
+        "note": "Sold to John Ebright and Fellowship Credit Union & FSA — lienholder present on the sale"
+      },
+      {
+        "saleDate": "2025-03-12",
+        "saleYard": "La Junta Livestock Commission",
+        "checkNumber": "101530",
+        "headCount": 28,
+        "weightTotal": 28350,
+        "source": "Sale ticket, check #101530",
+        "note": "Includes 1 cripple head (BlkWF-SL-Cow, Tag 2469) and 1 steer (Tag 2472, 830 lbs)"
+      }
+    ],
+    "cattleSalesAggregate": {
+      "totalHeadSold": 39,
+      "dateRange": "2025-02-05 to 2025-03-12",
+      "totalWeightPounds": 39460,
+      "note": "Documentary support for the 'sold 40 head as corrective action' claim in COC record. Sale tickets show 39 head across three dates; a fourth head may be on the unreconciled Tag 2201 line of check #101096 (to verify against original ticket)."
+    }
   },
   {
     "id": "APPEAL-2-2026-3RLAMB",
