@@ -956,7 +956,7 @@
     "archived": false,
     "guestsAtMeeting": true,
     "voteRecorded": null,
-    "advisoryNotes": "",
+    "advisoryNotes": "IN-CROP HERBICIDE DISCLOSURE (Apr 23 hearing): producer disclosed applying Patriot MSM (metsulfuron methyl) IN-CROP on June 1, 2025. Metsulfuron is off-label on safflower (FIFRA violation) and directly lethal to the crop at trace levels. This is an independent, intervening producer-caused event that excludes the loss from NAP coverage under 1-NAP Par. 51F regardless of whether drought/wind conditions also affected the stand. Recommend the hearing record note the off-label application for potential FIFRA referral and EQIP compliance review (metsulfuron carryover will foreclose broadleaf rotation 22–34+ months).",
     "dateCreated": "2026-04-15",
     "issueSummary": "River Edge Dairy planted non-irrigated safflower for seed on 185.48 acres near Hesperus, La Plata County in May 2025. Seeds sprouted then died — claimed cause is drought combined with high winds drying seed furrows faster than roots could develop. COC disapproved: (1) 2025 had more precipitation than 2023 and 2024, years when River Edge successfully grew safflower; (2) seeding rate of ~2.5 lbs/acre was dramatically below the recommended 15–30 lbs/acre; (3) neighbor Blue Horizons Farm had a different, later loss timeline. Unit 1528 has no documented growing history for buy-up coverage. Appellant submitted late documents to Box before the April 23 meeting.",
     "fullText": "River Edge Dairy has successfully grown safflower in 2023 and 2024. Planted non-irrigated safflower May 3–5, 2025 near Hesperus in SW La Plata County.\n\nJun 4, 2025 — NOL filed claiming drought beginning May 28, apparent May 28.\nJun 11, 2025 — LA Anita Lazor inspected. Photos show only seeds and weeds — no safflower plants visible.\nJul 31, 2025 — COC discussed NOL. Requested soil moisture tests or farming practices statement.\nAug 27, 2025 — Producer provided documentation on farming practices. No formal soil moisture tests submitted.\nSep 22, 2025 — COC disapproved NOL and AFP as action between meetings per 1-NAP paragraph 51E.\nDec 4, 2025 — Full reconsideration hearing. DeRon and Jordan Gillen attended in person.\n\nHearing detail: DeRon passed around safflower seeds and provided agronomic context. Planting method: double disc opener, 30-inch rows, seeds planted into furrow groove. High May winds dried out furrows faster than roots could grow. Seeds sprouted initially then died. Soil moisture assessed by shovel (dig 12–18 inches, make a dirt ball) plus probe in March showing 21 inches of moisture. Seeds were 1 year old from 2024 crop — viability tested by germination in wet rag.\n\nRainfall at Kline station Apr 1–Jun 30: 2025 = 3.48 in, 2024 = 1.21 in, 2023 = 1.12 in. COC noted 2025 had more precipitation than years with successful crops.\n\nSeeding rate: Producer stated 30,000 seeds/acre in 30-inch rows, approximately 2.5 lbs/acre. COC noted recommended rate is 15–30 lbs/acre. Blue Horizons Farm uses approximately 15 lbs/acre.\n\nNeighbor comparison: Blue Horizons Farm planted Apr 18–May 1, apparent loss not until Jun 23, appraisal showed partially grown plants. River Edge apparent loss May 28, appraisal showed only seeds and weeds.\n\nUnit 1528: approximately 150 acres on F2083 enrolled in EQIP year 2 of 3-year contract requiring a broadleaf rotating crop. Safflower was on the EQIP-approved list.\n\nCOC deliberated: Could not conclude drought was sole cause of loss per 1-NAP paragraph 51E. Upheld disapproval.",
@@ -976,7 +976,11 @@
       "River Edge's loss was apparent May 28 — only 23–25 days after planting. Blue Horizons Farm planted earlier in April but had no apparent loss until June 23, a full month later despite being neighbors within a few miles.",
       "LA appraisal photos on June 11 showed only seeds and weeds — no growing plants at all. Blue Horizons appraisal showed partially grown plants plus dead seeds.",
       "Unit 1528 has no documented growing history for 65/100 buy-up coverage. Coverage eligibility on this unit is unverified.",
-      "COC requested formal soil moisture tests. Producer provided only a description of their hand-shovel method — not documented soil moisture data."
+      "COC requested formal soil moisture tests. Producer provided only a description of their hand-shovel method — not documented soil moisture data.",
+      "Producer disclosed at the April 23 hearing applying Patriot MSM (metsulfuron methyl, 60%) IN-CROP on June 1, 2025. Metsulfuron is NOT registered for use on safflower — it is a sulfonylurea (Group 2, ALS inhibitor) labeled for cereals (wheat, barley, oats), pasture, rangeland, and rights-of-way only. An in-crop application to safflower is an off-label use in violation of FIFRA §12(a)(2)(G), and is directly toxic to safflower at trace levels. This is a producer-caused event; 1-NAP explicitly excludes losses from producer-caused events.",
+      "Timeline implication: the LA's June 11, 2025 inspection finding of 'only seeds and weeds, no growing plants' is now better explained by the June 1 in-crop metsulfuron application than by drought/wind. Metsulfuron would kill remaining safflower within 7–14 days — exactly matching the 10-day window between the spray and the LA inspection. The claimed disaster cause and the observed field state are disconnected; the herbicide is the proximate cause.",
+      "Off-label pesticide application exposes the producer to potential FIFRA enforcement independent of the NAP appeal. Colorado Department of Agriculture pesticide division has jurisdiction over misuse claims.",
+      "Metsulfuron carryover will foreclose the EQIP broadleaf rotation requirement on F2083 for 22–34+ months. Unit 1528 is in an active EQIP contract requiring a broadleaf rotating crop; producer cannot plant safflower, sunflower, canola, or most vegetables in 2026–2027, potentially triggering EQIP non-compliance separate from the NAP issue."
     ],
     "redFlags": [
       {
@@ -994,6 +998,14 @@
       {
         "type": "DOCUMENTATION",
         "text": "COC disapproved the NOL as action between meetings on September 22 — over 3 months after the LA inspection on June 11. The extended timeline between inspection and COC action should be documented in COC minutes explaining the delay."
+      },
+      {
+        "type": "REGULATORY",
+        "text": "Producer disclosed IN-CROP application of Patriot MSM (metsulfuron methyl) on June 1, 2025. Metsulfuron is not labeled for use on safflower — this is an off-label application, a FIFRA §12(a)(2)(G) violation. Metsulfuron is extremely toxic to safflower at trace levels; an in-crop application at any cereal-use rate would kill or severely injure the stand within 7–14 days. The producer's own action is the proximate cause of the terminal stand failure observed at the June 11 LA inspection. Herbicide injury from producer misapplication is NOT a covered NAP peril under 1-NAP Par. 51F."
+      },
+      {
+        "type": "REGULATORY",
+        "text": "Even if drought and wind stressed the stand prior to June 1, the in-crop metsulfuron application is an independent and intervening cause that terminated the crop. Under standard causation analysis in crop insurance / NAP, a producer-caused intervening act breaks the causal chain from the claimed natural disaster to the final loss. The drought/wind claim fails at the causation prong independent of whether the disaster condition can be documented."
       }
     ],
     "commonSense": [
@@ -1036,7 +1048,42 @@
     "exhibits": [],
     "calculatorUrl": null,
     "caseFileResearch": [],
-    "issues": []
+    "issues": [
+      {
+        "num": 1,
+        "question": "Did the producer's June 1, 2025 in-crop Patriot MSM (metsulfuron methyl) application cause or contribute to the claimed safflower loss, and does that application exclude the loss from NAP coverage as a producer-caused, off-label event?",
+        "agencyPosition": [
+          "Metsulfuron methyl is not registered for use on safflower. Patriot MSM label restricts use to cereals, pasture, rangeland, and rights-of-way. An in-crop application to safflower is off-label and a FIFRA §12(a)(2)(G) violation.",
+          "Metsulfuron is extremely toxic to safflower at trace levels. An in-crop application on June 1 would have killed any remaining safflower seedlings within 7–14 days — precisely matching the June 11 LA inspection finding of 'only seeds and weeds, no growing plants.'",
+          "1-NAP Par. 51F excludes producer-caused losses from NAP coverage. Herbicide injury from an off-label misapplication is a producer-caused event.",
+          "Standard causation analysis: the in-crop herbicide is an intervening cause that breaks any causal chain from the claimed drought/wind to the final loss, even if those conditions stressed the stand prior to June 1."
+        ],
+        "appellantPosition": [
+          "Producer claims the loss was apparent on May 28, 2025 — before the June 1 spray. If the stand was already lost, the herbicide application did not cause the loss.",
+          "Producer applied Patriot MSM in-crop in good faith or as a management decision; the applicability of the product label to safflower may not have been the producer's area of expertise."
+        ],
+        "regulation": "1-NAP Par. 51F (excluded causes of loss — producer-caused events); 7 CFR 1437.5 (coverage and eligibility); FIFRA §12(a)(2)(G) (prohibition against off-label pesticide use); Patriot MSM / metsulfuron methyl product label (EPA Reg. No. to be verified from producer's spray record).",
+        "analysis": "The June 1 in-crop metsulfuron application is a producer-caused, off-label herbicide event that is excluded from NAP coverage regardless of whether drought/wind also affected the stand. Under standard crop-insurance causation analysis, an intervening producer-caused cause breaks the chain to the original peril. Even crediting the producer's 'apparent loss May 28' framing, the June 1 spray: (a) prevents the LA from verifying the true disaster cause at the June 11 inspection, (b) exposes the producer to FIFRA enforcement independent of this appeal, and (c) carries forward 22–34+ months of metsulfuron residue that forecloses EQIP broadleaf rotation compliance. The appeal should be denied on this ground independent of the seeding-rate, corroboration, or precipitation analyses."
+      }
+    ],
+    "keyMetrics": [
+      {
+        "label": "In-crop metsulfuron application",
+        "value": "June 1, 2025",
+        "note": "Producer disclosed at the April 23 hearing applying Patriot MSM (metsulfuron methyl) IN-CROP on June 1. Metsulfuron is NOT registered for safflower — off-label use under FIFRA §12(a)(2)(G). Directly lethal to safflower at trace levels; kills remaining seedlings within 7–14 days. Timeline matches the June 11 LA 'only seeds and weeds' finding.",
+        "sources": [
+          "Producer disclosure at April 23, 2026 STC hearing"
+        ]
+      },
+      {
+        "label": "NAP coverage status (corrected analysis)",
+        "value": "Excluded — producer-caused",
+        "note": "1-NAP Par. 51F excludes losses from producer-caused events. In-crop off-label herbicide application is a producer-caused, intervening cause that breaks the causal chain from any claimed natural disaster. The drought/wind peril claim fails on causation grounds independent of whether the peril condition itself can be documented.",
+        "sources": [
+          "1-NAP Par. 51F"
+        ]
+      }
+    ]
   },
   {
     "id": "EX-5-2026-PAYNE",
