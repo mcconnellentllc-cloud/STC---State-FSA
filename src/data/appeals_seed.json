@@ -706,6 +706,25 @@
         "regulation": "2-LP Wool & Mohair Par. 408A (direct-sale-to-slaughter-lamb-company rule); 8-LP (Rev. 3) Par. 227 (general beneficial-interest requirements for unshorn pelts)",
         "analysis": "Per producer-familiar practice and the agency record, pelts do not sit at the slaughter plant — they are shipped to the pelt buyer at or immediately after harvest. BI on the pelt is lost at that transfer point. Plant ownership (100%, 50%, or 0%) preserves BI on the LIVE ANIMAL but not on the downstream pelt commodity. Applied to this fact pattern: every 2024 pelt was harvested and moved out of producer control in 2024; the Jan 16, 2025 CCC-633 EZ filing was late for every pelt regardless of the Colorado Lamb Processors ownership structure. This issue forecloses the 'remand for date-of-loss recalculation' argument on its own terms — the corrected rule still produces the same disapproval outcome."
       }
+    ],
+    "keyMetrics": [
+      {
+        "label": "LDP payment exposure if STC overturns",
+        "value": "$129,802.75",
+        "note": "2024 unshorn-pelt LDP rate of $2.75/head × 47,201 head across all four appellants. Per producer: 3R Lamb Feeding LLC: 46,309 × $2.75 = $127,349.75; Spence Rule: 879 × $2.75 = $2,417.25; Connie Rule: 7 × $2.75 = $19.25; Sumner Rule: 6 × $2.75 = $16.50. 3R Lamb Feeding LLC captures ~98.1% of total exposure. Payment only materializes on a Grant Full Relief or Partial Relief (Small Producers Only) disposition; Uphold Denial and procedural remand produce no payment.",
+        "sources": [
+          "2024 USDA posted unshorn-pelt LDP rate (per CED records)",
+          "CCC-770 LDP forms in agency record pp. 67–74"
+        ]
+      },
+      {
+        "label": "3R Lamb exposure (single-producer)",
+        "value": "$127,349.75",
+        "note": "3R Lamb Feeding LLC alone: 46,309 head × $2.75/head. This is the amount at stake under Partial Relief — Small Producers Only (approve the three individual appellants, deny 3R), which would pay out only $2,453.00 to the smaller producers and deny the 3R commercial-scale portion.",
+        "sources": [
+          "CCC-633 EZ filing, 3R Lamb Feeding LLC"
+        ]
+      }
     ]
   },
   {
