@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useApiFetch } from '../auth/apiFetch';
+import { useAuth } from '../auth/AuthContext';
 
 /* ── Upcoming deadlines ────────────────────────────────────────── */
 const DEADLINES = [];
@@ -31,6 +32,7 @@ export default function Dashboard() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const apiFetch = useApiFetch();
+  const { isAdmin } = useAuth();
 
   useEffect(() => {
     apiFetch('/api/dashboard')
@@ -88,8 +90,8 @@ export default function Dashboard() {
         );
       })}
 
-      {/* Quick Stats */}
-      <div className="grid-4" style={{ marginBottom: 24 }}>
+      {/* Quick Stats — expense tile is admin-only (financial data) */}
+      <div className={isAdmin ? 'grid-4' : 'grid-3'} style={{ marginBottom: 24 }}>
         <div className="stat-card">
           <div className="stat-value">{d.totals.entries}</div>
           <div className="stat-label">Journal Entries</div>
@@ -98,10 +100,12 @@ export default function Dashboard() {
           <div className="stat-value">{d.totals.documents}</div>
           <div className="stat-label">Documents</div>
         </div>
-        <div className="stat-card">
-          <div className="stat-value">${(d.expenseSummary.total || 0).toFixed(2)}</div>
-          <div className="stat-label">This Month</div>
-        </div>
+        {isAdmin && d.expenseSummary && (
+          <div className="stat-card">
+            <div className="stat-value">${(d.expenseSummary.total || 0).toFixed(2)}</div>
+            <div className="stat-label">This Month</div>
+          </div>
+        )}
         <Link to="/meetings" className="stat-card" style={{ textDecoration: 'none', color: 'inherit' }}>
           <div className="stat-value" style={{ fontSize: '1.1rem', color: 'var(--success)' }}>Feb 10</div>
           <div className="stat-label">Last STC Meeting</div>
