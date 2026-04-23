@@ -155,6 +155,31 @@ export default function Documents() {
     }
   };
 
+  /* ── File open via blob (bearer-auth aware) ────────────────
+     A direct <a href="/api/teams/file/X"> navigation doesn't carry the
+     Entra Bearer token, so the server rejects with 401. Fetch the bytes
+     via authenticated apiFetch, turn into a blob URL, and open that in
+     a new tab. Works for PDFs, Word, etc. Blob URL is short-lived. */
+  const [opening, setOpening] = useState(null);
+  const openFile = useCallback(async (item) => {
+    setOpening(item.id);
+    try {
+      const res = await apiFetch(`/api/teams/file/${item.id}`);
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.error || `Download failed (${res.status})`);
+      }
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      window.open(url, '_blank', 'noopener,noreferrer');
+      setTimeout(() => URL.revokeObjectURL(url), 60_000);
+    } catch (err) {
+      alert(`Could not open ${item.name}: ${err.message}`);
+    } finally {
+      setOpening(null);
+    }
+  }, [apiFetch]);
+
   /* ── Breadcrumb ────────────────────────────────────────────── */
   // For members, currentPath looks like "Committee Shared" or
   // "Committee Shared/Subfolder/...". The root button represents MEMBER_DOCS_ROOT
@@ -299,14 +324,22 @@ export default function Documents() {
                         {item.isFolder ? (
                           <span>{item.name}</span>
                         ) : (
-                          <a
-                            href={`/api/teams/file/${item.id}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={e => e.stopPropagation()}
+                          <button
+                            onClick={(e) => { e.stopPropagation(); openFile(item); }}
+                            disabled={opening === item.id}
+                            style={{
+                              background: 'none',
+                              border: 'none',
+                              padding: 0,
+                              cursor: opening === item.id ? 'wait' : 'pointer',
+                              color: 'inherit',
+                              font: 'inherit',
+                              textAlign: 'left',
+                              textDecoration: 'underline',
+                            }}
                           >
-                            {item.name}
-                          </a>
+                            {opening === item.id ? `${item.name} (opening…)` : item.name}
+                          </button>
                         )}
                       </div>
                       <div className="doc-file-meta">

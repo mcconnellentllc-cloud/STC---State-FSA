@@ -167,6 +167,21 @@ function runSchemaSQLite() {
     )
   `);
 
+  // Ties SharePoint/Graph files (by their Graph item id) to one or more
+  // appeals. Used to hide files from members who are recused from any of the
+  // linked appeals. Admin UI for managing links ships in PR D.
+  sqliteDb.exec(`
+    CREATE TABLE IF NOT EXISTS document_recusal_links (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      graph_file_id TEXT NOT NULL,
+      appeal_id TEXT NOT NULL,
+      set_by INTEGER NOT NULL,
+      set_at TEXT NOT NULL DEFAULT (datetime('now')),
+      UNIQUE(graph_file_id, appeal_id),
+      FOREIGN KEY (set_by) REFERENCES users(id)
+    )
+  `);
+
   seedUsersIfEmpty();
 }
 

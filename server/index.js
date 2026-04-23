@@ -14,6 +14,7 @@ import teamsRouter from './routes/teams.js';
 import calendarRouter from './routes/calendar.js';
 import issuesRouter from './routes/issues.js';
 import nctRouter from './routes/nct.js';
+import appealsRouter from './routes/appeals.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -53,6 +54,7 @@ app.use('/api/teams', teamsRouter);
 app.use('/api/calendar', calendarRouter);
 app.use('/api/issues', issuesRouter);
 app.use('/api/nct', nctRouter);
+app.use('/api/appeals', appealsRouter);
 
 // Dashboard stats. Expense data (even $0.00) is admin-only; members get a
 // response with expenseSummary and totals.expenses omitted. Defense in depth —
