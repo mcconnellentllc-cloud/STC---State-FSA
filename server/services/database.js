@@ -4,9 +4,9 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const DATA_DIR = path.join(__dirname, '..', 'data');
-const UPLOADS_DIR = path.join(DATA_DIR, 'uploads');
-const SQLITE_PATH = path.join(DATA_DIR, 'pfa.db');
+const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, '..', 'data');
+const UPLOADS_DIR = process.env.UPLOADS_DIR || path.join(DATA_DIR, 'uploads');
+const SQLITE_PATH = process.env.SQLITE_PATH || path.join(DATA_DIR, 'pfa.db');
 
 let sqliteDb = null;
 

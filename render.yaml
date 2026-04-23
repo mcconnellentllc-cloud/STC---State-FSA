@@ -1,0 +1,50 @@
+# Render deploy configuration for STC Colorado FSA State Committee app.
+# Deploy config lives in-repo (rule 36). Secret VALUES stay in the dashboard.
+#
+# Env vars below use sync: false — Render reads the NAMES from this file but
+# never overwrites the live dashboard values on deploy. Change a value in the
+# dashboard; add/remove a name here.
+
+services:
+  - type: web
+    name: stc-state-fsa
+    runtime: node
+    plan: starter
+    region: oregon
+    branch: main
+    autoDeploy: true
+
+    buildCommand: npm install && npm run build
+    startCommand: node server/index.js
+    healthCheckPath: /api/health
+
+    disk:
+      name: stc-data
+      mountPath: /var/data
+      sizeGB: 1
+
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: DATA_DIR
+        value: /var/data
+      - key: HOST
+        sync: false
+      - key: PORT
+        sync: false
+      - key: MICROSOFT_TENANT_ID
+        sync: false
+      - key: MICROSOFT_CLIENT_ID
+        sync: false
+      - key: MICROSOFT_CLIENT_SECRET
+        sync: false
+      - key: SHAREPOINT_SITE_URL
+        sync: false
+      - key: SHAREPOINT_LIBRARY
+        sync: false
+      - key: SHAREPOINT_WATCH_FOLDER
+        sync: false
+      - key: VITE_MICROSOFT_TENANT_ID
+        sync: false
+      - key: VITE_MICROSOFT_CLIENT_ID
+        sync: false
