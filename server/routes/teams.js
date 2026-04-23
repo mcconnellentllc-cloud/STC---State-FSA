@@ -5,7 +5,8 @@ import XLSX from 'xlsx';
 
 // Returns set of graph_file_ids the given user should not see, because the
 // file is linked to at least one appeal the user has an active recusal on.
-// Admin bypasses (returns empty set).
+// Admin bypasses (returns empty set). Per-file fallback; folder-level filter
+// (recusedFolderPathsForUser) is the primary mechanism.
 async function recusedFileIdsForUser(user) {
   if (!user || user.role === 'admin') return new Set();
   const rows = await all(
@@ -18,6 +19,30 @@ async function recusedFileIdsForUser(user) {
     [user.id]
   );
   return new Set(rows.map(r => r.graph_file_id));
+}
+
+// Returns array of folder PATHS (relative to watch-folder root) the given
+// user is barred from. Any folder whose path equals or is a descendant of
+// one of these paths is hidden in browse listings and rejected on direct
+// file access. Admin bypasses.
+async function recusedFolderPathsForUser(user) {
+  if (!user || user.role === 'admin') return [];
+  const rows = await all(
+    `SELECT DISTINCT frl.folder_path
+       FROM folder_recusal_links frl
+       JOIN appeal_recusals ar
+         ON ar.appeal_id = frl.appeal_id
+        AND ar.revoked_at IS NULL
+      WHERE ar.user_id = ?`,
+    [user.id]
+  );
+  return rows.map(r => r.folder_path);
+}
+
+// True if `path` equals one of the recused paths or is a descendant (within
+// a recused folder).
+function pathIsInsideAny(path, recusedPaths) {
+  return recusedPaths.some(rp => path === rp || path.startsWith(rp + '/'));
 }
 
 const router = Router();
@@ -55,11 +80,23 @@ router.get('/browse', async (req, res) => {
     // Member scoping: force the browse to stay inside Committee Shared.
     // Empty path gets rewritten to the member root; any other path must be
     // under the member root or we return 403. Admin bypasses.
+    let memberRelative = ''; // path under MEMBER_DOCS_ROOT, used for recusal compares
     if (req.user?.role === 'member') {
       if (!subPath) {
         subPath = MEMBER_DOCS_ROOT;
       } else if (subPath !== MEMBER_DOCS_ROOT && !subPath.startsWith(MEMBER_DOCS_ROOT + '/')) {
         return res.status(403).json({ error: 'Access restricted' });
+      }
+      memberRelative = subPath === MEMBER_DOCS_ROOT
+        ? ''
+        : subPath.slice(MEMBER_DOCS_ROOT.length + 1);
+      // Folder-recusal gate: if a member tries to navigate INTO a recused
+      // folder (or any descendant) via direct URL, 404. folder_recusal_links
+      // stores paths relative to MEMBER_DOCS_ROOT (e.g. "Appeal 2" or
+      // "April 2026/Appeals/Appeal 2").
+      const recusedPaths = await recusedFolderPathsForUser(req.user);
+      if (memberRelative && pathIsInsideAny(memberRelative, recusedPaths)) {
+        return res.status(404).json({ error: 'Not found' });
       }
     }
 
@@ -84,11 +121,24 @@ router.get('/browse', async (req, res) => {
       webUrl: item.webUrl
     }));
 
-    // Per-file recusal: hide files linked to appeals the current user is
-    // recused from. No-op for admin and for members with no active recusals.
-    const recusedIds = await recusedFileIdsForUser(req.user);
-    if (recusedIds.size > 0) {
-      items = items.filter(it => !(it.isFile && recusedIds.has(it.id)));
+    // Recusal filters (members only; admin bypasses both):
+    //   1. Folder-level: hide subfolders under a recused appeal folder.
+    //      Paths compared relative to MEMBER_DOCS_ROOT.
+    //   2. Per-file fallback: hide individual files linked via the legacy
+    //      document_recusal_links table.
+    if (req.user?.role === 'member') {
+      const recusedPaths = await recusedFolderPathsForUser(req.user);
+      if (recusedPaths.length > 0) {
+        items = items.filter(it => {
+          if (!it.isFolder) return true;
+          const folderRelative = memberRelative ? `${memberRelative}/${it.name}` : it.name;
+          return !pathIsInsideAny(folderRelative, recusedPaths);
+        });
+      }
+      const recusedIds = await recusedFileIdsForUser(req.user);
+      if (recusedIds.size > 0) {
+        items = items.filter(it => !(it.isFile && recusedIds.has(it.id)));
+      }
     }
 
     // Sort: folders first, then files
@@ -146,8 +196,19 @@ router.get('/file/:itemId', async (req, res) => {
         return res.status(403).json({ error: 'Access restricted' });
       }
 
-      // Per-file recusal check: 404 if this file is linked to any appeal
-      // the member is recused from.
+      // Folder-recusal check: relative path looks like
+      // "Committee Shared/April 2026/Appeals/Appeal 2". Strip the member root
+      // prefix and check if the remaining path is inside any recused folder.
+      const memberSubPath = relative === MEMBER_DOCS_ROOT
+        ? ''
+        : relative.slice(MEMBER_DOCS_ROOT.length + 1); // drop "Committee Shared/"
+      const recusedPaths = await recusedFolderPathsForUser(req.user);
+      if (memberSubPath && pathIsInsideAny(memberSubPath, recusedPaths)) {
+        return res.status(404).json({ error: 'Not found' });
+      }
+
+      // Per-file recusal fallback (legacy document_recusal_links): 404 if
+      // this specific file id is tagged.
       const recusedIds = await recusedFileIdsForUser(req.user);
       if (recusedIds.has(req.params.itemId)) {
         return res.status(404).json({ error: 'Not found' });

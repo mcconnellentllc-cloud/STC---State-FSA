@@ -169,7 +169,9 @@ function runSchemaSQLite() {
 
   // Ties SharePoint/Graph files (by their Graph item id) to one or more
   // appeals. Used to hide files from members who are recused from any of the
-  // linked appeals. Admin UI for managing links ships in PR D.
+  // linked appeals. Folder-level scoping (folder_recusal_links below) is the
+  // primary mechanism after Kyle reorganized into per-appeal folders; this
+  // table is kept as an ad-hoc per-file fallback for edge cases.
   sqliteDb.exec(`
     CREATE TABLE IF NOT EXISTS document_recusal_links (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -178,6 +180,23 @@ function runSchemaSQLite() {
       set_by INTEGER NOT NULL,
       set_at TEXT NOT NULL DEFAULT (datetime('now')),
       UNIQUE(graph_file_id, appeal_id),
+      FOREIGN KEY (set_by) REFERENCES users(id)
+    )
+  `);
+
+  // Folder-level recusal: ties a folder PATH (relative to the watch folder
+  // root, e.g. "April 2026/Appeals/Appeal 2") to an appeal. Members recused
+  // from that appeal cannot see the folder, cannot navigate into it, and
+  // cannot fetch any file underneath it. Path-based (not Graph-id-based) so
+  // admin can set the link without round-tripping Graph metadata.
+  sqliteDb.exec(`
+    CREATE TABLE IF NOT EXISTS folder_recusal_links (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      folder_path TEXT NOT NULL,
+      appeal_id TEXT NOT NULL,
+      set_by INTEGER NOT NULL,
+      set_at TEXT NOT NULL DEFAULT (datetime('now')),
+      UNIQUE(folder_path, appeal_id),
       FOREIGN KEY (set_by) REFERENCES users(id)
     )
   `);
