@@ -488,175 +488,28 @@ function SectionPanel({ color, label, icon, children }) {
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   VOTE ACTION BOX
+   MEETING OUTCOME (read-only display of voteRecorded; no voting UI)
+   Voting UI was removed per ethics scope — deliberation happens in noticed
+   committee session per 7 CFR 780.14(f). voteRecorded field stays in the data
+   model for CED post-meeting entry; this block renders it read-only when set.
    ───────────────────────────────────────────────────────────────────────────── */
-const VOTE_BUTTONS = [
-  { label: "Grant Full Relief", color: T.green, hoverColor: "#166534" },
-  { label: "Grant Partial Relief", color: T.blue, hoverColor: "#1e3a8a" },
-  { label: "Table — Request Documentation", color: T.amber, hoverColor: "#92400e" },
-  { label: "Refer to Mediation", color: T.purple, hoverColor: "#4c1d95" },
-  { label: "Deny", color: T.red, hoverColor: "#7f1d1d" },
-];
-
-function VoteActionBox({ appeal, onVote }) {
-  const [confirming, setConfirming] = useState(null);
-  const [hoveredBtn, setHoveredBtn] = useState(null);
-
-  const handleClick = (btn) => setConfirming(btn);
-
-  const handleConfirm = () => {
-    onVote(appeal.id, confirming.label);
-    setConfirming(null);
-  };
-
+function MeetingOutcome({ appeal }) {
+  if (!appeal.voteRecorded) return null;
   return (
     <div style={{
-      background: T.navy,
-      borderRadius: 10,
-      padding: "20px 24px",
-      position: "relative",
+      background: T.greenLight,
+      border: `1px solid ${T.green}`,
+      borderRadius: 8,
+      padding: "14px 20px",
+      color: T.green,
+      fontFamily: "'IBM Plex Mono', monospace",
+      fontSize: 13,
+      fontWeight: 700,
     }}>
-      <div style={{
-        color: T.goldLight,
-        fontFamily: "'IBM Plex Mono', monospace",
-        fontSize: 11,
-        fontWeight: 700,
-        letterSpacing: "0.12em",
-        textTransform: "uppercase",
-        marginBottom: 6,
-      }}>
-        STC Vote — {appeal.caseId}
+      <div style={{ fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 4, opacity: 0.85 }}>
+        Meeting outcome — {appeal.caseId}
       </div>
-      <div style={{ color: T.slateLight, fontSize: 13, marginBottom: 16 }}>
-        {appeal.appellants} · {appeal.program} · {appeal.county} County
-      </div>
-
-      {appeal.voteRecorded && (
-        <div style={{
-          background: T.greenLight,
-          border: `1px solid ${T.green}`,
-          borderRadius: 6,
-          padding: "8px 14px",
-          marginBottom: 16,
-          color: T.green,
-          fontWeight: 700,
-          fontSize: 13,
-          fontFamily: "'IBM Plex Mono', monospace",
-        }}>
-          ✓ Vote Recorded: {appeal.voteRecorded}
-        </div>
-      )}
-
-      <div style={{
-        display: "flex",
-        flexWrap: "wrap",
-        gap: 10,
-      }}>
-        {VOTE_BUTTONS.map((btn) => (
-          <button
-            key={btn.label}
-            onClick={() => handleClick(btn)}
-            onMouseEnter={() => setHoveredBtn(btn.label)}
-            onMouseLeave={() => setHoveredBtn(null)}
-            style={{
-              background: hoveredBtn === btn.label ? btn.hoverColor : btn.color,
-              color: "#fff",
-              border: "none",
-              borderRadius: 6,
-              padding: "10px 18px",
-              fontSize: 13,
-              fontWeight: 700,
-              fontFamily: "'IBM Plex Mono', monospace",
-              cursor: "pointer",
-              transition: "background 0.15s",
-              letterSpacing: "0.03em",
-            }}
-          >
-            {btn.label}
-          </button>
-        ))}
-      </div>
-
-      <div style={{ marginTop: 10, color: "#64748B", fontSize: 11, fontFamily: "'IBM Plex Mono', monospace" }}>
-        [PENDING DATA] Notification list not configured — vote UI functional, submit is logged locally only
-      </div>
-
-      {/* Confirmation Modal */}
-      {confirming && (
-        <div style={{
-          position: "fixed",
-          inset: 0,
-          background: "rgba(0,0,0,0.6)",
-          zIndex: 1000,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}>
-          <div style={{
-            background: "#fff",
-            borderRadius: 12,
-            padding: 32,
-            maxWidth: 460,
-            width: "90%",
-            boxShadow: "0 25px 60px rgba(0,0,0,0.3)",
-          }}>
-            <div style={{
-              fontFamily: "'IBM Plex Mono', monospace",
-              fontSize: 11,
-              fontWeight: 700,
-              color: T.slate,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              marginBottom: 8,
-            }}>
-              Confirm Vote
-            </div>
-            <div style={{ fontSize: 22, fontWeight: 800, color: T.navy, marginBottom: 12, fontFamily: "Georgia, serif" }}>
-              {confirming.label}
-            </div>
-            <div style={{ fontSize: 14, color: T.slate, lineHeight: 1.6, marginBottom: 8 }}>
-              <strong>Case:</strong> {appeal.caseId} — {appeal.appellants}
-            </div>
-            <div style={{ fontSize: 13, color: T.slate, lineHeight: 1.6, marginBottom: 24 }}>
-              This vote will be recorded in localStorage. Distribution to staff pending notification list configuration.
-            </div>
-            <div style={{ display: "flex", gap: 12 }}>
-              <button
-                onClick={handleConfirm}
-                style={{
-                  background: confirming.color,
-                  color: "#fff",
-                  border: "none",
-                  borderRadius: 6,
-                  padding: "12px 28px",
-                  fontSize: 14,
-                  fontWeight: 700,
-                  cursor: "pointer",
-                  fontFamily: "'IBM Plex Mono', monospace",
-                }}
-              >
-                Confirm
-              </button>
-              <button
-                onClick={() => setConfirming(null)}
-                style={{
-                  background: "#F3F4F6",
-                  color: T.navy,
-                  border: "none",
-                  borderRadius: 6,
-                  padding: "12px 28px",
-                  fontSize: 14,
-                  fontWeight: 700,
-                  cursor: "pointer",
-                  fontFamily: "'IBM Plex Mono', monospace",
-                }}
-              >
-                Cancel
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      <div>{appeal.voteRecorded}</div>
     </div>
   );
 }
@@ -714,7 +567,7 @@ function ContractTable({ contracts }) {
 /* ─────────────────────────────────────────────────────────────────────────────
    APPEAL DETAIL PAGE
    ───────────────────────────────────────────────────────────────────────────── */
-function AppealDetail({ appeals, onVote, onUpdateAdvisory }) {
+function AppealDetail({ appeals, onUpdateAdvisory }) {
   const { id } = useParams();
   const navigate = useNavigate();
   const appeal = appeals.find(a => a.id === id);
@@ -785,9 +638,13 @@ function AppealDetail({ appeals, onVote, onUpdateAdvisory }) {
       </div>
 
       <div style={styles.body}>
-        {/* VOTE BOX — TOP */}
-        <VoteActionBox appeal={appeal} onVote={onVote} />
-        <div style={{ marginBottom: 28 }} />
+        {/* Meeting outcome (read-only; shows only if voteRecorded is set) */}
+        {appeal.voteRecorded && (
+          <>
+            <MeetingOutcome appeal={appeal} />
+            <div style={{ marginBottom: 28 }} />
+          </>
+        )}
 
         {/* 1. PLAIN LANGUAGE SUMMARY */}
         <div style={{ marginBottom: 28 }}>
@@ -944,9 +801,6 @@ function AppealDetail({ appeals, onVote, onUpdateAdvisory }) {
             Auto-saved on blur
           </div>
         </div>
-
-        {/* 11. VOTE BOX — BOTTOM */}
-        <VoteActionBox appeal={appeal} onVote={onVote} />
       </div>
     </div>
   );
@@ -1276,10 +1130,6 @@ export default function Appeals() {
 
   useEffect(() => { saveAppeals(appeals); }, [appeals]);
 
-  const handleVote = useCallback((id, vote) => {
-    setAppeals(prev => prev.map(a => a.id === id ? { ...a, voteRecorded: vote, status: "RESOLVED" } : a));
-  }, []);
-
   const handleUpdateAdvisory = useCallback((id, notes) => {
     setAppeals(prev => prev.map(a => a.id === id ? { ...a, advisoryNotes: notes } : a));
   }, []);
@@ -1292,7 +1142,7 @@ export default function Appeals() {
     <Routes>
       <Route path="/" element={<AppealsIndex appeals={appeals} />} />
       <Route path="/new" element={<NewAppealForm onAdd={handleAdd} />} />
-      <Route path="/:id" element={<AppealDetail appeals={appeals} onVote={handleVote} onUpdateAdvisory={handleUpdateAdvisory} />} />
+      <Route path="/:id" element={<AppealDetail appeals={appeals} onUpdateAdvisory={handleUpdateAdvisory} />} />
     </Routes>
   );
 }
