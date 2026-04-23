@@ -2,6 +2,22 @@ import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from './auth/AuthContext';
 import Sidebar from './components/Sidebar';
+
+function AdminOnly({ children }) {
+  const { isAdmin, profile } = useAuth();
+  // While profile is still loading, don't flash the access-denied UI
+  if (profile === null) return null;
+  if (!isAdmin) {
+    return (
+      <div style={{ padding: 40, textAlign: 'center' }}>
+        <h2>Access restricted</h2>
+        <p style={{ color: 'var(--text-muted)' }}>This page is available to admin users only.</p>
+      </div>
+    );
+  }
+  return children;
+}
+
 import Dashboard from './pages/Dashboard';
 import Journal from './pages/Journal';
 import EntryDetail from './pages/EntryDetail';
@@ -76,17 +92,17 @@ export default function App() {
           <Route path="/journal" element={<Journal />} />
           <Route path="/journal/:id" element={<EntryDetail />} />
           <Route path="/documents" element={<Documents />} />
-          <Route path="/expenses" element={<Expenses />} />
+          <Route path="/expenses" element={<AdminOnly><Expenses /></AdminOnly>} />
           <Route path="/issues" element={<Issues />} />
           <Route path="/contacts" element={<Contacts />} />
-          <Route path="/ethics" element={<Ethics />} />
+          <Route path="/ethics" element={<AdminOnly><Ethics /></AdminOnly>} />
           <Route path="/roberts-rules" element={<RobertsRules />} />
           <Route path="/cost-share-rates" element={<CostShareRates />} />
           <Route path="/appeals-training" element={<AppealsTraining />} />
           <Route path="/appeals/*" element={<Appeals />} />
           <Route path="/appeals-tracker" element={<Navigate to="/appeals" replace />} />
           <Route path="/search" element={<Search />} />
-          <Route path="/settings" element={<Settings />} />
+          <Route path="/settings" element={<AdminOnly><Settings /></AdminOnly>} />
           <Route path="/auth/callback" element={<AuthCallback />} />
         </Routes>
       </main>

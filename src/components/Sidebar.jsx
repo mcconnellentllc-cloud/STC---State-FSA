@@ -2,29 +2,38 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
 
-const mainLinks = [
-  { to: '/', label: 'Dashboard', icon: '\u25A3' },
-  { to: '/summary', label: 'Summary of Events', icon: '\uD83D\uDCCB' },
-  { to: '/meetings', label: 'Meetings', icon: '\uD83D\uDCC5' },
-  { to: '/journal', label: 'Journal', icon: '\u270E' },
-  { to: '/documents', label: 'Documents', icon: '\uD83D\uDCC4' },
-  { to: '/expenses', label: 'Expenses', icon: '\uD83D\uDCB2' },
-  { to: '/issues', label: 'County Issues', icon: '\u26A0' },
-  { to: '/appeals', label: 'Appeals', icon: '\u2696\uFE0F' },
-  { to: '/cost-share-rates', label: 'Cost Share Rates', icon: '\u0024' },
+const memberLinks = [
+  { to: '/', label: 'Dashboard', icon: '▣' },
+  { to: '/summary', label: 'Summary of Events', icon: '📋' },
+  { to: '/meetings', label: 'Meetings', icon: '📅' },
+  { to: '/journal', label: 'Journal', icon: '✎' },
+  { to: '/documents', label: 'Documents', icon: '📄' },
+  { to: '/issues', label: 'County Issues', icon: '⚠' },
+  { to: '/appeals', label: 'Appeals', icon: '⚖️' },
+  { to: '/cost-share-rates', label: 'Cost Share Rates', icon: '$' },
 ];
 
-const toolLinks = [
-  { to: '/contacts', label: 'Committee & Contacts', icon: '\uD83D\uDC65' },
-  { to: '/ethics', label: 'Ethics & OGE 450', icon: '\uD83D\uDCDD', external: true },
-  { to: '/appeals-training', label: 'Appeals Training', icon: '\u2696' },
-  { to: '/roberts-rules', label: 'Roberts Rules', icon: '\u00A7' },
-  { to: '/search', label: 'Search', icon: '\uD83D\uDD0D' },
-  { to: '/settings', label: 'Settings', icon: '\u2699' },
+const adminMainLinks = [
+  { to: '/expenses', label: 'Expenses', icon: '💲' },
+];
+
+const memberResourceLinks = [
+  { to: '/contacts', label: 'Committee & Contacts', icon: '👥' },
+  { to: '/appeals-training', label: 'Appeals Training', icon: '⚖' },
+  { to: '/roberts-rules', label: 'Roberts Rules', icon: '§' },
+  { to: '/search', label: 'Search', icon: '🔍' },
+];
+
+const adminResourceLinks = [
+  { to: '/ethics', label: 'Ethics & OGE 450', icon: '📝' },
+  { to: '/settings', label: 'Settings', icon: '⚙' },
 ];
 
 export default function Sidebar() {
-  const { user, logout } = useAuth();
+  const { user, profile, isAdmin, logout } = useAuth();
+
+  const mainLinks = isAdmin ? [...memberLinks, ...adminMainLinks] : memberLinks;
+  const resourceLinks = isAdmin ? [...memberResourceLinks, ...adminResourceLinks] : memberResourceLinks;
 
   return (
     <aside className="sidebar">
@@ -52,34 +61,37 @@ export default function Sidebar() {
           </NavLink>
         ))}
         <div className="sidebar-divider">Resources</div>
-        {toolLinks.map(({ to, label, icon, external }) => (
-          external ? (
-            <NavLink
-              key={to}
-              to={to}
-              className={({ isActive }) => isActive ? 'active' : ''}
-            >
-              <span className="icon">{icon}</span>
-              <span>{label}</span>
-            </NavLink>
-          ) : (
-            <NavLink
-              key={to}
-              to={to}
-              className={({ isActive }) => isActive ? 'active' : ''}
-            >
-              <span className="icon">{icon}</span>
-              <span>{label}</span>
-            </NavLink>
-          )
+        {resourceLinks.map(({ to, label, icon }) => (
+          <NavLink
+            key={to}
+            to={to}
+            className={({ isActive }) => isActive ? 'active' : ''}
+          >
+            <span className="icon">{icon}</span>
+            <span>{label}</span>
+          </NavLink>
         ))}
       </nav>
       {user && (
         <div className="sidebar-user">
           <div className="sidebar-user-info">
-            <div className="sidebar-user-name">{user.name}</div>
+            <div className="sidebar-user-name">{profile?.display_name || user.name}</div>
             <div className="sidebar-user-email">{user.email}</div>
+            {profile?.role && (
+              <div className="sidebar-user-role" style={{ fontSize: '0.7rem', opacity: 0.7, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                {profile.role}
+              </div>
+            )}
           </div>
+          <a
+            href="https://myaccount.microsoft.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-sm sidebar-signout"
+            style={{ display: 'block', textAlign: 'center', marginBottom: 6, textDecoration: 'none' }}
+          >
+            Manage Microsoft account
+          </a>
           <button className="btn btn-sm sidebar-signout" onClick={logout}>
             Sign Out
           </button>

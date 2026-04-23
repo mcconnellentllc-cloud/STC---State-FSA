@@ -5,6 +5,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { initDatabase, all, get } from './services/database.js';
 import { requireAuth } from './middleware/auth.js';
+import { requireAdmin } from './middleware/authorize.js';
 import entriesRouter from './routes/entries.js';
 import documentsRouter from './routes/documents.js';
 import expensesRouter from './routes/expenses.js';
@@ -32,10 +33,21 @@ app.get('/api/health', (req, res) => {
 // Protect all /api/* routes with Microsoft Entra ID authentication
 app.use('/api', requireAuth);
 
+// Profile endpoint — returns the authenticated user's app-side profile so the
+// client can gate admin-only UI without re-decoding the JWT.
+app.get('/api/me', (req, res) => {
+  res.json({
+    id: req.user.id,
+    email: req.user.email,
+    role: req.user.role,
+    display_name: req.user.display_name
+  });
+});
+
 // API routes (all protected by auth middleware above)
 app.use('/api/entries', entriesRouter);
 app.use('/api/documents', documentsRouter);
-app.use('/api/expenses', expensesRouter);
+app.use('/api/expenses', requireAdmin, expensesRouter);
 
 app.use('/api/teams', teamsRouter);
 app.use('/api/calendar', calendarRouter);
