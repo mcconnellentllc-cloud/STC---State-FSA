@@ -44,8 +44,6 @@ export default function Documents() {
   const [folderItems, setFolderItems] = useState([]);
   const [browseLoading, setBrowseLoading] = useState(false);
   const [browseError, setBrowseError] = useState(null);
-  const [syncStatus, setSyncStatus] = useState(null);
-  const [syncing, setSyncing] = useState(false);
 
   /* ═══════════════════════════════════════════════════════════
      LOCAL DOCS STATE (original)
@@ -78,53 +76,11 @@ export default function Documents() {
     }
   }, [apiFetch]);
 
-  const fetchSyncStatus = useCallback(async () => {
-    try {
-      const res = await apiFetch('/api/teams/status');
-      if (res.ok) {
-        const data = await res.json();
-        setSyncStatus(data);
-      }
-    } catch {}
-  }, [apiFetch]);
-
-  const handleSync = async () => {
-    setSyncing(true);
-    try {
-      await apiFetch('/api/teams/sync', { method: 'POST' });
-      await fetchSyncStatus();
-      await browsePath(currentPath);
-    } catch (err) {
-      console.error('Sync error:', err);
-    } finally {
-      setSyncing(false);
-    }
-  };
-
-  const handleStartWatcher = async () => {
-    try {
-      await apiFetch('/api/teams/start', { method: 'POST' });
-      await fetchSyncStatus();
-    } catch (err) {
-      console.error('Start watcher error:', err);
-    }
-  };
-
-  const handleStopWatcher = async () => {
-    try {
-      await apiFetch('/api/teams/stop', { method: 'POST' });
-      await fetchSyncStatus();
-    } catch (err) {
-      console.error('Stop watcher error:', err);
-    }
-  };
-
   useEffect(() => {
     if (activeTab === 'teams') {
       browsePath('');
-      fetchSyncStatus();
     }
-  }, [activeTab, browsePath, fetchSyncStatus]);
+  }, [activeTab, browsePath]);
 
   /* ── Local documents ───────────────────────────────────────── */
   const fetchDocs = useCallback(() => {
@@ -198,25 +154,6 @@ export default function Documents() {
       <div className="page-header">
         <h2>Documents</h2>
         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-          {activeTab === 'teams' && (
-            <>
-              <button
-                className="btn btn-secondary"
-                onClick={handleSync}
-                disabled={syncing}
-              >
-                {syncing ? 'Syncing...' : '\u21BB Sync Now'}
-              </button>
-              {syncStatus && (
-                <span className="status-indicator">
-                  <span className={`status-dot ${syncStatus.running ? 'connected' : 'disconnected'}`} />
-                  <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
-                    {syncStatus.running ? 'Watching' : 'Stopped'}
-                  </span>
-                </span>
-              )}
-            </>
-          )}
           {activeTab === 'local' && (
             <button className="btn btn-primary" onClick={() => setShowUpload(!showUpload)}>
               {showUpload ? 'Cancel' : '+ Upload'}
@@ -246,35 +183,6 @@ export default function Documents() {
           ═══════════════════════════════════════════════════════ */}
       {activeTab === 'teams' && (
         <div>
-          {/* Watcher controls */}
-          {syncStatus && (
-            <div className="card" style={{ marginBottom: 16, padding: '12px 20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}>
-              <div style={{ fontSize: '0.85rem' }}>
-                <strong>Auto-Sync:</strong>{' '}
-                <span style={{ color: syncStatus.running ? 'var(--success)' : 'var(--text-muted)' }}>
-                  {syncStatus.running ? `Active (every ${syncStatus.pollInterval}s)` : 'Stopped'}
-                </span>
-                {syncStatus.lastSync && (
-                  <span style={{ marginLeft: 16, color: 'var(--text-muted)' }}>
-                    Last sync: {formatDate(syncStatus.lastSync)}
-                  </span>
-                )}
-                {syncStatus.filesProcessed > 0 && (
-                  <span style={{ marginLeft: 16, color: 'var(--text-muted)' }}>
-                    {syncStatus.filesProcessed} files processed
-                  </span>
-                )}
-              </div>
-              <div style={{ display: 'flex', gap: 6 }}>
-                {syncStatus.running ? (
-                  <button className="btn btn-sm btn-secondary" onClick={handleStopWatcher}>Stop Watcher</button>
-                ) : (
-                  <button className="btn btn-sm btn-success" onClick={handleStartWatcher}>Start Watcher</button>
-                )}
-              </div>
-            </div>
-          )}
-
           {/* Breadcrumb navigation */}
           <div className="doc-breadcrumb">
             <button

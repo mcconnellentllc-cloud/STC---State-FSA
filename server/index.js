@@ -101,14 +101,6 @@ async function start() {
     app.listen(PORT, HOST, () => {
       console.log(`PFA server running at http://${HOST}:${PORT}`);
     });
-
-    // Start Teams watcher AFTER server is listening (non-blocking)
-    try {
-      const { startWatcher } = await import('./services/teams-watcher.js');
-      startWatcher(); // no await - runs in background
-    } catch (err) {
-      console.warn('Teams watcher not started:', err.message);
-    }
   } catch (err) {
     console.error('Failed to start:', err);
     process.exit(1);

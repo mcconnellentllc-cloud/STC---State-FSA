@@ -7,7 +7,7 @@
 
 services:
   - type: web
-    name: stc-state-fsa
+    name: STC---State-FSA
     runtime: node
     plan: starter
     region: oregon
