@@ -6,6 +6,7 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, '..', 'data');
 const UPLOADS_DIR = process.env.UPLOADS_DIR || path.join(DATA_DIR, 'uploads');
+const EXHIBITS_DIR = process.env.EXHIBITS_DIR || path.join(DATA_DIR, 'exhibits');
 const SQLITE_PATH = process.env.SQLITE_PATH || path.join(DATA_DIR, 'pfa.db');
 
 let sqliteDb = null;
@@ -13,6 +14,7 @@ let sqliteDb = null;
 function ensureDirectories() {
   if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
   if (!fs.existsSync(UPLOADS_DIR)) fs.mkdirSync(UPLOADS_DIR, { recursive: true });
+  if (!fs.existsSync(EXHIBITS_DIR)) fs.mkdirSync(EXHIBITS_DIR, { recursive: true });
 }
 
 export async function initDatabase() {
@@ -201,6 +203,48 @@ function runSchemaSQLite() {
     )
   `);
 
+  // Field observations — admin-authored records of a site visit tied to an
+  // appeal + contract/tract. Each observation has a set of photo files stored
+  // on the mounted disk under EXHIBITS_DIR and served via /api/exhibits/...
+  // with the same recusal gate that applies to /api/appeals/:id.
+  sqliteDb.exec(`
+    CREATE TABLE IF NOT EXISTS field_observations (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      appeal_id TEXT NOT NULL,
+      contract_id TEXT,
+      tract TEXT,
+      visit_date TEXT,
+      cattle_count INTEGER,
+      planned_max INTEGER,
+      status TEXT,
+      exhibit TEXT,
+      source TEXT,
+      stubble_condition TEXT,
+      notes TEXT,
+      created_by INTEGER NOT NULL,
+      created_at TEXT NOT NULL DEFAULT (datetime('now')),
+      FOREIGN KEY (created_by) REFERENCES users(id)
+    )
+  `);
+
+  sqliteDb.exec(`
+    CREATE TABLE IF NOT EXISTS field_observation_photos (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      observation_id INTEGER NOT NULL,
+      label TEXT,
+      description TEXT,
+      file_path TEXT NOT NULL,
+      cattle_count INTEGER,
+      annotations TEXT,
+      is_marker_card INTEGER NOT NULL DEFAULT 0,
+      notes TEXT,
+      uploaded_by INTEGER NOT NULL,
+      uploaded_at TEXT NOT NULL DEFAULT (datetime('now')),
+      FOREIGN KEY (observation_id) REFERENCES field_observations(id) ON DELETE CASCADE,
+      FOREIGN KEY (uploaded_by) REFERENCES users(id)
+    )
+  `);
+
   seedUsersIfEmpty();
 }
 
@@ -290,4 +334,4 @@ export async function searchDocuments(query) {
   );
 }
 
-export { DATA_DIR, UPLOADS_DIR };
+export { DATA_DIR, UPLOADS_DIR, EXHIBITS_DIR };
