@@ -1158,6 +1158,106 @@ function sortAppeals(list) {
 /* ─────────────────────────────────────────────────────────────────────────────
    APPEALS INDEX
    ───────────────────────────────────────────────────────────────────────────── */
+function AppealCard({ appeal }) {
+  const borderColor =
+    appeal.status === "OPEN" ? T.red
+    : appeal.status === "RESOLVED" ? T.green
+    : appeal.status === "PENDING DATA" ? T.amber
+    : appeal.status === "TABLED" ? T.purple
+    : T.slate;
+  return (
+    <Link
+      to={`/appeals/${appeal.id}`}
+      style={{ textDecoration: "none", display: "block", marginBottom: 16 }}
+    >
+      <div style={{
+        background: "#fff",
+        border: `1px solid ${T.border}`,
+        borderLeft: `5px solid ${borderColor}`,
+        borderRadius: 8,
+        padding: "20px 24px",
+        transition: "box-shadow 0.15s, transform 0.1s",
+        cursor: "pointer",
+        opacity: appeal.archived ? 0.75 : 1,
+      }}
+        onMouseEnter={e => { e.currentTarget.style.boxShadow = "0 4px 20px rgba(0,0,0,0.1)"; e.currentTarget.style.transform = "translateY(-1px)"; }}
+        onMouseLeave={e => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.transform = "none"; }}
+      >
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 8, marginBottom: 8 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+            <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, fontWeight: 700, color: T.slate, letterSpacing: "0.08em" }}>{appeal.caseId}</span>
+            <StatusBadge status={appeal.status} />
+            {appeal.archived && (
+              <span style={{ background: T.slate, color: "#fff", fontSize: 10, fontWeight: 700, padding: "2px 8px", borderRadius: 3, fontFamily: "'IBM Plex Mono', monospace", letterSpacing: "0.08em" }}>
+                ARCHIVE
+              </span>
+            )}
+            {appeal.meetingDate === NEXT_MEETING.date && appeal.status === "OPEN" && (
+              <span style={{ background: T.gold, color: "#fff", fontSize: 10, fontWeight: 700, padding: "2px 8px", borderRadius: 3, fontFamily: "'IBM Plex Mono', monospace", letterSpacing: "0.08em" }}>
+                APR 23 DOCKET
+              </span>
+            )}
+            {appeal.priorHearing && appeal.status === "OPEN" && (
+              <span style={{ background: "#EFF6FF", color: T.blue, fontSize: 10, fontWeight: 700, padding: "2px 8px", borderRadius: 3, fontFamily: "'IBM Plex Mono', monospace", letterSpacing: "0.08em" }}>
+                CARRY-OVER FROM {appeal.priorHearing}
+              </span>
+            )}
+            {appeal.voteRecorded && (
+              <span style={{ background: T.greenLight, color: T.green, fontSize: 11, fontWeight: 700, padding: "1px 8px", borderRadius: 3, fontFamily: "'IBM Plex Mono', monospace" }}>
+                ✓ Determined
+              </span>
+            )}
+          </div>
+          {appeal.meetingTimeMin > 0 && (
+            <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, color: T.slate }}>⏱ {appeal.meetingTimeMin} min</span>
+          )}
+        </div>
+        <h2 style={{ color: T.navy, fontSize: 18, fontWeight: 700, margin: "0 0 6px", fontFamily: "Georgia, serif" }}>{appeal.title}</h2>
+        <div style={{ display: "flex", gap: 16, flexWrap: "wrap", marginBottom: 10 }}>
+          <span style={{ fontSize: 13, color: T.slate }}>{appeal.appellants}</span>
+          <span style={{ fontSize: 13, color: T.slate }}>{appeal.program}</span>
+          <span style={{ fontSize: 13, color: T.slate }}>{appeal.county} County</span>
+          {appeal.presenter && appeal.presenter !== "Reference only — no presenter" && (
+            <span style={{ fontSize: 13, color: T.slate }}>{appeal.presenter}</span>
+          )}
+          {appeal.guestsAtMeeting && <span style={{ fontSize: 13, color: T.amber, fontWeight: 600 }}>Guests present</span>}
+        </div>
+        <p style={{ margin: 0, fontSize: 13, color: T.slate, lineHeight: 1.6 }}>
+          {appeal.issueSummary.length > 240 ? appeal.issueSummary.slice(0, 240) + "…" : appeal.issueSummary}
+        </p>
+        {appeal.voteRecorded && (
+          <div style={{
+            marginTop: 10, paddingTop: 10, borderTop: `1px dashed ${T.border}`,
+            fontSize: 12, color: T.green, fontFamily: "'IBM Plex Mono', monospace", lineHeight: 1.5,
+          }}>
+            <strong>Determination:</strong> {appeal.voteRecorded.length > 180 ? appeal.voteRecorded.slice(0, 180) + "…" : appeal.voteRecorded}
+          </div>
+        )}
+      </div>
+    </Link>
+  );
+}
+
+function SectionHeader({ label, count, tone }) {
+  return (
+    <div style={{
+      display: "flex", alignItems: "baseline", gap: 10, marginBottom: 14, marginTop: 8,
+      paddingBottom: 8, borderBottom: `2px solid ${tone || T.navy}`,
+    }}>
+      <div style={{
+        fontFamily: "'IBM Plex Mono', monospace",
+        fontSize: 13, fontWeight: 700, color: tone || T.navy,
+        letterSpacing: "0.1em", textTransform: "uppercase",
+      }}>
+        {label}
+      </div>
+      <div style={{ fontSize: 12, color: T.slate, fontFamily: "'IBM Plex Mono', monospace" }}>
+        ({count})
+      </div>
+    </div>
+  );
+}
+
 function AppealsIndex({ appeals }) {
   const ordered = sortAppeals(appeals);
   const openCount = appeals.filter(a => a.status === "OPEN").length;
@@ -1165,6 +1265,14 @@ function AppealsIndex({ appeals }) {
   const resolvedCount = appeals.filter(a => a.status === "RESOLVED").length;
   const aprilDocket = ordered.filter(a => a.meetingDate === NEXT_MEETING.date && a.status === "OPEN");
   const totalAprilMinutes = aprilDocket.reduce((s, a) => s + (a.meetingTimeMin || 0), 0);
+
+  // Three sections:
+  //   active    — currently before the committee (not yet decided, not archived)
+  //   resolved  — decided at a past meeting; reference-visible to all members
+  //   reference — precedent / context entries that were never appeals per se
+  const active    = ordered.filter(a => a.status !== "RESOLVED" && !a.archived);
+  const resolved  = ordered.filter(a => a.status === "RESOLVED" && !a.archived);
+  const reference = ordered.filter(a => a.archived);
 
   return (
     <div style={{ background: T.cream, minHeight: "100vh" }}>
@@ -1227,96 +1335,50 @@ function AppealsIndex({ appeals }) {
         </div>
       </div>
 
-      {/* Cards */}
+      {/* Sections */}
       <div style={{ maxWidth: 900, margin: "0 auto", padding: "32px 24px" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20, flexWrap: "wrap", gap: 10 }}>
-          <div style={{
-            fontSize: 12,
-            fontFamily: "'IBM Plex Mono', monospace",
-            color: T.slate,
-            letterSpacing: "0.08em",
-            textTransform: "uppercase",
-          }}>
-            Sorted: Open → Ready → Pending → Resolved, then priority
-          </div>
-        </div>
-
         {appeals.length === 0 && (
           <div style={{ textAlign: "center", padding: 60, color: T.slate, fontFamily: "Georgia, serif", fontSize: 16 }}>
             No appeals on file.
           </div>
         )}
 
-        {ordered.map(appeal => {
-          const borderColor =
-            appeal.status === "OPEN" ? T.red
-            : appeal.status === "RESOLVED" ? T.green
-            : appeal.status === "PENDING DATA" ? T.amber
-            : appeal.status === "TABLED" ? T.purple
-            : T.slate;
-          return (
-          <Link
-            key={appeal.id}
-            to={`/appeals/${appeal.id}`}
-            style={{ textDecoration: "none", display: "block", marginBottom: 16 }}
-          >
-            <div style={{
-              background: "#fff",
-              border: `1px solid ${T.border}`,
-              borderLeft: `5px solid ${borderColor}`,
-              borderRadius: 8,
-              padding: "20px 24px",
-              transition: "box-shadow 0.15s, transform 0.1s",
-              cursor: "pointer",
-            }}
-              onMouseEnter={e => { e.currentTarget.style.boxShadow = "0 4px 20px rgba(0,0,0,0.1)"; e.currentTarget.style.transform = "translateY(-1px)"; }}
-              onMouseLeave={e => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.transform = "none"; }}
-            >
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 8, marginBottom: 8 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
-                  <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, fontWeight: 700, color: T.slate, letterSpacing: "0.08em" }}>{appeal.caseId}</span>
-                  <StatusBadge status={appeal.status} />
-                  {appeal.meetingDate === NEXT_MEETING.date && appeal.status === "OPEN" && (
-                    <span style={{ background: T.gold, color: "#fff", fontSize: 10, fontWeight: 700, padding: "2px 8px", borderRadius: 3, fontFamily: "'IBM Plex Mono', monospace", letterSpacing: "0.08em" }}>
-                      APR 23 DOCKET
-                    </span>
-                  )}
-                  {appeal.priorHearing && appeal.status === "OPEN" && (
-                    <span style={{ background: "#EFF6FF", color: T.blue, fontSize: 10, fontWeight: 700, padding: "2px 8px", borderRadius: 3, fontFamily: "'IBM Plex Mono', monospace", letterSpacing: "0.08em" }}>
-                      CARRY-OVER FROM {appeal.priorHearing}
-                    </span>
-                  )}
-                  {appeal.voteRecorded && (
-                    <span style={{ background: T.greenLight, color: T.green, fontSize: 11, fontWeight: 700, padding: "1px 8px", borderRadius: 3, fontFamily: "'IBM Plex Mono', monospace" }}>
-                      ✓ {appeal.voteRecorded}
-                    </span>
-                  )}
-                </div>
-                {appeal.meetingTimeMin > 0 && (
-                  <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, color: T.slate }}>⏱ {appeal.meetingTimeMin} min</span>
-                )}
-              </div>
-              <h2 style={{ color: T.navy, fontSize: 18, fontWeight: 700, margin: "0 0 6px", fontFamily: "Georgia, serif" }}>{appeal.title}</h2>
-              <div style={{ display: "flex", gap: 16, flexWrap: "wrap", marginBottom: 10 }}>
-                <span style={{ fontSize: 13, color: T.slate }}>👤 {appeal.appellants}</span>
-                <span style={{ fontSize: 13, color: T.slate }}>📋 {appeal.program}</span>
-                <span style={{ fontSize: 13, color: T.slate }}>📍 {appeal.county} County</span>
-                {appeal.presenter && appeal.presenter !== "Reference only — no presenter" && (
-                  <span style={{ fontSize: 13, color: T.slate }}>🎙 {appeal.presenter}</span>
-                )}
-                {appeal.guestsAtMeeting && <span style={{ fontSize: 13, color: T.amber, fontWeight: 600 }}>⚠ Guests present</span>}
-              </div>
-              <p style={{ margin: 0, fontSize: 13, color: T.slate, lineHeight: 1.6 }}>
-                {appeal.issueSummary.length > 240 ? appeal.issueSummary.slice(0, 240) + "…" : appeal.issueSummary}
-              </p>
+        {active.length > 0 && (
+          <>
+            <SectionHeader label="Active — before the committee" count={active.length} tone={T.navy} />
+            {active.map(a => <AppealCard key={a.id} appeal={a} />)}
+          </>
+        )}
+
+        {resolved.length > 0 && (
+          <>
+            <div style={{ marginTop: 28 }} />
+            <SectionHeader label="Resolved — Archives" count={resolved.length} tone={T.green} />
+            <div style={{ fontSize: 12, color: T.slate, marginBottom: 12, lineHeight: 1.6 }}>
+              Appeals the committee has decided. Visible to all members for reference. Each card
+              shows the final determination; open the card for full Case Brief, Issues, Supporting
+              Analysis, and any evidence on file.
             </div>
-          </Link>
-          );
-        })}
+            {resolved.map(a => <AppealCard key={a.id} appeal={a} />)}
+          </>
+        )}
+
+        {reference.length > 0 && (
+          <>
+            <div style={{ marginTop: 28 }} />
+            <SectionHeader label="Reference — Archive" count={reference.length} tone={T.slate} />
+            <div style={{ fontSize: 12, color: T.slate, marginBottom: 12, lineHeight: 1.6 }}>
+              Precedent and context entries. Not appeals currently before the committee, but kept
+              available for reference during deliberations on similar matters.
+            </div>
+            {reference.map(a => <AppealCard key={a.id} appeal={a} />)}
+          </>
+        )}
       </div>
     </div>
   );
 }
+
 
 /* ─────────────────────────────────────────────────────────────────────────────
    ROOT EXPORT — mount this in your router
