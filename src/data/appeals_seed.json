@@ -252,20 +252,35 @@
     ],
     "keyMetrics": [
       {
-        "label": "Head observed across all site visits",
-        "value": "22",
-        "note": "Tracts 4297 (9) + 4328 (13) + 4034 (0) + 751 (0, growing season) + 772 (0, growing season). Tracts 2386 and 2396 pending photo/observation intake.",
+        "label": "Approved max head capacity",
+        "value": "87",
+        "note": "Aggregate of signed 528 Prescribed Grazing Plans across 6 of 7 contracts. Tract 751 (Contract 11101) pending — 528 data not recovered from file split. Tract 4328 (Contract 11117) has two 528 plans on file with no written FSA determination of which governs; Plan B (41 head / 120 days / all 1,047.81 ac) is operative in this total — if Plan A governs instead, total drops to 49.",
         "sources": [
-          "Bent County COC site-visit aggregate",
-          "Exhibits B, D (7/1/2025 growing-season photos)"
+          "Signed 528 Prescribed Grazing Plans, Tracts 772/2386/4297/2396/4328/4034"
         ]
       },
       {
-        "label": "Head sold in good faith (appellants' corrective action)",
+        "label": "Head sold in good faith",
         "value": "40",
-        "note": "Producers stated at the August 5, 2025 reconsideration hearing that they sold 40 head after receiving the noncompliance notification. Also moved remaining cattle to other locations. Supports the Misaction/Misinformation 'subsequent corrective action' factor under 2-CRP Par. 603.",
+        "note": "Producers stated at the August 5, 2025 reconsideration hearing that they sold 40 head after receiving the noncompliance notification. Supports the Misaction/Misinformation 'subsequent corrective action' factor under 2-CRP Par. 603.",
         "sources": [
           "Aug 5, 2025 Bent County COC reconsideration hearing minutes"
+        ]
+      },
+      {
+        "label": "Head remaining in operation",
+        "value": "60",
+        "note": "Head still in the producers' overall operation after the 40-head sale. Read against the 100-head starting total (40 sold + 60 left), the producers shed 40% of the herd in response to the noncompliance letter — a significant corrective action relative to operation size.",
+        "sources": [
+          "Aug 5, 2025 reconsideration hearing minutes (producer statements)"
+        ]
+      },
+      {
+        "label": "Head currently on Ebright CRP ground",
+        "value": "30",
+        "note": "Of the 60 head remaining in the operation, 30 are currently on the CRP land covered by this appeal; the other ~30 were moved to other locations. Current stocking of 30 head against an approved max of 87 puts the Ebright operation at ~35% of approved capacity.",
+        "sources": [
+          "Aug 5, 2025 reconsideration hearing minutes (producer statements)"
         ]
       }
     ]
