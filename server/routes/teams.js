@@ -1,7 +1,24 @@
 import { Router } from 'express';
 import { testConnection, graphGet, getSiteId, getDriveId, graphUploadFile } from '../services/graph.js';
-import { all } from '../services/database.js';
+import { all, get } from '../services/database.js';
 import XLSX from 'xlsx';
+
+// Returns set of graph_file_ids the given user should not see, because the
+// file is linked to at least one appeal the user has an active recusal on.
+// Admin bypasses (returns empty set).
+async function recusedFileIdsForUser(user) {
+  if (!user || user.role === 'admin') return new Set();
+  const rows = await all(
+    `SELECT DISTINCT drl.graph_file_id
+       FROM document_recusal_links drl
+       JOIN appeal_recusals ar
+         ON ar.appeal_id = drl.appeal_id
+        AND ar.revoked_at IS NULL
+      WHERE ar.user_id = ?`,
+    [user.id]
+  );
+  return new Set(rows.map(r => r.graph_file_id));
+}
 
 const router = Router();
 
@@ -55,7 +72,7 @@ router.get('/browse', async (req, res) => {
     const endpoint = `/drives/${driveId}/root:/${encodedPath}:/children?$select=id,name,size,lastModifiedDateTime,file,folder,webUrl&$orderby=name`;
 
     const data = await graphGet(endpoint);
-    const items = (data.value || []).map(item => ({
+    let items = (data.value || []).map(item => ({
       id: item.id,
       name: item.name,
       isFolder: !!item.folder,
@@ -66,6 +83,13 @@ router.get('/browse', async (req, res) => {
       childCount: item.folder?.childCount || 0,
       webUrl: item.webUrl
     }));
+
+    // Per-file recusal: hide files linked to appeals the current user is
+    // recused from. No-op for admin and for members with no active recusals.
+    const recusedIds = await recusedFileIdsForUser(req.user);
+    if (recusedIds.size > 0) {
+      items = items.filter(it => !(it.isFile && recusedIds.has(it.id)));
+    }
 
     // Sort: folders first, then files
     items.sort((a, b) => {
@@ -93,11 +117,32 @@ router.get('/file/:itemId', async (req, res) => {
     const siteId = await getSiteId();
     const driveId = await getDriveId(siteId);
 
-    // Get file metadata first
-    const meta = await graphGet(`/drives/${driveId}/items/${req.params.itemId}?$select=name,size,file`);
+    // Fetch metadata plus parentReference so we can enforce the Committee
+    // Shared scope on member downloads. Admin bypasses.
+    const meta = await graphGet(
+      `/drives/${driveId}/items/${req.params.itemId}?$select=name,size,file,parentReference`
+    );
 
     if (!meta.file) {
       return res.status(400).json({ error: 'Item is not a file' });
+    }
+
+    // Member scoping: the file's parentReference.path looks like
+    // "/drives/{id}/root:/FSA - State Committee/Committee Shared/..."
+    // Members can only download files whose parent path contains the
+    // member root segment (default 'Committee Shared', env-overridable).
+    if (req.user?.role === 'member') {
+      const parentPath = meta.parentReference?.path || '';
+      if (!parentPath.includes(`/${MEMBER_DOCS_ROOT}`)) {
+        return res.status(403).json({ error: 'Access restricted' });
+      }
+
+      // Per-file recusal check: 404 if this file is linked to any appeal
+      // the member is recused from.
+      const recusedIds = await recusedFileIdsForUser(req.user);
+      if (recusedIds.has(req.params.itemId)) {
+        return res.status(404).json({ error: 'Not found' });
+      }
     }
 
     // Get download URL via separate call

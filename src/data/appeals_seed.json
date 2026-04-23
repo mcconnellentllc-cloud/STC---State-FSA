@@ -12,11 +12,13 @@
     "meetingTimeMin": 90,
     "overviewTime": "9:00 AM",
     "producerTime": "9:30 AM",
+    "priorHearing": "2026-03-24",
+    "priority": 1,
     "status": "OPEN",
     "archived": false,
     "guestsAtMeeting": true,
     "voteRecorded": null,
-    "advisoryNotes": "",
+    "advisoryNotes": "Heard March 24, 2026. April 23 follow-up: confirm written STC decision text (must address dual-528-plan ambiguity on Contract 11117 and missing 528 page for Contract 11101), confirm NAD right-to-appeal notice delivered to producers within 30 days of final determination, confirm Bent County CED has refund-calculation worksheet if affirmed.",
     "dateCreated": "2026-04-15",
     "issueSummary": "Bent County COC terminated 7 CRP grassland contracts (11071, 11075, 11101, 11114, 11115, 11116, 11117) for noncompliance with grazing plans. All NRCS field visits occurred during winter dormancy (Jan–Mar 2025). Producers never provided grazing records despite multiple requests. COC found insufficient stubble height, missing species diversity, and no good faith effort. Full refund of all payments assessed. Continued from March 24 STC.",
     "fullText": "Appellants John and Stephanie Ebright had Grassland CRP contracts accepted for sign-ups 204 and 206. All contracts, conservation plans (NRCS-CPA-1155), and 528 CRP Grasslands Prescribed Grazing Plans were signed timely.\n\nFeb 10, 2025 — Baca County CED requested grazing records. No records received.\nApr 22, 2025 — Noncompliance letter. NRCS visits Jan 31, Feb 26, Mar 11, 2025 (all winter dormancy) showed bare ground and hard-grazed fields.\nMay 6, 2025 — Producers provided good faith letter.\nMay 20, 2025 — COC determined no good faith: stubble height below 4–6\", species diversity insufficient, no grazing records.\nJun 17, 2025 — Termination letters issued.\nJul 10, 2025 — Producers requested reconsideration.\nAug 5, 2025 — Reconsideration hearing. Producers stated they did not receive Feb 10 letter. Showed July 1 photos. Noted 2 ft snow in December, sold 40 head.\nCOC upheld termination.\nMar 24, 2026 — First STC review. Continued to April 23, 2026.",
@@ -68,13 +70,64 @@
       "The two-feet-of-snow and 40-head-sale statements are independently verifiable. Neither was corroborated in the agency record prior to the determination."
     ],
     "contracts": [
-      { "contract": "11101", "tract": "751", "acres": null, "maxHead": null, "daysPlanned": null, "totalAUDs": null, "note": "528 plan data not recovered from file split" },
-      { "contract": "11075", "tract": "772", "acres": 312.07, "maxHead": 10, "daysPlanned": 180, "totalAUDs": 1778.799 },
-      { "contract": "11115", "tract": "2386", "acres": 306.29, "maxHead": 11, "daysPlanned": 120, "totalAUDs": 1286.418 },
-      { "contract": "11071", "tract": "4297", "acres": 306.29, "maxHead": 9, "daysPlanned": 180, "totalAUDs": 1470.192 },
-      { "contract": "11116", "tract": "2396", "acres": 158.80, "maxHead": 5, "daysPlanned": 120, "totalAUDs": 666.96 },
-      { "contract": "11117", "tract": "4328", "acres": 1047.81, "maxHead": 41, "daysPlanned": 120, "totalAUDs": 5029.488, "note": "TWO 528 plans on file — no written FSA determination of operative plan" },
-      { "contract": "11114", "tract": "4034", "acres": 315.35, "maxHead": 11, "daysPlanned": 120, "totalAUDs": 1324.47 }
+      {
+        "contract": "11101",
+        "tract": "751",
+        "acres": null,
+        "maxHead": null,
+        "daysPlanned": null,
+        "totalAUDs": null,
+        "note": "528 plan data not recovered from file split"
+      },
+      {
+        "contract": "11075",
+        "tract": "772",
+        "acres": 312.07,
+        "maxHead": 10,
+        "daysPlanned": 180,
+        "totalAUDs": 1778.799
+      },
+      {
+        "contract": "11115",
+        "tract": "2386",
+        "acres": 306.29,
+        "maxHead": 11,
+        "daysPlanned": 120,
+        "totalAUDs": 1286.418
+      },
+      {
+        "contract": "11071",
+        "tract": "4297",
+        "acres": 306.29,
+        "maxHead": 9,
+        "daysPlanned": 180,
+        "totalAUDs": 1470.192
+      },
+      {
+        "contract": "11116",
+        "tract": "2396",
+        "acres": 158.8,
+        "maxHead": 5,
+        "daysPlanned": 120,
+        "totalAUDs": 666.96
+      },
+      {
+        "contract": "11117",
+        "tract": "4328",
+        "acres": 1047.81,
+        "maxHead": 41,
+        "daysPlanned": 120,
+        "totalAUDs": 5029.488,
+        "note": "TWO 528 plans on file — no written FSA determination of operative plan"
+      },
+      {
+        "contract": "11114",
+        "tract": "4034",
+        "acres": 315.35,
+        "maxHead": 11,
+        "daysPlanned": 120,
+        "totalAUDs": 1324.47
+      }
     ],
     "resolutionOptions": [
       {
@@ -112,52 +165,181 @@
         "appellantRisk": "Must escalate to NAD to pursue further relief.",
         "nadRisk": "HIGH — dormant-season measurement and dual-plan issues are strong appellate arguments."
       }
-    ]
+    ],
+    "exhibits": [],
+    "calculatorUrl": null,
+    "caseFileResearch": []
   },
   {
     "id": "APPEAL-2-2026-3RLAMB",
     "caseId": "Appeal 2",
     "meetingDate": "2026-04-23",
     "agendaItem": "Exec Session Item 4",
-    "title": "LDP Appeal — Washington County",
-    "appellants": "3R Lamb Feeding LLC; Connie Rule; Spence Rule; Sumner Rule",
+    "title": "LDP Appeal — Washington County — 2024 Pelt LDP (3R Lamb Feeding, Rule family)",
+    "appellants": "3R Lamb Feeding LLC, Connie Rule, Spence Rule, Sumner Rule",
     "county": "Washington",
     "program": "LDP",
-    "presenter": "Corey Pelton, Agricultural Program Chief",
-    "meetingTimeMin": 90,
-    "overviewTime": "10:30 AM",
-    "producerTime": "11:00 AM",
-    "status": "PENDING DATA",
+    "presenter": "PENDING DATA — presenter not in case file Summary Outline",
+    "meetingTimeMin": null,
+    "overviewTime": "PENDING DATA",
+    "producerTime": "PENDING DATA",
+    "priorHearing": null,
+    "priority": null,
+    "status": "OPEN",
     "archived": false,
-    "guestsAtMeeting": true,
+    "guestsAtMeeting": null,
     "voteRecorded": null,
-    "advisoryNotes": "",
-    "dateCreated": "2026-04-15",
-    "issueSummary": "3R Lamb Feeding LLC and individual appellants Connie, Spence, and Sumner Rule are appealing a Loan Deficiency Payment (LDP) determination by Washington County FSA. Case file is password-protected — Steve Raptopoulos must recuse from this appeal. Full analysis pending receipt of the unlocked case file.",
-    "fullText": "[PENDING DATA] — Appeal 2 case file is password-protected. Contact Jon Weishaar for the password. Steve Raptopoulos is recused and must not have access to this file.",
-    "theGood": ["[PENDING DATA] — Unlock Appeal 2 case file to populate appellant arguments."],
-    "theBad": ["[PENDING DATA] — Unlock Appeal 2 case file to populate agency arguments."],
-    "redFlags": [
-      { "type": "PROCEDURAL", "text": "[PENDING DATA] — Review case file for procedural issues once unlocked." }
+    "advisoryNotes": "MATERIAL CONFLICT: Steve Raptopoulos must recuse. Per June 12, 2025 Washington County COC minutes (Agency Record p.10), the Colorado Lamb Processors plant where the pelts were delivered/slaughtered is co-owned by the Rule and Raptopoulos families. The conflict is not procedural — it is a fact in the case record that bears on the date of loss of beneficial interest.",
+    "dateCreated": "2026-04-22",
+    "issueSummary": "Washington County COC disapproved 2024 LDP requests for unshorn lamb pelts filed by 3R Lamb Feeding LLC (46,309 head), Spence Rule (879 head), Connie Rule (7 head), and Sumner Rule (6 head). Wool LDPs from the same CCC-633 EZ filings were approved. The disapproval was based on loss of beneficial interest prior to the January 16, 2025 filing of CCC-633 EZ page 1 — pelts were delivered to Colorado Lamb Processors throughout 2024, before the agreement form was signed. Appellants argue they were not notified of the pre-loss-of-BI filing requirement. COC denied equitable relief citing a May 30, 2023 notice letter and the Terms and Conditions of the CCC-633 EZ itself.",
+    "fullText": "On January 16, 2025, 3R Lamb Feeding LLC, Connie Rule, Spence Rule, and Sumner Rule submitted 2024 CCC-633 EZ Loan Deficiency Payment Agreement and Request forms for both ungraded wool and unshorn lamb pelts, together with Part M (Request for Wool, Mohair, or Unshorn Pelt LDP) and production evidence. The pelts had been delivered on multiple dates throughout 2024 to Colorado Lamb Processors in Brush, Colorado. On April 10, 2025, the Washington County COC determined beneficial interest in the pelts had been lost prior to the January 16, 2025 CCC-633 EZ page 1 filing, disapproved the pelt LDP requests, and approved the corresponding wool LDPs on the same applications (wool BI determined to be maintained at filing). Appellants requested reconsideration on May 5, 2025. At the June 12, 2025 reconsideration hearing, Abby Rule appeared on behalf of the producers and argued: (1) applicants were unaware of the pre-loss-of-BI filing requirement, (2) CED Page did not notify them until a March 18, 2025 email, (3) during the 2022 appeal the beneficial interest rule was never raised even though circumstances were similar, (4) the County Office gave inconsistent guidance on date of delivery vs. date of slaughter, and (5) there was no intent to deceive. The COC tabled and directed CED Page to research Equitable Relief and Misaction/Misinformation. On a July 2, 2025 between-meetings action memorialized from a June 17, 2025 email poll, the COC unanimously upheld the disapproval, finding that the May 30, 2023 letter and the CCC-633 EZ Part A Terms and Conditions provided adequate prior notice — precluding equitable relief. The June 12, 2025 minutes additionally state, of record, that Colorado Lamb Processors is co-owned by the Rule and Raptopoulos families and that this co-ownership affects the date beneficial interest is lost.",
+    "theGood": [
+      "The CCC-633 EZ forms were filed January 16, 2025 — before the January 31 final availability date for unshorn pelts. Timing on the final availability deadline was met; the only timing failure alleged is against the pre-loss-of-BI rule.",
+      "Appellants showed consistent good faith: filed within the final availability window, provided production evidence, appeared at reconsideration, and articulated specific procedural confusion rather than contesting the rule itself.",
+      "The June 12, 2025 minutes (p.10) concede on the record that the County Office gave inconsistent guidance on date of delivery vs. date of slaughter for determining loss of beneficial interest, and that this 'will be addressed and corrected for 2025 going forward.' A contemporaneous admission of prior misinformation weighs in favor of Misaction/Misinformation relief under 7-CP (Rev. 4).",
+      "The same June 12 minutes acknowledge that because Colorado Lamb Processors is jointly owned by the Rule and Raptopoulos families, 'the date beneficial interest is lost for the lambs owned by the family, harvested at the plant' is affected — and the COC commits to 'ensure the correct date is used for 2025 forward,' implying the 2024 date determination may not have correctly accounted for the ownership structure.",
+      "The 2022 appeal involving the same family concerned AGI and production evidence timeliness — not beneficial interest. A producer reasonably reading the 2022 determination would not have been put on notice about the beneficial interest rule specifically. The COC's assertion that the 2023 letter provided notice is weakened by the fact that the 2022 case never put the BI rule in issue.",
+      "The COC approved the companion wool LDPs on the same applications. This confirms the producers were eligible in all other respects and their filings were procedurally complete — the only deficiency was pelt-specific timing."
     ],
-    "commonSense": ["[PENDING DATA] — Populate after reviewing Appeal 2 case file."],
-    "contracts": [],
-    "resolutionOptions": [
+    "theBad": [
+      "CCC-633 EZ Part A Terms and Conditions, which the producer signs, states the pre-loss-of-beneficial-interest rule on the face of the form. Every producer who has ever signed a CCC-633 EZ has agreed to those terms.",
+      "The COC has documentary evidence — a May 30, 2023 letter sent during the 2022 appeal process — that addressed beneficial interest in writing to these exact producers. That letter predates the 2024 filing by well over a year.",
+      "Pelts were delivered to the slaughter plant on multiple dates throughout 2024. Under 2-LP Wool and Mohair par. 408A, direct sale to a slaughter lamb company for immediate slaughter loses beneficial interest on the earlier of delivery or actual slaughter. CCC-633 EZ page 1 was filed January 16, 2025 — after every pelt delivery in 2024. The timing failure is undisputed.",
+      "Handbook 8-LP (Rev. 2) has contained the beneficial interest rule since September 2010 — a 15-year-standing requirement. 'We weren't aware' is difficult to sustain against that record, particularly for a large commercial operation like 3R Lamb Feeding LLC (46,309 head).",
+      "The COC's equitable relief analysis under 7-CP (Rev. 4) was on point: Misaction/Misinformation relief requires that the producer relied on incorrect agency information. Here the producer did not ask and was not told anything incorrect about beneficial interest for 2024 — the claim is only that FSA did not volunteer the rule proactively. That is a harder standard.",
+      "CED Page's March 18, 2025 email was sent looking forward to 2025, not retroactive to 2024. It does not create a new claim of misinformation for the 2024 cycle.",
+      "The size disparity matters: 3R Lamb Feeding LLC requested payment on 46,309 head — a commercial-scale operation. STC approval would create a large payment obligation on a facial procedural failure."
+    ],
+    "redFlags": [
       {
-        "label": "Grant Relief",
-        "description": "[PENDING DATA]",
-        "fsaRisk": "[PENDING DATA]",
-        "appellantRisk": "[PENDING DATA]",
-        "nadRisk": "[PENDING DATA]"
+        "type": "MATERIAL CONFLICT",
+        "text": "June 12, 2025 minutes (p.10) of record: Colorado Lamb Processors plant is co-owned by the Rule and Raptopoulos families. The plant is the site of delivery/slaughter at which beneficial interest is deemed lost. STC member Steve Raptopoulos must recuse from discussion and vote on Appeal 2 under the same 16-AO Par. 137B standard the Washington COC applies to itself."
       },
       {
-        "label": "Deny",
-        "description": "[PENDING DATA]",
-        "fsaRisk": "[PENDING DATA]",
-        "appellantRisk": "[PENDING DATA]",
-        "nadRisk": "[PENDING DATA]"
+        "type": "PROCEDURAL",
+        "text": "The COC's final disapproval was memorialized via an email poll conducted on June 17, 2025, then formally adopted at a 'July 2, 2025 Executive Session in between meetings' with the Chairperson attending via TEAMS. Committee members may want to verify that the email-poll → between-meetings adoption pattern complies with 16-AO procedural requirements for adverse determinations; if not, a procedural remand is available independent of the merits."
+      },
+      {
+        "type": "PROCEDURAL",
+        "text": "The COC itself conceded on the record (June 12, 2025 minutes p.10) that County Office guidance on date of delivery vs. date of slaughter was inconsistent and required correction. That concession is direct evidence the Misaction/Misinformation bar has been met as to at least one fact material to the case (the date of loss of beneficial interest). The COC's later finding that Misaction/Misinformation 'would not apply' addresses only the beneficial-interest-timing-rule disclosure — not the date-of-loss determination that the COC separately admitted was affected by bad guidance."
+      },
+      {
+        "type": "PRECEDENTIAL",
+        "text": "A denial here on 'the rule was on the form' rationale sets a standard that extinguishes every Misaction/Misinformation claim on any LDP going forward, because CCC-633 EZ Terms and Conditions cover the full rule set. STC should be deliberate about whether that is the precedent it wants."
+      },
+      {
+        "type": "NAD EXPOSURE",
+        "text": "The May 30, 2023 letter relied upon by the COC as prior notice was sent during a 2022 appeal that was decided on AGI and production-evidence timeliness — NOT on beneficial interest. NAD may find that a notice buried in correspondence about a different issue does not satisfy the constructive-notice standard required to foreclose Misaction/Misinformation relief."
       }
-    ]
+    ],
+    "commonSense": [
+      "Producers filed January 16, 2025 — fifteen days before the January 31 final availability deadline. They were trying to comply, they just filed against the wrong deadline. That is the shape of a procedural mistake, not an evasion.",
+      "The same applications produced approved wool LDPs and disapproved pelt LDPs. The producers didn't selectively misfile — they applied one rule to both commodities, and the rule for pelts is stricter because of how lamb slaughter delivery is treated under 2-LP par. 408A. A reasonable producer who didn't know about 2-LP par. 408A specifically could easily miss this.",
+      "The COC's own minutes concede bad County Office guidance on the date-of-loss question and commit to correcting it going forward. Denying relief while simultaneously admitting the agency contributed to the confusion is internally inconsistent.",
+      "The Raptopoulos plant co-ownership is material, not incidental. It means one of the STC members who would normally rule on this case has family ownership of the facility that is the trigger point for the entire legal question. That is the textbook reason recusal rules exist, and it needs to be acknowledged in the opening of the hearing, not assumed."
+    ],
+    "contracts": [
+      {
+        "producer": "3R Lamb Feeding LLC",
+        "commodity": "Pelts",
+        "headCount": 46309,
+        "status": "DISAPPROVED",
+        "note": "Commercial-scale operation. Largest exposure of the four appellants by three orders of magnitude."
+      },
+      {
+        "producer": "Spence Rule",
+        "commodity": "Pelts",
+        "headCount": 879,
+        "status": "DISAPPROVED",
+        "note": null
+      },
+      {
+        "producer": "Connie Rule",
+        "commodity": "Pelts",
+        "headCount": 7,
+        "status": "DISAPPROVED",
+        "note": null
+      },
+      {
+        "producer": "Sumner Rule",
+        "commodity": "Pelts",
+        "headCount": 6,
+        "status": "DISAPPROVED",
+        "note": null
+      },
+      {
+        "producer": "3R Lamb Feeding LLC",
+        "commodity": "Wool (reference only)",
+        "headCount": null,
+        "poundsCount": 123577,
+        "status": "APPROVED",
+        "note": "Wool LDP from same CCC-633 EZ filing — approved because BI determined to be maintained at filing. Not on appeal; shown for context only."
+      },
+      {
+        "producer": "Spence Rule",
+        "commodity": "Wool (reference only)",
+        "headCount": null,
+        "poundsCount": 9220,
+        "status": "APPROVED",
+        "note": "Not on appeal; context."
+      },
+      {
+        "producer": "Connie Rule",
+        "commodity": "Wool (reference only)",
+        "headCount": null,
+        "poundsCount": 1411,
+        "status": "APPROVED",
+        "note": "Not on appeal; context."
+      },
+      {
+        "producer": "Sumner Rule",
+        "commodity": "Wool (reference only)",
+        "headCount": null,
+        "poundsCount": 733,
+        "status": "APPROVED",
+        "note": "Not on appeal; context."
+      }
+    ],
+    "resolutionOptions": [
+      {
+        "label": "Grant Full Relief — All 4 Appellants, All Pelt LDPs",
+        "description": "Reverse the Washington County COC determination. Approve the 2024 Pelt LDPs for all four appellants on the basis that (1) the COC conceded on the record that County Office guidance on the date of loss of beneficial interest was inconsistent, (2) the Raptopoulos-family co-ownership of the slaughter plant affects the date-of-loss determination and was not properly factored in, and (3) the 2023 letter relied upon for prior notice addressed a different issue (AGI/production evidence) and does not satisfy constructive notice on beneficial interest.",
+        "fsaRisk": "HIGH — sets precedent that a COC admission of inconsistent guidance + unresolved plant-ownership facts triggers Misaction/Misinformation relief even where the controlling rule is on the face of the signed form. Payment exposure on 3R Lamb alone is substantial (46,309 head).",
+        "appellantRisk": "None if granted.",
+        "nadRisk": "LOW if denied on same facts — NAD is likely to find the procedural concessions and plant co-ownership material. Risk of NAD reversal on STC denial is above-average."
+      },
+      {
+        "label": "Grant Partial Relief — Remand for Recalculation on Date of Loss",
+        "description": "Remand to Washington County COC to redetermine the date of loss of beneficial interest taking into account the Rule/Raptopoulos co-ownership of Colorado Lamb Processors. If any pelt deliveries occurred after the January 16, 2025 CCC-633 EZ page 1 filing under a corrected date-of-loss rule (e.g., date of slaughter rather than date of delivery, where ownership overlap exists), those specific pelts would be eligible. All other pelts remain disapproved.",
+        "fsaRisk": "MEDIUM — narrow remand addressing the specific factual inconsistency the COC itself flagged, without reversing the broader beneficial-interest doctrine. Preserves the CCC-633 EZ notice precedent.",
+        "appellantRisk": "MEDIUM — relief may be partial or zero depending on recalculation. Procedurally clean.",
+        "nadRisk": "LOW — responsive to the specific procedural defects identified in the record."
+      },
+      {
+        "label": "Grant Partial Relief — Small Producers Only (Connie, Sumner, Spence)",
+        "description": "Approve pelt LDPs for Connie Rule (7 head), Sumner Rule (6 head), and Spence Rule (879 head) on Misaction/Misinformation grounds. Deny 3R Lamb Feeding LLC (46,309 head) on the basis that a commercial-scale operation is held to a higher constructive-notice standard.",
+        "fsaRisk": "LOW-MEDIUM — small total payment exposure; distinguishes sophistication of appellant without reversing doctrine.",
+        "appellantRisk": "HIGH for 3R Lamb Feeding LLC (denial upheld on largest requested amount).",
+        "nadRisk": "MEDIUM — sophistication-based distinctions are defensible but require a clear articulation in the written determination. 3R Lamb may appeal to NAD individually."
+      },
+      {
+        "label": "Remand for Procedural Defect — Email Poll/Between-Meetings Adoption",
+        "description": "Remand to Washington County COC to re-adopt the disapproval determination in a properly noticed executive session, without ruling on the merits. Pure procedural disposition; STC takes no position on beneficial interest or equitable relief at this stage.",
+        "fsaRisk": "LOW — no merits precedent created; procedural hygiene reinforced.",
+        "appellantRisk": "LOW in terms of STC action, but HIGH in practical terms — the COC is likely to re-adopt the same determination on proper procedure, and appellants' only gain is timing and a reset appeal clock.",
+        "nadRisk": "LOW — STC is taking no merits position."
+      },
+      {
+        "label": "Uphold Denial — All 4 Appellants",
+        "description": "Affirm the Washington County COC determination in full. Find that (1) the beneficial interest rule appears on the signed CCC-633 EZ Part A Terms and Conditions, (2) the May 30, 2023 letter provided written notice to these specific producers, (3) the handbook rule has existed since 2010, and (4) Misaction/Misinformation does not apply where the producer did not rely on any specific incorrect agency statement for the 2024 cycle.",
+        "fsaRisk": "LOW — consistent with handbook language and CCC-633 EZ Terms and Conditions. Reinforces the signed-form-is-notice doctrine.",
+        "appellantRisk": "HIGH — full denial; 3R Lamb loses 46,309 head in pelt LDP.",
+        "nadRisk": "ABOVE-AVERAGE — NAD may find (a) the 2023 letter insufficient because the 2022 appeal was about a different issue, (b) the COC's own concession of inconsistent date-of-loss guidance meets the Misaction bar on at least one fact material to the case, and (c) the unresolved Raptopoulos plant co-ownership is a procedural defect that should have been cured before final determination. NAD reversal probability is material."
+      }
+    ],
+    "exhibits": [],
+    "calculatorUrl": null,
+    "caseFileResearch": []
   },
   {
     "id": "APPEAL-3-2026-PROCTOR",
@@ -172,30 +354,14 @@
     "meetingTimeMin": 90,
     "overviewTime": "12:30 PM",
     "producerTime": "1:00 PM",
+    "priorHearing": null,
+    "priority": null,
     "status": "OPEN",
     "archived": false,
     "guestsAtMeeting": false,
     "voteRecorded": null,
     "advisoryNotes": "",
     "dateCreated": "2026-04-15",
-    "cropInfo": {
-      "Crop": "Mixed Forage (Mixfg) Interseeded Grass (IGS)",
-      "Practice": "Irrigated",
-      "Coverage": "65/100 buy-up",
-      "Unit": "Unit 482",
-      "Crop Year": "2024",
-      "Acres": "52.16",
-      "Claimed Disaster": "Heat, Wind/Excess Wind",
-      "Disaster Period": "Jul 1 – Oct 30, 2024",
-      "NOL Filed": "Nov 5, 2024",
-      "Days Late": "21",
-      "Normal Harvest Date": "Oct 15, 2024",
-      "Bales Counted by LA": "17",
-      "Avg Bale Weight (lbs)": "1,410",
-      "Total Production (tons)": "11.99",
-      "Irrigation": "7.75 Highline Canal shares — adequate for 55–60 ac",
-      "Unit 1528 History": "No documented growing history for 65/100 buy-up on file"
-    },
     "issueSummary": "Proctor filed a late notice of loss (21 days after normal harvest date) on 52.16 acres of irrigated mixed forage in Otero County, claiming heat and wind caused the 2024 production loss. A winter storm before the November 22 inspection made it impossible to verify the claimed disaster — the loss adjustor's FSA-501 Statement of Facts was left blank on the disaster cause question, an agency documentation failure. COC disapproved the NOL and AFP. A POA signature deficiency caused a 42-day procedural delay in 2025. Case pending since June 2025 awaiting STC appointment.",
     "fullText": "Proctor holds 65/100 buy-up NAP coverage on Mixfg IGS. Original filing Oct 27, 2023 at 50/55; upgraded to 65/100 on Jan 19, 2024, before the Dec 1, 2023 application closing date — timely.\n\nNov 5, 2024 — NOL filed claiming Heat/Wind Jul 1–Oct 30, apparent Oct 31. Filed 21 days after Oct 15 normal harvest date. Late-filed. Mandatory field inspection triggered.\nNov 22, 2024 — LA inspection. Fields harvested. LA counted 17 bales. FSA-501 Statement of Facts did NOT address any disaster event — left blank on this critical question. Photos showed snow-covered fields. No evidence of heat or wind damage visible.\nDec 11, 2024 — COC disapproved NOL: (1) inadequate proof of disaster; (2) Otero County did not exceed D1 drought; (3) LA did not indicate disaster caused loss; (4) not similar to other producers.\nDec 10, 2024 — AFP filed.\nJan 13, 2025 — COC disapproved AFP — no acceptable NOL on file.\nJan 29, 2025 — POA Kris Demoss emailed reconsideration request.\nMar 12, 2025 — Reconsideration hearing. COC upheld disapproval.\nApr 15, 2025 — Proctor filed STC appeal request.\nJun 4–5, 2025 — STO rejected documents — signatures did not match FSA-211 POA on file.\nJun 16, 2025 — Corrected signatures received. Appeal deemed timely filed.\nApr 8, 2026 — STC hearing scheduled April 23, 2026 at 1:00 PM.",
     "theGood": [
@@ -264,7 +430,10 @@
         "appellantRisk": "Loss of 2024 NAP payment on 52 acres.",
         "nadRisk": "MODERATE — blank FSA-501 and Unit 1528 improper coverage grant are viable NAD arguments."
       }
-    ]
+    ],
+    "exhibits": [],
+    "calculatorUrl": null,
+    "caseFileResearch": []
   },
   {
     "id": "APPEAL-4-2026-RIVEREDGE",
@@ -279,29 +448,14 @@
     "meetingTimeMin": 90,
     "overviewTime": "2:00 PM",
     "producerTime": "2:30 PM",
-    "phoneJoin": "(970) 769-4304",
+    "priorHearing": null,
+    "priority": null,
     "status": "OPEN",
     "archived": false,
     "guestsAtMeeting": true,
     "voteRecorded": null,
     "advisoryNotes": "",
     "dateCreated": "2026-04-15",
-    "cropInfo": {
-      "Crop": "Safflower for Seed (Non-Irrigated)",
-      "Coverage": "65/100 buy-up",
-      "Units": "Unit 328 (38.01 ac) + Unit 1528 (147.47 ac) = 185.48 ac total",
-      "Crop Year": "2025",
-      "Plant Dates": "May 3–5, 2025",
-      "Claimed Disaster": "Drought",
-      "Disaster Date": "May 28, 2025",
-      "Seeding Rate": "~30,000 seeds/ac (~2.5 lbs/ac). Recommended: 15–30 lbs/ac.",
-      "Rainfall Apr–Jun 2025": "3.48 in (vs 1.12 in 2023, 1.21 in 2024 — years with successful crops)",
-      "Drought Monitor": "D1 in parts of La Plata County; D2 in SW region (field area) as of May 6, 2025",
-      "Unit 1528 EQIP": "Enrolled in active EQIP contract — safflower was EQIP-approved broadleaf rotation crop",
-      "Unit 1528 History": "No documented growing history for 65/100 buy-up on file",
-      "Neighbor Comparison": "Blue Horizons Farm planted Apr 18–May 1, apparent loss Jun 23 (month later), NOL approved",
-      "Late Documents": "Appellant submitted additional documents to Box before April 23 meeting — review before 2:00 PM"
-    },
     "issueSummary": "River Edge Dairy planted non-irrigated safflower for seed on 185.48 acres near Hesperus, La Plata County in May 2025. Seeds sprouted then died — claimed cause is drought combined with high winds drying seed furrows faster than roots could develop. COC disapproved: (1) 2025 had more precipitation than 2023 and 2024, years when River Edge successfully grew safflower; (2) seeding rate of ~2.5 lbs/acre was dramatically below the recommended 15–30 lbs/acre; (3) neighbor Blue Horizons Farm had a different, later loss timeline. Unit 1528 has no documented growing history for buy-up coverage. Appellant submitted late documents to Box before the April 23 meeting.",
     "fullText": "River Edge Dairy has successfully grown safflower in 2023 and 2024. Planted non-irrigated safflower May 3–5, 2025 near Hesperus in SW La Plata County.\n\nJun 4, 2025 — NOL filed claiming drought beginning May 28, apparent May 28.\nJun 11, 2025 — LA Anita Lazor inspected. Photos show only seeds and weeds — no safflower plants visible.\nJul 31, 2025 — COC discussed NOL. Requested soil moisture tests or farming practices statement.\nAug 27, 2025 — Producer provided documentation on farming practices. No formal soil moisture tests submitted.\nSep 22, 2025 — COC disapproved NOL and AFP as action between meetings per 1-NAP paragraph 51E.\nDec 4, 2025 — Full reconsideration hearing. DeRon and Jordan Gillen attended in person.\n\nHearing detail: DeRon passed around safflower seeds and provided agronomic context. Planting method: double disc opener, 30-inch rows, seeds planted into furrow groove. High May winds dried out furrows faster than roots could grow. Seeds sprouted initially then died. Soil moisture assessed by shovel (dig 12–18 inches, make a dirt ball) plus probe in March showing 21 inches of moisture. Seeds were 1 year old from 2024 crop — viability tested by germination in wet rag.\n\nRainfall at Kline station Apr 1–Jun 30: 2025 = 3.48 in, 2024 = 1.21 in, 2023 = 1.12 in. COC noted 2025 had more precipitation than years with successful crops.\n\nSeeding rate: Producer stated 30,000 seeds/acre in 30-inch rows, approximately 2.5 lbs/acre. COC noted recommended rate is 15–30 lbs/acre. Blue Horizons Farm uses approximately 15 lbs/acre.\n\nNeighbor comparison: Blue Horizons Farm planted Apr 18–May 1, apparent loss not until Jun 23, appraisal showed partially grown plants. River Edge apparent loss May 28, appraisal showed only seeds and weeds.\n\nUnit 1528: approximately 150 acres on F2083 enrolled in EQIP year 2 of 3-year contract requiring a broadleaf rotating crop. Safflower was on the EQIP-approved list.\n\nCOC deliberated: Could not conclude drought was sole cause of loss per 1-NAP paragraph 51E. Upheld disapproval.",
     "theGood": [
@@ -376,6 +530,243 @@
         "appellantRisk": "Loss of 2025 NAP payment on 185 acres.",
         "nadRisk": "MODERATE — EQIP obligation and Unit 1528 improper coverage grant are viable NAD arguments."
       }
-    ]
+    ],
+    "exhibits": [],
+    "calculatorUrl": null,
+    "caseFileResearch": []
+  },
+  {
+    "id": "EX-5-2026-PAYNE",
+    "caseId": "EX-5",
+    "meetingDate": "2026-04-23",
+    "agendaItem": null,
+    "title": "CRP Payment Reduction Waiver — El Paso County",
+    "appellants": "Payne Legacy LLC",
+    "county": "El Paso",
+    "program": "CRP",
+    "presenter": "Hunter A. Cleveland, Farm Program Specialist",
+    "meetingTimeMin": 15,
+    "overviewTime": null,
+    "producerTime": null,
+    "priorHearing": "2026-03-24",
+    "priority": 2,
+    "status": "OPEN",
+    "archived": false,
+    "guestsAtMeeting": false,
+    "voteRecorded": null,
+    "advisoryNotes": "Carry-over from March 24, 2026 Executive Session, page 659. Confirm the final vote is recorded at the April 23 meeting and that the written decision cites the specific Par. 603 factors considered.",
+    "dateCreated": "2026-03-24",
+    "issueSummary": "Payne Legacy LLC (El Paso County) requested a waiver of the CRP Standard Payment Reduction assessed by the COC after a documented noncompliance event. The STC was asked to waive the reduction or affirm the COC assessment. Carried forward to April 23 for final determination and recording of the vote.",
+    "fullText": "El Paso County COC assessed a Standard Payment Reduction against Payne Legacy LLC under 2-CRP Par. 603E following a noncompliance event on the producer's Grassland CRP tract. Payne Legacy requested relief via a waiver, asserting that the circumstances were outside the producer's reasonable control and that corrective action was promptly taken. The STC reviewed the request at its March 24, 2026 Executive Session (15 min allocated, page 659). Final vote was not recorded in the March 24 minutes and the item was carried to April 23, 2026 for determination. If granted, no refund of prior payments is required; if denied, the COC's payment reduction stands and Payne Legacy's NAD appeal rights are preserved.",
+    "theGood": [
+      "Producer requested waiver through proper channels — good-faith procedural posture",
+      "Staff (Hunter Cleveland) prepared the case for STC consideration with full documentation",
+      "Penalty at issue is a standard payment reduction, not contract termination — the lesser remedy under Par. 603E",
+      "Waiver, if granted, preserves the underlying CRP contract and avoids triggering refund of prior payments"
+    ],
+    "theBad": [
+      "Granting a waiver sets precedent — STC must ensure consistency with prior waiver decisions",
+      "COC's underlying noncompliance finding was not challenged — only the reduction amount",
+      "Program integrity concern: serial waivers undermine COC enforcement authority"
+    ],
+    "redFlags": [
+      {
+        "type": "PROCEDURAL",
+        "text": "Confirm whether Payne Legacy LLC was afforded the full 30-day notice and response window under 2-CRP Par. 603D before the reduction was assessed."
+      },
+      {
+        "type": "REGULATORY",
+        "text": "Apply the same good-faith analytical framework used in the Ebright case (2-CRP Par. 603A, 603D, 603E, 603F) — inconsistent treatment across the same meeting creates NAD-reversal exposure for the more severe decision."
+      },
+      {
+        "type": "DOCUMENTATION",
+        "text": "Waiver decisions must be documented in writing with the basis cited — STC minutes must recite the factual findings that support or deny the waiver."
+      }
+    ],
+    "commonSense": [
+      "A standard payment reduction is the mid-range remedy between full compliance and contract termination. If the producer corrected the issue promptly and the violation was narrow in scope, a waiver may serve program objectives better than a punitive reduction.",
+      "Ensure this case is decided on the same factual record standard as Ebright — both are CRP noncompliance matters reviewed the same day.",
+      "If the waiver is granted, document in the minutes the specific mitigating facts that justified it, so the decision does not read as arbitrary."
+    ],
+    "contracts": [],
+    "resolutionOptions": [
+      {
+        "label": "Grant Waiver",
+        "description": "Waive the standard payment reduction. Document mitigating facts in minutes. Contract continues on normal payment schedule.",
+        "fsaRisk": "Moderate — precedent for future waiver requests",
+        "appellantRisk": "None if granted",
+        "nadRisk": "N/A — producer has no NAD grievance if granted"
+      },
+      {
+        "label": "Grant Partial Waiver",
+        "description": "Reduce the payment reduction by a specified percentage in recognition of mitigating circumstances but preserve some program consequence.",
+        "fsaRisk": "Low — proportional remedy",
+        "appellantRisk": "Producer absorbs a smaller reduction",
+        "nadRisk": "LOW"
+      },
+      {
+        "label": "Deny Waiver — Affirm COC",
+        "description": "Affirm the COC-assessed standard payment reduction. Producer retains NAD appeal rights within 30 days.",
+        "fsaRisk": "Low if COC record is complete and the Par. 603 factors are cited in the decision text",
+        "appellantRisk": "Reduction applied to next annual payment",
+        "nadRisk": "LOW–MEDIUM — depends on quality of COC record"
+      }
+    ],
+    "exhibits": [],
+    "calculatorUrl": null,
+    "caseFileResearch": []
+  },
+  {
+    "id": "REF-DEC2025-MOFFAT",
+    "caseId": "REF-1",
+    "meetingDate": null,
+    "agendaItem": null,
+    "title": "CRP Misaction — Moffat County (Precedent Reference)",
+    "appellants": "[PENDING DATA] Moffat County producer",
+    "county": "Moffat",
+    "program": "CRP",
+    "presenter": "Reference only — no presenter",
+    "meetingTimeMin": 0,
+    "overviewTime": null,
+    "producerTime": null,
+    "priorHearing": "2025-12",
+    "priority": 99,
+    "status": "RESOLVED",
+    "archived": true,
+    "guestsAtMeeting": false,
+    "voteRecorded": "Equitable Relief Granted (Dec 2025)",
+    "advisoryNotes": "Reference only. No action at April 23 meeting. Attach the December 2025 written determination when available.",
+    "dateCreated": "2025-12-01",
+    "issueSummary": "December 2025 STC granted equitable relief in a Moffat County CRP misaction case. Retained in this registry as a direct controlling precedent for the Ebright and Payne Legacy matters — both CRP noncompliance cases where the producer asserts agency error or incomplete agency record.",
+    "fullText": "Prior STC action in December 2025: equitable relief granted in a Moffat County CRP misaction case. This is the nearest direct Colorado precedent for relief in a CRP compliance dispute and should be cited in the written determinations for any current CRP appeal where the STC grants relief. [PENDING DATA] — full case name, contract numbers, and written decision text not yet attached to this record.",
+    "theGood": [
+      "Direct Colorado precedent for CRP equitable relief within the last 6 months",
+      "Establishes that this STC will grant relief when the agency record is incomplete or contains material error"
+    ],
+    "theBad": [
+      "[PENDING DATA] — cannot confirm the scope or facts of the Moffat case without the written decision"
+    ],
+    "redFlags": [
+      {
+        "type": "DOCUMENTATION",
+        "text": "Attach the December 2025 written determination to this record before citing it as precedent in any current appeal."
+      }
+    ],
+    "commonSense": [
+      "Precedent carries weight only when the facts are known. Retrieve the December 2025 decision from the minutes and link it here before using it in deliberation."
+    ],
+    "contracts": [],
+    "resolutionOptions": [],
+    "exhibits": [],
+    "calculatorUrl": null,
+    "caseFileResearch": []
+  },
+  {
+    "id": "EX-APRIL-2026-NEW-APPEAL",
+    "caseId": "EX-A",
+    "meetingDate": "2026-04-23",
+    "agendaItem": null,
+    "title": "[Placeholder] New appeals filed since March 24 — awaiting staff docket",
+    "appellants": "[PENDING DATA] — confirm with Corey Pelton / Cindy Vukasin",
+    "county": "[PENDING DATA]",
+    "program": "Common Provisions",
+    "presenter": "[PENDING DATA]",
+    "meetingTimeMin": 0,
+    "overviewTime": null,
+    "producerTime": null,
+    "priorHearing": null,
+    "priority": 50,
+    "status": "PENDING DATA",
+    "archived": false,
+    "guestsAtMeeting": false,
+    "voteRecorded": null,
+    "advisoryNotes": "Administrative placeholder. Delete once confirmed with State Office or replace with real case when docketed.",
+    "dateCreated": "2026-04-19",
+    "issueSummary": "Reserved slot for any producer appeals filed between March 24 and the April 23 meeting. No new appeal dockets have been distributed to STC members as of the training session on April 8. Before the April 23 meeting, confirm with the State Office whether any new CRP, NAP, LFP, ELAP, or Common Provisions appeals have been received and require STC hearing.",
+    "fullText": "[PENDING DATA] — This record is a placeholder. When a new appeal is docketed, duplicate this record using the New Appeal form and populate the full case brief. Confirm timing: 30-day filing window from written COC decision (7 CFR 780.9); STC hearing scheduled at next regular meeting where time permits.",
+    "theGood": [
+      "[PENDING DATA]"
+    ],
+    "theBad": [
+      "[PENDING DATA]"
+    ],
+    "redFlags": [
+      {
+        "type": "PROCEDURAL",
+        "text": "Verify with Jon Weishaar and Corey Pelton before the April 23 meeting whether any new appeals have been filed and need to be added to the Executive Session agenda."
+      }
+    ],
+    "commonSense": [
+      "Do not remove this placeholder until confirmation from State Office that the April 23 Executive Session will have no new appeals."
+    ],
+    "contracts": [],
+    "resolutionOptions": [],
+    "exhibits": [],
+    "calculatorUrl": null,
+    "caseFileResearch": []
+  },
+  {
+    "id": "REF-OTERO-CROWLEY-COC",
+    "caseId": "REF-2",
+    "meetingDate": "2026-04-23",
+    "agendaItem": null,
+    "title": "Otero/Crowley COC Administrative Action (NOT an appeal — context only)",
+    "appellants": "Not applicable — personnel matter",
+    "county": "Otero / Crowley",
+    "program": "Common Provisions",
+    "presenter": "Jerry Sonnenberg, SED",
+    "meetingTimeMin": 0,
+    "overviewTime": null,
+    "producerTime": null,
+    "priorHearing": "2026-03-17",
+    "priority": 100,
+    "status": "RESOLVED",
+    "archived": true,
+    "guestsAtMeeting": false,
+    "voteRecorded": "March 17, 2026 — Motion to cease administrative action PASSED. Motion to delegate CED authority PASSED.",
+    "advisoryNotes": "Cross-reference only. Handle any personnel grievance through Employee Relations channel (Steve Niemann, 816-926-6448), not the STC appeal docket.",
+    "dateCreated": "2026-03-17",
+    "issueSummary": "NOT AN APPEAL — retained here for cross-reference only. March 17 special meeting ceased administrative leave action against 5 Otero/Crowley COC members and delegated daily operations to the CED. April 23 agenda includes a status report on COC operations continuity, not an appeal hearing. If any of the 5 members ultimately file a personal grievance under 7 CFR § 7.28(b), that would be a separate adverse-action appeal handled through Employee Relations (Steve Niemann, FPAC-FBC), not the STC CRP/NAP appeal track.",
+    "fullText": "Background: Administrative Leave Letters for 5 Otero/Crowley COC members (Knapp, Walter Jr, Hanagan, Tecklenburg, Mason) were prepared by Steve Niemann (HR Specialist, FPAC-FBC) and forwarded to the STC in March 2026. At the March 17 special meeting the STC voted to (1) send a cease-administrative-action letter, and (2) delegate daily operations to the CED pending resolution. The April 23 agenda item is a status report, not an appeal. The appeal-track citations to § 7.28(b) (advance written notice, right to reply, right of further review) apply only if any of the 5 members formally contests the original adverse action — no such filing has been received as of this record.",
+    "theGood": [
+      "STC acted promptly on March 17 to preserve county-office operations via CED delegation",
+      "No individual § 7.28(b) grievance has been received — the matter has not escalated to an appeal"
+    ],
+    "theBad": [
+      "If the cease-action is later reversed by the FSA Administrator under § 7.1(d), the STC should be prepared to re-open the personnel file"
+    ],
+    "redFlags": [
+      {
+        "type": "DUE PROCESS",
+        "text": "If any of the 5 members files a § 7.28(b) reply or appeal, it must be handled as a confidential personnel matter — NOT processed through the CRP/NAP appeal track."
+      },
+      {
+        "type": "PROCEDURAL",
+        "text": "April 23 agenda should confirm: all 5 letters delivered and tracked, CED notified of delegation scope, Niemann/Sonnenberg/DC reporting complete, Alisha Knapp 0-KB file resolved before delivery."
+      }
+    ],
+    "commonSense": [
+      "Keep this record cross-referenced but do not conflate it with producer program appeals. Separate decision-making frameworks apply."
+    ],
+    "contracts": [],
+    "resolutionOptions": [
+      {
+        "label": "Status Report Only (no vote required)",
+        "description": "Accept staff status report at April 23 meeting. No motion needed unless reinstatement timeline or CED delegation rescission is on the agenda.",
+        "fsaRisk": "None",
+        "appellantRisk": "N/A",
+        "nadRisk": "N/A"
+      },
+      {
+        "label": "Motion: Set COC Reinstatement Effective Date",
+        "description": "If staff reports the 5 members are ready to resume duties, STC motion to set effective date and clarify CED delegation rollback under 7 CFR § 7.23.",
+        "fsaRisk": "Low — routine",
+        "appellantRisk": "N/A",
+        "nadRisk": "N/A"
+      }
+    ],
+    "exhibits": [],
+    "calculatorUrl": null,
+    "caseFileResearch": []
   }
 ]

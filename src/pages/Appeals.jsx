@@ -14,6 +14,7 @@
 
 import React, { useState, useEffect, useCallback } from "react";
 import { Routes, Route, Link, useNavigate, useParams, Navigate } from "react-router-dom";
+import { useApiFetch } from "../auth/apiFetch";
 
 /* ─────────────────────────────────────────────────────────────────────────────
    MEETING CONTEXT — upcoming April 23, 2026 STC meeting
@@ -27,333 +28,64 @@ const NEXT_MEETING = {
 };
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   SEED DATA — Open appeals and carry-over matters before the STC
-   Ordered logically: active OPEN items (longest-allocated first), then READY,
-   PENDING DATA, and finally RESOLVED follow-up items.
+   DATA SOURCE — appeals are fetched from /api/appeals (see Appeals() component
+   below). The server returns the recusal-filtered list for the current user.
+   Local edits to advisoryNotes are cached in localStorage under STORAGE_KEY;
+   server-side edit sync lands in a later PR.
    ───────────────────────────────────────────────────────────────────────────── */
-const SEED_APPEALS = [
-  /* ─────────── 1. CRP — Ebright (carry-over from March 24) ─────────── */
-  {
-    id: "EX-1-2026-EBRIGHT",
-    caseId: "EX-1",
-    title: "CRP Appeal — Bent County (Follow-up)",
-    appellants: "John Ebright & Stepanie Ebright",
-    county: "Bent",
-    program: "CRP",
-    presenter: "Corey Pelton, Agricultural Program Chief",
-    meetingTimeMin: 90,
-    status: "OPEN",
-    meetingDate: "2026-04-23",
-    priorHearing: "2026-03-24",
-    priority: 1,
-    guestsAtMeeting: true,
-    dateCreated: "2026-03-24",
-    issueSummary:
-      "Carried over from March 24. John and Stepanie Ebright appealed a CRP noncompliance determination by Bent County COC across 7 contracts (11071, 11075, 11101, 11114, 11115, 11116, 11117). The COC terminated all 7 contracts after three NRCS field visits documented bare ground, no 4\"–6\" stubble height, and species-diversity shortfalls; grazing records required under the 528 Prescribed Grazing Plans were never produced. April 23 agenda item is a follow-up to confirm decision documentation, NAD right-to-appeal notice, and any outstanding actions from the March 24 hearing.",
-    fullText:
-      "Bent County COC issued a noncompliance determination against John and Stepanie Ebright covering CRP contracts 11101 (Tract 751), 11075 (Tract 772), 11115 (Tract 2386), 11071 (Tract 4297), 11116 (Tract 2396), 11117 (Tract 4328), and 11114 (Tract 4034). The determination cited: (1) stubble height measurements below the 4–6 inch minimum required under each contract's 528 CRP Grasslands Prescribed Grazing Plan; (2) failure to provide grazing records when requested by the county office. The COC assessed refunds and placed contracts in violation status. The Ebrights filed a timely appeal. This matter comes before the STC as EX-1 on the March 24, 2026 Executive Session agenda with 90 minutes allocated. The Ebrights are guests and are present only for this item.",
-    theGood: [
-      "Absence of grazing records cuts both ways — FSA cannot definitively prove actual head count without records",
-      "Contract 11117/Tract 4328 has two 528 plans on file with no written FSA determination of which plan governed — creates ambiguity in the standard of compliance",
-      "Prior STC (Dec 2025) granted equitable relief in Moffat County CRP misaction case — direct precedent exists for relief",
-      "Stubble height documented post-grazing only — no pre-grazing baseline on file, making it a non-controlled comparison",
-      "90-minute STC allocation signals full hearing expected, not rubber stamp",
-      "Producers managing 2,400+ acres under CRP across 7 contracts demonstrates substantial good-faith program participation",
-    ],
-    theBad: [
-      "Producers signed all 528 plans — they acknowledged and accepted the stocking rate limits in writing",
-      "Grazing records were never provided when requested — direct noncompliance with conservation plan requirements regardless of grazing outcome",
-      "Noncompliance letter documents specific acres per field across multiple contracts with no producer rebuttal on record",
-      "Contract 11101/Tract 751 528 plan data still not fully recovered — gap in agency record unresolved",
-      "Stubble height violation was documented by FSA in the field — physical evidence of noncompliance exists independent of record dispute",
-    ],
-    redFlags: [
-      { type: "PROCEDURAL", text: "Were producers given adequate advance notice of the spot check methodology and measurement standards to be applied?" },
-      { type: "DOCUMENTATION", text: "Stubble height measured post-grazing only with no pre-grazing baseline. A single post-grazing measurement is not a controlled comparison and may not meet evidentiary standard for a noncompliance determination." },
-      { type: "PROCEDURAL", text: "Two 528 plans on file for Contract 11117/Tract 4328 with no written FSA determination of which plan was operative. You cannot cite noncompliance against a standard that has not been formally established in writing." },
-      { type: "REGULATORY", text: "If the controlling 528 plan for any contract was not clearly established prior to the grazing season, the noncompliance finding for that contract may be administratively defective and vulnerable to NAD reversal." },
-      { type: "DUE PROCESS", text: "Contract 11101/Tract 751 528 plan data is missing from the agency record. A noncompliance determination cannot stand if the operative standard of compliance cannot be produced." },
-    ],
-    commonSense: [
-      "Seven contracts across a large multi-parcel operation. One year of missing records does not establish a pattern of willful violation.",
-      "The relevant question is whether the land shows actual damage consistent with overgrazing. Vegetation monitoring and range condition data should be primary evidence — not head count inference from absence of records.",
-      "The stocking rates across these contracts are conservative relative to the acreage. A producer managing 2,400+ CRP acres is unlikely to be systematically violating all 7 contracts simultaneously.",
-      "The ambiguity in the operative 528 plan for the largest contract (11117, 1,047 acres) is a structural problem in the agency record that should have been resolved before any noncompliance determination was issued.",
-    ],
-    resolutionOptions: [
-      {
-        label: "Grant Full Relief",
-        description: "Reinstate all 7 contracts. Waive all refunds. Find agency record insufficient to support determination.",
-        fsaRisk: "Sets precedent for relief without producers providing required grazing records",
-        appellantRisk: "None if granted",
-        nadRisk: "HIGH — dual 528 plan ambiguity and missing agency record items are defensible grounds for NAD reversal if denied",
-      },
-      {
-        label: "Grant Partial Relief",
-        description: "Reinstate contracts where agency record is deficient (minimum: 11117 and 11101). Negotiate refund only on contracts with clean, unambiguous documentation.",
-        fsaRisk: "Moderate — requires contract-by-contract analysis at STC level",
-        appellantRisk: "Refund on remaining contracts",
-        nadRisk: "MEDIUM",
-      },
-      {
-        label: "Table — Require Documentation",
-        description: "30-day window for producers to submit any available grazing records, operator logs, or third-party corroboration before final determination.",
-        fsaRisk: "Low — protects agency from premature determination",
-        appellantRisk: "If records cannot be produced, denial is harder to appeal",
-        nadRisk: "LOW",
-      },
-      {
-        label: "Refer to Mediation",
-        description: "Refer case to Colorado FSA mediation program before STC renders determination.",
-        fsaRisk: "Low — preserves all options",
-        appellantRisk: "Low — right to appeal preserved if mediation fails",
-        nadRisk: "LOW",
-      },
-      {
-        label: "Deny — Document Thoroughly",
-        description: "Deny relief. Document STC reasoning addressing every red flag. Build complete record for NAD.",
-        fsaRisk: "HIGH NAD reversal risk if dual 528 plan issue and missing agency record items not explicitly addressed in STC decision text",
-        appellantRisk: "Must escalate to NAD",
-        nadRisk: "HIGH",
-      },
-    ],
-    contracts: [
-      { contract: "11101", tract: "751", acres: null, maxHead: null, daysPlanned: null, totalAUDs: null, note: "[PENDING DATA] 528 plan Page 3 not recovered from file split" },
-      { contract: "11075", tract: "772", acres: 312.07, maxHead: 10, daysPlanned: 180, totalAUDs: 1778.799 },
-      { contract: "11115", tract: "2386", acres: 306.29, maxHead: 11, daysPlanned: 120, totalAUDs: 1286.418 },
-      { contract: "11071", tract: "4297", acres: 306.29, maxHead: 9, daysPlanned: 180, totalAUDs: 1470.192 },
-      { contract: "11116", tract: "2396", acres: 158.80, maxHead: 5, daysPlanned: 120, totalAUDs: 666.96 },
-      { contract: "11117", tract: "4328", acres: 1047.81, maxHead: 41, daysPlanned: 120, totalAUDs: 5029.488, note: "Two 528 plans on file. Plan A: 3 head/30 days (small fields). Plan B operative: 41 head/120 days all 1047.81 ac." },
-      { contract: "11114", tract: "4034", acres: 315.35, maxHead: 11, daysPlanned: 120, totalAUDs: 1324.47 },
-    ],
-    advisoryNotes: "Heard March 24, 2026. April 23 follow-up: confirm written STC decision text (must address dual-528-plan ambiguity on Contract 11117 and missing 528 page for Contract 11101), confirm NAD right-to-appeal notice delivered to producers within 30 days of final determination, confirm Bent County CED has refund-calculation worksheet if affirmed.",
-    voteRecorded: null,
-    exhibits: [], // [PENDING DATA] — OneDrive IDs / file hashes TBD
-    calculatorUrl: null, // [PENDING DATA] — URL or component name of compliance calculator
-  },
-
-  /* ─────────── 2. CRP — Payne Legacy LLC Standard Payment Reduction Waiver ─────────── */
-  {
-    id: "EX-5-2026-PAYNE",
-    caseId: "EX-5",
-    title: "CRP Payment Reduction Waiver — El Paso County",
-    appellants: "Payne Legacy LLC",
-    county: "El Paso",
-    program: "CRP",
-    presenter: "Hunter A. Cleveland, Farm Program Specialist",
-    meetingTimeMin: 15,
-    status: "OPEN",
-    meetingDate: "2026-04-23",
-    priorHearing: "2026-03-24",
-    priority: 2,
-    guestsAtMeeting: false,
-    dateCreated: "2026-03-24",
-    issueSummary:
-      "Payne Legacy LLC (El Paso County) requested a waiver of the CRP Standard Payment Reduction assessed by the COC after a documented noncompliance event. The STC was asked to waive the reduction or affirm the COC assessment. Carried forward to April 23 for final determination and recording of the vote.",
-    fullText:
-      "El Paso County COC assessed a Standard Payment Reduction against Payne Legacy LLC under 2-CRP Par. 603E following a noncompliance event on the producer's Grassland CRP tract. Payne Legacy requested relief via a waiver, asserting that the circumstances were outside the producer's reasonable control and that corrective action was promptly taken. The STC reviewed the request at its March 24, 2026 Executive Session (15 min allocated, page 659). Final vote was not recorded in the March 24 minutes and the item was carried to April 23, 2026 for determination. If granted, no refund of prior payments is required; if denied, the COC's payment reduction stands and Payne Legacy's NAD appeal rights are preserved.",
-    theGood: [
-      "Producer requested waiver through proper channels — good-faith procedural posture",
-      "Staff (Hunter Cleveland) prepared the case for STC consideration with full documentation",
-      "Penalty at issue is a standard payment reduction, not contract termination — the lesser remedy under Par. 603E",
-      "Waiver, if granted, preserves the underlying CRP contract and avoids triggering refund of prior payments",
-    ],
-    theBad: [
-      "Granting a waiver sets precedent — STC must ensure consistency with prior waiver decisions",
-      "COC's underlying noncompliance finding was not challenged — only the reduction amount",
-      "Program integrity concern: serial waivers undermine COC enforcement authority",
-    ],
-    redFlags: [
-      { type: "PROCEDURAL", text: "Confirm whether Payne Legacy LLC was afforded the full 30-day notice and response window under 2-CRP Par. 603D before the reduction was assessed." },
-      { type: "REGULATORY", text: "Apply the same good-faith analytical framework used in the Ebright case (2-CRP Par. 603A, 603D, 603E, 603F) — inconsistent treatment across the same meeting creates NAD-reversal exposure for the more severe decision." },
-      { type: "DOCUMENTATION", text: "Waiver decisions must be documented in writing with the basis cited — STC minutes must recite the factual findings that support or deny the waiver." },
-    ],
-    commonSense: [
-      "A standard payment reduction is the mid-range remedy between full compliance and contract termination. If the producer corrected the issue promptly and the violation was narrow in scope, a waiver may serve program objectives better than a punitive reduction.",
-      "Ensure this case is decided on the same factual record standard as Ebright — both are CRP noncompliance matters reviewed the same day.",
-      "If the waiver is granted, document in the minutes the specific mitigating facts that justified it, so the decision does not read as arbitrary.",
-    ],
-    resolutionOptions: [
-      {
-        label: "Grant Waiver",
-        description: "Waive the standard payment reduction. Document mitigating facts in minutes. Contract continues on normal payment schedule.",
-        fsaRisk: "Moderate — precedent for future waiver requests",
-        appellantRisk: "None if granted",
-        nadRisk: "N/A — producer has no NAD grievance if granted",
-      },
-      {
-        label: "Grant Partial Waiver",
-        description: "Reduce the payment reduction by a specified percentage in recognition of mitigating circumstances but preserve some program consequence.",
-        fsaRisk: "Low — proportional remedy",
-        appellantRisk: "Producer absorbs a smaller reduction",
-        nadRisk: "LOW",
-      },
-      {
-        label: "Deny Waiver — Affirm COC",
-        description: "Affirm the COC-assessed standard payment reduction. Producer retains NAD appeal rights within 30 days.",
-        fsaRisk: "Low if COC record is complete and the Par. 603 factors are cited in the decision text",
-        appellantRisk: "Reduction applied to next annual payment",
-        nadRisk: "LOW–MEDIUM — depends on quality of COC record",
-      },
-    ],
-    contracts: [],
-    advisoryNotes: "Carry-over from March 24, 2026 Executive Session, page 659. Confirm the final vote is recorded at the April 23 meeting and that the written decision cites the specific Par. 603 factors considered.",
-    voteRecorded: null,
-    exhibits: [],
-    calculatorUrl: null,
-  },
-
-  /* ─────────── 3. CRP — Moffat County Equitable Relief (active precedent) ─────────── */
-  {
-    id: "REF-DEC2025-MOFFAT",
-    caseId: "REF-1",
-    title: "CRP Misaction — Moffat County (Precedent Reference)",
-    appellants: "[PENDING DATA] Moffat County producer",
-    county: "Moffat",
-    program: "CRP",
-    presenter: "Reference only — no presenter",
-    meetingTimeMin: 0,
-    status: "RESOLVED",
-    meetingDate: null,
-    priorHearing: "2025-12",
-    priority: 99,
-    guestsAtMeeting: false,
-    dateCreated: "2025-12-01",
-    issueSummary:
-      "December 2025 STC granted equitable relief in a Moffat County CRP misaction case. Retained in this registry as a direct controlling precedent for the Ebright and Payne Legacy matters — both CRP noncompliance cases where the producer asserts agency error or incomplete agency record.",
-    fullText:
-      "Prior STC action in December 2025: equitable relief granted in a Moffat County CRP misaction case. This is the nearest direct Colorado precedent for relief in a CRP compliance dispute and should be cited in the written determinations for any current CRP appeal where the STC grants relief. [PENDING DATA] — full case name, contract numbers, and written decision text not yet attached to this record.",
-    theGood: [
-      "Direct Colorado precedent for CRP equitable relief within the last 6 months",
-      "Establishes that this STC will grant relief when the agency record is incomplete or contains material error",
-    ],
-    theBad: [
-      "[PENDING DATA] — cannot confirm the scope or facts of the Moffat case without the written decision",
-    ],
-    redFlags: [
-      { type: "DOCUMENTATION", text: "Attach the December 2025 written determination to this record before citing it as precedent in any current appeal." },
-    ],
-    commonSense: [
-      "Precedent carries weight only when the facts are known. Retrieve the December 2025 decision from the minutes and link it here before using it in deliberation.",
-    ],
-    resolutionOptions: [],
-    contracts: [],
-    advisoryNotes: "Reference only. No action at April 23 meeting. Attach the December 2025 written determination when available.",
-    voteRecorded: "Equitable Relief Granted (Dec 2025)",
-    exhibits: [],
-    calculatorUrl: null,
-  },
-
-  /* ─────────── 4. April 23 — Placeholder slot for any newly filed appeals ─────────── */
-  {
-    id: "EX-APRIL-2026-NEW-APPEAL",
-    caseId: "EX-A",
-    title: "[Placeholder] New appeals filed since March 24 — awaiting staff docket",
-    appellants: "[PENDING DATA] — confirm with Corey Pelton / Cindy Vukasin",
-    county: "[PENDING DATA]",
-    program: "Common Provisions",
-    presenter: "[PENDING DATA]",
-    meetingTimeMin: 0,
-    status: "PENDING DATA",
-    meetingDate: "2026-04-23",
-    priorHearing: null,
-    priority: 50,
-    guestsAtMeeting: false,
-    dateCreated: "2026-04-19",
-    issueSummary:
-      "Reserved slot for any producer appeals filed between March 24 and the April 23 meeting. No new appeal dockets have been distributed to STC members as of the training session on April 8. Before the April 23 meeting, confirm with the State Office whether any new CRP, NAP, LFP, ELAP, or Common Provisions appeals have been received and require STC hearing.",
-    fullText:
-      "[PENDING DATA] — This record is a placeholder. When a new appeal is docketed, duplicate this record using the New Appeal form and populate the full case brief. Confirm timing: 30-day filing window from written COC decision (7 CFR 780.9); STC hearing scheduled at next regular meeting where time permits.",
-    theGood: ["[PENDING DATA]"],
-    theBad: ["[PENDING DATA]"],
-    redFlags: [
-      { type: "PROCEDURAL", text: "Verify with Jon Weishaar and Corey Pelton before the April 23 meeting whether any new appeals have been filed and need to be added to the Executive Session agenda." },
-    ],
-    commonSense: [
-      "Do not remove this placeholder until confirmation from State Office that the April 23 Executive Session will have no new appeals.",
-    ],
-    resolutionOptions: [],
-    contracts: [],
-    advisoryNotes: "Administrative placeholder. Delete once confirmed with State Office or replace with real case when docketed.",
-    voteRecorded: null,
-    exhibits: [],
-    calculatorUrl: null,
-  },
-
-  /* ─────────── 5. Otero/Crowley COC Administrative Matter — NOT an appeal, retained for context ─────────── */
-  {
-    id: "REF-OTERO-CROWLEY-COC",
-    caseId: "REF-2",
-    title: "Otero/Crowley COC Administrative Action (NOT an appeal — context only)",
-    appellants: "Not applicable — personnel matter",
-    county: "Otero / Crowley",
-    program: "Common Provisions",
-    presenter: "Jerry Sonnenberg, SED",
-    meetingTimeMin: 0,
-    status: "RESOLVED",
-    meetingDate: "2026-04-23",
-    priorHearing: "2026-03-17",
-    priority: 100,
-    guestsAtMeeting: false,
-    dateCreated: "2026-03-17",
-    issueSummary:
-      "NOT AN APPEAL — retained here for cross-reference only. March 17 special meeting ceased administrative leave action against 5 Otero/Crowley COC members and delegated daily operations to the CED. April 23 agenda includes a status report on COC operations continuity, not an appeal hearing. If any of the 5 members ultimately file a personal grievance under 7 CFR § 7.28(b), that would be a separate adverse-action appeal handled through Employee Relations (Steve Niemann, FPAC-FBC), not the STC CRP/NAP appeal track.",
-    fullText:
-      "Background: Administrative Leave Letters for 5 Otero/Crowley COC members (Knapp, Walter Jr, Hanagan, Tecklenburg, Mason) were prepared by Steve Niemann (HR Specialist, FPAC-FBC) and forwarded to the STC in March 2026. At the March 17 special meeting the STC voted to (1) send a cease-administrative-action letter, and (2) delegate daily operations to the CED pending resolution. The April 23 agenda item is a status report, not an appeal. The appeal-track citations to § 7.28(b) (advance written notice, right to reply, right of further review) apply only if any of the 5 members formally contests the original adverse action — no such filing has been received as of this record.",
-    theGood: [
-      "STC acted promptly on March 17 to preserve county-office operations via CED delegation",
-      "No individual § 7.28(b) grievance has been received — the matter has not escalated to an appeal",
-    ],
-    theBad: [
-      "If the cease-action is later reversed by the FSA Administrator under § 7.1(d), the STC should be prepared to re-open the personnel file",
-    ],
-    redFlags: [
-      { type: "DUE PROCESS", text: "If any of the 5 members files a § 7.28(b) reply or appeal, it must be handled as a confidential personnel matter — NOT processed through the CRP/NAP appeal track." },
-      { type: "PROCEDURAL", text: "April 23 agenda should confirm: all 5 letters delivered and tracked, CED notified of delegation scope, Niemann/Sonnenberg/DC reporting complete, Alisha Knapp 0-KB file resolved before delivery." },
-    ],
-    commonSense: [
-      "Keep this record cross-referenced but do not conflate it with producer program appeals. Separate decision-making frameworks apply.",
-    ],
-    resolutionOptions: [
-      {
-        label: "Status Report Only (no vote required)",
-        description: "Accept staff status report at April 23 meeting. No motion needed unless reinstatement timeline or CED delegation rescission is on the agenda.",
-        fsaRisk: "None",
-        appellantRisk: "N/A",
-        nadRisk: "N/A",
-      },
-      {
-        label: "Motion: Set COC Reinstatement Effective Date",
-        description: "If staff reports the 5 members are ready to resume duties, STC motion to set effective date and clarify CED delegation rollback under 7 CFR § 7.23.",
-        fsaRisk: "Low — routine",
-        appellantRisk: "N/A",
-        nadRisk: "N/A",
-      },
-    ],
-    contracts: [],
-    advisoryNotes: "Cross-reference only. Handle any personnel grievance through Employee Relations channel (Steve Niemann, 816-926-6448), not the STC appeal docket.",
-    voteRecorded: "March 17, 2026 — Motion to cease administrative action PASSED. Motion to delegate CED authority PASSED.",
-    exhibits: [],
-    calculatorUrl: null,
-  },
-];
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   PERSISTENCE
+   LOCAL EDIT CACHE
+   localStorage now holds only per-appeal advisoryNotes overrides keyed by id.
+   The full appeal records come from /api/appeals. Legacy EX-/REF- entries
+   from the previous hardcoded SEED_APPEALS are discarded on first load by
+   runLegacyMigration().
    ───────────────────────────────────────────────────────────────────────────── */
 const STORAGE_KEY = "fsa_appeals_v2";
 
-function loadAppeals() {
+function runLegacyMigration() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) return JSON.parse(raw);
+    if (!raw) return;
+    const parsed = JSON.parse(raw);
+    if (Array.isArray(parsed) && parsed.some(a => /^(EX|REF)-/.test(a?.id || ""))) {
+      localStorage.removeItem(STORAGE_KEY);
+      console.log("Appeals: cleared legacy localStorage (EX-/REF- ids).");
+    }
   } catch (_) {}
-  return SEED_APPEALS;
 }
 
-function saveAppeals(appeals) {
+function loadAdvisoryOverrides() {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(appeals));
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return {};
+    const parsed = JSON.parse(raw);
+    if (Array.isArray(parsed)) {
+      return Object.fromEntries(
+        parsed
+          .filter(a => a && a.id && typeof a.advisoryNotes === "string")
+          .map(a => [a.id, a.advisoryNotes])
+      );
+    }
+    if (parsed && typeof parsed === "object") return parsed;
+  } catch (_) {}
+  return {};
+}
+
+function saveAdvisoryOverride(id, notes) {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    let map = {};
+    if (raw) {
+      try {
+        const parsed = JSON.parse(raw);
+        if (parsed && !Array.isArray(parsed) && typeof parsed === "object") {
+          map = parsed;
+        }
+      } catch (_) {}
+    }
+    map[id] = notes;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(map));
   } catch (_) {}
 }
 
@@ -565,6 +297,113 @@ function ContractTable({ contracts }) {
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
+   CASE BRIEF SUMMARY — parties + program + applications at a glance.
+   Renders at the top of the appeal detail page. Data pulls from existing
+   fields; structured Issues-for-STC-Determination + Timeline are scoped for
+   a later PR when the schema gets dedicated fields.
+   ───────────────────────────────────────────────────────────────────────────── */
+function CaseBriefSummary({ appeal }) {
+  const contracts = appeal.contracts || [];
+  const decided = contracts.filter(c => c.status === "DISAPPROVED" || c.status === "APPROVED");
+  return (
+    <div style={{
+      background: "#FEF3C7",
+      border: `1px solid ${T.gold}`,
+      borderLeft: `5px solid ${T.gold}`,
+      borderRadius: 8,
+      padding: "14px 18px",
+      marginBottom: 28,
+    }}>
+      <div style={{
+        fontFamily: "'IBM Plex Mono', monospace",
+        fontSize: 11,
+        fontWeight: 700,
+        letterSpacing: "0.12em",
+        textTransform: "uppercase",
+        color: T.navy,
+        marginBottom: 10,
+      }}>
+        Case Brief
+      </div>
+      <div style={{ fontSize: 14, lineHeight: 1.7, color: T.navy }}>
+        <div><strong>Appellants:</strong> {appeal.appellants}</div>
+        <div><strong>Program:</strong> {appeal.program} &middot; <strong>County:</strong> {appeal.county}</div>
+        {appeal.presenter && <div><strong>Presenter:</strong> {appeal.presenter}</div>}
+        {contracts.length > 0 && (
+          <div style={{ marginTop: 6 }}>
+            <strong>{decided.length || contracts.length} applications at issue</strong>
+            {decided.length > 0 && (
+              <span style={{ color: T.slate, marginLeft: 6 }}>
+                ({decided.filter(c => c.status === "DISAPPROVED").length} disapproved, {decided.filter(c => c.status === "APPROVED").length} approved)
+              </span>
+            )}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CASE FILE RESEARCH — renders appeal.caseFileResearch[] as clickable chips.
+   Each item links to the source document at the right page via `#page=N`
+   anchors. Hidden when the array is empty.
+   Shape: { type: 'exhibit'|'handbook'|'minutes'|'cfr', title, citation,
+            pageRef, url, sourceDocId, displayLabel }
+   ───────────────────────────────────────────────────────────────────────────── */
+const RESEARCH_TYPE_ICON = {
+  exhibit: "📄",
+  handbook: "📖",
+  minutes: "🗒",
+  cfr: "§",
+};
+
+function CaseFileResearch({ appeal }) {
+  const items = appeal.caseFileResearch || [];
+  if (items.length === 0) return null;
+  return (
+    <div style={{ marginBottom: 28 }}>
+      <div style={styles.sectionTitle}>Case File Research</div>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+        {items.map((item, i) => {
+          const label = item.displayLabel || item.title
+            || (item.citation ? `${item.citation}${item.pageRef ? ` — p. ${item.pageRef}` : ""}` : "Source");
+          const icon = RESEARCH_TYPE_ICON[item.type] || "📎";
+          const chipBody = (
+            <>
+              <span style={{ marginRight: 6 }}>{icon}</span>
+              <span>{label}</span>
+              {item.url && <span style={{ marginLeft: 6, opacity: 0.7 }}>↗</span>}
+            </>
+          );
+          const baseStyle = {
+            display: "inline-flex",
+            alignItems: "center",
+            background: "#fff",
+            border: `1px solid ${T.border}`,
+            borderRadius: 16,
+            padding: "6px 12px",
+            fontSize: 13,
+            color: T.navy,
+            fontFamily: "'IBM Plex Mono', monospace",
+            textDecoration: "none",
+          };
+          return item.url ? (
+            <a key={i} href={item.url} target="_blank" rel="noopener noreferrer" style={baseStyle} title={item.citation || ""}>
+              {chipBody}
+            </a>
+          ) : (
+            <span key={i} style={{ ...baseStyle, cursor: "default" }} title={item.citation || ""}>
+              {chipBody}
+            </span>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
    APPEAL DETAIL PAGE
    ───────────────────────────────────────────────────────────────────────────── */
 function AppealDetail({ appeals, onUpdateAdvisory }) {
@@ -645,6 +484,9 @@ function AppealDetail({ appeals, onUpdateAdvisory }) {
             <div style={{ marginBottom: 28 }} />
           </>
         )}
+
+        {/* 0. CASE BRIEF SUMMARY */}
+        <CaseBriefSummary appeal={appeal} />
 
         {/* 1. PLAIN LANGUAGE SUMMARY */}
         <div style={{ marginBottom: 28 }}>
@@ -781,6 +623,9 @@ function AppealDetail({ appeals, onUpdateAdvisory }) {
             </div>
           )}
         </div>
+
+        {/* 9b. CASE FILE RESEARCH */}
+        <CaseFileResearch appeal={appeal} />
 
         {/* 10. ADVISORY NOTES */}
         <div style={{ marginBottom: 28 }}>
@@ -1126,22 +971,52 @@ function AppealsIndex({ appeals }) {
    ROOT EXPORT — mount this in your router
    ───────────────────────────────────────────────────────────────────────────── */
 export default function Appeals() {
-  const [appeals, setAppeals] = useState(() => loadAppeals());
+  const apiFetch = useApiFetch();
+  const [appeals, setAppeals] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  useEffect(() => { saveAppeals(appeals); }, [appeals]);
+  useEffect(() => {
+    runLegacyMigration();
+    const overrides = loadAdvisoryOverrides();
+    apiFetch("/api/appeals")
+      .then(r => {
+        if (!r.ok) throw new Error(`Failed to load appeals (${r.status})`);
+        return r.json();
+      })
+      .then(data => {
+        const merged = data.map(a =>
+          overrides[a.id] !== undefined ? { ...a, advisoryNotes: overrides[a.id] } : a
+        );
+        setAppeals(merged);
+      })
+      .catch(err => {
+        console.error("Load appeals failed:", err);
+        setError(err.message || "Failed to load appeals");
+      })
+      .finally(() => setLoading(false));
+  }, [apiFetch]);
 
   const handleUpdateAdvisory = useCallback((id, notes) => {
     setAppeals(prev => prev.map(a => a.id === id ? { ...a, advisoryNotes: notes } : a));
+    saveAdvisoryOverride(id, notes);
   }, []);
 
-  const handleAdd = useCallback((newAppeal) => {
-    setAppeals(prev => [...prev, newAppeal]);
-  }, []);
+  if (loading) {
+    return <div className="loading" style={{ padding: 40, textAlign: "center" }}><div className="spinner" /></div>;
+  }
+  if (error) {
+    return (
+      <div style={{ padding: 40, textAlign: "center", color: "var(--danger)" }}>
+        <h3>Could not load appeals</h3>
+        <p style={{ fontSize: "0.9rem", color: "var(--text-muted)" }}>{error}</p>
+      </div>
+    );
+  }
 
   return (
     <Routes>
       <Route path="/" element={<AppealsIndex appeals={appeals} />} />
-      <Route path="/new" element={<NewAppealForm onAdd={handleAdd} />} />
       <Route path="/:id" element={<AppealDetail appeals={appeals} onUpdateAdvisory={handleUpdateAdvisory} />} />
     </Routes>
   );
