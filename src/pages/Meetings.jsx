@@ -342,10 +342,10 @@ const allMeetings = [
     monthKey: '2026-04',
     id: '2026-04-23',
     date: 'April 23, 2026',
-    time: 'TBD',
+    time: '9:00 AM – 5:36 PM MST',
     location: 'Virtual via Teams (no STC travel authorized)',
     type: 'STC Monthly Meeting',
-    status: 'upcoming',
+    status: 'completed',
     calDay: 23,
     summary: 'Appeals follow-up from March 24 (Ebright CRP, Payne Legacy CRP waiver), CRP & EFRP cost share rate approvals, Otero/Crowley COC continuity status, FBA program figures, and Executive Director Report. Appeals training on April 8 (NAD procedures, 7 CFR Part 780) is a prerequisite read. See the Appeals page for the full docket and case briefs.',
     detailedNotes: [
@@ -393,6 +393,12 @@ const allMeetings = [
           'Final state percentage of $11B national program; producer participation',
           'Travel budget reconciliation (all meetings virtual \u2014 no STC travel authorized)',
           'Executive Director Report \u2014 Jerry Sonnenberg',
+        ],
+      },
+      {
+        title: 'Adjournment',
+        items: [
+          'Meeting adjourned at 5:36 PM MST',
         ],
       },
     ],
