@@ -16,14 +16,14 @@ const quickLinks = [
   { label: 'FSA Fact Sheets', url: 'https://www.fsa.usda.gov/tools/informational/fact-sheets', icon: '\uD83D\uDCC4' },
   { label: 'FSA Handbooks', url: 'https://www.fsa.usda.gov/news-events/laws-regulations/fsa-handbooks', icon: '\uD83D\uDCD6' },
   { label: 'NRCS Colorado', url: 'https://www.nrcs.usda.gov/conservation-basics/conservation-by-state/colorado', icon: '\uD83C\uDF31' },
-  { label: 'USDA Box \u2014 300...!12', url: 'https://usda.app.box.com', icon: '\uD83D\uDCC1' },
+  { label: 'USDA Box \u2014 STC Folder', url: 'https://usda.app.box.com', icon: '\uD83D\uDCC1' },
 ];
 
 const committeeMembers = [
   { name: 'Donald Cleo Brown', role: 'Chair', location: 'Yuma' },
   { name: 'Darrell Mackey', role: 'Member', location: 'Springfield' },
   { name: 'Kyle Dean McConnell', role: 'Member', location: 'Haxtun' },
-  { name: 'Joeseph Petrocco', role: 'Member', location: 'Thornton' },
+  { name: 'Joseph Petrocco', role: 'Member', location: 'Thornton' },
   { name: 'Steve George Raftopoulos', role: 'Member', location: 'Craig' },
 ];
 

@@ -1,6 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useApiFetch } from '../auth/apiFetch';
+import { useAuth } from '../auth/AuthContext';
 import FileUploader from '../components/FileUploader';
+
+// Member-scoped subfolder within the watch folder. Members see only this
+// subtree; admin sees the full watch folder. MUST match MEMBER_DOCS_ROOT in
+// server/routes/teams.js. Change both together.
+const MEMBER_DOCS_ROOT = 'Committee Shared';
 
 const FILE_ICONS = {
   '.pdf': '\uD83D\uDCC4',
@@ -36,6 +42,12 @@ function getFileIcon(name) {
 export default function Documents() {
   const [activeTab, setActiveTab] = useState('teams');  // teams | local
   const apiFetch = useApiFetch();
+  const { isAdmin } = useAuth();
+
+  // Root path that the user lands on when opening the Teams tab.
+  // Admin: '' = the full watch folder. Member: the Committee Shared subfolder.
+  const rootPath = isAdmin ? '' : MEMBER_DOCS_ROOT;
+  const rootLabel = isAdmin ? 'Kyle — FSA - State Committee' : 'Committee Shared';
 
   /* ═══════════════════════════════════════════════════════════
      TEAMS BROWSER STATE
@@ -78,9 +90,9 @@ export default function Documents() {
 
   useEffect(() => {
     if (activeTab === 'teams') {
-      browsePath('');
+      browsePath(rootPath);
     }
-  }, [activeTab, browsePath]);
+  }, [activeTab, browsePath, rootPath]);
 
   /* ── Local documents ───────────────────────────────────────── */
   const fetchDocs = useCallback(() => {
@@ -144,7 +156,26 @@ export default function Documents() {
   };
 
   /* ── Breadcrumb ────────────────────────────────────────────── */
-  const breadcrumbs = currentPath ? currentPath.split('/').filter(Boolean) : [];
+  // For members, currentPath looks like "Committee Shared" or
+  // "Committee Shared/Subfolder/...". The root button represents MEMBER_DOCS_ROOT
+  // so we strip that prefix from the displayed breadcrumb segments.
+  const breadcrumbs = (() => {
+    if (!currentPath) return [];
+    if (isAdmin) return currentPath.split('/').filter(Boolean);
+    if (currentPath === MEMBER_DOCS_ROOT) return [];
+    if (currentPath.startsWith(MEMBER_DOCS_ROOT + '/')) {
+      return currentPath.slice(MEMBER_DOCS_ROOT.length + 1).split('/').filter(Boolean);
+    }
+    return [];
+  })();
+
+  // When a breadcrumb segment is clicked, reconstruct the absolute path the
+  // server expects. For members that means prefixing MEMBER_DOCS_ROOT.
+  const crumbPathAt = (i) => {
+    const segs = breadcrumbs.slice(0, i + 1);
+    if (isAdmin) return segs.join('/');
+    return [MEMBER_DOCS_ROOT, ...segs].join('/');
+  };
 
   /* ══════════════════════════════════════════════════════════════
      RENDER
@@ -152,7 +183,7 @@ export default function Documents() {
   return (
     <div>
       <div className="page-header">
-        <h2>Documents</h2>
+        <h2>{isAdmin ? 'Documents' : 'Committee Documents'}</h2>
         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
           {activeTab === 'local' && (
             <button className="btn btn-primary" onClick={() => setShowUpload(!showUpload)}>
@@ -183,30 +214,29 @@ export default function Documents() {
           ═══════════════════════════════════════════════════════ */}
       {activeTab === 'teams' && (
         <div>
-          {/* Breadcrumb navigation */}
+          {/* Breadcrumb navigation — root represents either the watch folder
+              (admin) or the Committee Shared subtree (member). Member cannot
+              navigate above the Committee Shared root. */}
           <div className="doc-breadcrumb">
             <button
               className="breadcrumb-item"
-              onClick={() => browsePath('')}
-              style={{ fontWeight: currentPath === '' ? 700 : 400 }}
+              onClick={() => browsePath(rootPath)}
+              style={{ fontWeight: currentPath === rootPath ? 700 : 400 }}
             >
-              {'\uD83D\uDCC1'} Kyle - FSA - State Committee
+              {'\uD83D\uDCC1'} {rootLabel}
             </button>
-            {breadcrumbs.map((seg, i) => {
-              const pathUpTo = breadcrumbs.slice(0, i + 1).join('/');
-              return (
-                <React.Fragment key={i}>
-                  <span className="breadcrumb-sep">/</span>
-                  <button
-                    className="breadcrumb-item"
-                    onClick={() => browsePath(pathUpTo)}
-                    style={{ fontWeight: i === breadcrumbs.length - 1 ? 700 : 400 }}
-                  >
-                    {seg}
-                  </button>
-                </React.Fragment>
-              );
-            })}
+            {breadcrumbs.map((seg, i) => (
+              <React.Fragment key={i}>
+                <span className="breadcrumb-sep">/</span>
+                <button
+                  className="breadcrumb-item"
+                  onClick={() => browsePath(crumbPathAt(i))}
+                  style={{ fontWeight: i === breadcrumbs.length - 1 ? 700 : 400 }}
+                >
+                  {seg}
+                </button>
+              </React.Fragment>
+            ))}
           </div>
 
           {/* Error */}

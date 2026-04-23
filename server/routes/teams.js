@@ -21,6 +21,11 @@ router.post('/test', async (req, res) => {
  * Returns children (folders and files) at the given path under the watch folder.
  * If no path, returns the root watch folder contents.
  */
+// Member-scoped subfolder within the watch folder. Members can only browse
+// inside this subfolder; admin sees the full watch folder. Must match the
+// constant used client-side in src/pages/Documents.jsx.
+const MEMBER_DOCS_ROOT = process.env.MEMBER_DOCS_ROOT || 'Committee Shared';
+
 router.get('/browse', async (req, res) => {
   try {
     const siteId = await getSiteId();
@@ -28,7 +33,19 @@ router.get('/browse', async (req, res) => {
     const watchFolder = process.env.SHAREPOINT_WATCH_FOLDER || 'FSA - State Committee';
 
     // Build full path
-    const subPath = req.query.path || '';
+    let subPath = req.query.path || '';
+
+    // Member scoping: force the browse to stay inside Committee Shared.
+    // Empty path gets rewritten to the member root; any other path must be
+    // under the member root or we return 403. Admin bypasses.
+    if (req.user?.role === 'member') {
+      if (!subPath) {
+        subPath = MEMBER_DOCS_ROOT;
+      } else if (subPath !== MEMBER_DOCS_ROOT && !subPath.startsWith(MEMBER_DOCS_ROOT + '/')) {
+        return res.status(403).json({ error: 'Access restricted' });
+      }
+    }
+
     const fullPath = subPath ? `${watchFolder}/${subPath}` : watchFolder;
 
     // Encode each segment individually for the Graph API
