@@ -15,6 +15,7 @@ function friendlyError(err) {
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
+  const [profile, setProfile] = useState(null); // { id, email, role, display_name } from /api/me
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -31,6 +32,37 @@ export function AuthProvider({ children }) {
     }
     setLoading(false);
   }, []);
+
+  // Once we have a user session, fetch the app-side profile (role + display_name)
+  // from the server. Runs after user is set and MSAL is ready to issue tokens.
+  useEffect(() => {
+    let cancelled = false;
+    async function loadProfile() {
+      if (!user?.account) { setProfile(null); return; }
+      try {
+        const response = await msalInstance.acquireTokenSilent({
+          ...loginRequest,
+          account: user.account
+        });
+        const token = response.idToken || response.accessToken;
+        const res = await fetch('/api/me', {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        if (cancelled) return;
+        if (res.ok) {
+          setProfile(await res.json());
+        } else if (res.status === 403) {
+          const body = await res.json().catch(() => ({}));
+          setError(body.error || 'Account not authorized');
+          setProfile(null);
+        }
+      } catch (err) {
+        if (!cancelled) console.error('Profile load failed:', err);
+      }
+    }
+    loadProfile();
+    return () => { cancelled = true; };
+  }, [user]);
 
   const login = useCallback(async () => {
     try {
@@ -94,8 +126,10 @@ export function AuthProvider({ children }) {
     }
   }, [user]);
 
+  const isAdmin = profile?.role === 'admin';
+
   return (
-    <AuthContext.Provider value={{ user, loading, error, login, logout, getAccessToken }}>
+    <AuthContext.Provider value={{ user, profile, isAdmin, loading, error, login, logout, getAccessToken }}>
       {children}
     </AuthContext.Provider>
   );

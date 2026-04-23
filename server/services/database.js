@@ -95,6 +95,91 @@ function runSchemaSQLite() {
       updated_at TEXT DEFAULT (datetime('now'))
     )
   `);
+
+  sqliteDb.exec(`
+    CREATE TABLE IF NOT EXISTS users (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      email TEXT NOT NULL UNIQUE COLLATE NOCASE,
+      role TEXT NOT NULL CHECK (role IN ('admin', 'member')),
+      display_name TEXT NOT NULL,
+      active INTEGER NOT NULL DEFAULT 1,
+      created_at TEXT NOT NULL DEFAULT (datetime('now')),
+      last_login TEXT
+    )
+  `);
+
+  sqliteDb.exec(`
+    CREATE TABLE IF NOT EXISTS edits (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      user_id INTEGER NOT NULL,
+      timestamp TEXT NOT NULL DEFAULT (datetime('now')),
+      record_type TEXT NOT NULL,
+      record_id TEXT NOT NULL,
+      field_edited TEXT NOT NULL,
+      content_before TEXT,
+      content_after TEXT,
+      FOREIGN KEY (user_id) REFERENCES users(id)
+    )
+  `);
+
+  sqliteDb.exec(`
+    CREATE TABLE IF NOT EXISTS clarifications (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      appeal_id TEXT NOT NULL,
+      question_text TEXT NOT NULL,
+      author_id INTEGER NOT NULL,
+      posted_at TEXT NOT NULL DEFAULT (datetime('now')),
+      resolved INTEGER NOT NULL DEFAULT 0,
+      resolved_at TEXT,
+      locked INTEGER NOT NULL DEFAULT 0,
+      locked_by INTEGER,
+      locked_at TEXT,
+      FOREIGN KEY (author_id) REFERENCES users(id),
+      FOREIGN KEY (locked_by) REFERENCES users(id)
+    )
+  `);
+
+  sqliteDb.exec(`
+    CREATE TABLE IF NOT EXISTS clarification_answers (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      clarification_id INTEGER NOT NULL,
+      answer_text TEXT NOT NULL,
+      author_id INTEGER NOT NULL,
+      posted_at TEXT NOT NULL DEFAULT (datetime('now')),
+      FOREIGN KEY (clarification_id) REFERENCES clarifications(id),
+      FOREIGN KEY (author_id) REFERENCES users(id)
+    )
+  `);
+
+  sqliteDb.exec(`
+    CREATE TABLE IF NOT EXISTS appeal_recusals (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      appeal_id TEXT NOT NULL,
+      user_id INTEGER NOT NULL,
+      reason TEXT,
+      set_by INTEGER NOT NULL,
+      set_at TEXT NOT NULL DEFAULT (datetime('now')),
+      revoked_at TEXT,
+      revoked_by INTEGER,
+      FOREIGN KEY (user_id) REFERENCES users(id),
+      FOREIGN KEY (set_by) REFERENCES users(id),
+      FOREIGN KEY (revoked_by) REFERENCES users(id)
+    )
+  `);
+
+  seedUsersIfEmpty();
+}
+
+function seedUsersIfEmpty() {
+  const row = sqliteDb.prepare('SELECT COUNT(*) as c FROM users').get();
+  if (row.c > 0) return;
+
+  const insert = sqliteDb.prepare(
+    'INSERT INTO users (email, role, display_name, active) VALUES (?, ?, ?, 1)'
+  );
+  insert.run('kyle@togoag.com', 'admin', 'Kyle McConnell');
+  insert.run('kyle.mcconnell@plantpioneer.com', 'member', 'Kyle McConnell (member)');
+  console.log('Seeded users table: kyle@togoag.com (admin), kyle.mcconnell@plantpioneer.com (member)');
 }
 
 // ---- Unified query interface ----
