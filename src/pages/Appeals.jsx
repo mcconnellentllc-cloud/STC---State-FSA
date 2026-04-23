@@ -401,6 +401,149 @@ function CaseBriefSummary({ appeal }) {
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
+   GRAZING RECORDS COMPARISON — producer-submitted stocking vs. 528 plan.
+   Computes reported/planned ratio per grazingRecord entry and color-codes:
+   green ≤100%, amber 101–150%, red >150%. Combined-tract entries (records
+   don't split by contract) rendered as informational rows without a ratio.
+   Hidden when grazingRecords[] is empty.
+   ───────────────────────────────────────────────────────────────────────────── */
+function GrazingRecordsComparison({ appeal }) {
+  const records = appeal.grazingRecords || [];
+  if (records.length === 0) return null;
+
+  const contracts = appeal.contracts || [];
+  const maxByContract = {};
+  for (const c of contracts) if (c.contract && c.maxHead != null) maxByContract[c.contract] = c.maxHead;
+
+  function fmtRange(r) {
+    const start = r.startDate || "—";
+    const end = r.endDate || "open";
+    return `${start} → ${end}`;
+  }
+
+  function rowMeta(r) {
+    const cids = (r.contractId || "").split("+").filter(Boolean);
+    if (cids.length !== 1 || !(cids[0] in maxByContract)) {
+      return { combined: true, ratioText: "combined — not assignable", color: T.slate, plan: null };
+    }
+    const plan = maxByContract[cids[0]];
+    const ratio = plan > 0 ? r.reportedHead / plan : null;
+    let color = T.slate;
+    if (ratio != null) {
+      if (ratio > 1.5) color = T.red;
+      else if (ratio > 1.0) color = T.amber;
+      else color = T.green;
+    }
+    const ratioText = ratio == null ? "—" : `${Math.round(ratio * 100)}% of plan`;
+    return { combined: false, ratioText, color, plan };
+  }
+
+  return (
+    <div style={{ marginBottom: 28 }}>
+      <div style={SECTION_TITLE_STYLE}>Grazing Records vs. Contract Plan</div>
+      <div style={{ fontSize: 12, color: T.slate, marginBottom: 10, fontStyle: "italic" }}>
+        Source: producer-submitted grazing records (Stephanie Ebright email, 2025-08-11). Per the
+        producer's cover message, records were reconstructed from memory after the originals were
+        deleted. Submitted 6 days after the Aug 5 reconsideration hearing — COC never had these
+        during the dispositive decisions.
+      </div>
+      <div style={{ overflowX: "auto" }}>
+        <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13, fontFamily: "'IBM Plex Mono', monospace" }}>
+          <thead>
+            <tr style={{ background: T.navy, color: "#fff" }}>
+              {["Tract", "Contract", "Date range", "Reported", "Planned", "Ratio"].map(h => (
+                <th key={h} style={{ padding: "8px 10px", textAlign: "left", fontWeight: 700, fontSize: 11, letterSpacing: "0.06em" }}>{h}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {records.map((r, i) => {
+              const m = rowMeta(r);
+              return (
+                <tr key={i} style={{ background: i % 2 === 0 ? "#F8FAFC" : "#fff", borderBottom: `1px solid ${T.border}` }}>
+                  <td style={{ padding: "8px 10px", fontWeight: 700, color: T.blue }}>
+                    {(r.tractNumbers || []).join(" + ")}
+                    {r.stockingSplit && <div style={{ fontSize: 10, color: T.slate, fontWeight: 400 }}>{r.stockingSplit}</div>}
+                  </td>
+                  <td style={{ padding: "8px 10px", color: T.slate }}>{r.contractId || "—"}</td>
+                  <td style={{ padding: "8px 10px" }}>{fmtRange(r)}</td>
+                  <td style={{ padding: "8px 10px", fontWeight: 700 }}>{r.reportedHead}</td>
+                  <td style={{ padding: "8px 10px" }}>{m.plan != null ? m.plan : <span style={{ color: T.slate }}>—</span>}</td>
+                  <td style={{ padding: "8px 10px", color: m.color, fontWeight: 700 }}>{m.ratioText}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+      <div style={{ fontSize: 11, color: T.slate, marginTop: 8, lineHeight: 1.6 }}>
+        Ratio color: <span style={{ color: T.green, fontWeight: 700 }}>green ≤100%</span>,
+        {" "}<span style={{ color: T.amber, fontWeight: 700 }}>amber 101–150%</span>,
+        {" "}<span style={{ color: T.red, fontWeight: 700 }}>red &gt;150%</span>.
+        Combined-tract entries are reported jointly in the producer's records and cannot be
+        split per-contract without further documentation.
+      </div>
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CATTLE SALES — chronological documentary support for corrective-action claims.
+   Hidden when cattleSales[] is empty.
+   ───────────────────────────────────────────────────────────────────────────── */
+function CattleSalesRecord({ appeal }) {
+  const sales = appeal.cattleSales || [];
+  const agg = appeal.cattleSalesAggregate;
+  if (sales.length === 0) return null;
+
+  return (
+    <div style={{ marginBottom: 28 }}>
+      <div style={SECTION_TITLE_STYLE}>Cattle Sales — Corrective Action Documentation</div>
+      <div style={{ overflowX: "auto" }}>
+        <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13, fontFamily: "'IBM Plex Mono', monospace" }}>
+          <thead>
+            <tr style={{ background: T.navy, color: "#fff" }}>
+              {["Sale date", "Sale yard", "Check #", "Head", "Weight (lbs)", "Note"].map(h => (
+                <th key={h} style={{ padding: "8px 10px", textAlign: "left", fontWeight: 700, fontSize: 11, letterSpacing: "0.06em" }}>{h}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {sales.map((s, i) => (
+              <tr key={i} style={{ background: i % 2 === 0 ? "#F8FAFC" : "#fff", borderBottom: `1px solid ${T.border}` }}>
+                <td style={{ padding: "8px 10px", fontWeight: 700, color: T.blue }}>{s.saleDate}</td>
+                <td style={{ padding: "8px 10px" }}>{s.saleYard}</td>
+                <td style={{ padding: "8px 10px", color: T.slate }}>#{s.checkNumber}</td>
+                <td style={{ padding: "8px 10px", fontWeight: 700 }}>{s.headCount}</td>
+                <td style={{ padding: "8px 10px" }}>{s.weightTotal?.toLocaleString?.() || s.weightTotal}</td>
+                <td style={{ padding: "8px 10px", fontSize: 11, color: T.slate }}>{s.note || ""}</td>
+              </tr>
+            ))}
+          </tbody>
+          {agg && (
+            <tfoot>
+              <tr style={{ background: T.navyMid, color: "#fff", fontWeight: 700 }}>
+                <td colSpan={3} style={{ padding: "8px 10px", fontSize: 11 }}>
+                  TOTAL · {agg.dateRange}
+                </td>
+                <td style={{ padding: "8px 10px" }}>{agg.totalHeadSold} head</td>
+                <td style={{ padding: "8px 10px" }}>{agg.totalWeightPounds?.toLocaleString?.() || ""} lbs</td>
+                <td></td>
+              </tr>
+            </tfoot>
+          )}
+        </table>
+      </div>
+      {agg?.note && (
+        <div style={{ fontSize: 11, color: T.slate, marginTop: 8, lineHeight: 1.6 }}>
+          {agg.note}
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
    ISSUES FOR STC DETERMINATION — numbered, collapsible, with handbook citations
    and side-by-side agency vs appellant positions. Renders only when the
    appeal has at least one issue defined. Schema: appeal.issues[] = [{
@@ -952,6 +1095,12 @@ function AppealDetail({ appeals, onUpdateAdvisory }) {
 
         {/* 9c. FIELD OBSERVATIONS — photo evidence from site visits */}
         <FieldObservations appealId={appeal.id} />
+
+        {/* 9d. GRAZING RECORDS COMPARISON — producer-submitted stocking vs. 528 plan */}
+        <GrazingRecordsComparison appeal={appeal} />
+
+        {/* 9e. CATTLE SALES — corrective-action documentary support */}
+        <CattleSalesRecord appeal={appeal} />
 
         {/* 10. ADVISORY NOTES */}
         <div style={{ marginBottom: 28 }}>
