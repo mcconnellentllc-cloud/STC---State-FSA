@@ -16,6 +16,7 @@ import issuesRouter from './routes/issues.js';
 import nctRouter from './routes/nct.js';
 import appealsRouter from './routes/appeals.js';
 import adminRouter from './routes/admin.js';
+import observationsRouter from './routes/observations.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -57,6 +58,7 @@ app.use('/api/issues', issuesRouter);
 app.use('/api/nct', nctRouter);
 app.use('/api/appeals', appealsRouter);
 app.use('/api/admin', adminRouter);  // requireAdmin applied inside the router
+app.use('/api', observationsRouter);  // /api/appeals/:id/observations + /api/exhibits/...
 
 // Dashboard stats. Expense data (even $0.00) is admin-only; members get a
 // response with expenseSummary and totals.expenses omitted. Defense in depth —

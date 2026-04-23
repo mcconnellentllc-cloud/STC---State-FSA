@@ -32,6 +32,7 @@ export default function Settings() {
       <MembersSection apiFetch={apiFetch} />
       <AppealRecusalsSection apiFetch={apiFetch} />
       <FolderRecusalsSection apiFetch={apiFetch} />
+      <ObservationsSection apiFetch={apiFetch} />
 
       <div className="card">
         <h3 className="card-title" style={{ marginBottom: 16 }}>Microsoft SharePoint / OneDrive Access</h3>
@@ -523,6 +524,271 @@ function FolderRecusalsSection({ apiFetch }) {
           </tbody>
         </table>
       )}
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   FIELD OBSERVATIONS (admin-only content management for photo evidence)
+   ───────────────────────────────────────────────────────────────────────────── */
+function ObservationsSection({ apiFetch }) {
+  const [selectedAppealId, setSelectedAppealId] = useState('');
+  const [appeals, setAppeals] = useState([]);
+  const [obs, setObs] = useState(null);
+  const [showAdd, setShowAdd] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    apiFetch('/api/admin/appeals-summary').then(r => r.json()).then(setAppeals).catch(() => {});
+  }, [apiFetch]);
+
+  const load = useCallback(async () => {
+    if (!selectedAppealId) { setObs(null); return; }
+    try {
+      const r = await apiFetch(`/api/admin/observations?appeal_id=${encodeURIComponent(selectedAppealId)}`);
+      if (!r.ok) throw new Error(`Load failed (${r.status})`);
+      setObs(await r.json());
+      setError(null);
+    } catch (e) { setError(e.message); }
+  }, [apiFetch, selectedAppealId]);
+
+  useEffect(() => { load(); }, [load]);
+
+  const deleteObs = async (id) => {
+    if (!confirm('Delete this observation and all its photos? Files are removed from disk.')) return;
+    try {
+      const r = await apiFetch(`/api/admin/observations/${id}`, { method: 'DELETE' });
+      if (!r.ok) {
+        const j = await r.json().catch(() => ({}));
+        throw new Error(j.error || `Delete failed (${r.status})`);
+      }
+      load();
+    } catch (e) { alert(e.message); }
+  };
+
+  const deletePhoto = async (photoId) => {
+    if (!confirm('Delete this photo?')) return;
+    try {
+      const r = await apiFetch(`/api/admin/observation-photos/${photoId}`, { method: 'DELETE' });
+      if (!r.ok) {
+        const j = await r.json().catch(() => ({}));
+        throw new Error(j.error || `Delete failed (${r.status})`);
+      }
+      load();
+    } catch (e) { alert(e.message); }
+  };
+
+  return (
+    <div className="card" style={{ marginBottom: 16 }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+        <h3 className="card-title" style={{ margin: 0 }}>Field Observations — Photo Evidence</h3>
+        <button
+          className="btn btn-primary btn-sm"
+          onClick={() => setShowAdd(!showAdd)}
+          disabled={!selectedAppealId}
+        >
+          {showAdd ? 'Cancel' : '+ Add Observation'}
+        </button>
+      </div>
+
+      <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginBottom: 12 }}>
+        Site-visit records with photos. Photos stored on the Render persistent disk at <code>$DATA_DIR/exhibits/</code> and served through the recusal-gated serve route.
+      </div>
+
+      <label style={{ fontSize: '0.82rem', display: 'block', marginBottom: 12 }}>
+        Appeal
+        <select value={selectedAppealId} onChange={e => setSelectedAppealId(e.target.value)}
+          style={{ width: '100%', padding: '6px 10px', marginTop: 4, fontSize: '0.85rem' }}>
+          <option value="">— select an appeal to manage its observations —</option>
+          {appeals.map(a => <option key={a.id} value={a.id}>{a.caseId} — {a.title}</option>)}
+        </select>
+      </label>
+
+      {error && <div style={{ color: 'var(--danger)', fontSize: '0.85rem', marginBottom: 8 }}>{error}</div>}
+
+      {showAdd && selectedAppealId && (
+        <AddObservationForm
+          apiFetch={apiFetch}
+          appealId={selectedAppealId}
+          onCreated={() => { setShowAdd(false); load(); }}
+        />
+      )}
+
+      {selectedAppealId && obs && obs.length === 0 && (
+        <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>No observations yet for this appeal.</p>
+      )}
+
+      {obs && obs.map(o => (
+        <ObservationRow
+          key={o.id}
+          obs={o}
+          apiFetch={apiFetch}
+          onReload={load}
+          onDeleteObs={() => deleteObs(o.id)}
+          onDeletePhoto={deletePhoto}
+        />
+      ))}
+    </div>
+  );
+}
+
+function AddObservationForm({ apiFetch, appealId, onCreated }) {
+  const [form, setForm] = useState({
+    contract_id: '', tract: '', visit_date: '', cattle_count: '', planned_max: '',
+    status: '', exhibit: '', source: '', stubble_condition: '', notes: '',
+  });
+  const [error, setError] = useState(null);
+  const [saving, setSaving] = useState(false);
+
+  const submit = async (e) => {
+    e.preventDefault();
+    setSaving(true); setError(null);
+    try {
+      const body = { appeal_id: appealId };
+      for (const [k, v] of Object.entries(form)) {
+        if (v === '' || v == null) continue;
+        if (k === 'cattle_count' || k === 'planned_max') body[k] = parseInt(v, 10);
+        else body[k] = v;
+      }
+      const r = await apiFetch('/api/admin/observations', { method: 'POST', body: JSON.stringify(body) });
+      if (!r.ok) {
+        const j = await r.json().catch(() => ({}));
+        throw new Error(j.error || `Create failed (${r.status})`);
+      }
+      onCreated();
+    } catch (err) { setError(err.message); }
+    finally { setSaving(false); }
+  };
+
+  const fld = (name, label, type = 'text', placeholder = '') => (
+    <label style={{ fontSize: '0.82rem' }}>
+      {label}
+      <input
+        type={type}
+        value={form[name]}
+        onChange={e => setForm(f => ({ ...f, [name]: e.target.value }))}
+        placeholder={placeholder}
+        style={{ width: '100%', padding: '6px 10px', marginTop: 4, fontSize: '0.85rem', border: '1px solid var(--border)', borderRadius: 4 }}
+      />
+    </label>
+  );
+
+  return (
+    <form onSubmit={submit} style={{ background: 'var(--bg)', padding: 14, borderRadius: 6, marginBottom: 14, border: '1px solid var(--border)' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10, marginBottom: 10 }}>
+        {fld('contract_id', 'Contract', 'text', 'e.g. 11075')}
+        {fld('tract', 'Tract', 'text', 'e.g. 772')}
+        {fld('visit_date', 'Visit date', 'date')}
+        {fld('cattle_count', 'Head observed', 'number', '0')}
+        {fld('planned_max', 'Planned max', 'number')}
+        {fld('status', 'Status', 'text', 'under_plan_zero / at_plan / over_plan')}
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 10 }}>
+        {fld('exhibit', 'Exhibit label', 'text', 'e.g. Exhibit D')}
+        {fld('source', 'Source', 'text', 'e.g. Bent County COC minutes Aug 5, 2025')}
+      </div>
+      <label style={{ fontSize: '0.82rem', display: 'block', marginBottom: 10 }}>
+        Stubble / condition
+        <textarea rows={2} value={form.stubble_condition}
+          onChange={e => setForm(f => ({ ...f, stubble_condition: e.target.value }))}
+          style={{ width: '100%', padding: '6px 10px', marginTop: 4, fontSize: '0.85rem', border: '1px solid var(--border)', borderRadius: 4 }}
+        />
+      </label>
+      <label style={{ fontSize: '0.82rem', display: 'block', marginBottom: 10 }}>
+        Notes
+        <textarea rows={3} value={form.notes}
+          onChange={e => setForm(f => ({ ...f, notes: e.target.value }))}
+          style={{ width: '100%', padding: '6px 10px', marginTop: 4, fontSize: '0.85rem', border: '1px solid var(--border)', borderRadius: 4 }}
+        />
+      </label>
+      {error && <div style={{ color: 'var(--danger)', fontSize: '0.85rem', marginBottom: 8 }}>{error}</div>}
+      <button type="submit" className="btn btn-primary" disabled={saving}>{saving ? 'Saving...' : 'Add Observation'}</button>
+    </form>
+  );
+}
+
+function ObservationRow({ obs, apiFetch, onReload, onDeleteObs, onDeletePhoto }) {
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState(null);
+
+  const onFiles = async (e) => {
+    const files = Array.from(e.target.files || []);
+    if (files.length === 0) return;
+    setUploading(true); setUploadError(null);
+    try {
+      const fd = new FormData();
+      for (const f of files) fd.append('photos', f);
+      // Labels auto-assigned client-side (admin can rename later by deleting + re-uploading)
+      for (let i = 0; i < files.length; i++) {
+        fd.append('labels', `Photo ${i + 1} of ${files.length}`);
+      }
+      const r = await apiFetch(`/api/admin/observations/${obs.id}/photos`, { method: 'POST', body: fd });
+      if (!r.ok) {
+        const j = await r.json().catch(() => ({}));
+        throw new Error(j.error || `Upload failed (${r.status})`);
+      }
+      onReload();
+    } catch (err) { setUploadError(err.message); }
+    finally { setUploading(false); e.target.value = ''; }
+  };
+
+  return (
+    <div style={{ border: '1px solid var(--border)', borderRadius: 6, padding: 12, marginBottom: 10, background: '#fff' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12, marginBottom: 8 }}>
+        <div style={{ flex: 1, fontSize: '0.88rem' }}>
+          <strong>{obs.visit_date || 'Undated'}</strong>
+          {(obs.contract_id || obs.tract) && (
+            <span style={{ color: 'var(--text-muted)', marginLeft: 8, fontFamily: 'monospace', fontSize: '0.82rem' }}>
+              {obs.contract_id && `Contract ${obs.contract_id}`}
+              {obs.contract_id && obs.tract && ' · '}
+              {obs.tract && `Tract ${obs.tract}`}
+            </span>
+          )}
+          {obs.cattle_count != null && (
+            <span style={{ color: 'var(--text-muted)', marginLeft: 8, fontFamily: 'monospace', fontSize: '0.82rem' }}>
+              — {obs.cattle_count} head{obs.planned_max != null ? ` / ${obs.planned_max} planned` : ''}
+            </span>
+          )}
+          {obs.exhibit && <span style={{ marginLeft: 8, color: 'var(--warning, #f0ad4e)', fontFamily: 'monospace', fontSize: '0.78rem' }}>{obs.exhibit}</span>}
+          {obs.notes && <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: 4, fontStyle: 'italic' }}>{obs.notes.slice(0, 200)}{obs.notes.length > 200 ? '…' : ''}</div>}
+        </div>
+        <button className="btn btn-sm btn-danger" onClick={onDeleteObs}>Delete</button>
+      </div>
+
+      {obs.photos && obs.photos.length > 0 && (
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))', gap: 6, marginBottom: 8 }}>
+          {obs.photos.map(p => (
+            <div key={p.id} style={{ position: 'relative', border: '1px solid var(--border)', borderRadius: 4, overflow: 'hidden' }}>
+              <img src={`/api/exhibits/${p.file_path}`} alt={p.label || ''} style={{ width: '100%', height: 80, objectFit: 'cover', display: 'block' }} />
+              <div style={{ fontSize: '0.68rem', padding: '3px 5px', color: 'var(--text-muted)', fontFamily: 'monospace', borderTop: '1px solid var(--border)' }}>
+                {p.label || 'photo'}
+              </div>
+              <button
+                onClick={() => onDeletePhoto(p.id)}
+                style={{
+                  position: 'absolute', top: 4, right: 4, padding: '2px 6px',
+                  background: 'rgba(0,0,0,0.6)', color: '#fff', border: 'none',
+                  borderRadius: 3, fontSize: 10, cursor: 'pointer',
+                }}
+                title="Delete photo"
+              >×</button>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <label style={{ display: 'inline-block', fontSize: '0.82rem' }}>
+        <input
+          type="file"
+          multiple
+          accept=".jpg,.jpeg,.png,image/jpeg,image/png"
+          onChange={onFiles}
+          disabled={uploading}
+          style={{ fontSize: '0.82rem' }}
+        />
+        {uploading && <span style={{ marginLeft: 8, color: 'var(--text-muted)' }}>Uploading…</span>}
+      </label>
+      {uploadError && <div style={{ color: 'var(--danger)', fontSize: '0.8rem', marginTop: 4 }}>{uploadError}</div>}
     </div>
   );
 }

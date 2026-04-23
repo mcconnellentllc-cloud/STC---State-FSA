@@ -528,6 +528,147 @@ function CaseFileResearch({ appeal }) {
 /* ─────────────────────────────────────────────────────────────────────────────
    APPEAL DETAIL PAGE
    ───────────────────────────────────────────────────────────────────────────── */
+/* ─────────────────────────────────────────────────────────────────────────────
+   FIELD OBSERVATIONS — photo-evidence grid for site visits tied to an appeal.
+   Fetches /api/appeals/:id/observations on mount. Hidden when there are no
+   observations (common state until admin uploads). Includes an inline
+   Lightbox for full-size viewing.
+   ───────────────────────────────────────────────────────────────────────────── */
+function Lightbox({ src, caption, onClose }) {
+  useEffect(() => {
+    function onKey(e) { if (e.key === 'Escape') onClose(); }
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [onClose]);
+  if (!src) return null;
+  return (
+    <div
+      onClick={onClose}
+      style={{
+        position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.88)',
+        zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center',
+        flexDirection: 'column', padding: 20, cursor: 'pointer',
+      }}
+    >
+      <img
+        src={src}
+        alt={caption || ''}
+        onClick={e => e.stopPropagation()}
+        style={{ maxWidth: '92vw', maxHeight: '84vh', objectFit: 'contain', cursor: 'default', background: '#fff' }}
+      />
+      {caption && (
+        <div style={{ color: '#fff', fontSize: 13, marginTop: 12, maxWidth: '80vw', textAlign: 'center' }}>
+          {caption}
+        </div>
+      )}
+      <div style={{ color: '#bbb', fontSize: 11, marginTop: 6, fontFamily: "'IBM Plex Mono', monospace" }}>
+        click anywhere or press Esc to close
+      </div>
+    </div>
+  );
+}
+
+function FieldObservations({ appealId }) {
+  const apiFetch = useApiFetch();
+  const [obs, setObs] = useState(null);
+  const [lightbox, setLightbox] = useState(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    apiFetch(`/api/appeals/${appealId}/observations`)
+      .then(r => (r.ok ? r.json() : []))
+      .then(data => { if (!cancelled) setObs(data); })
+      .catch(() => { if (!cancelled) setObs([]); });
+    return () => { cancelled = true; };
+  }, [apiFetch, appealId]);
+
+  if (!obs || obs.length === 0) return null;
+
+  return (
+    <div style={{ marginBottom: 28 }}>
+      <div style={styles.sectionTitle}>Field Observations — Photo Evidence</div>
+      {obs.map(o => {
+        const planned = o.planned_max != null ? ` / ${o.planned_max} planned` : '';
+        return (
+          <div key={o.id} style={{ border: `1px solid ${T.border}`, borderRadius: 8, padding: 14, marginBottom: 12, background: '#fff' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'baseline', marginBottom: 8 }}>
+              <div style={{ fontWeight: 700, fontSize: 14, color: T.navy }}>
+                {o.visit_date || 'Undated visit'}
+              </div>
+              {(o.contract_id || o.tract) && (
+                <div style={{ fontSize: 12, color: T.slate, fontFamily: "'IBM Plex Mono', monospace" }}>
+                  {o.contract_id && `Contract ${o.contract_id}`}
+                  {o.contract_id && o.tract && ' · '}
+                  {o.tract && `Tract ${o.tract}`}
+                </div>
+              )}
+              {o.cattle_count != null && (
+                <div style={{ fontSize: 12, color: T.slate, fontFamily: "'IBM Plex Mono', monospace" }}>
+                  {o.cattle_count} head observed{planned}
+                </div>
+              )}
+              {o.exhibit && (
+                <div style={{ fontSize: 11, color: T.amber, fontFamily: "'IBM Plex Mono', monospace", textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                  {o.exhibit}
+                </div>
+              )}
+            </div>
+            {o.stubble_condition && (
+              <div style={{ fontSize: 13, color: T.navy, lineHeight: 1.6, marginBottom: 10 }}>
+                <strong>Condition:</strong> {o.stubble_condition}
+              </div>
+            )}
+            {o.notes && (
+              <div style={{ fontSize: 12, color: T.slate, lineHeight: 1.6, marginBottom: 10, fontStyle: 'italic' }}>
+                {o.notes}
+              </div>
+            )}
+            {o.photos && o.photos.length > 0 && (
+              <div style={{
+                display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))',
+                gap: 8, marginTop: 6,
+              }}>
+                {o.photos.map(p => {
+                  const url = `/api/exhibits/${p.file_path}`;
+                  const caption = [p.label, p.description, p.notes].filter(Boolean).join(' — ');
+                  return (
+                    <button
+                      key={p.id}
+                      onClick={() => setLightbox({ src: url, caption })}
+                      style={{
+                        position: 'relative', padding: 0, border: `1px solid ${T.border}`, borderRadius: 6,
+                        background: '#fff', cursor: 'pointer', overflow: 'hidden',
+                      }}
+                      title={caption || p.label || ''}
+                    >
+                      <img
+                        src={url}
+                        alt={p.label || ''}
+                        loading="lazy"
+                        style={{ display: 'block', width: '100%', height: 100, objectFit: 'cover' }}
+                      />
+                      <div style={{
+                        fontSize: 10, padding: '4px 6px',
+                        fontFamily: "'IBM Plex Mono', monospace", color: T.slate,
+                        borderTop: `1px solid ${T.border}`, textAlign: 'left', background: '#fff',
+                      }}>
+                        {p.is_marker_card ? '📋 ' : ''}{p.label || 'photo'}
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        );
+      })}
+      {lightbox && (
+        <Lightbox src={lightbox.src} caption={lightbox.caption} onClose={() => setLightbox(null)} />
+      )}
+    </div>
+  );
+}
+
 function AppealDetail({ appeals, onUpdateAdvisory }) {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -751,6 +892,9 @@ function AppealDetail({ appeals, onUpdateAdvisory }) {
 
         {/* 9b. CASE FILE RESEARCH */}
         <CaseFileResearch appeal={appeal} />
+
+        {/* 9c. FIELD OBSERVATIONS — photo evidence from site visits */}
+        <FieldObservations appealId={appeal.id} />
 
         {/* 10. ADVISORY NOTES */}
         <div style={{ marginBottom: 28 }}>
