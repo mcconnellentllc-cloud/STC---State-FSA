@@ -224,6 +224,18 @@ function SectionPanel({ color, label, icon, children }) {
    committee session per 7 CFR 780.14(f). voteRecorded field stays in the data
    model for CED post-meeting entry; this block renders it read-only when set.
    ───────────────────────────────────────────────────────────────────────────── */
+const SECTION_TITLE_STYLE = {
+  fontSize: 13,
+  fontFamily: "'IBM Plex Mono', monospace",
+  fontWeight: 700,
+  letterSpacing: "0.1em",
+  textTransform: "uppercase",
+  color: T.navy,
+  marginBottom: 10,
+  paddingBottom: 6,
+  borderBottom: `2px solid ${T.border}`,
+};
+
 function MeetingOutcome({ appeal }) {
   if (!appeal.voteRecorded) return null;
   return (
@@ -356,7 +368,7 @@ function IssuesForDetermination({ appeal }) {
   if (issues.length === 0) return null;
   return (
     <div style={{ marginBottom: 28 }}>
-      <div style={styles.sectionTitle}>Issues for STC Determination ({issues.length})</div>
+      <div style={SECTION_TITLE_STYLE}>Issues for STC Determination ({issues.length})</div>
       {issues.map((issue) => {
         const isOpen = openIssue === issue.num;
         return (
@@ -485,7 +497,7 @@ function CaseFileResearch({ appeal }) {
   if (items.length === 0) return null;
   return (
     <div style={{ marginBottom: 28 }}>
-      <div style={styles.sectionTitle}>Case File Research</div>
+      <div style={SECTION_TITLE_STYLE}>Case File Research</div>
       <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
         {items.map((item, i) => {
           const label = item.displayLabel || item.title
@@ -586,7 +598,7 @@ function FieldObservations({ appealId }) {
 
   return (
     <div style={{ marginBottom: 28 }}>
-      <div style={styles.sectionTitle}>Field Observations — Photo Evidence</div>
+      <div style={SECTION_TITLE_STYLE}>Field Observations — Photo Evidence</div>
       {obs.map(o => {
         const planned = o.planned_max != null ? ` / ${o.planned_max} planned` : '';
         return (
