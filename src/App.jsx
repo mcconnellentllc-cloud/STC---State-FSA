@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from './auth/AuthContext';
 import Sidebar from './components/Sidebar';
+import CautionBanner from './components/CautionBanner';
 
 function AdminOnly({ children }) {
   const { isAdmin, profile } = useAuth();
@@ -46,6 +47,21 @@ function LoginScreen() {
           Sign in with Microsoft
         </button>
         {error && <p className="login-error">{error}</p>}
+        <p style={{
+          marginTop: 20,
+          padding: '10px 12px',
+          background: 'rgba(240, 173, 78, 0.12)',
+          border: '1px solid rgba(240, 173, 78, 0.45)',
+          borderRadius: 6,
+          fontSize: '0.78rem',
+          lineHeight: 1.5,
+          color: 'var(--text-secondary, #ccc)',
+          textAlign: 'left',
+        }}>
+          <strong>Notice:</strong> This site contains meeting notes and one member's
+          interpretations, not an official FSA record. Verify against official case
+          files and handbook citations before relying on anything here.
+        </p>
       </div>
     </div>
   );
@@ -85,6 +101,7 @@ export default function App() {
     <div className="app-layout">
       <Sidebar />
       <main className="main-content">
+        <CautionBanner />
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/summary" element={<Summary />} />
