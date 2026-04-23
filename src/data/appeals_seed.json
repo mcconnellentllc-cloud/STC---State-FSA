@@ -746,7 +746,7 @@
     "archived": false,
     "guestsAtMeeting": false,
     "voteRecorded": null,
-    "advisoryNotes": "",
+    "advisoryNotes": "COMMITTEE OBSERVATION (pre-hearing): Proctor's claim history shows losses on this unit on an every-other-year cadence rather than random annual incidence. That pattern is consistent with a water-allocation strategy — 7.75 Highline Canal shares applied to higher-value specialty crops in loss years, with the mixed forage left as the sacrifice crop and the loss claimed through NAP. Recommend the hearing include (a) 5-year NAP claim history pull on Unit 1528 to confirm the pattern, (b) concurrent crop-certification / FSA-578 records for the producer's other crops in claim years, and (c) any producer-provided 2024 practice documentation (planting, fertilization, irrigation application by parcel, cutting schedule). Absence of practice records + pattern confirmation = denial grounded in good-farming-practices failure, independent of the FSA-501 disaster-cause issue.",
     "dateCreated": "2026-04-15",
     "issueSummary": "Proctor filed a late notice of loss (21 days after normal harvest date) on 52.16 acres of irrigated mixed forage in Otero County, claiming heat and wind caused the 2024 production loss. A winter storm before the November 22 inspection made it impossible to verify the claimed disaster — the loss adjustor's FSA-501 Statement of Facts was left blank on the disaster cause question, an agency documentation failure. COC disapproved the NOL and AFP. A POA signature deficiency caused a 42-day procedural delay in 2025. Case pending since June 2025 awaiting STC appointment.",
     "fullText": "Proctor holds 65/100 buy-up NAP coverage on Mixfg IGS. Original filing Oct 27, 2023 at 50/55; upgraded to 65/100 on Jan 19, 2024, before the Dec 1, 2023 application closing date — timely.\n\nNov 5, 2024 — NOL filed claiming Heat/Wind Jul 1–Oct 30, apparent Oct 31. Filed 21 days after Oct 15 normal harvest date. Late-filed. Mandatory field inspection triggered.\nNov 22, 2024 — LA inspection. Fields harvested. LA counted 17 bales. FSA-501 Statement of Facts did NOT address any disaster event — left blank on this critical question. Photos showed snow-covered fields. No evidence of heat or wind damage visible.\nDec 11, 2024 — COC disapproved NOL: (1) inadequate proof of disaster; (2) Otero County did not exceed D1 drought; (3) LA did not indicate disaster caused loss; (4) not similar to other producers.\nDec 10, 2024 — AFP filed.\nJan 13, 2025 — COC disapproved AFP — no acceptable NOL on file.\nJan 29, 2025 — POA Kris Demoss emailed reconsideration request.\nMar 12, 2025 — Reconsideration hearing. COC upheld disapproval.\nApr 15, 2025 — Proctor filed STC appeal request.\nJun 4–5, 2025 — STO rejected documents — signatures did not match FSA-211 POA on file.\nJun 16, 2025 — Corrected signatures received. Appeal deemed timely filed.\nApr 8, 2026 — STC hearing scheduled April 23, 2026 at 1:00 PM.",
@@ -765,7 +765,10 @@
       "The 1-NAP manual example is directly on point: snow fell before field inspection — COC cannot approve because the disaster condition cannot be verified by a field visit.",
       "COC found the claimed event not similar to other producers in the area — a significant factual finding difficult to overcome without independent weather corroboration.",
       "Producer initially reported 24 bales then corrected to 17, explaining the discrepancy as accidentally including alfalfa bales. Correction was accepted but affects production record credibility.",
-      "No corroborating producer claims in the area for the same heat/wind event during the claimed period."
+      "No corroborating producer claims in the area for the same heat/wind event during the claimed period.",
+      "Claim-history pattern (committee observation): losses reported on this unit in an every-other-year cadence rather than every year. This is not the pattern of loss you get from random natural disasters (which strike irregularly); it matches the pattern you get from deliberate water-allocation decisions across a rotating portfolio of crops. Confirmable at hearing via 5-year NAP claim-history pull on Unit 1528.",
+      "Water allocation as a good-farming-practices concern: Otero County producer with 7.75 Highline Canal shares operates a mixed-crop portfolio. Canal shares are a fixed annual quantity, not crop-specific; the producer chooses where to apply them. Mixed forage is a lower-value crop per acre-foot than the region's specialty options (chile, onions, cantaloupe, alfalfa). Structural incentive exists to allocate water to higher-value crops and sacrifice the forage — then claim NAP on the forage loss. 1-NAP requires 'good farming practices' including reasonable water application; deliberate under-watering of the insured crop while other crops on the same farm receive adequate water is a good-farming-practices failure regardless of whether a natural-disaster event can be documented.",
+      "Production evidence is consistent with limited-water management rather than heat/wind damage: 1 cutting at ~11.99 tons when history shows 3–4 cuttings at 44–58 tons total. Heat/wind damage typically affects a specific window and produces a visible cutting-specific loss pattern (e.g., normal first cutting, damaged second cutting). A single skimpy cutting followed by no further cuttings is more consistent with shutting off water after establishment than with a discrete heat/wind event."
     ],
     "redFlags": [
       {
@@ -779,6 +782,10 @@
       {
         "type": "PROCEDURAL",
         "text": "Initial appeal documents were rejected for improper POA signature — a 42-day administrative delay attributable to a technical requirement, not producer bad faith. The appeal was ultimately accepted as timely filed after correction."
+      },
+      {
+        "type": "DOCUMENTATION",
+        "text": "The producer has documented CAPACITY to farm properly (water rights, historical APH, 5-year NAP participation) but has NOT put any 2024 good-farming-practices documentation in the record — no planting date, no variety records, no fertilizer applications, no irrigation application records (distinct from water rights on file), no cutting schedule beyond the single 17-bale count, no agronomist consultations. Under 1-NAP the burden on good farming practices is on the producer; absence of practice documentation is itself a basis for denial independent of the disaster-cause question. Committee should request 5-year NAP claim history on Unit 1528 plus concurrent crop-certification records on the producer's other crops to test the water-allocation hypothesis."
       }
     ],
     "commonSense": [
@@ -811,16 +818,61 @@
       },
       {
         "label": "Deny — Late Filed NOL",
-        "description": "Affirm COC. Late-filed NOL could not be properly inspected due to snow. 1-NAP paragraph 575C explicitly contemplates denial in this circumstance.",
+        "description": "Affirm COC. Late-filed NOL could not be properly inspected due to snow. 1-NAP paragraph 575C explicitly contemplates denial in this circumstance. Committee observation of an every-other-year loss pattern on this unit, combined with the absence of good-farming-practices documentation in the record, supports denial on grounds INDEPENDENT of the FSA-501 blank. A denial written to address both the disaster-cause question AND the good-farming-practices / water-allocation question is substantially harder for NAD to reverse than a denial resting on the FSA-501 alone.",
         "fsaRisk": "LOW procedurally. MODERATE if blank FSA-501 and Unit 1528 coverage issues are raised at NAD.",
         "appellantRisk": "Loss of 2024 NAP payment on 52 acres.",
-        "nadRisk": "MODERATE — blank FSA-501 and Unit 1528 improper coverage grant are viable NAD arguments."
+        "nadRisk": "LOW-MEDIUM (revised) — a denial grounded on good-farming-practices failure (water-allocation pattern + absent practice records) is more defensible at NAD than a denial grounded on the FSA-501 documentation issue alone. Producer's strongest argument — the FSA-501 blank — does not answer the practices-documentation gap."
       }
     ],
     "exhibits": [],
     "calculatorUrl": null,
     "caseFileResearch": [],
-    "issues": []
+    "issues": [
+      {
+        "num": 1,
+        "question": "Did the producer follow good farming practices in the 2024 crop year, including reasonable water application to the insured forage unit?",
+        "agencyPosition": [
+          "NAP coverage attaches to losses from natural disaster, not management choices. 1-NAP requires the producer to follow 'good farming practices' including reasonable water application to the insured crop.",
+          "Producer holds 7.75 Highline Canal shares — a fixed annual water right. Nothing in the record shows what portion of those shares was applied to the Unit 1528 forage versus to other crops on the producer's operation.",
+          "Actual production consistent with limited-water management (1 cutting, 11.99 tons) rather than with a discrete heat/wind event that would have left other cuttings recoverable.",
+          "Committee observation of a claim-history pattern — losses on this unit every other year rather than randomly — is inconsistent with natural-disaster causation and consistent with a rotating water-allocation strategy across a multi-crop operation."
+        ],
+        "appellantPosition": [
+          "Producer has documented adequate water rights and consistent NAP participation. Inadequate irrigation resources are not the claimed cause of loss.",
+          "Claimed disaster is heat and wind during Jul 1 – Oct 30, 2024, not under-watering. COC was unable to inspect the field before snow because the NOL was filed 21 days late.",
+          "Agency has not produced evidence the producer watered other crops while neglecting the forage — hypothesis only."
+        ],
+        "regulation": "1-NAP Par. 182 (Good Farming Practices); 7 CFR 1437.5(e) (coverage and eligibility); Par. 506 (production evidence and reasonable practices); 1-NAP Par. 575C (late NOL inspection and verification).",
+        "analysis": "The producer's burden on good farming practices under 1-NAP is not discharged by showing capacity (water rights, historical APH) alone — it requires showing the 2024 practices actually followed recommended agronomic standards for the insured crop. The record shows capacity without practice documentation. That gap alone supports denial. The committee-observed every-other-year claim pattern, if confirmed via a 5-year claim-history pull on Unit 1528, would further support a finding that the loss is management-driven rather than disaster-driven. If the pattern holds AND concurrent crop-certifications show other crops on the producer's operation received water in the claim years, the good-farming-practices failure is established independent of whether a heat/wind event can be documented."
+      }
+    ],
+    "keyMetrics": [
+      {
+        "label": "2024 yield reduction claimed",
+        "value": "~78%",
+        "note": "11.99 tons actual vs historical 44–58 tons on comparable acres. Single cutting (17 bales) where history shows 3–4 cuttings. Consistent with limited-water management, not a cutting-specific heat/wind loss pattern.",
+        "sources": [
+          "Producer production record, 2024",
+          "5-year APH on Unit 1528"
+        ]
+      },
+      {
+        "label": "Otero drought level in claim period",
+        "value": "Did not exceed D1",
+        "note": "COC finding: drought not at a level that would independently cause ~78% forage yield loss. No neighboring producers reported comparable heat/wind losses in the Jul 1 – Oct 30, 2024 period.",
+        "sources": [
+          "Dec 11, 2024 Otero County COC disapproval minutes"
+        ]
+      },
+      {
+        "label": "Claim-history pattern (pre-hearing observation)",
+        "value": "Every other year",
+        "note": "Committee observation: losses on Unit 1528 reported in an every-other-year cadence rather than randomly, suggesting a rotating water-allocation strategy across the producer's crop portfolio. To be confirmed via 5-year NAP claim-history pull at the hearing; if confirmed, supports good-farming-practices denial independent of the FSA-501 issue.",
+        "sources": [
+          "Committee pre-hearing observation; 5-year NAP claim history pull requested"
+        ]
+      }
+    ]
   },
   {
     "id": "APPEAL-4-2026-RIVEREDGE",
