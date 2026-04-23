@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Project Field Archive — meeting journals, documents, expenses, and field notes",
   "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "concurrently \"node server/index.js\" \"vite\"",
     "build": "vite build",
