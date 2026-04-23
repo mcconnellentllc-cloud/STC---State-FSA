@@ -339,6 +339,13 @@ function CaseBriefSummary({ appeal }) {
       </div>
       <div style={{ fontSize: 14, lineHeight: 1.7, color: T.navy }}>
         <div><strong>Appellants:</strong> {appeal.appellants}</div>
+        {(appeal.representation || []).map((r, i) => (
+          <div key={i} style={{ fontSize: 13, color: T.slate, marginTop: 2 }}>
+            <strong style={{ color: T.navy }}>{r.role}:</strong> {r.name}
+            {r.pronouns && <span style={{ marginLeft: 4, fontSize: 11, color: T.slate }}>({r.pronouns})</span>}
+            {r.note && <div style={{ fontSize: 11, color: T.slate, fontStyle: 'italic', marginTop: 2 }}>{r.note}</div>}
+          </div>
+        ))}
         <div><strong>Program:</strong> {appeal.program} &middot; <strong>County:</strong> {appeal.county}</div>
         {appeal.presenter && <div><strong>Presenter:</strong> {appeal.presenter}</div>}
         {contracts.length > 0 && (
