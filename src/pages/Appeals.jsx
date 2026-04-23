@@ -316,6 +316,7 @@ function ContractTable({ contracts }) {
 function CaseBriefSummary({ appeal }) {
   const contracts = appeal.contracts || [];
   const decided = contracts.filter(c => c.status === "DISAPPROVED" || c.status === "APPROVED");
+  const metrics = appeal.keyMetrics || [];
   return (
     <div style={{
       background: "#FEF3C7",
@@ -351,6 +352,50 @@ function CaseBriefSummary({ appeal }) {
           </div>
         )}
       </div>
+      {metrics.length > 0 && (
+        <div style={{
+          marginTop: 12,
+          paddingTop: 10,
+          borderTop: `1px dashed ${T.gold}`,
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+          gap: 10,
+        }}>
+          {metrics.map((m, i) => (
+            <div key={i} title={m.note || ""} style={{
+              background: "#fff",
+              border: `1px solid ${T.border}`,
+              borderRadius: 6,
+              padding: "8px 10px",
+            }}>
+              <div style={{
+                fontFamily: "'IBM Plex Mono', monospace",
+                fontSize: 10,
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                color: T.slate,
+                marginBottom: 4,
+              }}>
+                {m.label}
+              </div>
+              <div style={{
+                fontFamily: "Georgia, serif",
+                fontSize: 22,
+                fontWeight: 700,
+                color: T.navy,
+                lineHeight: 1.1,
+              }}>
+                {m.value}
+              </div>
+              {m.note && (
+                <div style={{ fontSize: 11, color: T.slate, marginTop: 4, lineHeight: 1.5 }}>
+                  {m.note}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

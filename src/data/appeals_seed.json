@@ -249,6 +249,25 @@
         "regulation": "2-CRP (Rev.6) Par. 603A, 603D — Noncompliance notification and determination procedures",
         "analysis": "The procedural sequence appears complete: notification, response opportunity, COC review, determination, reconsideration opportunity, and final determination. The Feb 10 letter claim is significant — if the letter was not received, the producers had no notice that records were being requested until the Apr 22 noncompliance letter. However, the 528 Grazing Plans themselves require that records be kept, so the obligation to maintain records existed independent of the Feb 10 letter. STC should examine whether the letter was sent certified/tracked."
       }
+    ],
+    "keyMetrics": [
+      {
+        "label": "Head observed across all site visits",
+        "value": "22",
+        "note": "Tracts 4297 (9) + 4328 (13) + 4034 (0) + 751 (0, growing season) + 772 (0, growing season). Tracts 2386 and 2396 pending photo/observation intake.",
+        "sources": [
+          "Bent County COC site-visit aggregate",
+          "Exhibits B, D (7/1/2025 growing-season photos)"
+        ]
+      },
+      {
+        "label": "Head sold in good faith (appellants' corrective action)",
+        "value": "40",
+        "note": "Producers stated at the August 5, 2025 reconsideration hearing that they sold 40 head after receiving the noncompliance notification. Also moved remaining cattle to other locations. Supports the Misaction/Misinformation 'subsequent corrective action' factor under 2-CRP Par. 603.",
+        "sources": [
+          "Aug 5, 2025 Bent County COC reconsideration hearing minutes"
+        ]
+      }
     ]
   },
   {
