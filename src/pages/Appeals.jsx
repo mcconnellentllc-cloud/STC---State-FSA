@@ -1033,17 +1033,6 @@ function AppealsIndex({ appeals }) {
           }}>
             Sorted: Open → Ready → Pending → Resolved, then priority
           </div>
-          <Link
-            to="/appeals/new"
-            style={{
-              background: T.blue, color: "#fff", textDecoration: "none",
-              padding: "10px 20px", borderRadius: 6, fontSize: 13,
-              fontWeight: 700, fontFamily: "'IBM Plex Mono', monospace",
-              letterSpacing: "0.04em",
-            }}
-          >
-            + Add New Appeal
-          </Link>
         </div>
 
         {appeals.length === 0 && (
