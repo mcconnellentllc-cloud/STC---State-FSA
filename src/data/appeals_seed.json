@@ -980,7 +980,8 @@
       "Producer disclosed at the April 23 hearing applying Patriot MSM (metsulfuron methyl, 60%) IN-CROP on June 1, 2025. Metsulfuron is NOT registered for use on safflower — it is a sulfonylurea (Group 2, ALS inhibitor) labeled for cereals (wheat, barley, oats), pasture, rangeland, and rights-of-way only. An in-crop application to safflower is an off-label use in violation of FIFRA §12(a)(2)(G), and is directly toxic to safflower at trace levels. This is a producer-caused event; 1-NAP explicitly excludes losses from producer-caused events.",
       "Timeline implication: the LA's June 11, 2025 inspection finding of 'only seeds and weeds, no growing plants' is now better explained by the June 1 in-crop metsulfuron application than by drought/wind. Metsulfuron would kill remaining safflower within 7–14 days — exactly matching the 10-day window between the spray and the LA inspection. The claimed disaster cause and the observed field state are disconnected; the herbicide is the proximate cause.",
       "Off-label pesticide application exposes the producer to potential FIFRA enforcement independent of the NAP appeal. Colorado Department of Agriculture pesticide division has jurisdiction over misuse claims.",
-      "Metsulfuron carryover will foreclose the EQIP broadleaf rotation requirement on F2083 for 22–34+ months. Unit 1528 is in an active EQIP contract requiring a broadleaf rotating crop; producer cannot plant safflower, sunflower, canola, or most vegetables in 2026–2027, potentially triggering EQIP non-compliance separate from the NAP issue."
+      "Metsulfuron carryover will foreclose the EQIP broadleaf rotation requirement on F2083 for 22–34+ months. Unit 1528 is in an active EQIP contract requiring a broadleaf rotating crop; producer cannot plant safflower, sunflower, canola, or most vegetables in 2026–2027, potentially triggering EQIP non-compliance separate from the NAP issue.",
+      "Producer-disclosed pre-crop spray history (Spring 2024: 1 pint 2,4-D + 4 oz dicamba on wheat; Fall 2024: Roundup + AMS) is at rates and intervals that do NOT carry over to 2025 safflower. Pre-crop carryover is therefore eliminated as a cause of the claimed loss. With the carryover hypothesis ruled out, the remaining causation candidates narrow to: (a) under-seeding at 2.5 lb/ac vs. recommended 15–30 lb/ac, (b) drought stress — rebutted by neighbor Blue Horizons Farm's approved NOL on nearby ground, and (c) the June 1, 2025 in-crop off-label Patriot MSM application — the only remaining producer-disclosed event that independently explains the terminal stand failure observed at the June 11 LA inspection. The in-crop metsulfuron is the proximate cause; pre-crop chemistry is not."
     ],
     "redFlags": [
       {
@@ -1006,6 +1007,10 @@
       {
         "type": "REGULATORY",
         "text": "Even if drought and wind stressed the stand prior to June 1, the in-crop metsulfuron application is an independent and intervening cause that terminated the crop. Under standard causation analysis in crop insurance / NAP, a producer-caused intervening act breaks the causal chain from the claimed natural disaster to the final loss. The drought/wind claim fails at the causation prong independent of whether the disaster condition can be documented."
+      },
+      {
+        "type": "DOCUMENTATION",
+        "text": "Producer's own disclosed spray history eliminates pre-crop herbicide carryover as a loss cause (Spring 2024 2,4-D and dicamba rates at 0.5 and 0.125 lb a.e./ac respectively, with 12+ months of degradation and spring tillage; Fall 2024 Roundup is non-residual). The carryover alternative-cause theory is ruled out on the producer's own records. This leaves the June 1, 2025 in-crop off-label metsulfuron application as the dispositive producer-caused event — a single intervening cause that breaks the causation chain from any claimed natural disaster to the observed terminal stand failure."
       }
     ],
     "commonSense": [
@@ -1082,6 +1087,44 @@
         "sources": [
           "1-NAP Par. 51F"
         ]
+      }
+    ],
+    "preCropHerbicideHistory": [
+      {
+        "season": "Spring 2024",
+        "precedingCrop": "wheat",
+        "product": "2,4-D",
+        "rate": "1 pint/ac",
+        "rateAE": "~0.5 lb a.e./ac (assuming 3.8 lb/gal formulation)",
+        "carryoverRiskToSafflower": "LOW — 12+ months elapsed; typical 2,4-D rotation to safflower is 60–90 days at this rate. Ruled OUT as a carryover cause.",
+        "source": "Producer disclosure at Apr 23, 2026 STC hearing"
+      },
+      {
+        "season": "Spring 2024",
+        "precedingCrop": "wheat",
+        "product": "Dicamba",
+        "rate": "4 oz/ac",
+        "rateAE": "~0.125 lb a.e./ac (assuming 4 lb/gal Clarity-type formulation)",
+        "carryoverRiskToSafflower": "LOW — rate at the low end of wheat-label range; 120-day + 1\" rain minimum easily satisfied at 12+ months. Ruled OUT as a carryover cause at this rate/interval.",
+        "source": "Producer disclosure at Apr 23, 2026 STC hearing"
+      },
+      {
+        "season": "Fall 2024",
+        "precedingCrop": "wheat post-harvest / pre-plant for safflower",
+        "product": "Roundup (glyphosate) + AMS",
+        "rate": "not specified",
+        "rateAE": "not applicable",
+        "carryoverRiskToSafflower": "NONE — glyphosate is non-residual in soil; AMS is a spray adjuvant, not a pesticide. Zero safflower carryover risk.",
+        "source": "Producer disclosure at Apr 23, 2026 STC hearing"
+      },
+      {
+        "season": "Spring 2025 (post-plant, in-crop)",
+        "precedingCrop": "N/A — applied to growing safflower",
+        "product": "Patriot MSM (metsulfuron methyl, 60%)",
+        "rate": "rate not specified",
+        "rateAE": "off-label for safflower — any rate is injurious",
+        "carryoverRiskToSafflower": "CATASTROPHIC — metsulfuron is NOT registered for safflower use. Off-label (FIFRA §12(a)(2)(G) violation). Directly lethal at trace levels. Applied IN-CROP June 1, 2025; would kill remaining safflower within 7–14 days. This is the proximate cause of the terminal stand failure observed at the June 11 LA inspection.",
+        "source": "Producer disclosure at Apr 23, 2026 STC hearing"
       }
     ]
   },
