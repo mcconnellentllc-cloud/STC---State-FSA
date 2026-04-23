@@ -5,7 +5,6 @@
  * Routes handled:
  *   /appeals              → AppealsIndex
  *   /appeals/:id          → AppealDetail
- *   /appeals/new          → NewAppealForm
  *   /appeals-tracker      → <Navigate to="/appeals" />
  *
  * Persistence: localStorage key "fsa_appeals_v1"
@@ -345,6 +344,129 @@ function CaseBriefSummary({ appeal }) {
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
+   ISSUES FOR STC DETERMINATION — numbered, collapsible, with handbook citations
+   and side-by-side agency vs appellant positions. Renders only when the
+   appeal has at least one issue defined. Schema: appeal.issues[] = [{
+     num, question, regulation, agencyPosition[], appellantPosition[], analysis
+   }]
+   ───────────────────────────────────────────────────────────────────────────── */
+function IssuesForDetermination({ appeal }) {
+  const issues = appeal.issues || [];
+  const [openIssue, setOpenIssue] = useState(null);
+  if (issues.length === 0) return null;
+  return (
+    <div style={{ marginBottom: 28 }}>
+      <div style={styles.sectionTitle}>Issues for STC Determination ({issues.length})</div>
+      {issues.map((issue) => {
+        const isOpen = openIssue === issue.num;
+        return (
+          <div key={issue.num} style={{
+            marginBottom: 8,
+            border: `1px solid ${T.border}`,
+            borderRadius: 8,
+            overflow: "hidden",
+            background: "#fff",
+          }}>
+            <button
+              onClick={() => setOpenIssue(isOpen ? null : issue.num)}
+              style={{
+                width: "100%",
+                display: "flex",
+                alignItems: "flex-start",
+                gap: 12,
+                padding: "12px 16px",
+                background: isOpen ? "#FEF3C7" : "#fff",
+                border: "none",
+                cursor: "pointer",
+                textAlign: "left",
+              }}
+            >
+              <span style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: 26, height: 26,
+                borderRadius: "50%",
+                background: T.gold,
+                color: "#fff",
+                fontWeight: 800,
+                fontSize: 13,
+                flexShrink: 0,
+                fontFamily: "'IBM Plex Mono', monospace",
+              }}>{issue.num}</span>
+              <span style={{ flex: 1 }}>
+                <div style={{ fontWeight: 700, fontSize: 14, color: T.navy, lineHeight: 1.5 }}>
+                  {issue.question}
+                </div>
+                {issue.regulation && (
+                  <div style={{ fontSize: 12, color: T.slate, marginTop: 3, fontFamily: "'IBM Plex Mono', monospace" }}>
+                    {issue.regulation}
+                  </div>
+                )}
+              </span>
+              <span style={{ fontSize: 13, color: T.slate, alignSelf: "center" }}>{isOpen ? "▲" : "▼"}</span>
+            </button>
+            {isOpen && (
+              <div style={{ padding: "12px 16px", borderTop: `1px solid ${T.border}` }}>
+                {(issue.agencyPosition?.length > 0 || issue.appellantPosition?.length > 0) && (
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 12 }}>
+                    <div style={{
+                      background: T.amberLight,
+                      borderLeft: `3px solid ${T.amber}`,
+                      borderRadius: "0 6px 6px 0",
+                      padding: "10px 12px",
+                    }}>
+                      <div style={{ fontWeight: 700, fontSize: 11, color: T.amber, textTransform: "uppercase", marginBottom: 6, fontFamily: "'IBM Plex Mono', monospace" }}>
+                        Agency Position
+                      </div>
+                      {(issue.agencyPosition || []).map((p, j) => (
+                        <div key={j} style={{ fontSize: 13, lineHeight: 1.6, padding: "2px 0", display: "flex", gap: 6 }}>
+                          <span style={{ color: T.amber, fontWeight: 700 }}>•</span>
+                          <span>{p}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div style={{
+                      background: "#DBEAFE",
+                      borderLeft: `3px solid ${T.blue}`,
+                      borderRadius: "0 6px 6px 0",
+                      padding: "10px 12px",
+                    }}>
+                      <div style={{ fontWeight: 700, fontSize: 11, color: T.blue, textTransform: "uppercase", marginBottom: 6, fontFamily: "'IBM Plex Mono', monospace" }}>
+                        Appellant Position
+                      </div>
+                      {(issue.appellantPosition || []).map((p, j) => (
+                        <div key={j} style={{ fontSize: 13, lineHeight: 1.6, padding: "2px 0", display: "flex", gap: 6 }}>
+                          <span style={{ color: T.blue, fontWeight: 700 }}>•</span>
+                          <span>{p}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {issue.analysis && (
+                  <div style={{
+                    background: "#FEE2E2",
+                    borderLeft: `3px solid ${T.red}`,
+                    borderRadius: "0 6px 6px 0",
+                    padding: "10px 12px",
+                    fontSize: 13,
+                    lineHeight: 1.6,
+                    color: T.navy,
+                  }}>
+                    <strong style={{ color: T.red }}>Analysis:</strong> {issue.analysis}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
    CASE FILE RESEARCH — renders appeal.caseFileResearch[] as clickable chips.
    Each item links to the source document at the right page via `#page=N`
    anchors. Hidden when the array is empty.
@@ -487,6 +609,9 @@ function AppealDetail({ appeals, onUpdateAdvisory }) {
 
         {/* 0. CASE BRIEF SUMMARY */}
         <CaseBriefSummary appeal={appeal} />
+
+        {/* 0b. ISSUES FOR STC DETERMINATION (renders only when issues[] is non-empty) */}
+        <IssuesForDetermination appeal={appeal} />
 
         {/* 1. PLAIN LANGUAGE SUMMARY */}
         <div style={{ marginBottom: 28 }}>
@@ -645,119 +770,6 @@ function AppealDetail({ appeals, onUpdateAdvisory }) {
           <div style={{ fontSize: 11, color: T.slate, fontFamily: "'IBM Plex Mono', monospace", marginTop: 4 }}>
             Auto-saved on blur
           </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/* ─────────────────────────────────────────────────────────────────────────────
-   ADD NEW APPEAL FORM
-   ───────────────────────────────────────────────────────────────────────────── */
-function NewAppealForm({ onAdd }) {
-  const navigate = useNavigate();
-  const [form, setForm] = useState({
-    caseId: "",
-    title: "",
-    appellants: "",
-    county: "",
-    program: "CRP",
-    presenter: "",
-    meetingTimeMin: 60,
-    issueSummary: "",
-  });
-
-  const handleSubmit = () => {
-    if (!form.caseId || !form.title || !form.appellants) {
-      alert("Case ID, Title, and Appellants are required.");
-      return;
-    }
-    const newAppeal = {
-      ...form,
-      id: `${form.caseId}-${Date.now()}`,
-      meetingTimeMin: parseInt(form.meetingTimeMin) || 60,
-      status: "PENDING DATA",
-      guestsAtMeeting: false,
-      dateCreated: new Date().toISOString().split("T")[0],
-      fullText: "[PENDING DATA]",
-      theGood: ["[PENDING DATA]"],
-      theBad: ["[PENDING DATA]"],
-      redFlags: [{ type: "PROCEDURAL", text: "[PENDING DATA]" }],
-      commonSense: ["[PENDING DATA]"],
-      resolutionOptions: [],
-      contracts: [],
-      advisoryNotes: "",
-      voteRecorded: null,
-      exhibits: [],
-      calculatorUrl: null,
-    };
-    onAdd(newAppeal);
-    navigate(`/appeals/${newAppeal.id}`);
-  };
-
-  const field = (label, key, type = "text", opts = {}) => (
-    <div style={{ marginBottom: 18 }}>
-      <label style={{ display: "block", fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, fontWeight: 700, color: T.navy, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 6 }}>
-        {label}
-      </label>
-      {type === "select" ? (
-        <select
-          value={form[key]}
-          onChange={e => setForm(f => ({ ...f, [key]: e.target.value }))}
-          style={{ width: "100%", padding: "10px 12px", borderRadius: 6, border: `1px solid ${T.border}`, fontSize: 14, fontFamily: "Georgia, serif", color: T.navy, background: "#fff" }}
-        >
-          {opts.options.map(o => <option key={o}>{o}</option>)}
-        </select>
-      ) : type === "textarea" ? (
-        <textarea
-          value={form[key]}
-          onChange={e => setForm(f => ({ ...f, [key]: e.target.value }))}
-          placeholder={opts.placeholder || ""}
-          style={{ width: "100%", minHeight: 80, padding: "10px 12px", borderRadius: 6, border: `1px solid ${T.border}`, fontSize: 14, fontFamily: "Georgia, serif", color: T.navy, resize: "vertical", boxSizing: "border-box" }}
-        />
-      ) : (
-        <input
-          type={type}
-          value={form[key]}
-          onChange={e => setForm(f => ({ ...f, [key]: e.target.value }))}
-          placeholder={opts.placeholder || ""}
-          style={{ width: "100%", padding: "10px 12px", borderRadius: 6, border: `1px solid ${T.border}`, fontSize: 14, fontFamily: "Georgia, serif", color: T.navy, boxSizing: "border-box" }}
-        />
-      )}
-    </div>
-  );
-
-  return (
-    <div style={{ background: T.cream, minHeight: "100vh" }}>
-      <div style={{ background: T.navy, padding: "14px 32px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <Link to="/appeals" style={{ color: T.goldLight, fontSize: 13, fontFamily: "'IBM Plex Mono', monospace", textDecoration: "none" }}>← Back to Appeals</Link>
-        <span style={{ color: "#fff", fontFamily: "'IBM Plex Mono', monospace", fontSize: 12, fontWeight: 700, letterSpacing: "0.1em" }}>NEW APPEAL</span>
-      </div>
-      <div style={{ maxWidth: 680, margin: "0 auto", padding: "36px 24px" }}>
-        <h1 style={{ fontFamily: "Georgia, serif", color: T.navy, fontSize: 26, marginBottom: 8 }}>Add New Appeal</h1>
-        <p style={{ color: T.slate, fontSize: 14, marginBottom: 32, lineHeight: 1.6 }}>
-          Creates a skeleton case with <code style={{ background: "#F3F4F6", padding: "1px 5px", borderRadius: 3, fontSize: 12 }}>[PENDING DATA]</code> placeholders. Fill out the full case on the detail page after submission.
-        </p>
-        <div style={{ background: "#fff", borderRadius: 10, padding: 28, border: `1px solid ${T.border}` }}>
-          {field("Case ID", "caseId", "text", { placeholder: "e.g. EX-2-2026" })}
-          {field("Title", "title", "text", { placeholder: "e.g. CRP Appeal — Yuma County" })}
-          {field("Appellant(s)", "appellants", "text", { placeholder: "Full names" })}
-          {field("County", "county", "text", { placeholder: "Colorado county" })}
-          {field("Program", "program", "select", { options: ["CRP", "NAP", "Common Provisions", "EFRP", "LFP", "TAP", "WHIP+", "ECP", "ELAP", "LIP", "Other"] })}
-          {field("Presenter", "presenter", "text", { placeholder: "Name, Title" })}
-          {field("Meeting Time (minutes)", "meetingTimeMin", "number")}
-          {field("Issue Summary", "issueSummary", "textarea", { placeholder: "Plain language summary of what happened and what the appellant wants." })}
-          <button
-            onClick={handleSubmit}
-            style={{
-              background: T.blue, color: "#fff", border: "none", borderRadius: 6,
-              padding: "13px 28px", fontSize: 14, fontWeight: 700,
-              fontFamily: "'IBM Plex Mono', monospace", cursor: "pointer",
-              letterSpacing: "0.04em", width: "100%", marginTop: 8,
-            }}
-          >
-            Create Appeal →
-          </button>
         </div>
       </div>
     </div>

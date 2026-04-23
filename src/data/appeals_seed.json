@@ -168,7 +168,88 @@
     ],
     "exhibits": [],
     "calculatorUrl": null,
-    "caseFileResearch": []
+    "caseFileResearch": [],
+    "issues": [
+      {
+        "num": 1,
+        "question": "Are the CRP contracts out of compliance with the terms and conditions?",
+        "agencyPosition": [
+          "Three NRCS field visits (Jan 31, Feb 26, Mar 11) documented bare ground and no stubble height remaining",
+          "CRP field worksheets indicated bare ground; status review sheets confirmed contracts were grazed hard",
+          "Photos taken by NRCS showed no remaining grass height",
+          "The 528 Grazing Plans required 4\"–6\" minimum stubble height as the indicator to remove livestock — this was not met",
+          "Species diversity requirements (30-point stand, 5 species, minimum 3 native grasses) were not represented in the field",
+          "Grazing records required by the 528 Prescribed Grazing Plan were never provided despite multiple requests"
+        ],
+        "appellantPosition": [
+          "Compliance review was conducted while grass was dormant (Jan–Mar) — did not reflect true cover condition during growing season",
+          "Producers moved cattle to other locations after being notified of noncompliance",
+          "Producers received 2 feet of snow in December which may have impacted grazing conditions",
+          "Sold 40 head of cattle to reduce stocking pressure",
+          "July 1, 2025 photos showed representative cover samples (taken during growing season)",
+          "Claim they never received the February 10, 2025 letter requesting grazing records"
+        ],
+        "regulation": "2-CRP (Rev.6) Par. 427 — Maintaining Approved Cover; Par. 603B — Examples of Noncompliance",
+        "analysis": "The 528 Grazing Plans specifically state: \"stubble height may be used as an indicator to remove livestock in introduced pasture or seeded stands with minimal diversity, minimal stubble height to remove livestock is 4-6 inches.\" Three independent NRCS field visits across a 6-week period documented no compliance with this requirement. The dormant-grass argument may have merit for species identification but does not explain the complete absence of stubble height."
+      },
+      {
+        "num": 2,
+        "question": "Did the appellants show a good faith effort to comply with the terms and conditions?",
+        "agencyPosition": [
+          "COC reviewed all documentation and determined NO good faith effort on two separate occasions (May 20 and Aug 5)",
+          "Grazing records — required to be kept each year for each pasture — were never provided despite being requested Feb 10 and again during the process",
+          "Without grazing records, COC could not determine if producers followed recommended stocking rates in the conservation plan",
+          "The extent of overgrazing (bare ground, no stubble) across ALL 7 contracts suggests systematic non-compliance, not an isolated incident",
+          "Species diversity shortfall indicates the offered 30-point stand was never established or maintained"
+        ],
+        "appellantPosition": [
+          "Submitted written good faith explanation on May 5, 2025",
+          "Took corrective action: sold 40 head, moved remaining cattle to other locations",
+          "Claim they never received the Feb 10 letter requesting records — thus absence of records should not be held against them",
+          "Provided photos from Jul 1, 2025 showing cover had recovered during growing season",
+          "Environmental factors: 2 feet of snow in December created unusual conditions",
+          "Attended reconsideration hearing with POA to present their case"
+        ],
+        "regulation": "2-CRP (Rev.6) Par. 603A, 603D, 603E, 603F — Noncompliance and Good Faith Determinations",
+        "analysis": "Good faith under Par. 603 requires COC to consider: (1) whether the participant submitted an explanation (they did — May 5 letter), (2) whether the noncompliance issue was corrected (partial — sold cattle and moved others, but grazing records were never produced). The COC considered all of this twice and twice determined no good faith. Key question for STC: Was the COC's determination reasonable given the evidence? The dormant-season timing of field visits is a legitimate concern, but 4\"–6\" stubble height should be measurable regardless of growth season."
+      },
+      {
+        "num": 3,
+        "question": "Was the termination of all 7 contracts the correct remedy?",
+        "agencyPosition": [
+          "Under Par. 571A, COC must terminate ALL land under CRP-1 when participant is out of compliance on all land and COC determines no good faith effort",
+          "All 7 contracts were found out of compliance — not just some",
+          "Termination is mandatory (\"must terminate\"), not discretionary, when the conditions are met"
+        ],
+        "appellantPosition": [
+          "Termination of all 7 contracts is the most severe penalty",
+          "Under Par. 574A, termination requires refund of ALL annual rental payments plus interest, ALL cost-share payments plus interest, CRP-SIP plus interest, PIP plus interest, and potentially liquidated damages",
+          "The financial impact is substantial across 7 contracts and multiple tracts"
+        ],
+        "regulation": "2-CRP (Rev.6) Par. 571A — Terminations; Par. 574A — Required Refunds",
+        "analysis": "If all contracts were out of compliance and the COC's not-good-faith determination stands, Par. 571A makes termination mandatory — the COC had no discretion to impose a lesser remedy. The STC's decision therefore hinges on Issues 1 and 2. If STC finds good faith, Par. 603E allows a standard payment reduction instead of termination. If STC finds no good faith, the termination and full refund requirement under Par. 574A is mandatory."
+      },
+      {
+        "num": 4,
+        "question": "Were proper procedures followed by the county office?",
+        "agencyPosition": [
+          "Feb 10 letter sent requesting grazing records",
+          "Three NRCS field visits conducted (Jan 31, Feb 26, Mar 11)",
+          "Apr 22 noncompliance letter gave 15-day response window per Par. 603D",
+          "Producer explanation reviewed at May 20 COC meeting",
+          "Termination notice sent Jun 17",
+          "Reconsideration hearing held Aug 5 per producer request",
+          "Final termination letter Sep 2"
+        ],
+        "appellantPosition": [
+          "Producers claim they never received the Feb 10 letter requesting grazing records",
+          "If not received, producers were denied the opportunity to provide records before the noncompliance determination",
+          "All field visits occurred during dormant season (Jan–Mar) — questions whether this provides an accurate assessment of cover condition"
+        ],
+        "regulation": "2-CRP (Rev.6) Par. 603A, 603D — Noncompliance notification and determination procedures",
+        "analysis": "The procedural sequence appears complete: notification, response opportunity, COC review, determination, reconsideration opportunity, and final determination. The Feb 10 letter claim is significant — if the letter was not received, the producers had no notice that records were being requested until the Apr 22 noncompliance letter. However, the 528 Grazing Plans themselves require that records be kept, so the obligation to maintain records existed independent of the Feb 10 letter. STC should examine whether the letter was sent certified/tracked."
+      }
+    ]
   },
   {
     "id": "APPEAL-2-2026-3RLAMB",
@@ -339,7 +420,67 @@
     ],
     "exhibits": [],
     "calculatorUrl": null,
-    "caseFileResearch": []
+    "caseFileResearch": [],
+    "issues": [
+      {
+        "num": 1,
+        "question": "Did the Washington County COC err in disapproving the 2024 Pelt LDPs on beneficial-interest grounds?",
+        "agencyPosition": [
+          "Under 2-LP par. 408A, direct sale to a slaughter lamb company for immediate slaughter loses beneficial interest on the earlier of delivery or actual slaughter",
+          "CCC-633 EZ page 1 was filed January 16, 2025; pelts were delivered throughout 2024 — every delivery preceded the filing",
+          "The CCC-633 EZ Part A Terms and Conditions, signed by each producer, states the pre-loss-of-BI rule on the face of the form"
+        ],
+        "appellantPosition": [
+          "Filing was made on Jan 16, 2025 — fifteen days before the Jan 31 final availability deadline; appellants were trying to comply with the deadline they were aware of",
+          "The same applications produced approved wool LDPs and disapproved pelt LDPs — the producers applied one rule to both commodities",
+          "A reasonable producer who didn't know about 2-LP par. 408A specifically could easily miss the pelt-specific timing rule"
+        ],
+        "regulation": "8-LP (Rev. 3) Par. 227 (Beneficial Interest); Par. 1001 (CCC-633 EZ Requests); 7 CFR 1421.6; 2-LP Wool & Mohair Par. 408A",
+        "analysis": "Pelts were delivered throughout 2024; CCC-633 EZ page 1 was filed January 16, 2025. If 'date of delivery' controls, BI was lost before filing for every pelt and disapproval is correct on its face. The procedural failure is undisputed; the question is whether Misaction/Misinformation, equitable relief, or the Raptopoulos plant co-ownership change the outcome."
+      },
+      {
+        "num": 2,
+        "question": "Did the County Office provide inconsistent guidance on date-of-delivery vs. date-of-slaughter as the triggering event for loss of beneficial interest?",
+        "agencyPosition": [
+          "COC concedes on the record (June 12, 2025 minutes p.10) that guidance was inconsistent and that this 'will be addressed and corrected for 2025 going forward'",
+          "However, the COC's later finding states Misaction/Misinformation does not apply to the pre-loss-of-BI filing requirement — the producer was not given incorrect information about that specific rule"
+        ],
+        "appellantPosition": [
+          "The COC's contemporaneous admission of prior inconsistent guidance is direct evidence the Misaction/Misinformation bar has been met as to at least one fact material to the case",
+          "Inconsistent guidance on the date-of-loss question goes to the heart of when beneficial interest was lost — not a tangential issue"
+        ],
+        "regulation": "7-CP (Rev. 4) — Finality Rule and Equitable Relief; Misaction/Misinformation provisions",
+        "analysis": "COC admission (June 12, 2025 minutes, p. 10): 'The confusion between submission of Date of Delivery or Date of Slaughter when considering when beneficial interest is lost will be addressed and corrected for 2025 going forward.' This is a contemporaneous admission of prior inconsistent guidance — directly probative on Misaction/Misinformation relief, even if the COC's own analysis split the question."
+      },
+      {
+        "num": 3,
+        "question": "Does the Rule/Raptopoulos joint ownership of Colorado Lamb Processors affect the date-of-loss determination for 2024?",
+        "agencyPosition": [
+          "COC acknowledges (June 12, 2025 minutes p.10) that the plant co-ownership 'does affect the date beneficial interest is lost for the lambs owned by the family, harvested at the plant'",
+          "COC commits to 'ensure the correct date is used for 2025 forward' — implying the 2024 date determination did not correctly account for the ownership structure"
+        ],
+        "appellantPosition": [
+          "If beneficial interest under joint ownership is determined by a different rule than direct-sale-to-slaughter, the 2024 date-of-loss may be later than the COC found — potentially after the Jan 16, 2025 filing for at least some pelts"
+        ],
+        "regulation": "2-LP Wool & Mohair Par. 408A; 8-LP (Rev. 3) Par. 227B (Definition of Conditions for Beneficial Interest — control + title)",
+        "analysis": "The COC's own minutes acknowledge the co-ownership is material but did not factor it into the 2024 determination. STC should consider whether a remand for recalculation under a corrected date-of-loss rule (per the COC's own framing) is warranted. Independently, STC member Steve Raptopoulos must recuse — the conflict is in the case record, not procedural hygiene."
+      },
+      {
+        "num": 4,
+        "question": "Was the May 30, 2023 letter sufficient prior notice to foreclose Misaction/Misinformation relief?",
+        "agencyPosition": [
+          "COC sent a written letter on May 30, 2023 to these specific producers that addressed beneficial interest",
+          "The letter predates the 2024 filing by well over a year — producers had constructive notice of the rule"
+        ],
+        "appellantPosition": [
+          "The 2022 appeal on which the 2023 letter was sent was decided on AGI and production evidence timeliness — not beneficial interest",
+          "The CCC-633 EZ for the 2022 case was filed June 2, 2021, well before the 2022 harvest; the beneficial interest rule was never put in issue in 2022",
+          "A notice buried in correspondence about a different adverse determination may not satisfy the constructive-notice standard"
+        ],
+        "regulation": "7-CP (Rev. 4); constructive notice standards",
+        "analysis": "Whether a beneficial interest paragraph embedded in a letter about a different adverse determination satisfies constructive notice is a live question for STC. NAD may find that a notice tied to a different issue does not satisfy the constructive-notice standard required to foreclose Misaction/Misinformation relief — this is the most likely path to NAD reversal if STC denies."
+      }
+    ]
   },
   {
     "id": "APPEAL-3-2026-PROCTOR",
@@ -433,7 +574,8 @@
     ],
     "exhibits": [],
     "calculatorUrl": null,
-    "caseFileResearch": []
+    "caseFileResearch": [],
+    "issues": []
   },
   {
     "id": "APPEAL-4-2026-RIVEREDGE",
@@ -533,7 +675,8 @@
     ],
     "exhibits": [],
     "calculatorUrl": null,
-    "caseFileResearch": []
+    "caseFileResearch": [],
+    "issues": []
   },
   {
     "id": "EX-5-2026-PAYNE",
@@ -614,7 +757,8 @@
     ],
     "exhibits": [],
     "calculatorUrl": null,
-    "caseFileResearch": []
+    "caseFileResearch": [],
+    "issues": []
   },
   {
     "id": "REF-DEC2025-MOFFAT",
@@ -659,7 +803,8 @@
     "resolutionOptions": [],
     "exhibits": [],
     "calculatorUrl": null,
-    "caseFileResearch": []
+    "caseFileResearch": [],
+    "issues": []
   },
   {
     "id": "EX-APRIL-2026-NEW-APPEAL",
@@ -703,7 +848,8 @@
     "resolutionOptions": [],
     "exhibits": [],
     "calculatorUrl": null,
-    "caseFileResearch": []
+    "caseFileResearch": [],
+    "issues": []
   },
   {
     "id": "REF-OTERO-CROWLEY-COC",
@@ -767,6 +913,7 @@
     ],
     "exhibits": [],
     "calculatorUrl": null,
-    "caseFileResearch": []
+    "caseFileResearch": [],
+    "issues": []
   }
 ]

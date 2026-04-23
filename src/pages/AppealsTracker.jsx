@@ -42,7 +42,7 @@ const STARTER_APPEALS = [
     keyEvidence: '386-page agency record; 15-event timeline; Exhibits 1-26',
     status: 'decided',
     recommendation: '',
-    notes: 'Reviewed at March 24 meeting. See Summary of Events page for full case brief. Decision recorded in meeting minutes.',
+    notes: 'Reviewed at March 24 meeting. See the Appeals page for full Case Brief. Decision recorded in meeting minutes.',
     priority: 'high',
   },
 ];

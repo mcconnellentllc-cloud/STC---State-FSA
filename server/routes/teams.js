@@ -127,13 +127,22 @@ router.get('/file/:itemId', async (req, res) => {
       return res.status(400).json({ error: 'Item is not a file' });
     }
 
-    // Member scoping: the file's parentReference.path looks like
-    // "/drives/{id}/root:/FSA - State Committee/Committee Shared/..."
-    // Members can only download files whose parent path contains the
-    // member root segment (default 'Committee Shared', env-overridable).
+    // Member scoping: parse parentReference.path to confirm the file is
+    // anchored under the watch folder AND its first segment within the watch
+    // folder is the member root (default 'Committee Shared'). Tighter than
+    // a substring match: a folder like 'Old Committee Shared Archive'
+    // sitting elsewhere in the drive would not pass.
     if (req.user?.role === 'member') {
+      const watchFolder = process.env.SHAREPOINT_WATCH_FOLDER || 'FSA - State Committee';
+      const rootPrefix = `/root:/${watchFolder}/`;
       const parentPath = meta.parentReference?.path || '';
-      if (!parentPath.includes(`/${MEMBER_DOCS_ROOT}`)) {
+      const idx = parentPath.indexOf(rootPrefix);
+      if (idx < 0) {
+        return res.status(403).json({ error: 'Access restricted' });
+      }
+      const relative = parentPath.slice(idx + rootPrefix.length);
+      const firstSegment = relative.split('/')[0];
+      if (firstSegment !== MEMBER_DOCS_ROOT) {
         return res.status(403).json({ error: 'Access restricted' });
       }
 
