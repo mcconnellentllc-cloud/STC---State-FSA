@@ -476,7 +476,7 @@
     "archived": false,
     "guestsAtMeeting": null,
     "voteRecorded": null,
-    "advisoryNotes": "MATERIAL CONFLICT: Steve Raptopoulos must recuse. Per June 12, 2025 Washington County COC minutes (Agency Record p.10), the Colorado Lamb Processors plant where the pelts were delivered/slaughtered is co-owned by the Rule and Raptopoulos families. The conflict is not procedural — it is a fact in the case record that bears on the date of loss of beneficial interest.",
+    "advisoryNotes": "MATERIAL CONFLICT: Steve Raptopoulos must recuse. Per June 12, 2025 Washington County COC minutes (Agency Record p.10), the Colorado Lamb Processors plant where the pelts were delivered/slaughtered is co-owned by the Rule and Raptopoulos families. The conflict is not procedural — it is a fact in the case record that bears on the date of loss of beneficial interest. POSTURE UPDATE (pre-hearing analysis): the pelt is a separate commodity from the live lamb and is transferred to a pelt buyer at or immediately after slaughter. BI on the pelt is lost at harvest regardless of plant ownership. The Raptopoulos plant co-ownership affects BI analysis on the live lamb only, not on the pelt commodity. Practical effect: the 'remand for date-of-loss recalculation' theory fails on corrected substantive analysis — every 2024 pelt was harvested before the Jan 16, 2025 filing. Uphold Denial becomes the substantively correct outcome; Misaction/Misinformation still applies to the agency's inconsistent guidance and to the 2023 notice-letter sufficiency, but relief would be procedural (remand for better written findings) rather than substantive (approval of the LDP). Recusal on Steve Raptopoulos remains material to STC procedure independent of the substantive analysis.",
     "dateCreated": "2026-04-22",
     "issueSummary": "Washington County COC disapproved 2024 LDP requests for unshorn lamb pelts filed by 3R Lamb Feeding LLC (46,309 head), Spence Rule (879 head), Connie Rule (7 head), and Sumner Rule (6 head). Wool LDPs from the same CCC-633 EZ filings were approved. The disapproval was based on loss of beneficial interest prior to the January 16, 2025 filing of CCC-633 EZ page 1 — pelts were delivered to Colorado Lamb Processors throughout 2024, before the agreement form was signed. Appellants argue they were not notified of the pre-loss-of-BI filing requirement. COC denied equitable relief citing a May 30, 2023 notice letter and the Terms and Conditions of the CCC-633 EZ itself.",
     "fullText": "On January 16, 2025, 3R Lamb Feeding LLC, Connie Rule, Spence Rule, and Sumner Rule submitted 2024 CCC-633 EZ Loan Deficiency Payment Agreement and Request forms for both ungraded wool and unshorn lamb pelts, together with Part M (Request for Wool, Mohair, or Unshorn Pelt LDP) and production evidence. The pelts had been delivered on multiple dates throughout 2024 to Colorado Lamb Processors in Brush, Colorado. On April 10, 2025, the Washington County COC determined beneficial interest in the pelts had been lost prior to the January 16, 2025 CCC-633 EZ page 1 filing, disapproved the pelt LDP requests, and approved the corresponding wool LDPs on the same applications (wool BI determined to be maintained at filing). Appellants requested reconsideration on May 5, 2025. At the June 12, 2025 reconsideration hearing, Abby Rule appeared on behalf of the producers and argued: (1) applicants were unaware of the pre-loss-of-BI filing requirement, (2) CED Page did not notify them until a March 18, 2025 email, (3) during the 2022 appeal the beneficial interest rule was never raised even though circumstances were similar, (4) the County Office gave inconsistent guidance on date of delivery vs. date of slaughter, and (5) there was no intent to deceive. The COC tabled and directed CED Page to research Equitable Relief and Misaction/Misinformation. On a July 2, 2025 between-meetings action memorialized from a June 17, 2025 email poll, the COC unanimously upheld the disapproval, finding that the May 30, 2023 letter and the CCC-633 EZ Part A Terms and Conditions provided adequate prior notice — precluding equitable relief. The June 12, 2025 minutes additionally state, of record, that Colorado Lamb Processors is co-owned by the Rule and Raptopoulos families and that this co-ownership affects the date beneficial interest is lost.",
@@ -484,7 +484,7 @@
       "The CCC-633 EZ forms were filed January 16, 2025 — before the January 31 final availability date for unshorn pelts. Timing on the final availability deadline was met; the only timing failure alleged is against the pre-loss-of-BI rule.",
       "Appellants showed consistent good faith: filed within the final availability window, provided production evidence, appeared at reconsideration, and articulated specific procedural confusion rather than contesting the rule itself.",
       "The June 12, 2025 minutes (p.10) concede on the record that the County Office gave inconsistent guidance on date of delivery vs. date of slaughter for determining loss of beneficial interest, and that this 'will be addressed and corrected for 2025 going forward.' A contemporaneous admission of prior misinformation weighs in favor of Misaction/Misinformation relief under 7-CP (Rev. 4).",
-      "The same June 12 minutes acknowledge that because Colorado Lamb Processors is jointly owned by the Rule and Raptopoulos families, 'the date beneficial interest is lost for the lambs owned by the family, harvested at the plant' is affected — and the COC commits to 'ensure the correct date is used for 2025 forward,' implying the 2024 date determination may not have correctly accounted for the ownership structure.",
+      "The June 12, 2025 minutes acknowledge that Colorado Lamb Processors is jointly owned by the Rule and Raptopoulos families and commit to 'ensure the correct date is used for 2025 forward.' This supports the Misaction/Misinformation record on the delivery-vs-slaughter trigger question — though narrower than initially read: the plant co-ownership affects BI analysis on the live lamb, not on the pelt commodity, which is transferred out at harvest regardless of plant ownership.",
       "The 2022 appeal involving the same family concerned AGI and production evidence timeliness — not beneficial interest. A producer reasonably reading the 2022 determination would not have been put on notice about the beneficial interest rule specifically. The COC's assertion that the 2023 letter provided notice is weakened by the fact that the 2022 case never put the BI rule in issue.",
       "The COC approved the companion wool LDPs on the same applications. This confirms the producers were eligible in all other respects and their filings were procedurally complete — the only deficiency was pelt-specific timing."
     ],
@@ -508,7 +508,7 @@
       },
       {
         "type": "PROCEDURAL",
-        "text": "The COC itself conceded on the record (June 12, 2025 minutes p.10) that County Office guidance on date of delivery vs. date of slaughter was inconsistent and required correction. That concession is direct evidence the Misaction/Misinformation bar has been met as to at least one fact material to the case (the date of loss of beneficial interest). The COC's later finding that Misaction/Misinformation 'would not apply' addresses only the beneficial-interest-timing-rule disclosure — not the date-of-loss determination that the COC separately admitted was affected by bad guidance."
+        "text": "The COC conceded on the record (June 12, 2025 minutes p.10) that County Office guidance on date of delivery vs. date of slaughter was inconsistent and required correction. That concession is direct evidence the Misaction/Misinformation bar has been met on the disclosure of the correct trigger event. However, the misinformation is procedural, not outcome-determinative: applying the correct 'loss at slaughter' rule to this fact pattern still produces disapproval because every 2024 pelt was harvested (and BI on the pelt commodity was lost) before the Jan 16, 2025 filing."
       },
       {
         "type": "PRECEDENTIAL",
@@ -517,6 +517,10 @@
       {
         "type": "NAD EXPOSURE",
         "text": "The May 30, 2023 letter relied upon by the COC as prior notice was sent during a 2022 appeal that was decided on AGI and production-evidence timeliness — NOT on beneficial interest. NAD may find that a notice buried in correspondence about a different issue does not satisfy the constructive-notice standard required to foreclose Misaction/Misinformation relief."
+      },
+      {
+        "type": "REGULATORY",
+        "text": "The pelt is a separate commodity from the live lamb. Pelts leave the slaughter plant immediately after harvest — transferred to a pelt buyer rather than retained by the producer. BI on the pelt is therefore lost at slaughter regardless of plant ownership. The Rule/Raptopoulos co-ownership of Colorado Lamb Processors may affect BI analysis on the LIVE LAMB (no 'direct sale' under Par. 408A at delivery), but does not preserve BI on the pelt commodity once harvested. The 'remand for date-of-loss recalculation' theory fails on this fact: even under a corrected loss-at-slaughter rule, every pelt was slaughtered in 2024 and the Jan 16, 2025 filing is late."
       }
     ],
     "commonSense": [
@@ -597,9 +601,9 @@
       },
       {
         "label": "Grant Partial Relief — Remand for Recalculation on Date of Loss",
-        "description": "Remand to Washington County COC to redetermine the date of loss of beneficial interest taking into account the Rule/Raptopoulos co-ownership of Colorado Lamb Processors. If any pelt deliveries occurred after the January 16, 2025 CCC-633 EZ page 1 filing under a corrected date-of-loss rule (e.g., date of slaughter rather than date of delivery, where ownership overlap exists), those specific pelts would be eligible. All other pelts remain disapproved.",
-        "fsaRisk": "MEDIUM — narrow remand addressing the specific factual inconsistency the COC itself flagged, without reversing the broader beneficial-interest doctrine. Preserves the CCC-633 EZ notice precedent.",
-        "appellantRisk": "MEDIUM — relief may be partial or zero depending on recalculation. Procedurally clean.",
+        "description": "Remand to Washington County COC to redetermine the date of loss of beneficial interest taking into account the Rule/Raptopoulos co-ownership of Colorado Lamb Processors. If any pelt deliveries occurred after the January 16, 2025 CCC-633 EZ page 1 filing under a corrected date-of-loss rule (e.g., date of slaughter rather than date of delivery, where ownership overlap exists), those specific pelts would be eligible. All other pelts remain disapproved. NOTE: this option was initially read as the strongest partial-relief path; the pelt-commodity analysis (Issue 5) forecloses it — the corrected rule produces the same result. Remand may serve procedural hygiene but is unlikely to yield payment.",
+        "fsaRisk": "LOW-MEDIUM (revised from MEDIUM) — the remand would likely produce the same disapproval under corrected BI analysis because the pelt commodity transfers out of producer control at slaughter regardless of plant ownership.",
+        "appellantRisk": "HIGH — relief is unlikely to materialize on recalculation because even the corrected loss-at-slaughter rule fails for every 2024 pelt against a Jan 16, 2025 filing. Remand just delays the outcome.",
         "nadRisk": "LOW — responsive to the specific procedural defects identified in the record."
       },
       {
@@ -621,7 +625,7 @@
         "description": "Affirm the Washington County COC determination in full. Find that (1) the beneficial interest rule appears on the signed CCC-633 EZ Part A Terms and Conditions, (2) the May 30, 2023 letter provided written notice to these specific producers, (3) the handbook rule has existed since 2010, and (4) Misaction/Misinformation does not apply where the producer did not rely on any specific incorrect agency statement for the 2024 cycle.",
         "fsaRisk": "LOW — consistent with handbook language and CCC-633 EZ Terms and Conditions. Reinforces the signed-form-is-notice doctrine.",
         "appellantRisk": "HIGH — full denial; 3R Lamb loses 46,309 head in pelt LDP.",
-        "nadRisk": "ABOVE-AVERAGE — NAD may find (a) the 2023 letter insufficient because the 2022 appeal was about a different issue, (b) the COC's own concession of inconsistent date-of-loss guidance meets the Misaction bar on at least one fact material to the case, and (c) the unresolved Raptopoulos plant co-ownership is a procedural defect that should have been cured before final determination. NAD reversal probability is material."
+        "nadRisk": "LOW-MEDIUM (revised from ABOVE-AVERAGE) — under the corrected BI analysis (loss-at-slaughter for the pelt commodity), every pelt was slaughtered in 2024 and the filing is substantively late regardless of the delivery-vs-slaughter trigger dispute or the plant co-ownership. NAD may still find the 2023 notice letter insufficient for Misaction/Misinformation preclusion, but reversal on the substantive BI timing is unlikely."
       }
     ],
     "exhibits": [],
@@ -685,6 +689,22 @@
         ],
         "regulation": "7-CP (Rev. 4); constructive notice standards",
         "analysis": "Whether a beneficial interest paragraph embedded in a letter about a different adverse determination satisfies constructive notice is a live question for STC. NAD may find that a notice tied to a different issue does not satisfy the constructive-notice standard required to foreclose Misaction/Misinformation relief — this is the most likely path to NAD reversal if STC denies."
+      },
+      {
+        "num": 5,
+        "question": "Does the pelt's post-slaughter commodity status independently lose beneficial interest regardless of plant ownership?",
+        "agencyPosition": [
+          "Pelts are a perishable byproduct of slaughter. Post-slaughter, pelts are transferred to a pelt buyer (tannery, fur merchant) at or immediately after harvest — they are not retained at the slaughter plant",
+          "Beneficial interest in the pelt is therefore lost at the time the pelt leaves producer control, which is essentially at-slaughter, not at any later filing date",
+          "Every 2024 pelt came from a lamb slaughtered in 2024; every slaughter occurred before the Jan 16, 2025 CCC-633 EZ filing",
+          "Under either a 'delivery-loss' or 'slaughter-loss' trigger, the filing is still late for every pelt on every contract"
+        ],
+        "appellantPosition": [
+          "If the plant had been fully owned by the Rule family, delivery would not be a 'direct sale' under Par. 408A",
+          "BI on the LIVE LAMB would have been preserved through slaughter — but concedes the pelt is a different commodity once harvested"
+        ],
+        "regulation": "2-LP Wool & Mohair Par. 408A (direct-sale-to-slaughter-lamb-company rule); 8-LP (Rev. 3) Par. 227 (general beneficial-interest requirements for unshorn pelts)",
+        "analysis": "Per producer-familiar practice and the agency record, pelts do not sit at the slaughter plant — they are shipped to the pelt buyer at or immediately after harvest. BI on the pelt is lost at that transfer point. Plant ownership (100%, 50%, or 0%) preserves BI on the LIVE ANIMAL but not on the downstream pelt commodity. Applied to this fact pattern: every 2024 pelt was harvested and moved out of producer control in 2024; the Jan 16, 2025 CCC-633 EZ filing was late for every pelt regardless of the Colorado Lamb Processors ownership structure. This issue forecloses the 'remand for date-of-loss recalculation' argument on its own terms — the corrected rule still produces the same disapproval outcome."
       }
     ]
   },
