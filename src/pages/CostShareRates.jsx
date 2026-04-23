@@ -35,9 +35,9 @@ const CRP_RATES = [
   { category: "Weed Control", component: "Mechanical Post Planting (24 mo)", unit: "Acre", approved2025: 18.00, supportedPrice: 24.00, stoProposed: 24.00, doc: "County Office Invoice" },
   { category: "Weed Control", component: "Chemical Purchase & Application (12 mo)", unit: "Acre", approved2025: 28.00, supportedPrice: 24.09, stoProposed: 24.00, doc: "County Office Invoice" },
   { category: "Weed Control", component: "Chemical Purchase & Application (24 mo)", unit: "Acre", approved2025: 28.00, supportedPrice: 24.09, stoProposed: 24.00, doc: "County Office Invoice" },
-  { category: "Fencing", component: "Multistrand Barbed/Smooth Wire (3-4 strand)", unit: "Foot", approved2025: 3.00, supportedPrice: 5.63, stoProposed: 8.40, doc: "CSU 2024 Custom Rates — STC Apr 23, 2026 approved at $8.40/ft (up 40% from $6 proposed)" },
-  { category: "Fencing", component: "Multistrand Barbed/Smooth Wire - Difficult Terrain", unit: "Foot", approved2025: 4.00, supportedPrice: 5.63, stoProposed: 7.00, doc: "CSU 2024 Custom Rates (+$1)" },
-  { category: "Fencing", component: "Electric / High Tensile", unit: "Foot", approved2025: 3.00, supportedPrice: 5.63, stoProposed: 8.40, doc: "CSU 2024 Custom Rates — STC Apr 23, 2026 approved at $8.40/ft (up 40% from $6 proposed)" },
+  { category: "Fencing", component: "Multistrand Barbed/Smooth Wire (3-4 strand)", unit: "Foot", approved2025: 3.00, supportedPrice: 5.63, stoProposed: 6.00, doc: "CSU 2024 Custom Rates" },
+  { category: "Fencing", component: "Multistrand Barbed/Smooth Wire - Difficult Terrain", unit: "Foot", approved2025: 4.00, supportedPrice: 5.63, stoProposed: 8.40, doc: "CSU 2024 Custom Rates — STC Apr 23, 2026 approved at $8.40/ft (40% premium over $6 base fencing rate)" },
+  { category: "Fencing", component: "Electric / High Tensile", unit: "Foot", approved2025: 3.00, supportedPrice: 5.63, stoProposed: 6.00, doc: "CSU 2024 Custom Rates" },
   { category: "Watering Facility", component: "Permanent Drinking/Storage < 750 gal", unit: "Gallon", approved2025: null, supportedPrice: 4.23, stoProposed: 4.25, doc: "NRCS practice scenarios", newItem: true },
   { category: "Watering Facility", component: "Permanent Drinking/Storage > 750 gal", unit: "Gallon", approved2025: null, supportedPrice: 4.67, stoProposed: 4.70, doc: "NRCS practice scenarios", newItem: true },
   { category: "Pipeline", component: "1.25 inch 160psi PVC-SDR", unit: "Foot", approved2025: 3.00, supportedPrice: 2.92, stoProposed: 3.00, doc: "Schroder Red Angus invoice, Baca Co" },
@@ -82,9 +82,9 @@ const EFRP_RATES = [
   { category: "Access Road", component: "Implementation", unit: "Foot", approved2025: null, supportedPrice: 9.42, stoProposed: 9.50, doc: "NRCS Code 560, Scenarios 7+9", newItem: true },
   { category: "Fuel Break", component: "Normal Terrain", unit: "Acre", approved2025: 1849.84, supportedPrice: 2645.57, stoProposed: 2646.00, doc: "NRCS Code 383, Scenario 96" },
   { category: "Fuel Break", component: "Steep Slope", unit: "Acre", approved2025: 3026.75, supportedPrice: 3345.79, stoProposed: 3346.00, doc: "NRCS Code 383, Scenario 27" },
-  { category: "Fencing", component: "Multistrand Barbed/Smooth Wire (3-4 strand)", unit: "Foot", approved2025: 3.00, supportedPrice: 5.63, stoProposed: 8.40, doc: "CSU Custom Rates (same as CRP) — STC Apr 23, 2026 approved at $8.40/ft (up 40% from $6 proposed)" },
-  { category: "Fencing", component: "Multistrand Barbed/Smooth Wire - Difficult Terrain", unit: "Foot", approved2025: 4.00, supportedPrice: 5.63, stoProposed: 7.00, doc: "CSU Custom Rates (same as CRP)" },
-  { category: "Fencing", component: "Electric / High Tensile", unit: "Foot", approved2025: 3.00, supportedPrice: 5.63, stoProposed: 8.40, doc: "CSU Custom Rates (same as CRP) — STC Apr 23, 2026 approved at $8.40/ft (up 40% from $6 proposed)" },
+  { category: "Fencing", component: "Multistrand Barbed/Smooth Wire (3-4 strand)", unit: "Foot", approved2025: 3.00, supportedPrice: 5.63, stoProposed: 6.00, doc: "CSU Custom Rates (same as CRP)" },
+  { category: "Fencing", component: "Multistrand Barbed/Smooth Wire - Difficult Terrain", unit: "Foot", approved2025: 4.00, supportedPrice: 5.63, stoProposed: 8.40, doc: "CSU Custom Rates (same as CRP) — STC Apr 23, 2026 approved at $8.40/ft (40% premium over $6 base fencing rate)" },
+  { category: "Fencing", component: "Electric / High Tensile", unit: "Foot", approved2025: 3.00, supportedPrice: 5.63, stoProposed: 6.00, doc: "CSU Custom Rates (same as CRP)" },
 ];
 
 function fmt(val) {
