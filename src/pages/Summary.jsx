@@ -3,186 +3,90 @@ import { Link } from 'react-router-dom';
 import { useApiFetch } from '../auth/apiFetch';
 
 /* ══════════════════════════════════════════════════════════════════
-   EBRIGHT CRP APPEAL — CASE BRIEF (Exhibit 1, 386 pages)
+   DOCUMENT URLS — set these in Render env (VITE_*) to wire clickable
+   page references in the voting guide. Each URL should be a SharePoint
+   web preview URL that supports the #page=N anchor (Graph webUrl works).
+   When unset, page-ref chips render but are not clickable.
    ══════════════════════════════════════════════════════════════════ */
-const CASE_BRIEF = {
-  title: 'Ebright CRP Grassland Appeal — Case Brief',
-  caption: 'Bent County | Contracts 11071, 11075, 11101, 11114, 11115, 11116, 11117 | STC Review: March 24, 2026',
-  parties: {
-    appellants: 'John and Stephanie Ebright',
-    poa: 'Kris Demoss (Power of Attorney)',
-    county: 'Bent County FSA Office',
-    cocMembers: 'Bent County Committee of Certification (COC)',
-    program: 'Conservation Reserve Program (CRP) — Grassland Signups 204 & 206',
+const DOC_URLS = {
+  es: import.meta.env.VITE_ES_PACKET_URL || '',     // Executive Session Packet (E-items)
+  rs: import.meta.env.VITE_RS_PACKET_URL || '',     // Regular Session Packet (R-items)
+  exhibits: {
+    1: import.meta.env.VITE_EXHIBIT_1_URL || '',
+    2: import.meta.env.VITE_EXHIBIT_2_URL || '',
+    5: import.meta.env.VITE_EXHIBIT_5_URL || '',
   },
-  contracts: [
-    { id: '11101', tract: '751', pages: '80–93' },
-    { id: '11075', tract: '772', pages: '94–132' },
-    { id: '11115', tract: '2386', pages: '133–146' },
-    { id: '11071', tract: '4297', pages: '147–187' },
-    { id: '11116', tract: '2396', pages: '188–233' },
-    { id: '11117', tract: '4328', pages: '234–273' },
-    { id: '11114', tract: '4034', pages: '274–284' },
-  ],
-  timeline: [
-    { date: 'Signups 204 & 206', event: 'Ebrights offered and had Grassland CRP contracts accepted. CRP-1 contracts, NRCS Conservation Plans (CPA-1155), and 528 CRP Grasslands Prescribed Grazing Plans signed and filed timely.', type: 'neutral' },
-    { date: 'Jan 31, 2025', event: 'NRCS field visit #1 conducted. Field worksheets indicated bare ground; status review sheets indicated contracts were grazed hard. Photos showed no height to grass.', type: 'agency' },
-    { date: 'Feb 10, 2025', event: 'Bent County CED sent letter requesting producers\' grazing records required under the 528 Prescribed Grazing Plan. Producers later claim they never received this letter.', type: 'agency' },
-    { date: 'Feb 26, 2025', event: 'NRCS field visit #2 conducted.', type: 'agency' },
-    { date: 'Mar 11, 2025', event: 'NRCS field visit #3 conducted.', type: 'agency' },
-    { date: 'Mar 18, 2025', event: 'Bent County COC Executive Session — initial review of noncompliance findings. (pp. 25)', type: 'agency' },
-    { date: 'Apr 22, 2025', event: 'Bent County CED sent noncompliance letter informing producers their contracts were out of compliance with signed grazing plans. Gave 15 days to provide written explanation of good faith effort.', type: 'agency' },
-    { date: 'May 5, 2025', event: 'Producers submitted written good-faith explanation letter to Bent County office.', type: 'producer' },
-    { date: 'May 20, 2025', event: 'COC meeting: Reviewed NRCS status reviews, photos, 528 Grazing Plans, and producer\'s good faith letter. COC DETERMINED: (1) No good faith effort to maintain cover, (2) Failed to leave required 4"–6" stubble height, (3) Species diversity requirements not met (offered 30-point stand with 5 species/3 native grasses — not found in field), (4) Grazing records never provided.', type: 'decision' },
-    { date: 'Jun 17, 2025', event: 'Two termination letters sent to producers notifying them of COC determination and contract termination.', type: 'agency' },
-    { date: 'Jul 1, 2025', event: 'Producers took photographs of contract acreage showing representative cover samples.', type: 'producer' },
-    { date: 'Jul 10, 2025', event: 'Producers requested COC reconsideration of the termination determination.', type: 'producer' },
-    { date: 'Aug 5, 2025', event: 'COC reconsideration hearing — Ebrights and POA Kris Demoss attended. Producers stated: (1) did not receive Feb 10 letter, (2) could provide grazing records, (3) received 2 feet of snow in December, (4) sold 40 head of cattle, (5) moved others to another location. Provided July 1 photos. However, grazing records were never provided. COC UPHELD original determination — denied reconsideration.', type: 'decision' },
-    { date: 'Sep 2, 2025', event: 'Final termination letter and reconsideration denial letter sent to producers.', type: 'agency' },
-    { date: 'Mar 24, 2026', event: 'STC APPEAL HEARING — State Committee reviews full agency record.', type: 'stc' },
-  ],
-  issues: [
-    {
-      num: 1,
-      question: 'Are the CRP contracts out of compliance with the terms and conditions?',
-      agencyPosition: [
-        'Three NRCS field visits (Jan 31, Feb 26, Mar 11) documented bare ground and no stubble height remaining',
-        'CRP field worksheets indicated bare ground; status review sheets confirmed contracts were grazed hard',
-        'Photos taken by NRCS showed no remaining grass height',
-        'The 528 Grazing Plans required 4"–6" minimum stubble height as the indicator to remove livestock — this was not met',
-        'Species diversity requirements (30-point stand, 5 species, minimum 3 native grasses) were not represented in the field',
-        'Grazing records required by the 528 Prescribed Grazing Plan were never provided despite multiple requests',
-      ],
-      appellantPosition: [
-        'Compliance review was conducted while grass was dormant (Jan–Mar) — did not reflect true cover condition during growing season',
-        'Producers moved cattle to other locations after being notified of noncompliance',
-        'Producers received 2 feet of snow in December which may have impacted grazing conditions',
-        'Sold 40 head of cattle to reduce stocking pressure',
-        'July 1, 2025 photos showed representative cover samples (taken during growing season)',
-        'Claim they never received the February 10, 2025 letter requesting grazing records',
-      ],
-      regulation: '2-CRP (Rev.6) Par. 427 — Maintaining Approved Cover; Par. 603B — Examples of Noncompliance',
-      analysis: 'The 528 Grazing Plans specifically state: "stubble height may be used as an indicator to remove livestock in introduced pasture or seeded stands with minimal diversity, minimal stubble height to remove livestock is 4-6 inches." Three independent NRCS field visits across a 6-week period documented no compliance with this requirement. The dormant-grass argument may have merit for species identification but does not explain the complete absence of stubble height.',
-    },
-    {
-      num: 2,
-      question: 'Did the appellants show a good faith effort to comply with the terms and conditions?',
-      agencyPosition: [
-        'COC reviewed all documentation and determined NO good faith effort on two separate occasions (May 20 and Aug 5)',
-        'Grazing records — required to be kept each year for each pasture — were never provided despite being requested Feb 10 and again during the process',
-        'Without grazing records, COC could not determine if producers followed recommended stocking rates in the conservation plan',
-        'The extent of overgrazing (bare ground, no stubble) across ALL 7 contracts suggests systematic non-compliance, not an isolated incident',
-        'Species diversity shortfall indicates the offered 30-point stand was never established or maintained',
-      ],
-      appellantPosition: [
-        'Submitted written good faith explanation on May 5, 2025',
-        'Took corrective action: sold 40 head, moved remaining cattle to other locations',
-        'Claim they never received the Feb 10 letter requesting records — thus absence of records should not be held against them',
-        'Provided photos from Jul 1, 2025 showing cover had recovered during growing season',
-        'Environmental factors: 2 feet of snow in December created unusual conditions',
-        'Attended reconsideration hearing with POA to present their case',
-      ],
-      regulation: '2-CRP (Rev.6) Par. 603A, 603D, 603E, 603F — Noncompliance and Good Faith Determinations',
-      analysis: 'Good faith under Par. 603 requires COC to consider: (1) whether the participant submitted an explanation (they did — May 5 letter), (2) whether the noncompliance issue was corrected (partial — sold cattle and moved others, but grazing records were never produced). The COC considered all of this twice and twice determined no good faith. Key question for STC: Was the COC\'s determination reasonable given the evidence? The dormant-season timing of field visits is a legitimate concern, but 4"–6" stubble height should be measurable regardless of growth season.',
-    },
-    {
-      num: 3,
-      question: 'Was the termination of all 7 contracts the correct remedy?',
-      agencyPosition: [
-        'Under Par. 571A, COC must terminate ALL land under CRP-1 when participant is out of compliance on all land and COC determines no good faith effort',
-        'All 7 contracts were found out of compliance — not just some',
-        'Termination is mandatory ("must terminate"), not discretionary, when the conditions are met',
-      ],
-      appellantPosition: [
-        'Termination of all 7 contracts is the most severe penalty',
-        'Under Par. 574A, termination requires refund of ALL annual rental payments plus interest, ALL cost-share payments plus interest, CRP-SIP plus interest, PIP plus interest, and potentially liquidated damages',
-        'The financial impact is substantial across 7 contracts and multiple tracts',
-      ],
-      regulation: '2-CRP (Rev.6) Par. 571A — Terminations; Par. 574A — Required Refunds',
-      analysis: 'If all contracts were out of compliance and the COC\'s not-good-faith determination stands, Par. 571A makes termination mandatory — the COC had no discretion to impose a lesser remedy. The STC\'s decision therefore hinges on Issues 1 and 2. If STC finds good faith, Par. 603E allows a standard payment reduction instead of termination. If STC finds no good faith, the termination and full refund requirement under Par. 574A is mandatory.',
-    },
-    {
-      num: 4,
-      question: 'Were proper procedures followed by the county office?',
-      agencyPosition: [
-        'Feb 10 letter sent requesting grazing records',
-        'Three NRCS field visits conducted (Jan 31, Feb 26, Mar 11)',
-        'Apr 22 noncompliance letter gave 15-day response window per Par. 603D',
-        'Producer explanation reviewed at May 20 COC meeting',
-        'Termination notice sent Jun 17',
-        'Reconsideration hearing held Aug 5 per producer request',
-        'Final termination letter Sep 2',
-      ],
-      appellantPosition: [
-        'Producers claim they never received the Feb 10 letter requesting grazing records',
-        'If not received, producers were denied the opportunity to provide records before the noncompliance determination',
-        'All field visits occurred during dormant season (Jan–Mar) — questions whether this provides an accurate assessment of cover condition',
-      ],
-      regulation: '2-CRP (Rev.6) Par. 603A, 603D — Noncompliance notification and determination procedures',
-      analysis: 'The procedural sequence appears complete: notification, response opportunity, COC review, determination, reconsideration opportunity, and final determination. The Feb 10 letter claim is significant — if the letter was not received, the producers had no notice that records were being requested until the Apr 22 noncompliance letter. However, the 528 Grazing Plans themselves require that records be kept, so the obligation to maintain records existed independent of the Feb 10 letter. STC should examine whether the letter was sent certified/tracked.',
-    },
-    {
-      num: 5,
-      question: 'Does the timing of field visits (dormant season) affect the validity of the noncompliance finding?',
-      agencyPosition: [
-        'Stubble height (4"–6" minimum) should be measurable in any season — it is a physical measurement of remaining plant material, not dependent on active growth',
-        'Three visits across 6 weeks (Jan 31 – Mar 11) showed consistent bare ground conditions',
-        'Bare ground is an objective measure that is not season-dependent',
-      ],
-      appellantPosition: [
-        'Species diversity (5 species, 3 native grasses) cannot be reliably assessed when grass is dormant',
-        'Cover appearance in dormant season does not represent growing-season conditions',
-        'July 1 photos show cover recovery during growing season',
-      ],
-      regulation: '2-CRP (Rev.6) Par. 427A — Practice Maintenance; 528 CRP Grasslands Prescribed Grazing Plan',
-      analysis: 'This is the appellants\' strongest argument. While stubble height is season-independent (it measures what\'s physically there), species diversity assessment is more reliable during the growing season. However, the stubble height issue alone constitutes noncompliance — the 528 Plan explicitly sets 4"–6" as the indicator to remove livestock. The species diversity issue, while real, may be secondary to the stubble height violation. STC should weigh whether the July 1 photos are relevant to the noncompliance period or show recovery after livestock removal.',
-    },
-    {
-      num: 6,
-      question: 'What is the financial exposure to the appellants if termination is upheld?',
-      agencyPosition: [
-        'Per Par. 574A, termination requires refund of: all annual rental payments + interest, all cost-share payments + interest, CRP-SIP + interest, PIP + interest, and liquidated damages per Par. 577',
-        'Liquidated damages = 25% of rental rate x acres in violation (Par. 10 of CRP-1 Appendix)',
-        'All 7 contracts, all tracts are subject to full refund',
-      ],
-      appellantPosition: [
-        'The cumulative financial impact across 7 contracts covering tracts 751, 772, 2386, 4297, 2396, 4328, and 4034 is severe',
-        'This includes every payment received since contract inception plus interest',
-      ],
-      regulation: '2-CRP (Rev.6) Par. 574A — Required Refunds; CRP-1 Appendix Par. 10 — Liquidated Damages',
-      analysis: 'The exact dollar amounts are in the contract-specific supporting documentation (pp. 80–284) for each CRP-1. If STC upholds, the full refund is mandatory. If STC reverses to good-faith, Par. 603E limits the penalty to a standard payment reduction on affected acres not exceeding the annual rental payment for the year of violation — a dramatically different financial outcome. This is the practical stakes of the STC\'s decision.',
-    },
-  ],
-  stcOptions: [
-    {
-      option: 'AFFIRM — Uphold Bent County COC Determination',
-      effect: 'All 7 contracts terminated. Producers must refund all annual rental payments, cost-share, SIP, PIP, plus interest and liquidated damages across all contracts.',
-      basis: 'COC followed proper procedures; three NRCS field visits documented bare ground; grazing records never provided; COC reviewed the evidence twice and reached the same conclusion.',
-      risk: 'Producer\'s only recourse is NAD appeal. If NAD reverses, it suggests STC missed procedural or substantive errors.',
-    },
-    {
-      option: 'REVERSE — Find Good Faith, Overturn Termination',
-      effect: 'Contracts reinstated. COC must assess a standard payment reduction per Par. 603E (not to exceed annual rental for the year of violation). No refund of prior payments. Producers advised subsequent violations may result in termination.',
-      basis: 'Producers took corrective action (sold 40 head, moved cattle); dormant-season visits may not reflect true cover condition; producers submitted written explanation and attended reconsideration hearing; Feb 10 letter may not have been received.',
-      risk: 'Could strain relationship with Bent County COC. Sets precedent that overgrazing without records can receive good-faith determination. Other producers may interpret this as lenient enforcement.',
-    },
-    {
-      option: 'MODIFY — Partial Remedy or Remand',
-      effect: 'Examples: (1) Remand to COC with instructions to conduct a growing-season field visit before terminating, (2) Find good faith on some contracts but not others, (3) Direct COC to consider the dormant-season timing in their determination.',
-      basis: 'The dormant-season field visit concern has merit for species diversity assessment. The record may be incomplete without a growing-season evaluation. Remand allows the county to build a more complete record.',
-      risk: 'Delays resolution. Producer remains in limbo. May appear indecisive. Partial treatment of 7 identical-situation contracts creates inconsistency.',
-    },
-  ],
-  keyEvidence: [
-    { item: '528 Grazing Plans (all 7 contracts)', note: 'Signed by producers — establishes: 4"–6" stubble height requirement, stocking rate recommendations, and obligation to keep grazing records each year for each pasture' },
-    { item: 'NRCS Field Visit Reports (Jan 31, Feb 26, Mar 11)', note: 'Three independent visits across 6 weeks — CRP field worksheets show bare ground, status review sheets show hard grazing, photos show no remaining grass height' },
-    { item: 'Producer Good Faith Letter (May 5, 2025)', note: 'Written explanation provided within the 15-day window — contents should be in the record (pp. 33–45)' },
-    { item: 'Producer Photos (Jul 1, 2025)', note: 'Representative cover samples taken during growing season — shows recovery after livestock removal. KEY QUESTION: Does post-removal recovery demonstrate good faith or just that grass grows back when not overgrazed?' },
-    { item: 'COC Executive Minutes (Mar 18, May 20, Aug 5)', note: 'Three separate COC meetings documenting the review process and both determinations (pp. 25, 26–32, 285–290)' },
-    { item: 'Grazing Records', note: 'NEVER PROVIDED — despite being required by the 528 Plans, requested Feb 10, and producers stating at Aug 5 hearing they could provide them' },
-    { item: 'CRP-1 Contracts & NRCS-CPA-1155 Plans', note: 'Signed contracts and conservation plans for all 7 contracts (pp. 337–369) — establish the specific terms and conditions being enforced' },
-  ],
 };
+
+// Derive the agenda packet type ('E' or 'R') from a voting-guide item title.
+// Titles look like "E2: ..." / "R5: ...". Returns 'E' for E-items, 'R' for
+// R-items, or null if the title doesn't match (no chip linkage in that case).
+function agendaTypeFromTitle(title) {
+  const m = (title || '').match(/^([ER])\d/);
+  return m ? m[1] : null;
+}
+
+// Parse text and return an array of strings + clickable chip elements for
+// inline "Page ref: N", "Page refs N-M", and "Exhibit N" patterns. Page refs
+// link to the appropriate session packet (E-items → ES Packet, R-items → RS
+// Packet) at the right page via #page=N. Exhibit refs link to the exhibit
+// file. Chips render as visible-but-not-clickable when the URL isn't
+// configured in env.
+function renderRefs(text, agendaType) {
+  if (!text) return text;
+  const REGEX = /(Page refs?:?\s*(\d+)(?:[–—\-]\d+)?)|(Exhibit\s+(\d+))/g;
+  const parts = [];
+  let last = 0;
+  let m;
+  while ((m = REGEX.exec(text))) {
+    if (m.index > last) parts.push(text.slice(last, m.index));
+    if (m[1]) {
+      const pageNum = m[2];
+      const baseUrl = agendaType === 'E' ? DOC_URLS.es : agendaType === 'R' ? DOC_URLS.rs : '';
+      const href = baseUrl ? `${baseUrl}#page=${pageNum}` : null;
+      parts.push(
+        <RefChip key={`p-${m.index}`} icon="📄" label={m[1]} href={href} />
+      );
+    } else if (m[3]) {
+      const exhNum = m[4];
+      const href = DOC_URLS.exhibits[exhNum] || null;
+      parts.push(
+        <RefChip key={`e-${m.index}`} icon="📎" label={`Exhibit ${exhNum}`} href={href} />
+      );
+    }
+    last = m.index + m[0].length;
+  }
+  if (last < text.length) parts.push(text.slice(last));
+  return parts;
+}
+
+function RefChip({ icon, label, href }) {
+  const baseStyle = {
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: 4,
+    padding: '1px 8px',
+    margin: '0 2px',
+    borderRadius: 10,
+    fontSize: '0.78em',
+    fontWeight: 600,
+    background: 'var(--bg)',
+    border: '1px solid var(--border)',
+    color: href ? 'var(--accent)' : 'var(--text-muted)',
+    textDecoration: 'none',
+    whiteSpace: 'nowrap',
+  };
+  return href ? (
+    <a href={href} target="_blank" rel="noopener noreferrer" style={baseStyle} title="Open at this page">
+      <span>{icon}</span><span>{label}</span><span style={{ opacity: 0.7 }}>↗</span>
+    </a>
+  ) : (
+    <span style={{ ...baseStyle, cursor: 'default' }} title="Document URL not configured (set VITE_ES_PACKET_URL / VITE_RS_PACKET_URL / VITE_EXHIBIT_N_URL)">
+      <span>{icon}</span><span>{label}</span>
+    </span>
+  );
+}
+
 
 /* ══════════════════════════════════════════════════════════════════
    MARCH 24, 2026 MEETING AGENDA — Structured from session packets
@@ -633,7 +537,7 @@ export default function Summary() {
   return (
     <div>
       <div className="page-header">
-        <h2>Summary of Events</h2>
+        <h2>Meeting Agenda</h2>
       </div>
 
       {/* ── Meeting Banner ── */}
@@ -753,188 +657,26 @@ export default function Summary() {
         </div>
       ))}
 
-      {/* ── CASE BRIEF: Ebright CRP Appeal ── */}
+      {/* ── Case Brief link card (Case Brief content lives on the Appeal detail page) ── */}
       <div className="card" style={{ marginBottom: 20, padding: 0, overflow: 'hidden' }}>
         <div style={{
           padding: '14px 20px', fontWeight: 700, fontSize: '0.95rem',
           background: 'linear-gradient(135deg, #8B0000 0%, #B22222 100%)',
           color: '#fff', letterSpacing: '0.5px',
         }}>
-          CASE BRIEF — {CASE_BRIEF.title}
+          CASE BRIEF — Ebright CRP Grassland Appeal
         </div>
-        <div style={{ padding: '10px 20px 4px', fontSize: '0.82rem', color: 'var(--text-muted)', borderBottom: '1px solid var(--border)' }}>
-          {CASE_BRIEF.caption}
-        </div>
-
-        {/* Parties */}
-        <div style={{ padding: '14px 20px', borderBottom: '1px solid var(--border)' }}>
-          <div style={{ fontWeight: 700, fontSize: '0.85rem', marginBottom: 8, textTransform: 'uppercase', color: 'var(--text-muted)', letterSpacing: '0.5px' }}>Parties & Program</div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4px 20px', fontSize: '0.85rem' }}>
-            <div><strong>Appellants:</strong> {CASE_BRIEF.parties.appellants}</div>
-            <div><strong>POA:</strong> {CASE_BRIEF.parties.poa}</div>
-            <div><strong>County Office:</strong> {CASE_BRIEF.parties.county}</div>
-            <div><strong>Program:</strong> {CASE_BRIEF.parties.program}</div>
-          </div>
-        </div>
-
-        {/* Contracts table */}
-        <div style={{ padding: '14px 20px', borderBottom: '1px solid var(--border)' }}>
-          <div style={{ fontWeight: 700, fontSize: '0.85rem', marginBottom: 8, textTransform: 'uppercase', color: 'var(--text-muted)', letterSpacing: '0.5px' }}>7 Contracts at Issue</div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-            {CASE_BRIEF.contracts.map(c => (
-              <div key={c.id} style={{
-                padding: '6px 12px', borderRadius: 6, fontSize: '0.82rem',
-                background: 'var(--bg)', border: '1px solid var(--border)',
-              }}>
-                <strong>{c.id}</strong> <span style={{ color: 'var(--text-muted)' }}>Tract {c.tract}</span> <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>pp.{c.pages}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Timeline */}
-        <div style={{ padding: '14px 20px', borderBottom: '1px solid var(--border)' }}>
-          <div
-            style={{ fontWeight: 700, fontSize: '0.85rem', marginBottom: 10, textTransform: 'uppercase', color: 'var(--text-muted)', letterSpacing: '0.5px', cursor: 'pointer' }}
-            onClick={() => toggleItem('cb-timeline')}
-          >
-            Timeline of Events {expandedItems['cb-timeline'] ? '\u25B2' : '\u25BC'}
-          </div>
-          {expandedItems['cb-timeline'] && (
-            <div style={{ position: 'relative', paddingLeft: 20 }}>
-              <div style={{ position: 'absolute', left: 6, top: 0, bottom: 0, width: 2, background: 'var(--border)' }} />
-              {CASE_BRIEF.timeline.map((evt, i) => (
-                <div key={i} style={{ position: 'relative', paddingBottom: 12, paddingLeft: 16 }}>
-                  <div style={{
-                    position: 'absolute', left: -2, top: 4, width: 10, height: 10, borderRadius: '50%',
-                    background: evt.type === 'decision' ? 'var(--danger)' : evt.type === 'producer' ? 'var(--success)' : evt.type === 'stc' ? 'var(--accent)' : 'var(--warning, #f0ad4e)',
-                    border: '2px solid var(--card-bg, #fff)',
-                  }} />
-                  <div style={{ fontSize: '0.78rem', fontWeight: 700, color: evt.type === 'decision' ? 'var(--danger)' : evt.type === 'stc' ? 'var(--accent)' : 'var(--text-muted)' }}>
-                    {evt.date}
-                  </div>
-                  <div style={{ fontSize: '0.84rem', lineHeight: 1.6 }}>{evt.event}</div>
-                </div>
-              ))}
-            </div>
-          )}
-          {!expandedItems['cb-timeline'] && (
-            <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>
-              15 events from contract signup through March 24, 2026 STC hearing. Click to expand.
-            </div>
-          )}
-        </div>
-
-        {/* Issues */}
-        <div style={{ padding: '14px 20px', borderBottom: '1px solid var(--border)' }}>
-          <div style={{ fontWeight: 700, fontSize: '0.85rem', marginBottom: 10, textTransform: 'uppercase', color: 'var(--text-muted)', letterSpacing: '0.5px' }}>
-            Issues for STC Determination ({CASE_BRIEF.issues.length})
-          </div>
-          {CASE_BRIEF.issues.map((issue) => {
-            const isExp = expandedItems['cb-issue-' + issue.num];
-            return (
-              <div key={issue.num} style={{
-                marginBottom: 8, borderRadius: 6, border: '1px solid var(--border)', overflow: 'hidden',
-              }}>
-                <div
-                  style={{
-                    padding: '10px 14px', cursor: 'pointer', display: 'flex', alignItems: 'flex-start', gap: 10,
-                    background: isExp ? 'rgba(var(--danger-rgb, 220,53,69), 0.03)' : 'var(--bg)',
-                  }}
-                  onClick={() => toggleItem('cb-issue-' + issue.num)}
-                >
-                  <span style={{
-                    display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                    width: 24, height: 24, borderRadius: '50%', fontSize: '0.75rem', fontWeight: 800,
-                    background: 'var(--danger)', color: '#fff', flexShrink: 0,
-                  }}>{issue.num}</span>
-                  <div style={{ flex: 1 }}>
-                    <div style={{ fontWeight: 700, fontSize: '0.9rem' }}>{issue.question}</div>
-                    <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: 2 }}>{issue.regulation}</div>
-                  </div>
-                  <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{isExp ? '\u25B2' : '\u25BC'}</span>
-                </div>
-                {isExp && (
-                  <div style={{ padding: '0 14px 14px' }}>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 10 }}>
-                      <div style={{
-                        background: 'rgba(var(--warning-rgb, 240,173,78), 0.06)',
-                        borderLeft: '3px solid var(--warning, #f0ad4e)',
-                        borderRadius: '0 6px 6px 0', padding: '10px 12px',
-                      }}>
-                        <div style={{ fontWeight: 700, fontSize: '0.78rem', color: 'var(--warning, #f0ad4e)', marginBottom: 6, textTransform: 'uppercase' }}>Agency Position (COC)</div>
-                        {issue.agencyPosition.map((p, j) => (
-                          <div key={j} style={{ fontSize: '0.82rem', lineHeight: 1.5, padding: '2px 0', display: 'flex', gap: 6 }}>
-                            <span style={{ color: 'var(--warning, #f0ad4e)', flexShrink: 0, fontWeight: 700 }}>&bull;</span>
-                            <span>{p}</span>
-                          </div>
-                        ))}
-                      </div>
-                      <div style={{
-                        background: 'rgba(var(--accent-rgb, 0,123,255), 0.06)',
-                        borderLeft: '3px solid var(--accent)',
-                        borderRadius: '0 6px 6px 0', padding: '10px 12px',
-                      }}>
-                        <div style={{ fontWeight: 700, fontSize: '0.78rem', color: 'var(--accent)', marginBottom: 6, textTransform: 'uppercase' }}>Appellant Position (Ebright)</div>
-                        {issue.appellantPosition.map((p, j) => (
-                          <div key={j} style={{ fontSize: '0.82rem', lineHeight: 1.5, padding: '2px 0', display: 'flex', gap: 6 }}>
-                            <span style={{ color: 'var(--accent)', flexShrink: 0, fontWeight: 700 }}>&bull;</span>
-                            <span>{p}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    <div style={{
-                      background: 'rgba(var(--danger-rgb, 220,53,69), 0.05)',
-                      borderLeft: '3px solid var(--danger)',
-                      borderRadius: '0 6px 6px 0', padding: '10px 12px', fontSize: '0.84rem', lineHeight: 1.6,
-                    }}>
-                      <strong>Analysis:</strong> {issue.analysis}
-                    </div>
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
-
-        {/* STC Decision Options */}
-        <div style={{ padding: '14px 20px', borderBottom: '1px solid var(--border)' }}>
-          <div style={{ fontWeight: 700, fontSize: '0.85rem', marginBottom: 10, textTransform: 'uppercase', color: 'var(--text-muted)', letterSpacing: '0.5px' }}>
-            STC Decision Options
-          </div>
-          {CASE_BRIEF.stcOptions.map((opt, i) => (
-            <div key={i} style={{
-              marginBottom: 10, padding: '12px 14px', borderRadius: 6,
-              background: i === 0 ? 'rgba(var(--danger-rgb, 220,53,69), 0.04)' : i === 1 ? 'rgba(40, 167, 69, 0.04)' : 'rgba(var(--accent-rgb, 0,123,255), 0.04)',
-              border: `1px solid ${i === 0 ? 'rgba(220,53,69,0.2)' : i === 1 ? 'rgba(40,167,69,0.2)' : 'rgba(0,123,255,0.2)'}`,
-            }}>
-              <div style={{ fontWeight: 700, fontSize: '0.88rem', marginBottom: 6 }}>{opt.option}</div>
-              <div style={{ fontSize: '0.82rem', lineHeight: 1.6, marginBottom: 4 }}><strong>Effect:</strong> {opt.effect}</div>
-              <div style={{ fontSize: '0.82rem', lineHeight: 1.6, marginBottom: 4 }}><strong>Basis:</strong> {opt.basis}</div>
-              <div style={{ fontSize: '0.82rem', lineHeight: 1.6, color: 'var(--danger)' }}><strong>Risk:</strong> {opt.risk}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* Key Evidence */}
         <div style={{ padding: '14px 20px' }}>
-          <div
-            style={{ fontWeight: 700, fontSize: '0.85rem', marginBottom: 10, textTransform: 'uppercase', color: 'var(--text-muted)', letterSpacing: '0.5px', cursor: 'pointer' }}
-            onClick={() => toggleItem('cb-evidence')}
+          <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: 12 }}>
+            Bent County | Contracts 11071, 11075, 11101, 11114, 11115, 11116, 11117 | STC Review
+          </p>
+          <Link
+            to="/appeals/APPEAL-1-2026-EBRIGHT"
+            className="btn btn-primary"
+            style={{ textDecoration: 'none' }}
           >
-            Key Evidence in the Record ({CASE_BRIEF.keyEvidence.length} items) {expandedItems['cb-evidence'] ? '\u25B2' : '\u25BC'}
-          </div>
-          {expandedItems['cb-evidence'] && CASE_BRIEF.keyEvidence.map((ev, i) => (
-            <div key={i} style={{
-              display: 'flex', gap: 10, padding: '8px 0',
-              borderBottom: i < CASE_BRIEF.keyEvidence.length - 1 ? '1px solid var(--border)' : 'none',
-              fontSize: '0.84rem',
-            }}>
-              <span style={{ fontWeight: 700, flexShrink: 0, minWidth: 200 }}>{ev.item}</span>
-              <span style={{ color: 'var(--text-secondary)', lineHeight: 1.5 }}>{ev.note}</span>
-            </div>
-          ))}
+            View full Case Brief →
+          </Link>
         </div>
       </div>
 
@@ -952,6 +694,7 @@ export default function Summary() {
         </div>
         {VOTING_GUIDE.map((item, i) => {
           const expanded = expandedItems['vote-' + item.id];
+          const agendaType = agendaTypeFromTitle(item.title);
           return (
             <div key={item.id} style={{ borderBottom: i < VOTING_GUIDE.length - 1 ? '1px solid var(--border)' : 'none' }}>
               <div
@@ -983,12 +726,12 @@ export default function Summary() {
                     background: 'var(--bg)', borderRadius: 6, padding: '10px 14px',
                     fontSize: '0.85rem', marginBottom: 12, fontStyle: 'italic',
                   }}>
-                    <strong>Motion/Question:</strong> {item.motion}
+                    <strong>Motion/Question:</strong> {renderRefs(item.motion, agendaType)}
                   </div>
 
                   {/* Background */}
                   <div style={{ fontSize: '0.85rem', lineHeight: 1.7, marginBottom: 12 }}>
-                    {item.background}
+                    {renderRefs(item.background, agendaType)}
                   </div>
 
                   {/* Pros & Cons side by side */}
@@ -1003,7 +746,7 @@ export default function Summary() {
                       {item.pros.map((p, j) => (
                         <div key={j} style={{ fontSize: '0.82rem', lineHeight: 1.6, padding: '3px 0', display: 'flex', gap: 6 }}>
                           <span style={{ color: 'var(--success)', flexShrink: 0 }}>+</span>
-                          <span>{p}</span>
+                          <span>{renderRefs(p, agendaType)}</span>
                         </div>
                       ))}
                     </div>
@@ -1017,7 +760,7 @@ export default function Summary() {
                       {item.cons.map((c, j) => (
                         <div key={j} style={{ fontSize: '0.82rem', lineHeight: 1.6, padding: '3px 0', display: 'flex', gap: 6 }}>
                           <span style={{ color: 'var(--danger)', flexShrink: 0 }}>&ndash;</span>
-                          <span>{c}</span>
+                          <span>{renderRefs(c, agendaType)}</span>
                         </div>
                       ))}
                     </div>
@@ -1029,7 +772,7 @@ export default function Summary() {
                     borderLeft: '3px solid var(--accent)',
                     borderRadius: '0 6px 6px 0', padding: '10px 14px', fontSize: '0.85rem',
                   }}>
-                    <strong>Analysis:</strong> {item.recommendation}
+                    <strong>Analysis:</strong> {renderRefs(item.recommendation, agendaType)}
                   </div>
                 </div>
               )}

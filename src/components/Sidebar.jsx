@@ -4,7 +4,7 @@ import { useAuth } from '../auth/AuthContext';
 
 const memberLinks = [
   { to: '/', label: 'Dashboard', icon: '▣' },
-  { to: '/summary', label: 'Summary of Events', icon: '📋' },
+  { to: '/summary', label: 'Meeting Agenda', icon: '📋' },
   { to: '/meetings', label: 'Meetings', icon: '📅' },
   { to: '/journal', label: 'Journal', icon: '✎' },
   { to: '/documents', label: 'Documents', icon: '📄' },
