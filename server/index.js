@@ -54,33 +54,44 @@ app.use('/api/calendar', calendarRouter);
 app.use('/api/issues', issuesRouter);
 app.use('/api/nct', nctRouter);
 
-// Dashboard stats
+// Dashboard stats. Expense data (even $0.00) is admin-only; members get a
+// response with expenseSummary and totals.expenses omitted. Defense in depth —
+// UI also hides the tile on the client.
 app.get('/api/dashboard', async (req, res) => {
   try {
     const recentEntries = await all('SELECT id, title, date, location, tags FROM entries ORDER BY created_at DESC LIMIT 5');
     const recentDocs = await all('SELECT id, original_name, file_type, created_at FROM documents ORDER BY created_at DESC LIMIT 5');
 
+    const isAdmin = req.user?.role === 'admin';
+
     const now = new Date();
     const monthStart = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-01`;
-    const expenseSummary = await get(
-      'SELECT COUNT(*) as count, COALESCE(SUM(amount), 0) as total FROM expenses WHERE date >= ?',
-      [monthStart]
-    );
+    const expenseSummary = isAdmin
+      ? await get(
+          'SELECT COUNT(*) as count, COALESCE(SUM(amount), 0) as total FROM expenses WHERE date >= ?',
+          [monthStart]
+        )
+      : null;
 
     const totalEntries = await get('SELECT COUNT(*) as count FROM entries');
     const totalDocs = await get('SELECT COUNT(*) as count FROM documents');
-    const totalExpenses = await get('SELECT COUNT(*) as count FROM expenses');
+    const totalExpenses = isAdmin ? await get('SELECT COUNT(*) as count FROM expenses') : null;
 
-    res.json({
+    const payload = {
       recentEntries,
       recentDocs,
-      expenseSummary: expenseSummary || { count: 0, total: 0 },
       totals: {
         entries: totalEntries?.count || 0,
-        documents: totalDocs?.count || 0,
-        expenses: totalExpenses?.count || 0
+        documents: totalDocs?.count || 0
       }
-    });
+    };
+
+    if (isAdmin) {
+      payload.expenseSummary = expenseSummary || { count: 0, total: 0 };
+      payload.totals.expenses = totalExpenses?.count || 0;
+    }
+
+    res.json(payload);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
