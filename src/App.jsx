@@ -41,8 +41,8 @@ function LoginScreen() {
   return (
     <div className="login-screen">
       <div className="login-card">
-        <h1 className="login-title">Kyle McConnell</h1>
-        <p className="login-subtitle">CO STC</p>
+        <h1 className="login-title">STC Colorado 2026</h1>
+        <p className="login-subtitle">State Technical Committee</p>
         <button className="btn btn-primary login-btn" onClick={login}>
           Sign in with Microsoft
         </button>
