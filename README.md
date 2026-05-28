@@ -65,13 +65,30 @@ by default).
 
 All env vars are documented inline in `.env.example`. Short summary:
 
-| Variable | Purpose |
-|---|---|
-| `PORT`, `HOST` | Server bind |
-| `DATA_DIR` (optional), `SQLITE_PATH` (optional), `UPLOADS_DIR` (optional) | Data persistence paths — unset = `server/data/` for local dev |
-| `MICROSOFT_TENANT_ID`, `MICROSOFT_CLIENT_ID`, `MICROSOFT_CLIENT_SECRET` | Server-side Entra + Graph |
-| `VITE_MICROSOFT_TENANT_ID`, `VITE_MICROSOFT_CLIENT_ID` | Client-side MSAL (same values, `VITE_` prefix for browser exposure) |
-| `SHAREPOINT_SITE_URL`, `SHAREPOINT_LIBRARY`, `SHAREPOINT_WATCH_FOLDER` | Microsoft Graph document sync |
+| Variable | Purpose | When read |
+|---|---|---|
+| `PORT`, `HOST` | Server bind | runtime |
+| `DATA_DIR` (optional), `SQLITE_PATH` (optional), `UPLOADS_DIR` (optional), `EXHIBITS_DIR` (optional) | Data persistence paths — unset = `server/data/` for local dev | runtime |
+| `MICROSOFT_TENANT_ID`, `MICROSOFT_CLIENT_ID`, `MICROSOFT_CLIENT_SECRET` | Server-side Entra + Graph | runtime |
+| `SHAREPOINT_SITE_URL`, `SHAREPOINT_LIBRARY`, `SHAREPOINT_WATCH_FOLDER`, `MEMBER_DOCS_ROOT` | Microsoft Graph document sync | runtime |
+| `VITE_MICROSOFT_TENANT_ID`, `VITE_MICROSOFT_CLIENT_ID` | Client-side MSAL (same values, `VITE_` prefix for browser exposure) | **build time** |
+| `VITE_ES_PACKET_URL`, `VITE_RS_PACKET_URL`, `VITE_EXHIBIT_{1,2,5}_URL` | Clickable session packet + exhibit links on the Summary page | **build time** |
+
+The MSAL redirect URI is not an env var — it is derived at runtime from
+`window.location.origin` and must be registered in the Azure App Registration
+(see `src/auth/msalConfig.js`).
+
+### Deploying VITE_* changes
+
+`VITE_*` vars are read from the Render dashboard at build time and baked
+into the client bundle by `npm run build`. To set or change one:
+
+1. Update the value in the Render dashboard (Environment tab).
+2. Trigger **Clear build cache & deploy** from the dashboard.
+
+A plain restart will not pick up new `VITE_*` values — the existing bundle
+still has the old ones compiled in. If a `VITE_*` URL is unset, the Summary
+page packet/exhibit links silently render as non-clickable.
 
 Secret values never appear in the repo, screenshots, logs, chat transcripts,
 or export packages. If a secret leaks, rotate in the owning console:
@@ -118,6 +135,11 @@ required to add/remove members after that ships.
 SQLite and uploaded files live under `DATA_DIR`. In production this is the
 mounted Render disk at `/var/data`. The disk survives deploys; files in the
 app's unmounted directories do not.
+
+**Do not** point `DATA_DIR` (or any of `SQLITE_PATH`, `UPLOADS_DIR`,
+`EXHIBITS_DIR`) to a path outside `/var/data` on Render — anything outside
+the mount is on ephemeral container storage and will be wiped on every
+deploy, taking the SQLite DB with it.
 
 Backup strategy: not yet implemented. Tracked as future work.
 
