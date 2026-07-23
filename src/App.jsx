@@ -83,7 +83,8 @@ export default function App() {
           <Route path="/roberts-rules" element={<RobertsRules />} />
           <Route path="/cost-share-rates" element={<CostShareRates />} />
           <Route path="/appeals-training" element={<AppealsTraining />} />
-          <Route path="/appeals/*" element={<Appeals />} />
+          <Route path="/appeals" element={<Appeals />} />
+          <Route path="/appeals/*" element={<Navigate to="/appeals" replace />} />
           <Route path="/appeals-tracker" element={<Navigate to="/appeals" replace />} />
           <Route path="/search" element={<Search />} />
           <Route path="/settings" element={<Settings />} />
