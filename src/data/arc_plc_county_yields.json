@@ -2,13 +2,19 @@
   "_notes": [
     "Colorado county yield history for ARC/PLC covered commodities.",
     "Values are bushels per acre (bu/ac) for grains/oilseeds; pounds per acre (lb/ac) for sunflower; hundredweight per acre (cwt/ac) for peanuts and rice.",
-    "PENDING FULL FSA IMPORT — populate from FSA county-yield data (https://www.fsa.usda.gov/programs-and-services/economic-and-policy-analysis/).",
-    "Included below: statewide (Colorado) NASS-reported average yields for winter wheat and corn as a reference trend line. County-level values are placeholders until FSA data is imported.",
-    "Schema: { county: string, commodity: string, unit: string, years: { [YYYY]: number|null } }. null = data not yet imported."
+    "STATE-LEVEL Colorado winter wheat 2014-2024 verified from NASS-cited news sources (Kiowa County Press, Morning Ag Clips, Colorado Wheat, NASS news releases). County-level and other commodities await FSA/NASS bulk import.",
+    "WebFetch to fsa.usda.gov and nass.usda.gov is HTTP 403 in this environment. Bulk county import requires either (a) downloading NASS Colorado Annual Statistical Bulletins as local files, or (b) exporting FSA ARC-CO county yield Excel files. Both routes documented below.",
+    "Schema: { county: string, commodity: string, unit: string, years: { [YYYY]: number|null }, source?: string }. null = data not yet imported."
   ],
   "_populate_from": {
-    "county_yields": "FSA — ARC-CO county yields data files (Excel/CSV) by crop year at fsa.usda.gov",
-    "state_yields": "NASS QuickStats (nass.usda.gov/Quick_Stats) — filter by Colorado, commodity, harvested yield"
+    "county_yields_primary": "FSA — ARC-CO county yields (Excel/CSV) at fsa.usda.gov/resources/programs/arc-plc/program-data — has NASS + RMA cascade + STC-determined values used in the actual ARC-CO payment calc",
+    "state_and_county_reference": "NASS QuickStats (quickstats.nass.usda.gov) — filter Colorado, commodity, harvested yield",
+    "annual_bulletins": [
+      "https://www.nass.usda.gov/Statistics_by_State/Colorado/Publications/Annual_Statistical_Bulletin/Bulletin2024.pdf (2020-2023 county tables)",
+      "https://www.nass.usda.gov/Statistics_by_State/Colorado/Publications/Annual_Statistical_Bulletin/Bulletin2022.pdf",
+      "https://www.nass.usda.gov/Statistics_by_State/Colorado/Publications/Annual_Statistical_Bulletin/Bulletin2020.pdf",
+      "Earlier bulletins available at same directory back to 2014"
+    ]
   },
   "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024],
   "series": [
@@ -16,15 +22,15 @@
       "county": "Colorado (State)",
       "commodity": "Winter Wheat",
       "unit": "bu/ac",
-      "source": "NASS — Colorado all-wheat harvested yield",
-      "years": { "2014": 38, "2015": 33, "2016": 36, "2017": 39, "2018": 33, "2019": 43, "2020": 34, "2021": 34, "2022": 25, "2023": 38, "2024": 41 }
+      "source": "NASS Colorado — verified from NASS annual production reports and Colorado Wheat / Kiowa County Press summaries. 2019 was the state record at 49 bu/ac (1 bu above prior 2016 record).",
+      "years": { "2014": 36, "2015": 37, "2016": 48, "2017": 43, "2018": 36, "2019": 49, "2020": 38, "2021": 34, "2022": 25, "2023": 41, "2024": 41 }
     },
     {
       "county": "Colorado (State)",
       "commodity": "Corn (all)",
       "unit": "bu/ac",
-      "source": "NASS — Colorado corn for grain yield",
-      "years": { "2014": 150, "2015": 133, "2016": 156, "2017": 156, "2018": 155, "2019": 152, "2020": 156, "2021": 152, "2022": 132, "2023": 175, "2024": 167 }
+      "source": "PENDING NASS bulk import — WebFetch to NASS blocked in this environment. Populate from NASS QuickStats or Annual Statistical Bulletin.",
+      "years": { "2014": null, "2015": null, "2016": null, "2017": null, "2018": null, "2019": null, "2020": null, "2021": null, "2022": null, "2023": null, "2024": null }
     },
     { "county": "Weld",        "commodity": "Corn (Irrigated)",   "unit": "bu/ac", "years": { "2014": null, "2015": null, "2016": null, "2017": null, "2018": null, "2019": null, "2020": null, "2021": null, "2022": null, "2023": null, "2024": null } },
     { "county": "Weld",        "commodity": "Winter Wheat",       "unit": "bu/ac", "years": { "2014": null, "2015": null, "2016": null, "2017": null, "2018": null, "2019": null, "2020": null, "2021": null, "2022": null, "2023": null, "2024": null } },
