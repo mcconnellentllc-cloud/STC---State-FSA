@@ -20,6 +20,7 @@ import AppealsTraining from './pages/AppealsTraining';
 import Appeals from './pages/Appeals';
 import BoardMeetings from './pages/BoardMeetings';
 import BoardActions from './pages/BoardActions';
+import ArcPlc from './pages/ArcPlc';
 
 function LoginScreen() {
   const { login, error } = useAuth();
@@ -91,6 +92,7 @@ export default function App() {
           <Route path="/board-meetings" element={<BoardMeetings />} />
           <Route path="/board-meetings/:date" element={<BoardMeetings />} />
           <Route path="/board-actions" element={<BoardActions />} />
+          <Route path="/arc-plc" element={<ArcPlc />} />
           <Route path="/search" element={<Search />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/auth/callback" element={<AuthCallback />} />

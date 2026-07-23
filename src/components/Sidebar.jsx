@@ -3,26 +3,27 @@ import { NavLink } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
 
 const mainLinks = [
-  { to: '/', label: 'Dashboard', icon: '\u25A3' },
-  { to: '/summary', label: 'Summary of Events', icon: '\uD83D\uDCCB' },
-  { to: '/meetings', label: 'Meetings (Calendar)', icon: '\uD83D\uDCC5' },
-  { to: '/board-meetings', label: 'Board Meetings', icon: '\uD83C\uDFDB' },
-  { to: '/board-actions', label: 'Board Actions', icon: '\u2713' },
-  { to: '/journal', label: 'Journal', icon: '\u270E' },
-  { to: '/documents', label: 'Documents', icon: '\uD83D\uDCC4' },
-  { to: '/expenses', label: 'Expenses', icon: '\uD83D\uDCB2' },
-  { to: '/issues', label: 'County Issues', icon: '\u26A0' },
-  { to: '/appeals', label: 'Appeals', icon: '\u2696\uFE0F' },
-  { to: '/cost-share-rates', label: 'Cost Share Rates', icon: '\u0024' },
+  { to: '/', label: 'Dashboard', icon: '▣' },
+  { to: '/summary', label: 'Summary of Events', icon: '📋' },
+  { to: '/meetings', label: 'Meetings (Calendar)', icon: '📅' },
+  { to: '/board-meetings', label: 'Board Meetings', icon: '🏛' },
+  { to: '/board-actions', label: 'Board Actions', icon: '✓' },
+  { to: '/journal', label: 'Journal', icon: '✎' },
+  { to: '/documents', label: 'Documents', icon: '📄' },
+  { to: '/expenses', label: 'Expenses', icon: '💲' },
+  { to: '/issues', label: 'County Issues', icon: '⚠' },
+  { to: '/appeals', label: 'Appeals', icon: '⚖️' },
+  { to: '/cost-share-rates', label: 'Cost Share Rates', icon: '$' },
+  { to: '/arc-plc', label: 'ARC / PLC', icon: '🌾' },
 ];
 
 const toolLinks = [
-  { to: '/contacts', label: 'Committee & Contacts', icon: '\uD83D\uDC65' },
-  { to: '/ethics', label: 'Ethics & OGE 450', icon: '\uD83D\uDCDD', external: true },
-  { to: '/appeals-training', label: 'Appeals Training', icon: '\u2696' },
-  { to: '/roberts-rules', label: 'Roberts Rules', icon: '\u00A7' },
-  { to: '/search', label: 'Search', icon: '\uD83D\uDD0D' },
-  { to: '/settings', label: 'Settings', icon: '\u2699' },
+  { to: '/contacts', label: 'Committee & Contacts', icon: '👥' },
+  { to: '/ethics', label: 'Ethics & OGE 450', icon: '📝', external: true },
+  { to: '/appeals-training', label: 'Appeals Training', icon: '⚖' },
+  { to: '/roberts-rules', label: 'Roberts Rules', icon: '§' },
+  { to: '/search', label: 'Search', icon: '🔍' },
+  { to: '/settings', label: 'Settings', icon: '⚙' },
 ];
 
 export default function Sidebar() {

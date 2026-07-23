@@ -1,0 +1,59 @@
+{
+  "_notes": [
+    "Colorado county yield history for ARC/PLC covered commodities.",
+    "Values are bushels per acre (bu/ac) for grains/oilseeds; pounds per acre (lb/ac) for sunflower; hundredweight per acre (cwt/ac) for peanuts and rice.",
+    "PENDING FULL FSA IMPORT — populate from FSA county-yield data (https://www.fsa.usda.gov/programs-and-services/economic-and-policy-analysis/).",
+    "Included below: statewide (Colorado) NASS-reported average yields for winter wheat and corn as a reference trend line. County-level values are placeholders until FSA data is imported.",
+    "Schema: { county: string, commodity: string, unit: string, years: { [YYYY]: number|null } }. null = data not yet imported."
+  ],
+  "_populate_from": {
+    "county_yields": "FSA — ARC-CO county yields data files (Excel/CSV) by crop year at fsa.usda.gov",
+    "state_yields": "NASS QuickStats (nass.usda.gov/Quick_Stats) — filter by Colorado, commodity, harvested yield"
+  },
+  "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024],
+  "series": [
+    {
+      "county": "Colorado (State)",
+      "commodity": "Winter Wheat",
+      "unit": "bu/ac",
+      "source": "NASS — Colorado all-wheat harvested yield",
+      "years": { "2014": 38, "2015": 33, "2016": 36, "2017": 39, "2018": 33, "2019": 43, "2020": 34, "2021": 34, "2022": 25, "2023": 38, "2024": 41 }
+    },
+    {
+      "county": "Colorado (State)",
+      "commodity": "Corn (all)",
+      "unit": "bu/ac",
+      "source": "NASS — Colorado corn for grain yield",
+      "years": { "2014": 150, "2015": 133, "2016": 156, "2017": 156, "2018": 155, "2019": 152, "2020": 156, "2021": 152, "2022": 132, "2023": 175, "2024": 167 }
+    },
+    { "county": "Weld",        "commodity": "Corn (Irrigated)",   "unit": "bu/ac", "years": { "2014": null, "2015": null, "2016": null, "2017": null, "2018": null, "2019": null, "2020": null, "2021": null, "2022": null, "2023": null, "2024": null } },
+    { "county": "Weld",        "commodity": "Winter Wheat",       "unit": "bu/ac", "years": { "2014": null, "2015": null, "2016": null, "2017": null, "2018": null, "2019": null, "2020": null, "2021": null, "2022": null, "2023": null, "2024": null } },
+    { "county": "Weld",        "commodity": "Dry Peas",           "unit": "lb/ac", "years": { "2014": null, "2015": null, "2016": null, "2017": null, "2018": null, "2019": null, "2020": null, "2021": null, "2022": null, "2023": null, "2024": null } },
+    { "county": "Yuma",        "commodity": "Corn (Irrigated)",   "unit": "bu/ac", "years": { "2014": null, "2015": null, "2016": null, "2017": null, "2018": null, "2019": null, "2020": null, "2021": null, "2022": null, "2023": null, "2024": null } },
+    { "county": "Yuma",        "commodity": "Winter Wheat",       "unit": "bu/ac", "years": { "2014": null, "2015": null, "2016": null, "2017": null, "2018": null, "2019": null, "2020": null, "2021": null, "2022": null, "2023": null, "2024": null } },
+    { "county": "Yuma",        "commodity": "Sunflower Seed",     "unit": "lb/ac", "years": { "2014": null, "2015": null, "2016": null, "2017": null, "2018": null, "2019": null, "2020": null, "2021": null, "2022": null, "2023": null, "2024": null } },
+    { "county": "Kit Carson",  "commodity": "Winter Wheat",       "unit": "bu/ac", "years": { "2014": null, "2015": null, "2016": null, "2017": null, "2018": null, "2019": null, "2020": null, "2021": null, "2022": null, "2023": null, "2024": null } },
+    { "county": "Kit Carson",  "commodity": "Corn (Irrigated)",   "unit": "bu/ac", "years": { "2014": null, "2015": null, "2016": null, "2017": null, "2018": null, "2019": null, "2020": null, "2021": null, "2022": null, "2023": null, "2024": null } },
+    { "county": "Washington",  "commodity": "Winter Wheat",       "unit": "bu/ac", "years": { "2014": null, "2015": null, "2016": null, "2017": null, "2018": null, "2019": null, "2020": null, "2021": null, "2022": null, "2023": null, "2024": null } },
+    { "county": "Washington",  "commodity": "Corn (Irrigated)",   "unit": "bu/ac", "years": { "2014": null, "2015": null, "2016": null, "2017": null, "2018": null, "2019": null, "2020": null, "2021": null, "2022": null, "2023": null, "2024": null } },
+    { "county": "Baca",        "commodity": "Winter Wheat",       "unit": "bu/ac", "years": { "2014": null, "2015": null, "2016": null, "2017": null, "2018": null, "2019": null, "2020": null, "2021": null, "2022": null, "2023": null, "2024": null } },
+    { "county": "Baca",        "commodity": "Grain Sorghum",      "unit": "bu/ac", "years": { "2014": null, "2015": null, "2016": null, "2017": null, "2018": null, "2019": null, "2020": null, "2021": null, "2022": null, "2023": null, "2024": null } },
+    { "county": "Prowers",     "commodity": "Winter Wheat",       "unit": "bu/ac", "years": { "2014": null, "2015": null, "2016": null, "2017": null, "2018": null, "2019": null, "2020": null, "2021": null, "2022": null, "2023": null, "2024": null } },
+    { "county": "Prowers",     "commodity": "Grain Sorghum",      "unit": "bu/ac", "years": { "2014": null, "2015": null, "2016": null, "2017": null, "2018": null, "2019": null, "2020": null, "2021": null, "2022": null, "2023": null, "2024": null } },
+    { "county": "Kiowa",       "commodity": "Winter Wheat",       "unit": "bu/ac", "years": { "2014": null, "2015": null, "2016": null, "2017": null, "2018": null, "2019": null, "2020": null, "2021": null, "2022": null, "2023": null, "2024": null } },
+    { "county": "Kiowa",       "commodity": "Grain Sorghum",      "unit": "bu/ac", "years": { "2014": null, "2015": null, "2016": null, "2017": null, "2018": null, "2019": null, "2020": null, "2021": null, "2022": null, "2023": null, "2024": null } },
+    { "county": "Cheyenne",    "commodity": "Winter Wheat",       "unit": "bu/ac", "years": { "2014": null, "2015": null, "2016": null, "2017": null, "2018": null, "2019": null, "2020": null, "2021": null, "2022": null, "2023": null, "2024": null } },
+    { "county": "Lincoln",     "commodity": "Winter Wheat",       "unit": "bu/ac", "years": { "2014": null, "2015": null, "2016": null, "2017": null, "2018": null, "2019": null, "2020": null, "2021": null, "2022": null, "2023": null, "2024": null } },
+    { "county": "Logan",       "commodity": "Winter Wheat",       "unit": "bu/ac", "years": { "2014": null, "2015": null, "2016": null, "2017": null, "2018": null, "2019": null, "2020": null, "2021": null, "2022": null, "2023": null, "2024": null } },
+    { "county": "Logan",       "commodity": "Corn (Irrigated)",   "unit": "bu/ac", "years": { "2014": null, "2015": null, "2016": null, "2017": null, "2018": null, "2019": null, "2020": null, "2021": null, "2022": null, "2023": null, "2024": null } },
+    { "county": "Logan",       "commodity": "Dry Peas",           "unit": "lb/ac", "years": { "2014": null, "2015": null, "2016": null, "2017": null, "2018": null, "2019": null, "2020": null, "2021": null, "2022": null, "2023": null, "2024": null } },
+    { "county": "Phillips",    "commodity": "Corn (Irrigated)",   "unit": "bu/ac", "years": { "2014": null, "2015": null, "2016": null, "2017": null, "2018": null, "2019": null, "2020": null, "2021": null, "2022": null, "2023": null, "2024": null } },
+    { "county": "Phillips",    "commodity": "Winter Wheat",       "unit": "bu/ac", "years": { "2014": null, "2015": null, "2016": null, "2017": null, "2018": null, "2019": null, "2020": null, "2021": null, "2022": null, "2023": null, "2024": null } },
+    { "county": "Sedgwick",    "commodity": "Corn (Irrigated)",   "unit": "bu/ac", "years": { "2014": null, "2015": null, "2016": null, "2017": null, "2018": null, "2019": null, "2020": null, "2021": null, "2022": null, "2023": null, "2024": null } },
+    { "county": "Sedgwick",    "commodity": "Winter Wheat",       "unit": "bu/ac", "years": { "2014": null, "2015": null, "2016": null, "2017": null, "2018": null, "2019": null, "2020": null, "2021": null, "2022": null, "2023": null, "2024": null } },
+    { "county": "Alamosa",     "commodity": "Barley",             "unit": "bu/ac", "years": { "2014": null, "2015": null, "2016": null, "2017": null, "2018": null, "2019": null, "2020": null, "2021": null, "2022": null, "2023": null, "2024": null } },
+    { "county": "Alamosa",     "commodity": "Oats",               "unit": "bu/ac", "years": { "2014": null, "2015": null, "2016": null, "2017": null, "2018": null, "2019": null, "2020": null, "2021": null, "2022": null, "2023": null, "2024": null } },
+    { "county": "Rio Grande",  "commodity": "Barley",             "unit": "bu/ac", "years": { "2014": null, "2015": null, "2016": null, "2017": null, "2018": null, "2019": null, "2020": null, "2021": null, "2022": null, "2023": null, "2024": null } },
+    { "county": "Saguache",    "commodity": "Barley",             "unit": "bu/ac", "years": { "2014": null, "2015": null, "2016": null, "2017": null, "2018": null, "2019": null, "2020": null, "2021": null, "2022": null, "2023": null, "2024": null } }
+  ]
+}
