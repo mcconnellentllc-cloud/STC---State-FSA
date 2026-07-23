@@ -125,13 +125,139 @@ NOTES:
 (Live notes will be added during the training session)`,
   },
   {
-    id: 'april-stc-meeting',
+    id: 'july-23-stc-meeting',
     pinned: true,
-    date: '2026-04-TBD',
-    title: 'STC Meeting — April 2026',
-    location: 'Virtual / Zoom (no travel authorized)',
+    date: '2026-07-23',
+    title: 'STC Meeting — July 23, 2026',
+    location: 'Virtual Meeting via Teams · (970) 812-0909 ID: 434618184#',
+    tags: 'meeting, STC, july, ARC-PLC, CRP, ECP, NAP, NCT, action-items',
+    source: 'Anticipated — July 23, 2026 (packets parsed 07/15)',
+    content: `COLORADO STC MEETING — JULY 23, 2026
+Regular Session convenes 9:00 AM · Executive Session 10:30 AM
+Guests: None scheduled · Recusals: None in the July 23 record
+
+─────────────────────────────────────────────
+COMMITTEE MEMBERS (from June 24, 2026 minutes)
+─────────────────────────────────────────────
+· Don Brown, Chairperson
+· Kyle McConnell
+· Steve Raftopoulos
+· Joe Petrocco
+· Darrell Mackey
+(Project references "six STC members" — sixth not enumerated in available sources.)
+
+═════════════════════════════════════════════
+REGULAR SESSION — 9:00 AM
+═════════════════════════════════════════════
+
+1. Call to Order
+2. Approve Regular Session Minutes — June 25, 2026  [Cindy Vukasin] (ACTION)
+   ⚠ Agenda cites Jun 25; corpus contains Jun 24 minutes — confirm date.
+3. State Executive Director Report (10 min) — Jerry Sonnenberg (oral + written)
+4. District Director Reports (20 min)
+   D1 Scott Brase · D2 Jon Weishaar (oral) · D3 Woody Woods · D4 Sam Montoya
+5. Senior Leadership Reports (10 min)
+   Kim Lacy (Acting FL Chief) · Cindy Vukasin & Corey Pelton (FP Chiefs) · Jon Weishaar (DSED, oral)
+6. ARC/PLC — 2025 DAFP Yield Solicitation (30 min) — Doug Andresen  [ACTION]
+   Approve missing 2025 county yields as presented (corn, flaxseed, grain sorghum,
+   peanuts, sunflower seed; Exhibit 1 also includes soybeans).
+   Authority: 1-ARCPLC ¶134; benchmark = Olympic average of 5 crop years 2019-2023.
+7. State Committee Field Discussion Update
+8. Adjourn Regular Session
+
+═════════════════════════════════════════════
+EXECUTIVE SESSION — 10:30 AM
+═════════════════════════════════════════════
+
+1. Call to Order
+2. Approve Executive Session Minutes — June 25, 2026  [Cindy Vukasin] (ACTION)
+3. CRP — Cost Share Increase — Baca County — Schroder Red Angus (10 min) — Hunter Cleveland  [ACTION]
+   Contract 12006 · Tract 6810 · 125.94 ac · Grassland CRP Signup 203 · signed 08/04/2021
+   Component COCRP6577 (Water Well >300-600 ft), extent 400 ft
+   FY2022 max payable: $19.50/ft (100% = $39.00/ft) → cost share requested at that rate = $7,800.00
+   Actual: $107.07/ft · $42,828.66 total
+   STO recommends increased rate of $107/ft; recommend to DAFP
+   Authority: 2-CRP (Rev. 6) ¶509
+   ⚠ Cost-figure discrepancy: DR says $42,828.66; COC letter (scanned) says "roughly $46,668.00 on the well alone" — reconcile before vote.
+
+4a. ECP — Rio Blanco — Eleanor Carter (10 min) — Hunter Cleveland  [ACTION]
+    Disaster: Elk Fire (14,518 ac) + Lee Fire (137,755 ac), both 08/02/2025, lightning
+    Rio Blanco COC convened 06/04/2026; STC recommends approval to DAFP
+    Authority: Notice ECP-101 (≤$250K COC / $250,001-$400K STC / >$400K ECP-PM)
+
+4b. ECP — Rio Blanco — Mike Lopez (10 min) — Hunter Cleveland  [ACTION]
+    Same disaster basis and authority as 4a.
+
+5a. NAP — NCT General Pricing Guidelines for Fg crops (10 min) — Janae Rader  [ACTION]
+    Set guide/standard on Fg pricing.
+    AMP = Olympic average of 5 most recent crop years; benchmark NASS CO (CASS)
+    all-other-hay price $165.00 (2024). Alfalfa & AGM stay on RMA forage policy.
+
+5b. NAP — 2027 NCT Colorado (10 min) — Janae Rader  [ACTION]
+    Accept 2027 NCT data as presented for each crop (unless flagged):
+    · Apples (0054)     · Apricots (0326)   · Cherries (0128)    · Garlic (0423)
+    · Grapes (0053)     · Honey (1190)      · Hops (0138)        · Peaches (0034)
+    · Pears (0144)      · Triticale (0158) [multiple STC changes — see index]
+    ⚠ Cherries DR body says code 1028 (vs 0128 in header/tables) — flag NAP-CHERRY-CODE
+    ⚠ Grapes DR says "44 types of Cherries" (should read Grapes) — flag NAP-GRAPE-TYPO
+    ⚠ Hops DR dated 08.05.25, references 2026 record, no explicit action line — flag NAP-HOPS-DR
+
+5c. NAP — New Crop Request — Las Animas — Beans PNT De Ir (5 min) — Janae Rader  [ACTION]
+    Add Beans-pinto (PNT), dry edible (De), irrigated (Ir) for 2026+ in Las Animas (code 0047)
+    STO recommends: PP 0.63 · UH 0.80 · organic 0.65 · trans 0.65 · FPD 06/20 · NHD 10/31 · ACD 03/15
+    Yields: 2021 1079 · 2022 1079 · 2023 1079 · 2024 1179 · 2025 1179
+    AMP: $0.28/lb conventional & transitional; $0.56/lb organic (= RMA/FCIC)
+    COC requested PP 0.50; STO leaves 0.63 (COC 0.50 appears based on RMA PP coverage level, not a PP factor).
+
+5d. NAP — Annual grasses RAN & SUD — PP, UH, FPD (5 min) — Janae Rader  [ACTION]
+    SUD: PP 0.50 / UH 0.75 (Fg) · PP 0.50 / UH 1.00 (Gz) · FPD 6/15 or 07/15 by county
+    RAN: PP 0.77 / UH 0.93 (Fg) · PP 0.77 / UH 1.00 (Gz) · FPD 10/15 (16 counties)
+    Origin: Dolores County COC requested FPD for Sudan.
+
+5e. NAP Concern — Montezuma — Memo to STC — Cindy Vukasin  (DISCUSSION)
+    Montezuma COC requests review of CEY / Carrying-Capacity methodology.
+    Background: NCT software uses last 7 years, Olympic average of last 5.
+
+6. Adjourn Executive Session
+
+─────────────────────────────────────────────
+PRE-MEETING ACTION ITEMS
+─────────────────────────────────────────────
+
+□ Review Executive Session Packet — 476 pages (Discussion Records are all text-searchable; 217 pages of supporting exhibits are scanned images requiring OCR)
+□ Review Regular Session Packet — 28 pages
+□ Review SED July report (separate 3-page file)
+□ Review 2026 LFP Triggered Counties list (12 pp)
+□ Confirm minutes date (June 24 vs June 25, 2026) with Cindy Vukasin before item 2
+
+─────────────────────────────────────────────
+DATA-QUALITY FLAGS TO RAISE
+─────────────────────────────────────────────
+
+1. Baca/Schroder CRP cost figures — DR $42,828.66 vs COC letter "~$46,668.00" — need reconciliation before vote (item 3)
+2. Cherries crop code — DR body 1028 vs header/tables 0128 (item 5b Cherries)
+3. Grapes DR typo — "44 types of Cherries" should read Grapes (item 5b Grapes)
+4. Hops DR — dated 08.05.25, references 2026 record, sits in 2027 packet, no explicit action line (item 5b Hops)
+5. Two inserted exhibits (Montezuma minutes Feb 3, 2026 at pp.328-355; closing-date review pp.356-360) — not itemized on July 23 agenda at those locations
+6. Prior minutes date mismatch (June 25 on agenda vs June 24 in corpus)
+
+─────────────────────────────────────────────
+DATA FILES ON SITE
+─────────────────────────────────────────────
+
+· src/data/meeting_2026-07-23_shell.json — agenda + guests + recusals
+· src/data/meeting_2026-07-23_index.json — full packet index, key facts, OCR queue
+
+(Live notes will be added during the meeting.)`,
+  },
+  {
+    id: 'april-stc-meeting',
+    pinned: false,
+    date: '2026-04-23',
+    title: 'STC Meeting — April 23, 2026 (past)',
+    location: 'Virtual / Zoom',
     tags: 'meeting, STC, april, CRP, EFRP, cost-share, appeals',
-    source: 'Upcoming — April 2026',
+    source: 'Anticipated — April 2026',
     content: `COLORADO STC MEETING — APRIL 2026
 (Date TBD — will update when scheduled)
 

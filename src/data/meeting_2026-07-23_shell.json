@@ -1,0 +1,43 @@
+{
+  "_notes": [
+    "Sourced from the July 23, 2026 Regular & Executive agendas and packets (parsed). No values inferred.",
+    "Two session start times: Regular Session convenes 09:00 AM; Executive Session convenes 10:30 AM. Top-level startTime is set to the meeting open (09:00 AM).",
+    "Both agendas state 'Guests: None Scheduled' -> guests=[]. No recusals are recorded in the July 23 materials -> recusals=[]. (Project notes elsewhere reference a Raptopoulos/Appeal 2 recusal, but that is NOT in the July 23 record and is not asserted here.)",
+    "No appeal-type agenda items appear on either July 23 agenda. The Appeal 1/3/4 case files in the project are not scheduled on this meeting's agenda as parsed."
+  ],
+  "meetingDate": "2026-07-23",
+  "startTime": "09:00 AM",
+  "location": "Virtual Meeting via Teams",
+  "phoneConference": "(970) 812-0909  ID: 434618184#",
+  "sessions": ["Regular Session", "Executive Session"],
+  "agenda": [
+    { "session": "Regular", "num": "1", "title": "Call to Order", "type": "procedural", "presenter": "", "timeMin": 0 },
+    { "session": "Regular", "num": "2", "title": "Approve Regular Session Minutes — June 25, 2026", "type": "action", "presenter": "Cindy Vukasin, Farm Program Chief", "timeMin": 0 },
+    { "session": "Regular", "num": "3", "title": "State Executive Director Report (Oral and Written — separate file)", "type": "report", "presenter": "Jerry Sonnenberg, State Executive Director", "timeMin": 10 },
+    { "session": "Regular", "num": "4", "title": "District Director Report", "type": "report", "presenter": "Scott Brase (D1); Jon Weishaar (D2, Oral); Woody Woods (D3); Sam Montoya (D4)", "timeMin": 20 },
+    { "session": "Regular", "num": "5", "title": "Senior Leadership Reports", "type": "report", "presenter": "Kim Lacy (Acting Farm Loan Chief); Cindy Vukasin & Corey Pelton (Farm Program Chiefs); Jon Weishaar (Deputy SED, Oral)", "timeMin": 10 },
+    { "session": "Regular", "num": "6", "title": "ARC/PLC — 2025 DAFP Yield Solicitation", "type": "action", "presenter": "Doug Andresen, Farm Program Specialist", "timeMin": 30 },
+    { "session": "Regular", "num": "7", "title": "State Committee Field Discussion update", "type": "discussion", "presenter": "", "timeMin": 0 },
+    { "session": "Regular", "num": "8", "title": "Adjourn Regular Session", "type": "action", "presenter": "", "timeMin": 0 },
+    { "session": "Exec", "num": "1", "title": "Call to Order", "type": "procedural", "presenter": "", "timeMin": 0 },
+    { "session": "Exec", "num": "2", "title": "Approve Executive Session Minutes — June 25, 2026", "type": "action", "presenter": "Cindy Vukasin, Farm Program Chief", "timeMin": 0 },
+    { "session": "Exec", "num": "3", "title": "CRP — Cost Share Increase Request — Baca County — Schroder Red Angus", "type": "action", "presenter": "Hunter A. Cleveland, Agricultural Program Specialist", "timeMin": 10 },
+    { "session": "Exec", "num": "4a", "title": "ECP — Application Approval Request — Rio Blanco — Eleanor Carter", "type": "action", "presenter": "Hunter A. Cleveland, Agricultural Program Specialist", "timeMin": 10 },
+    { "session": "Exec", "num": "4b", "title": "ECP — Application Approval Request — Rio Blanco — Mike Lopez", "type": "action", "presenter": "Hunter A. Cleveland, Agricultural Program Specialist", "timeMin": 10 },
+    { "session": "Exec", "num": "5a", "title": "NAP — NCT General Pricing Guidelines for Fg crops", "type": "action", "presenter": "Janae Rader, Farm Program Specialist", "timeMin": 10 },
+    { "session": "Exec", "num": "5b", "title": "NAP — 2027 NCT Colorado (Apples, Apricots, Cherries, Garlic, Grapes, Honey, Hops, Peaches, Pears, Triticale)", "type": "action", "presenter": "Janae Rader, Farm Program Specialist", "timeMin": 10 },
+    { "session": "Exec", "num": "5c", "title": "NAP — New Crop Request — Las Animas — Beans PNT De Ir", "type": "action", "presenter": "Janae Rader, Farm Program Specialist", "timeMin": 5 },
+    { "session": "Exec", "num": "5d", "title": "NAP — Establish PP, UH, final plant date for annual grasses (RAN & SUD)", "type": "action", "presenter": "Janae Rader, Farm Program Specialist", "timeMin": 5 },
+    { "session": "Exec", "num": "5e", "title": "NAP Concern — Montezuma — Memo to STC", "type": "discussion", "presenter": "Cindy Vukasin, Farm Program Chief", "timeMin": 0 },
+    { "session": "Exec", "num": "6", "title": "Adjourn Executive Session", "type": "action", "presenter": "", "timeMin": 0 }
+  ],
+  "guests": [],
+  "recusals": [],
+  "committee_members": [
+    "Don Brown, Chairperson",
+    "Kyle McConnell, Member",
+    "Steve Raftopoulos, Member",
+    "Joe Petrocco, Member",
+    "Darrell Mackey, Member"
+  ]
+}
