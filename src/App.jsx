@@ -18,6 +18,8 @@ import RobertsRules from './pages/RobertsRules';
 import CostShareRates from './pages/CostShareRates';
 import AppealsTraining from './pages/AppealsTraining';
 import Appeals from './pages/Appeals';
+import BoardMeetings from './pages/BoardMeetings';
+import BoardActions from './pages/BoardActions';
 
 function LoginScreen() {
   const { login, error } = useAuth();
@@ -86,6 +88,9 @@ export default function App() {
           <Route path="/appeals" element={<Appeals />} />
           <Route path="/appeals/*" element={<Navigate to="/appeals" replace />} />
           <Route path="/appeals-tracker" element={<Navigate to="/appeals" replace />} />
+          <Route path="/board-meetings" element={<BoardMeetings />} />
+          <Route path="/board-meetings/:date" element={<BoardMeetings />} />
+          <Route path="/board-actions" element={<BoardActions />} />
           <Route path="/search" element={<Search />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/auth/callback" element={<AuthCallback />} />

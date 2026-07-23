@@ -5,7 +5,9 @@ import { useAuth } from '../auth/AuthContext';
 const mainLinks = [
   { to: '/', label: 'Dashboard', icon: '\u25A3' },
   { to: '/summary', label: 'Summary of Events', icon: '\uD83D\uDCCB' },
-  { to: '/meetings', label: 'Meetings', icon: '\uD83D\uDCC5' },
+  { to: '/meetings', label: 'Meetings (Calendar)', icon: '\uD83D\uDCC5' },
+  { to: '/board-meetings', label: 'Board Meetings', icon: '\uD83C\uDFDB' },
+  { to: '/board-actions', label: 'Board Actions', icon: '\u2713' },
   { to: '/journal', label: 'Journal', icon: '\u270E' },
   { to: '/documents', label: 'Documents', icon: '\uD83D\uDCC4' },
   { to: '/expenses', label: 'Expenses', icon: '\uD83D\uDCB2' },
