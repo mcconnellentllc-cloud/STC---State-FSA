@@ -4,15 +4,17 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const DATA_DIR = path.join(__dirname, '..', 'data');
-const UPLOADS_DIR = path.join(DATA_DIR, 'uploads');
-const SQLITE_PATH = path.join(DATA_DIR, 'pfa.db');
+const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, '..', 'data');
+const UPLOADS_DIR = process.env.UPLOADS_DIR || path.join(DATA_DIR, 'uploads');
+const EXHIBITS_DIR = process.env.EXHIBITS_DIR || path.join(DATA_DIR, 'exhibits');
+const SQLITE_PATH = process.env.SQLITE_PATH || path.join(DATA_DIR, 'pfa.db');
 
 let sqliteDb = null;
 
 function ensureDirectories() {
   if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
   if (!fs.existsSync(UPLOADS_DIR)) fs.mkdirSync(UPLOADS_DIR, { recursive: true });
+  if (!fs.existsSync(EXHIBITS_DIR)) fs.mkdirSync(EXHIBITS_DIR, { recursive: true });
 }
 
 export async function initDatabase() {
@@ -95,6 +97,167 @@ function runSchemaSQLite() {
       updated_at TEXT DEFAULT (datetime('now'))
     )
   `);
+
+  sqliteDb.exec(`
+    CREATE TABLE IF NOT EXISTS users (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      email TEXT NOT NULL UNIQUE COLLATE NOCASE,
+      role TEXT NOT NULL CHECK (role IN ('admin', 'member')),
+      display_name TEXT NOT NULL,
+      active INTEGER NOT NULL DEFAULT 1,
+      created_at TEXT NOT NULL DEFAULT (datetime('now')),
+      last_login TEXT
+    )
+  `);
+
+  sqliteDb.exec(`
+    CREATE TABLE IF NOT EXISTS edits (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      user_id INTEGER NOT NULL,
+      timestamp TEXT NOT NULL DEFAULT (datetime('now')),
+      record_type TEXT NOT NULL,
+      record_id TEXT NOT NULL,
+      field_edited TEXT NOT NULL,
+      content_before TEXT,
+      content_after TEXT,
+      FOREIGN KEY (user_id) REFERENCES users(id)
+    )
+  `);
+
+  sqliteDb.exec(`
+    CREATE TABLE IF NOT EXISTS clarifications (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      appeal_id TEXT NOT NULL,
+      question_text TEXT NOT NULL,
+      author_id INTEGER NOT NULL,
+      posted_at TEXT NOT NULL DEFAULT (datetime('now')),
+      resolved INTEGER NOT NULL DEFAULT 0,
+      resolved_at TEXT,
+      locked INTEGER NOT NULL DEFAULT 0,
+      locked_by INTEGER,
+      locked_at TEXT,
+      FOREIGN KEY (author_id) REFERENCES users(id),
+      FOREIGN KEY (locked_by) REFERENCES users(id)
+    )
+  `);
+
+  sqliteDb.exec(`
+    CREATE TABLE IF NOT EXISTS clarification_answers (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      clarification_id INTEGER NOT NULL,
+      answer_text TEXT NOT NULL,
+      author_id INTEGER NOT NULL,
+      posted_at TEXT NOT NULL DEFAULT (datetime('now')),
+      FOREIGN KEY (clarification_id) REFERENCES clarifications(id),
+      FOREIGN KEY (author_id) REFERENCES users(id)
+    )
+  `);
+
+  sqliteDb.exec(`
+    CREATE TABLE IF NOT EXISTS appeal_recusals (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      appeal_id TEXT NOT NULL,
+      user_id INTEGER NOT NULL,
+      reason TEXT,
+      set_by INTEGER NOT NULL,
+      set_at TEXT NOT NULL DEFAULT (datetime('now')),
+      revoked_at TEXT,
+      revoked_by INTEGER,
+      FOREIGN KEY (user_id) REFERENCES users(id),
+      FOREIGN KEY (set_by) REFERENCES users(id),
+      FOREIGN KEY (revoked_by) REFERENCES users(id)
+    )
+  `);
+
+  // Ties SharePoint/Graph files (by their Graph item id) to one or more
+  // appeals. Used to hide files from members who are recused from any of the
+  // linked appeals. Folder-level scoping (folder_recusal_links below) is the
+  // primary mechanism after Kyle reorganized into per-appeal folders; this
+  // table is kept as an ad-hoc per-file fallback for edge cases.
+  sqliteDb.exec(`
+    CREATE TABLE IF NOT EXISTS document_recusal_links (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      graph_file_id TEXT NOT NULL,
+      appeal_id TEXT NOT NULL,
+      set_by INTEGER NOT NULL,
+      set_at TEXT NOT NULL DEFAULT (datetime('now')),
+      UNIQUE(graph_file_id, appeal_id),
+      FOREIGN KEY (set_by) REFERENCES users(id)
+    )
+  `);
+
+  // Folder-level recusal: ties a folder PATH (relative to the watch folder
+  // root, e.g. "April 2026/Appeals/Appeal 2") to an appeal. Members recused
+  // from that appeal cannot see the folder, cannot navigate into it, and
+  // cannot fetch any file underneath it. Path-based (not Graph-id-based) so
+  // admin can set the link without round-tripping Graph metadata.
+  sqliteDb.exec(`
+    CREATE TABLE IF NOT EXISTS folder_recusal_links (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      folder_path TEXT NOT NULL,
+      appeal_id TEXT NOT NULL,
+      set_by INTEGER NOT NULL,
+      set_at TEXT NOT NULL DEFAULT (datetime('now')),
+      UNIQUE(folder_path, appeal_id),
+      FOREIGN KEY (set_by) REFERENCES users(id)
+    )
+  `);
+
+  // Field observations — admin-authored records of a site visit tied to an
+  // appeal + contract/tract. Each observation has a set of photo files stored
+  // on the mounted disk under EXHIBITS_DIR and served via /api/exhibits/...
+  // with the same recusal gate that applies to /api/appeals/:id.
+  sqliteDb.exec(`
+    CREATE TABLE IF NOT EXISTS field_observations (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      appeal_id TEXT NOT NULL,
+      contract_id TEXT,
+      tract TEXT,
+      visit_date TEXT,
+      cattle_count INTEGER,
+      planned_max INTEGER,
+      status TEXT,
+      exhibit TEXT,
+      source TEXT,
+      stubble_condition TEXT,
+      notes TEXT,
+      created_by INTEGER NOT NULL,
+      created_at TEXT NOT NULL DEFAULT (datetime('now')),
+      FOREIGN KEY (created_by) REFERENCES users(id)
+    )
+  `);
+
+  sqliteDb.exec(`
+    CREATE TABLE IF NOT EXISTS field_observation_photos (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      observation_id INTEGER NOT NULL,
+      label TEXT,
+      description TEXT,
+      file_path TEXT NOT NULL,
+      cattle_count INTEGER,
+      annotations TEXT,
+      is_marker_card INTEGER NOT NULL DEFAULT 0,
+      notes TEXT,
+      uploaded_by INTEGER NOT NULL,
+      uploaded_at TEXT NOT NULL DEFAULT (datetime('now')),
+      FOREIGN KEY (observation_id) REFERENCES field_observations(id) ON DELETE CASCADE,
+      FOREIGN KEY (uploaded_by) REFERENCES users(id)
+    )
+  `);
+
+  seedUsersIfEmpty();
+}
+
+function seedUsersIfEmpty() {
+  const row = sqliteDb.prepare('SELECT COUNT(*) as c FROM users').get();
+  if (row.c > 0) return;
+
+  const insert = sqliteDb.prepare(
+    'INSERT INTO users (email, role, display_name, active) VALUES (?, ?, ?, 1)'
+  );
+  insert.run('kyle@togoag.com', 'admin', 'Kyle McConnell');
+  insert.run('kyle.mcconnell@plantpioneer.com', 'member', 'Kyle McConnell (member)');
+  console.log('Seeded users table: kyle@togoag.com (admin), kyle.mcconnell@plantpioneer.com (member)');
 }
 
 // ---- Unified query interface ----
@@ -171,4 +334,4 @@ export async function searchDocuments(query) {
   );
 }
 
-export { DATA_DIR, UPLOADS_DIR };
+export { DATA_DIR, UPLOADS_DIR, EXHIBITS_DIR };

@@ -229,7 +229,7 @@ export default function AppealsTraining() {
         </ul>
 
         <div style={{ ...greenCard, borderLeftColor: '#0056b3' }}>
-          <strong>Colorado Example:</strong> The Ebright CRP Appeal (March 24, 2026) involved 7 contracts in Bent County with issues including unauthorized grazing, stocking rate compliance, and conservation plan violations. See the Summary of Events page for the full case brief and STC voting guide.
+          <strong>Colorado Example:</strong> The Ebright CRP Appeal (March 24, 2026) involved 7 contracts in Bent County with issues including unauthorized grazing, stocking rate compliance, and conservation plan violations. See the Appeals page for the full Case Brief and the Meeting Agenda page for the STC voting guide.
         </div>
       </Section>
 

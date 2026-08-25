@@ -1,20 +1,51 @@
 import { Router } from 'express';
 import { testConnection, graphGet, getSiteId, getDriveId, graphUploadFile } from '../services/graph.js';
-import { getStatus, manualSync, startWatcher, stopWatcher } from '../services/teams-watcher.js';
-import { all } from '../services/database.js';
+import { all, get } from '../services/database.js';
 import XLSX from 'xlsx';
 
-const router = Router();
+// Returns set of graph_file_ids the given user should not see, because the
+// file is linked to at least one appeal the user has an active recusal on.
+// Admin bypasses (returns empty set). Per-file fallback; folder-level filter
+// (recusedFolderPathsForUser) is the primary mechanism.
+async function recusedFileIdsForUser(user) {
+  if (!user || user.role === 'admin') return new Set();
+  const rows = await all(
+    `SELECT DISTINCT drl.graph_file_id
+       FROM document_recusal_links drl
+       JOIN appeal_recusals ar
+         ON ar.appeal_id = drl.appeal_id
+        AND ar.revoked_at IS NULL
+      WHERE ar.user_id = ?`,
+    [user.id]
+  );
+  return new Set(rows.map(r => r.graph_file_id));
+}
 
-// GET /api/teams/status — sync status
-router.get('/status', (req, res) => {
-  try {
-    const status = getStatus();
-    res.json(status);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
+// Returns array of folder PATHS (relative to watch-folder root) the given
+// user is barred from. Any folder whose path equals or is a descendant of
+// one of these paths is hidden in browse listings and rejected on direct
+// file access. Admin bypasses.
+async function recusedFolderPathsForUser(user) {
+  if (!user || user.role === 'admin') return [];
+  const rows = await all(
+    `SELECT DISTINCT frl.folder_path
+       FROM folder_recusal_links frl
+       JOIN appeal_recusals ar
+         ON ar.appeal_id = frl.appeal_id
+        AND ar.revoked_at IS NULL
+      WHERE ar.user_id = ?`,
+    [user.id]
+  );
+  return rows.map(r => r.folder_path);
+}
+
+// True if `path` equals one of the recused paths or is a descendant (within
+// a recused folder).
+function pathIsInsideAny(path, recusedPaths) {
+  return recusedPaths.some(rp => path === rp || path.startsWith(rp + '/'));
+}
+
+const router = Router();
 
 // POST /api/teams/test — test Graph API connection
 router.post('/test', async (req, res) => {
@@ -26,42 +57,17 @@ router.post('/test', async (req, res) => {
   }
 });
 
-// POST /api/teams/sync — trigger manual sync
-router.post('/sync', async (req, res) => {
-  try {
-    const result = await manualSync();
-    res.json({ message: 'Sync completed', ...result });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-// POST /api/teams/start — start watcher
-router.post('/start', async (req, res) => {
-  try {
-    await startWatcher();
-    res.json({ message: 'Watcher started', ...getStatus() });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-// POST /api/teams/stop — stop watcher
-router.post('/stop', (req, res) => {
-  try {
-    stopWatcher();
-    res.json({ message: 'Watcher stopped', ...getStatus() });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
 /**
  * GET /api/teams/browse?path=some/folder
  * Browse SharePoint folder structure in real-time.
  * Returns children (folders and files) at the given path under the watch folder.
  * If no path, returns the root watch folder contents.
  */
+// Member-scoped subfolder within the watch folder. Members can only browse
+// inside this subfolder; admin sees the full watch folder. Must match the
+// constant used client-side in src/pages/Documents.jsx.
+const MEMBER_DOCS_ROOT = process.env.MEMBER_DOCS_ROOT || 'Committee Shared';
+
 router.get('/browse', async (req, res) => {
   try {
     const siteId = await getSiteId();
@@ -69,7 +75,31 @@ router.get('/browse', async (req, res) => {
     const watchFolder = process.env.SHAREPOINT_WATCH_FOLDER || 'FSA - State Committee';
 
     // Build full path
-    const subPath = req.query.path || '';
+    let subPath = req.query.path || '';
+
+    // Member scoping: force the browse to stay inside Committee Shared.
+    // Empty path gets rewritten to the member root; any other path must be
+    // under the member root or we return 403. Admin bypasses.
+    let memberRelative = ''; // path under MEMBER_DOCS_ROOT, used for recusal compares
+    if (req.user?.role === 'member') {
+      if (!subPath) {
+        subPath = MEMBER_DOCS_ROOT;
+      } else if (subPath !== MEMBER_DOCS_ROOT && !subPath.startsWith(MEMBER_DOCS_ROOT + '/')) {
+        return res.status(403).json({ error: 'Access restricted' });
+      }
+      memberRelative = subPath === MEMBER_DOCS_ROOT
+        ? ''
+        : subPath.slice(MEMBER_DOCS_ROOT.length + 1);
+      // Folder-recusal gate: if a member tries to navigate INTO a recused
+      // folder (or any descendant) via direct URL, 404. folder_recusal_links
+      // stores paths relative to MEMBER_DOCS_ROOT (e.g. "Appeal 2" or
+      // "April 2026/Appeals/Appeal 2").
+      const recusedPaths = await recusedFolderPathsForUser(req.user);
+      if (memberRelative && pathIsInsideAny(memberRelative, recusedPaths)) {
+        return res.status(404).json({ error: 'Not found' });
+      }
+    }
+
     const fullPath = subPath ? `${watchFolder}/${subPath}` : watchFolder;
 
     // Encode each segment individually for the Graph API
@@ -79,7 +109,7 @@ router.get('/browse', async (req, res) => {
     const endpoint = `/drives/${driveId}/root:/${encodedPath}:/children?$select=id,name,size,lastModifiedDateTime,file,folder,webUrl&$orderby=name`;
 
     const data = await graphGet(endpoint);
-    const items = (data.value || []).map(item => ({
+    let items = (data.value || []).map(item => ({
       id: item.id,
       name: item.name,
       isFolder: !!item.folder,
@@ -90,6 +120,26 @@ router.get('/browse', async (req, res) => {
       childCount: item.folder?.childCount || 0,
       webUrl: item.webUrl
     }));
+
+    // Recusal filters (members only; admin bypasses both):
+    //   1. Folder-level: hide subfolders under a recused appeal folder.
+    //      Paths compared relative to MEMBER_DOCS_ROOT.
+    //   2. Per-file fallback: hide individual files linked via the legacy
+    //      document_recusal_links table.
+    if (req.user?.role === 'member') {
+      const recusedPaths = await recusedFolderPathsForUser(req.user);
+      if (recusedPaths.length > 0) {
+        items = items.filter(it => {
+          if (!it.isFolder) return true;
+          const folderRelative = memberRelative ? `${memberRelative}/${it.name}` : it.name;
+          return !pathIsInsideAny(folderRelative, recusedPaths);
+        });
+      }
+      const recusedIds = await recusedFileIdsForUser(req.user);
+      if (recusedIds.size > 0) {
+        items = items.filter(it => !(it.isFile && recusedIds.has(it.id)));
+      }
+    }
 
     // Sort: folders first, then files
     items.sort((a, b) => {
@@ -117,11 +167,52 @@ router.get('/file/:itemId', async (req, res) => {
     const siteId = await getSiteId();
     const driveId = await getDriveId(siteId);
 
-    // Get file metadata first
-    const meta = await graphGet(`/drives/${driveId}/items/${req.params.itemId}?$select=name,size,file`);
+    // Fetch metadata plus parentReference so we can enforce the Committee
+    // Shared scope on member downloads. Admin bypasses.
+    const meta = await graphGet(
+      `/drives/${driveId}/items/${req.params.itemId}?$select=name,size,file,parentReference`
+    );
 
     if (!meta.file) {
       return res.status(400).json({ error: 'Item is not a file' });
+    }
+
+    // Member scoping: parse parentReference.path to confirm the file is
+    // anchored under the watch folder AND its first segment within the watch
+    // folder is the member root (default 'Committee Shared'). Tighter than
+    // a substring match: a folder like 'Old Committee Shared Archive'
+    // sitting elsewhere in the drive would not pass.
+    if (req.user?.role === 'member') {
+      const watchFolder = process.env.SHAREPOINT_WATCH_FOLDER || 'FSA - State Committee';
+      const rootPrefix = `/root:/${watchFolder}/`;
+      const parentPath = meta.parentReference?.path || '';
+      const idx = parentPath.indexOf(rootPrefix);
+      if (idx < 0) {
+        return res.status(403).json({ error: 'Access restricted' });
+      }
+      const relative = parentPath.slice(idx + rootPrefix.length);
+      const firstSegment = relative.split('/')[0];
+      if (firstSegment !== MEMBER_DOCS_ROOT) {
+        return res.status(403).json({ error: 'Access restricted' });
+      }
+
+      // Folder-recusal check: relative path looks like
+      // "Committee Shared/April 2026/Appeals/Appeal 2". Strip the member root
+      // prefix and check if the remaining path is inside any recused folder.
+      const memberSubPath = relative === MEMBER_DOCS_ROOT
+        ? ''
+        : relative.slice(MEMBER_DOCS_ROOT.length + 1); // drop "Committee Shared/"
+      const recusedPaths = await recusedFolderPathsForUser(req.user);
+      if (memberSubPath && pathIsInsideAny(memberSubPath, recusedPaths)) {
+        return res.status(404).json({ error: 'Not found' });
+      }
+
+      // Per-file recusal fallback (legacy document_recusal_links): 404 if
+      // this specific file id is tagged.
+      const recusedIds = await recusedFileIdsForUser(req.user);
+      if (recusedIds.has(req.params.itemId)) {
+        return res.status(404).json({ error: 'Not found' });
+      }
     }
 
     // Get download URL via separate call

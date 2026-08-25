@@ -1,0 +1,78 @@
+# Render deploy configuration for STC Colorado FSA State Committee app.
+# Deploy config lives in-repo (rule 36). Secret VALUES stay in the dashboard.
+#
+# Env vars below use sync: false — Render reads the NAMES from this file but
+# never overwrites the live dashboard values on deploy. Change a value in the
+# dashboard; add/remove a name here.
+#
+# VITE_* vars are baked into the client bundle by `npm run build`. Changing
+# their dashboard values requires a manual deploy ("Clear build cache & deploy")
+# to take effect — restarting the service is not enough.
+
+services:
+  - type: web
+    name: STC---State-FSA
+    runtime: node
+    plan: starter
+    region: oregon
+    branch: main
+    autoDeploy: true
+
+    buildCommand: npm install && npm run build
+    startCommand: node server/index.js
+    healthCheckPath: /api/health
+
+    disk:
+      name: stc-data
+      mountPath: /var/data
+      sizeGB: 1
+
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: DATA_DIR
+        value: /var/data
+      - key: HOST
+        sync: false
+      - key: PORT
+        sync: false
+
+      # Microsoft Entra / Graph (server-side)
+      - key: MICROSOFT_TENANT_ID
+        sync: false
+      - key: MICROSOFT_CLIENT_ID
+        sync: false
+      - key: MICROSOFT_CLIENT_SECRET
+        sync: false
+
+      # SharePoint / Graph document sync
+      - key: SHAREPOINT_SITE_URL
+        sync: false
+      - key: SHAREPOINT_LIBRARY
+        sync: false
+      - key: SHAREPOINT_WATCH_FOLDER
+        sync: false
+      - key: MEMBER_DOCS_ROOT
+        sync: false
+
+      # Optional path overrides (omit to use DATA_DIR-relative defaults)
+      - key: EXHIBITS_DIR
+        sync: false
+
+      # Microsoft Entra / MSAL (client, baked at build time)
+      - key: VITE_MICROSOFT_TENANT_ID
+        sync: false
+      - key: VITE_MICROSOFT_CLIENT_ID
+        sync: false
+
+      # Summary page document URLs (client, baked at build time)
+      - key: VITE_ES_PACKET_URL
+        sync: false
+      - key: VITE_RS_PACKET_URL
+        sync: false
+      - key: VITE_EXHIBIT_1_URL
+        sync: false
+      - key: VITE_EXHIBIT_2_URL
+        sync: false
+      - key: VITE_EXHIBIT_5_URL
+        sync: false

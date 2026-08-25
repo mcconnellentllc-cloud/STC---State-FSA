@@ -24,7 +24,7 @@ const committeeMembers = [
     bio: '4th-generation family farm operating across multiple counties. Degrees in agriculture. Colorado Corn Growers Association board member.',
   },
   {
-    name: 'Joeseph Petrocco',
+    name: 'Joseph Petrocco',
     role: 'Member',
     location: 'Thornton, CO',
     phone: '303-717-5045',
@@ -52,7 +52,7 @@ const quickLinks = [
   { label: 'FSA Fact Sheets', url: 'https://www.fsa.usda.gov/tools/informational/fact-sheets', icon: '\uD83D\uDCC4' },
   { label: 'FSA Handbooks', url: 'https://www.fsa.usda.gov/news-events/laws-regulations/fsa-handbooks', icon: '\uD83D\uDCD6' },
   { label: 'NRCS Colorado', url: 'https://www.nrcs.usda.gov/conservation-basics/conservation-by-state/colorado', icon: '\uD83C\uDF31' },
-  { label: 'USDA Box \u2014 300...!12', url: 'https://usda.app.box.com', icon: '\uD83D\uDCC1' },
+  { label: 'USDA Box \u2014 STC Folder', url: 'https://usda.app.box.com', icon: '\uD83D\uDCC1' },
 ];
 
 export default function Contacts() {
@@ -77,7 +77,7 @@ export default function Contacts() {
             <a href="mailto:Jerry.Sonnenberg@usda.gov">Jerry.Sonnenberg@usda.gov</a>
           </div>
           <div className="contact-bio">
-            4th-generation farmer/rancher from Logan County. Appointed May 2025 by the Trump Administration. Former Colorado Senate President Pro Tem with 16 years in the legislature. Colorado Agricultural Hall of Fame inductee, 2023.
+            4th-generation farmer/rancher from Logan County. Former Colorado Senate President Pro Tem with 16 years in the legislature. Colorado Agricultural Hall of Fame inductee, 2023.
           </div>
           <div className="contact-links">
             <a href="https://www.fsa.usda.gov/about-fsa/fsa-leadership/jerry-sonnenberg" target="_blank" rel="noopener noreferrer" className="contact-link">

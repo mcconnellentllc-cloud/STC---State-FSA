@@ -2,6 +2,23 @@ import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from './auth/AuthContext';
 import Sidebar from './components/Sidebar';
+import CautionBanner from './components/CautionBanner';
+
+function AdminOnly({ children }) {
+  const { isAdmin, profile } = useAuth();
+  // While profile is still loading, don't flash the access-denied UI
+  if (profile === null) return null;
+  if (!isAdmin) {
+    return (
+      <div style={{ padding: 40, textAlign: 'center' }}>
+        <h2>Access restricted</h2>
+        <p style={{ color: 'var(--text-muted)' }}>This page is available to admin users only.</p>
+      </div>
+    );
+  }
+  return children;
+}
+
 import Dashboard from './pages/Dashboard';
 import Journal from './pages/Journal';
 import EntryDetail from './pages/EntryDetail';
@@ -27,12 +44,27 @@ function LoginScreen() {
   return (
     <div className="login-screen">
       <div className="login-card">
-        <h1 className="login-title">Kyle McConnell</h1>
-        <p className="login-subtitle">CO STC</p>
+        <h1 className="login-title">STC Colorado 2026</h1>
+        <p className="login-subtitle">State Technical Committee</p>
         <button className="btn btn-primary login-btn" onClick={login}>
           Sign in with Microsoft
         </button>
         {error && <p className="login-error">{error}</p>}
+        <p style={{
+          marginTop: 20,
+          padding: '10px 12px',
+          background: 'rgba(240, 173, 78, 0.12)',
+          border: '1px solid rgba(240, 173, 78, 0.45)',
+          borderRadius: 6,
+          fontSize: '0.78rem',
+          lineHeight: 1.5,
+          color: 'var(--text-secondary, #ccc)',
+          textAlign: 'left',
+        }}>
+          <strong>Notice:</strong> This site contains meeting notes and one member's
+          interpretations, not an official FSA record. Verify against official case
+          files and handbook citations before relying on anything here.
+        </p>
       </div>
     </div>
   );
@@ -72,6 +104,7 @@ export default function App() {
     <div className="app-layout">
       <Sidebar />
       <main className="main-content">
+        <CautionBanner />
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/summary" element={<Summary />} />
@@ -79,10 +112,10 @@ export default function App() {
           <Route path="/journal" element={<Journal />} />
           <Route path="/journal/:id" element={<EntryDetail />} />
           <Route path="/documents" element={<Documents />} />
-          <Route path="/expenses" element={<Expenses />} />
+          <Route path="/expenses" element={<AdminOnly><Expenses /></AdminOnly>} />
           <Route path="/issues" element={<Issues />} />
           <Route path="/contacts" element={<Contacts />} />
-          <Route path="/ethics" element={<Ethics />} />
+          <Route path="/ethics" element={<AdminOnly><Ethics /></AdminOnly>} />
           <Route path="/roberts-rules" element={<RobertsRules />} />
           <Route path="/cost-share-rates" element={<CostShareRates />} />
           <Route path="/appeals-training" element={<AppealsTraining />} />
@@ -94,7 +127,7 @@ export default function App() {
           <Route path="/board-actions" element={<BoardActions />} />
           <Route path="/arc-plc" element={<ArcPlc />} />
           <Route path="/search" element={<Search />} />
-          <Route path="/settings" element={<Settings />} />
+          <Route path="/settings" element={<AdminOnly><Settings /></AdminOnly>} />
           <Route path="/auth/callback" element={<AuthCallback />} />
         </Routes>
       </main>

@@ -1,6 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useApiFetch } from '../auth/apiFetch';
+import { useAuth } from '../auth/AuthContext';
 import FileUploader from '../components/FileUploader';
+
+// Member-scoped subfolder within the watch folder. Members see only this
+// subtree; admin sees the full watch folder. MUST match MEMBER_DOCS_ROOT in
+// server/routes/teams.js. Change both together.
+const MEMBER_DOCS_ROOT = 'Committee Shared';
 
 const FILE_ICONS = {
   '.pdf': '\uD83D\uDCC4',
@@ -36,6 +42,12 @@ function getFileIcon(name) {
 export default function Documents() {
   const [activeTab, setActiveTab] = useState('teams');  // teams | local
   const apiFetch = useApiFetch();
+  const { isAdmin } = useAuth();
+
+  // Root path that the user lands on when opening the Teams tab.
+  // Admin: '' = the full watch folder. Member: the Committee Shared subfolder.
+  const rootPath = isAdmin ? '' : MEMBER_DOCS_ROOT;
+  const rootLabel = isAdmin ? 'Kyle — FSA - State Committee' : 'Committee Shared';
 
   /* ═══════════════════════════════════════════════════════════
      TEAMS BROWSER STATE
@@ -44,8 +56,6 @@ export default function Documents() {
   const [folderItems, setFolderItems] = useState([]);
   const [browseLoading, setBrowseLoading] = useState(false);
   const [browseError, setBrowseError] = useState(null);
-  const [syncStatus, setSyncStatus] = useState(null);
-  const [syncing, setSyncing] = useState(false);
 
   /* ═══════════════════════════════════════════════════════════
      LOCAL DOCS STATE (original)
@@ -78,53 +88,11 @@ export default function Documents() {
     }
   }, [apiFetch]);
 
-  const fetchSyncStatus = useCallback(async () => {
-    try {
-      const res = await apiFetch('/api/teams/status');
-      if (res.ok) {
-        const data = await res.json();
-        setSyncStatus(data);
-      }
-    } catch {}
-  }, [apiFetch]);
-
-  const handleSync = async () => {
-    setSyncing(true);
-    try {
-      await apiFetch('/api/teams/sync', { method: 'POST' });
-      await fetchSyncStatus();
-      await browsePath(currentPath);
-    } catch (err) {
-      console.error('Sync error:', err);
-    } finally {
-      setSyncing(false);
-    }
-  };
-
-  const handleStartWatcher = async () => {
-    try {
-      await apiFetch('/api/teams/start', { method: 'POST' });
-      await fetchSyncStatus();
-    } catch (err) {
-      console.error('Start watcher error:', err);
-    }
-  };
-
-  const handleStopWatcher = async () => {
-    try {
-      await apiFetch('/api/teams/stop', { method: 'POST' });
-      await fetchSyncStatus();
-    } catch (err) {
-      console.error('Stop watcher error:', err);
-    }
-  };
-
   useEffect(() => {
     if (activeTab === 'teams') {
-      browsePath('');
-      fetchSyncStatus();
+      browsePath(rootPath);
     }
-  }, [activeTab, browsePath, fetchSyncStatus]);
+  }, [activeTab, browsePath, rootPath]);
 
   /* ── Local documents ───────────────────────────────────────── */
   const fetchDocs = useCallback(() => {
@@ -187,8 +155,52 @@ export default function Documents() {
     }
   };
 
+  /* ── File open via blob (bearer-auth aware) ────────────────
+     A direct <a href="/api/teams/file/X"> navigation doesn't carry the
+     Entra Bearer token, so the server rejects with 401. Fetch the bytes
+     via authenticated apiFetch, turn into a blob URL, and open that in
+     a new tab. Works for PDFs, Word, etc. Blob URL is short-lived. */
+  const [opening, setOpening] = useState(null);
+  const openFile = useCallback(async (item) => {
+    setOpening(item.id);
+    try {
+      const res = await apiFetch(`/api/teams/file/${item.id}`);
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.error || `Download failed (${res.status})`);
+      }
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      window.open(url, '_blank', 'noopener,noreferrer');
+      setTimeout(() => URL.revokeObjectURL(url), 60_000);
+    } catch (err) {
+      alert(`Could not open ${item.name}: ${err.message}`);
+    } finally {
+      setOpening(null);
+    }
+  }, [apiFetch]);
+
   /* ── Breadcrumb ────────────────────────────────────────────── */
-  const breadcrumbs = currentPath ? currentPath.split('/').filter(Boolean) : [];
+  // For members, currentPath looks like "Committee Shared" or
+  // "Committee Shared/Subfolder/...". The root button represents MEMBER_DOCS_ROOT
+  // so we strip that prefix from the displayed breadcrumb segments.
+  const breadcrumbs = (() => {
+    if (!currentPath) return [];
+    if (isAdmin) return currentPath.split('/').filter(Boolean);
+    if (currentPath === MEMBER_DOCS_ROOT) return [];
+    if (currentPath.startsWith(MEMBER_DOCS_ROOT + '/')) {
+      return currentPath.slice(MEMBER_DOCS_ROOT.length + 1).split('/').filter(Boolean);
+    }
+    return [];
+  })();
+
+  // When a breadcrumb segment is clicked, reconstruct the absolute path the
+  // server expects. For members that means prefixing MEMBER_DOCS_ROOT.
+  const crumbPathAt = (i) => {
+    const segs = breadcrumbs.slice(0, i + 1);
+    if (isAdmin) return segs.join('/');
+    return [MEMBER_DOCS_ROOT, ...segs].join('/');
+  };
 
   /* ══════════════════════════════════════════════════════════════
      RENDER
@@ -196,27 +208,8 @@ export default function Documents() {
   return (
     <div>
       <div className="page-header">
-        <h2>Documents</h2>
+        <h2>{isAdmin ? 'Documents' : 'Committee Documents'}</h2>
         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-          {activeTab === 'teams' && (
-            <>
-              <button
-                className="btn btn-secondary"
-                onClick={handleSync}
-                disabled={syncing}
-              >
-                {syncing ? 'Syncing...' : '\u21BB Sync Now'}
-              </button>
-              {syncStatus && (
-                <span className="status-indicator">
-                  <span className={`status-dot ${syncStatus.running ? 'connected' : 'disconnected'}`} />
-                  <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
-                    {syncStatus.running ? 'Watching' : 'Stopped'}
-                  </span>
-                </span>
-              )}
-            </>
-          )}
           {activeTab === 'local' && (
             <button className="btn btn-primary" onClick={() => setShowUpload(!showUpload)}>
               {showUpload ? 'Cancel' : '+ Upload'}
@@ -246,59 +239,29 @@ export default function Documents() {
           ═══════════════════════════════════════════════════════ */}
       {activeTab === 'teams' && (
         <div>
-          {/* Watcher controls */}
-          {syncStatus && (
-            <div className="card" style={{ marginBottom: 16, padding: '12px 20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}>
-              <div style={{ fontSize: '0.85rem' }}>
-                <strong>Auto-Sync:</strong>{' '}
-                <span style={{ color: syncStatus.running ? 'var(--success)' : 'var(--text-muted)' }}>
-                  {syncStatus.running ? `Active (every ${syncStatus.pollInterval}s)` : 'Stopped'}
-                </span>
-                {syncStatus.lastSync && (
-                  <span style={{ marginLeft: 16, color: 'var(--text-muted)' }}>
-                    Last sync: {formatDate(syncStatus.lastSync)}
-                  </span>
-                )}
-                {syncStatus.filesProcessed > 0 && (
-                  <span style={{ marginLeft: 16, color: 'var(--text-muted)' }}>
-                    {syncStatus.filesProcessed} files processed
-                  </span>
-                )}
-              </div>
-              <div style={{ display: 'flex', gap: 6 }}>
-                {syncStatus.running ? (
-                  <button className="btn btn-sm btn-secondary" onClick={handleStopWatcher}>Stop Watcher</button>
-                ) : (
-                  <button className="btn btn-sm btn-success" onClick={handleStartWatcher}>Start Watcher</button>
-                )}
-              </div>
-            </div>
-          )}
-
-          {/* Breadcrumb navigation */}
+          {/* Breadcrumb navigation — root represents either the watch folder
+              (admin) or the Committee Shared subtree (member). Member cannot
+              navigate above the Committee Shared root. */}
           <div className="doc-breadcrumb">
             <button
               className="breadcrumb-item"
-              onClick={() => browsePath('')}
-              style={{ fontWeight: currentPath === '' ? 700 : 400 }}
+              onClick={() => browsePath(rootPath)}
+              style={{ fontWeight: currentPath === rootPath ? 700 : 400 }}
             >
-              {'\uD83D\uDCC1'} Kyle - FSA - State Committee
+              {'\uD83D\uDCC1'} {rootLabel}
             </button>
-            {breadcrumbs.map((seg, i) => {
-              const pathUpTo = breadcrumbs.slice(0, i + 1).join('/');
-              return (
-                <React.Fragment key={i}>
-                  <span className="breadcrumb-sep">/</span>
-                  <button
-                    className="breadcrumb-item"
-                    onClick={() => browsePath(pathUpTo)}
-                    style={{ fontWeight: i === breadcrumbs.length - 1 ? 700 : 400 }}
-                  >
-                    {seg}
-                  </button>
-                </React.Fragment>
-              );
-            })}
+            {breadcrumbs.map((seg, i) => (
+              <React.Fragment key={i}>
+                <span className="breadcrumb-sep">/</span>
+                <button
+                  className="breadcrumb-item"
+                  onClick={() => browsePath(crumbPathAt(i))}
+                  style={{ fontWeight: i === breadcrumbs.length - 1 ? 700 : 400 }}
+                >
+                  {seg}
+                </button>
+              </React.Fragment>
+            ))}
           </div>
 
           {/* Error */}
@@ -361,14 +324,22 @@ export default function Documents() {
                         {item.isFolder ? (
                           <span>{item.name}</span>
                         ) : (
-                          <a
-                            href={`/api/teams/file/${item.id}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={e => e.stopPropagation()}
+                          <button
+                            onClick={(e) => { e.stopPropagation(); openFile(item); }}
+                            disabled={opening === item.id}
+                            style={{
+                              background: 'none',
+                              border: 'none',
+                              padding: 0,
+                              cursor: opening === item.id ? 'wait' : 'pointer',
+                              color: 'inherit',
+                              font: 'inherit',
+                              textAlign: 'left',
+                              textDecoration: 'underline',
+                            }}
                           >
-                            {item.name}
-                          </a>
+                            {opening === item.id ? `${item.name} (opening…)` : item.name}
+                          </button>
                         )}
                       </div>
                       <div className="doc-file-meta">
