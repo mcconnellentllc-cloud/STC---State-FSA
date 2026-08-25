@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useApiFetch } from '../auth/apiFetch';
+import meetingsRegistry from '../data/meetings_registry.json';
+
+// Meetings the Meeting Agenda view supports natively (voting guide baked in).
+// Any other meeting is opened in /board-meetings/:date for its detail view.
+const NATIVE_MEETING_DATE = '2026-04-23';
 
 /* ══════════════════════════════════════════════════════════════════
    DOCUMENT URLS — set these in Render env (VITE_*) to wire clickable
@@ -505,10 +510,32 @@ function daysUntil(dateStr) {
 
 export default function Summary() {
   const apiFetch = useApiFetch();
+  const navigate = useNavigate();
   const [issues, setIssues] = useState([]);
   const [nctSummary, setNctSummary] = useState(null);
   const [loading, setLoading] = useState(true);
   const [expandedItems, setExpandedItems] = useState({});
+  const [selectedMeeting, setSelectedMeeting] = useState(NATIVE_MEETING_DATE);
+
+  // Meetings sorted newest first for the dropdown, with a marker showing
+  // which meeting the Meeting-Agenda voting guide currently reflects.
+  const meetingOptions = useMemo(() => {
+    return [...meetingsRegistry.meetings]
+      .sort((a, b) => b.date.localeCompare(a.date))
+      .map(m => ({
+        ...m,
+        isNative: m.date === NATIVE_MEETING_DATE,
+        isParsed: !!m.indexFile,
+      }));
+  }, []);
+
+  const handleMeetingChange = (e) => {
+    const date = e.target.value;
+    setSelectedMeeting(date);
+    if (date === NATIVE_MEETING_DATE) return; // stay on this page for the native meeting
+    // For any other meeting, jump to its detail view in Board Meetings
+    navigate(`/board-meetings/${date}`);
+  };
 
   useEffect(() => {
     Promise.all([
@@ -536,8 +563,31 @@ export default function Summary() {
 
   return (
     <div>
-      <div className="page-header">
-        <h2>Meeting Agenda</h2>
+      <div className="page-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
+        <h2 style={{ margin: 0 }}>Meeting Agenda</h2>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <label htmlFor="meeting-selector" style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: 700 }}>
+            View meeting
+          </label>
+          <select
+            id="meeting-selector"
+            value={selectedMeeting}
+            onChange={handleMeetingChange}
+            style={{
+              padding: '6px 10px', borderRadius: 5,
+              border: '1px solid var(--border, #d0d0d0)',
+              fontSize: '0.9rem', background: 'var(--card-bg, #fff)',
+              color: 'var(--text-primary)', minWidth: 260,
+            }}
+          >
+            {meetingOptions.map(m => (
+              <option key={m.date} value={m.date}>
+                {m.title}{m.status === 'upcoming' ? ' · upcoming' : ''}
+                {m.isNative ? ' (this view)' : m.isParsed ? ' → detail' : ' — packet pending'}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
       {/* ── Meeting Banner ── */}

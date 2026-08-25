@@ -15,6 +15,30 @@
       "note": "925-page exec packet (parsed). Highlights: Beeutiful Things ELAP appeal (Elbert, 90 min), Kit Carson Cure LFP series (6 apps × 2020/2021), STC-member SDRP items 7.a.3 & 7.a.4 (McConnell recuse), Schroder CRP cost-share (returning from July 23 tabled), 13-county Safflower ARC/PLC yields, $9M EFRP request across 9 mountain pine beetle counties."
     },
     {
+      "date": "2026-06-24",
+      "title": "STC Meeting — June 24, 2026",
+      "location": "Virtual Meeting via Teams",
+      "sessions": ["Regular Session", "Executive Session"],
+      "status": "past",
+      "indexFile": null,
+      "actionCount": 0,
+      "hasAppeals": false,
+      "priorMeetingRef": "2026-05-27",
+      "note": "PACKET NOT YET UPLOADED — referenced in July 23 minutes. Kyle to upload June packet from Teams SharePoint for parsing."
+    },
+    {
+      "date": "2026-05-27",
+      "title": "STC Meeting — May 27, 2026",
+      "location": "Virtual Meeting via Teams",
+      "sessions": ["Regular Session", "Executive Session"],
+      "status": "past",
+      "indexFile": null,
+      "actionCount": 0,
+      "hasAppeals": false,
+      "priorMeetingRef": "2026-04-23",
+      "note": "PACKET NOT YET UPLOADED — Kyle to upload May packet from Teams SharePoint for parsing. (Actual date may differ; confirm from Teams folder.)"
+    },
+    {
       "date": "2026-07-23",
       "title": "STC Meeting — July 23, 2026",
       "location": "Virtual Meeting via Teams",
