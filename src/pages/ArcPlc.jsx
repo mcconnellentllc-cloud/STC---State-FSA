@@ -160,17 +160,18 @@ const Formula = ({ title, lines }) => (
 
 // ── Sparkline: compact SVG line chart for inline table use.
 //    Handles null values by breaking the polyline into segments.
+//    Single-point series render as a labeled dot (common for CY 2025 seed data).
 function Sparkline({ series, years, width = 140, height = 34 }) {
   const values = years.map(y => series.years[y]);
-  const known = values.filter(v => v != null);
-  if (known.length < 2) {
+  const known = values.map((v, i) => ({ v, i })).filter(o => o.v != null);
+  if (known.length === 0) {
     return <div style={{ fontSize: 10, color: C.slate, ...mono, width, textAlign: "center", paddingTop: 8 }}>[no data]</div>;
   }
-  const min = Math.min(...known);
-  const max = Math.max(...known);
+  const min = Math.min(...known.map(o => o.v));
+  const max = Math.max(...known.map(o => o.v));
   const range = max - min || 1;
-  const stepX = width / (years.length - 1);
-  const points = values.map((v, i) => ({ x: i * stepX, y: v == null ? null : height - ((v - min) / range) * (height - 6) - 3 }));
+  const stepX = width / Math.max(1, (years.length - 1));
+  const points = values.map((v, i) => ({ x: i * stepX, y: v == null ? null : height - ((v - min) / range) * (height - 6) - 3, v }));
   const segments = [];
   let current = [];
   points.forEach(p => {
@@ -178,23 +179,23 @@ function Sparkline({ series, years, width = 140, height = 34 }) {
     else current.push(p);
   });
   if (current.length > 0) segments.push(current);
-  const first = known[0];
-  const last = known[known.length - 1];
+  const first = known[0].v;
+  const last = known[known.length - 1].v;
   const delta = last - first;
   const color = delta > 0 ? C.green : delta < 0 ? C.red : C.slate;
   return (
     <div style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
       <svg width={width} height={height} style={{ overflow: "visible" }}>
-        {segments.map((seg, i) => (
+        {segments.map((seg, i) => seg.length > 1 && (
           <polyline key={i} fill="none" stroke={color} strokeWidth="1.5"
             points={seg.map(p => `${p.x},${p.y}`).join(" ")} />
         ))}
         {points.filter(p => p.y != null).map((p, i) => (
-          <circle key={i} cx={p.x} cy={p.y} r="1.6" fill={color} />
+          <circle key={i} cx={p.x} cy={p.y} r={known.length === 1 ? "2.5" : "1.6"} fill={color} />
         ))}
       </svg>
       <div style={{ fontSize: 10, color, ...mono, fontWeight: 700, whiteSpace: "nowrap" }}>
-        {min.toFixed(0)}–{max.toFixed(0)}
+        {known.length === 1 ? last.toFixed(known[0].v >= 100 ? 0 : 2) : `${min.toFixed(0)}–${max.toFixed(0)}`}
       </div>
     </div>
   );
@@ -263,8 +264,12 @@ export default function ArcPlc() {
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   });
   const [selectedSeries, setSelectedSeries] = useState(yieldData.series[0]);
+  const [commodityFilter, setCommodityFilter] = useState("all");
   const dataYears = yieldData.years;
   const hasData = (s) => Object.values(s.years).some(v => v != null);
+  const commodityKey = (s) => s.commodity.replace(/\s*\(.*\)$/, "").trim();
+  const allCommodities = ["all", ...Array.from(new Set(yieldData.series.map(commodityKey))).sort()];
+  const filteredSeries = commodityFilter === "all" ? yieldData.series : yieldData.series.filter(s => commodityKey(s) === commodityFilter);
 
   return (
     <div style={{ background: C.cream, minHeight: "100vh" }}>
@@ -547,7 +552,16 @@ export default function ArcPlc() {
           )}
         </div>
 
-        <h3 style={{ ...serif, fontSize: 16, color: C.navy, margin: "20px 0 10px" }}>All Series — Click a Row to View Detail</h3>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 10, margin: "20px 0 10px" }}>
+          <h3 style={{ ...serif, fontSize: 16, color: C.navy, margin: 0 }}>All Series ({filteredSeries.length}) — Click a Row to View Detail</h3>
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <label style={{ fontSize: 11, color: C.slate, ...mono, textTransform: "uppercase", letterSpacing: "0.06em" }}>Commodity</label>
+            <select value={commodityFilter} onChange={e => setCommodityFilter(e.target.value)}
+              style={{ padding: "6px 10px", border: `1px solid ${C.border}`, borderRadius: 5, fontSize: 12, ...mono, color: C.navy }}>
+              {allCommodities.map(c => <option key={c} value={c}>{c === "all" ? "All commodities" : c}</option>)}
+            </select>
+          </div>
+        </div>
         <div style={{ overflowX: "auto", marginBottom: 14 }}>
           <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12, background: "#fff", border: `1px solid ${C.border}`, borderRadius: 6 }}>
             <thead>
@@ -559,7 +573,7 @@ export default function ArcPlc() {
               </tr>
             </thead>
             <tbody>
-              {yieldData.series.map((s, i) => {
+              {filteredSeries.map((s, i) => {
                 const active = s === selectedSeries;
                 const populated = hasData(s);
                 return (
