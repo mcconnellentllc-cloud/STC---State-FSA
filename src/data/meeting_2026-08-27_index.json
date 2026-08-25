@@ -1,0 +1,334 @@
+{
+  "schema_version": "1.0",
+  "index_title": "Colorado STC — August 27, 2026 Meeting — Packet Index",
+  "meeting": {
+    "body": "USDA FSA Colorado State Committee (STC)",
+    "meeting_date": "2026-08-27",
+    "location": "Colorado State Office · Denver Federal Center · Lakewood CO 80225 · OR Virtual Meeting via Teams",
+    "phone_conference": "1-970-812-0909 · ID: 499 641 44#",
+    "elap_appeal_phone": "1-970-812-0909 · ID: 839520763#",
+    "committee_members": [
+      "Don Brown, Chairperson",
+      "Kyle McConnell, Member",
+      "Steve Raftopoulos, Member",
+      "Joe Petrocco, Member",
+      "Darrell Mackey, Member"
+    ],
+    "guests": [
+      { "name": "Perry Welch", "for": "ELAP Appeal (Exec Item 3)" },
+      { "name": "Kris DeMoss (POA)", "for": "ELAP Appeal (Exec Item 3)" },
+      { "name": "Dara Belew (Otero/Crowley CED)", "for": "Otero COC Actions (Exec Item 11)" }
+    ],
+    "recusals": [
+      { "member": "Kyle McConnell", "items": ["Exec 7.a.3 (McConnell Enterprise LLC 2024 SDRP)", "Exec 7.a.4 (Kyle McConnell 2024 SDRP)"], "reason": "Personal financial interest" }
+    ],
+    "sessions": [
+      {
+        "session": "Executive Session",
+        "start_time": "09:00",
+        "agenda_items": [
+          { "number": "1", "title": "Call to Order", "action_type": "Procedural" },
+          { "number": "2", "title": "Approve Executive Session Minutes — July 23, 2026", "presenter": "Cindy Vukasin, Farm Program Chief", "action_type": "Action Item" },
+          {
+            "number": "3", "title": "ELAP — Appeal — Elbert County — Beeutiful Things Inc.",
+            "presenter": "Corey Pelton, Farm Program Chief",
+            "program": "ELAP", "action_type": "Action Item", "time_allotted_min": 90,
+            "overview_time": "9:00 AM", "producer_time": "9:30 AM",
+            "guests": ["Perry Welch", "Kris DeMoss"],
+            "appealRef": "APPEAL-5-2026-BEEUTIFUL-THINGS",
+            "key_facts": {
+              "producer": "Beeutiful Things Inc.",
+              "county": "Elbert",
+              "program_year": "2025 ELAP Honeybee",
+              "coc_review": "March 11, 2026",
+              "coc_reconsideration": "May 13, 2026",
+              "coc_denial_letter": "March 17, 2026",
+              "coc_reconsideration_letter": "June 1, 2026",
+              "matter": "Beeutiful Things Inc. is appealing the Elbert County COC's decision to disapprove their 2025 ELAP honeybee application for payment.",
+              "core_issues": [
+                "CCC-771 initial colony report for CY 2025 filed Jan 16, 2026 — 14 days past the late-filed window (subsequent year's ARD of Jan 2, 2026)",
+                "Multiple internal inconsistencies between CCC-771, CCC-939H application (537 initial, 287 additions, 776 losses), CCC-870 (279 CCD losses in almond pollination), and receipts (816 colony purchase Dec 18, 2025)",
+                "CCC-771 shows only 48 colonies in inventory Nov 25, 2025 but application claims 537 initial + 287 additions"
+              ],
+              "appellant_position": "Jan 2 ARD does not align with migratory beekeeping timelines — bees ship to California Nov/Dec for almond pollination, inventory not taken until mid-January. POA Christine DeMoss thought Dec 30 shipping receipt for 2026 beginning inventory would count as 2025 ending inventory."
+            }
+          },
+          {
+            "number": "4a", "title": "LFP — STO Employee 2026 LFP Applications (Rader)",
+            "presenter": "Cindy Vukasin, Farm Program Chief",
+            "program": "LFP", "action_type": "Action Item", "time_allotted_min": 5,
+            "key_facts": {
+              "producers": "Janae Rader (Farm Program Specialist) and Blake Rader (husband)",
+              "county": "Otero (2026 LFP)",
+              "matter": "STO-employee LFP applications require STC action per policy reaffirmed March 24, 2026",
+              "cause": "Drought — Otero qualified April 14, 2026 with start date April 1, 2026",
+              "livestock": "114 Beef Adults-Cows and Bulls (each 50% share)",
+              "grazing_land": "Native pasture, 57 AUs (federal lease recorded as AUM)",
+              "additional": "Raders will also file with Las Animas County (second county for 2026)",
+              "recommended_action": "Approve 2026 LFP applications for Janae Rader and Blake Rader in Otero County"
+            }
+          },
+          {
+            "number": "4b", "title": "LFP — Kit Carson — Determine risk in grazing land / Lease Agreements",
+            "presenter": "Janae Rader, Farm Program Specialist",
+            "program": "LFP", "action_type": "Action Item", "time_allotted_min": 10,
+            "key_facts": {
+              "matter": "STC to determine risk and control of claimed acreage as of date of qualifying drought",
+              "risk_confirmed": ["F1740 — 30 acres"],
+              "no_risk_control": ["F2402", "F6191", "F6192", "F7904", "F8845", "F7488 (2021)", "F8504", "F8866"],
+              "under_review": "F7488 (2020) — wheat planted 9/12/19, lease 3/1/20 through 8/1/21",
+              "policy": "1-LFP paragraph 26 Eligible Grazing Land — cash lease must convey control however limited"
+            }
+          },
+          {
+            "number": "4c",
+            "title": "LFP — Kit Carson — COC members and POAs CCC-853s (2020 and 2021)",
+            "presenter": "Janae Rader, Farm Program Specialist",
+            "program": "LFP", "action_type": "Action Items", "time_allotted_min": 30,
+            "key_facts": {
+              "matter": "6 individual LFP applications requiring STC review (COC members and POAs — mandatory STC review per 1-LFP par 4A)",
+              "applications": [
+                "2020 Brad Cure",
+                "2020 Eric Cure",
+                "2020 Denis and Victoria Cure",
+                "2021 Brad Cure",
+                "2021 Eric Cure",
+                "2021 Denis and Victoria Cure"
+              ],
+              "brad_cure_2020_summary": "Act on CCC-853 signed 5/5/26, received by FSA 5/12/26. Recommended adjustments: adjust livestock down (bank B/S dated 198 days after 6/16/20 trigger — no proof of grazing yearlings; original app did not include them; producer historically runs ~495 cows, COC previously approved 275 adult beef + 220 mitigated adult beef). Adjust Mixed Forage NSG to 184.670 ac (missing lease/risk on F6191 T1276 CLU 1B, F7904 T2032 CLU 1). Adjust Grass NAG to 1,783.255 ac (missing lease/risk on F1740 T1718 CLU 4, F2402 T1921 CLU 1/2/3, F6191 T1275 CLU 2/4 + T1276 CLU 4 + T1522 CLU 3, F7904 T1793 CLU 2/3/5 + T2032 CLU 2/3/4/11/12). Adjust Wheat HRW to 0 (Long-Season Small Grain did not trigger for Kit Carson 2020).",
+              "producer_rights": "30 days to request reconsideration to STC and/or mediation and/or NAD appeal"
+            }
+          },
+          {
+            "number": "5", "title": "NAP — SED Discussion and Presentation on CEY",
+            "presenter": "Jerry Sonnenberg, State Executive Director",
+            "program": "NAP", "action_type": "Discussion", "time_allotted_min": 60,
+            "key_facts": {
+              "matter": "SED presentation on how other states set CEY, in response to Montezuma COC memo from July 23 meeting",
+              "reference": "Excel workbook (Box) — 26.08.27_NAP_CEY Data_Jerry.xlsx contains 39 sheets of NAP CEY history 2018-2027 for every county × crop × type"
+            }
+          },
+          {
+            "number": "6a", "title": "NAP — NCT General Pricing Guidelines for Fg Crops",
+            "presenter": "Janae Rader, Farm Program Specialist",
+            "program": "NAP", "action_type": "Action Item", "time_allotted_min": 10,
+            "key_facts": {
+              "matter": "Set guide/standard on Fg pricing (deferred from July 23 — STC was to provide suggestions)",
+              "method": "AMP = Olympic average of 5 most recent consecutive crop years; benchmark = NASS CO (CASS) all-other-hay price ($165.00 for 2024)"
+            }
+          },
+          {
+            "number": "6b", "title": "NAP — 2027 NCT Colorado — 10 Crops Tabled during July Meeting",
+            "presenter": "Janae Rader, Farm Program Specialist",
+            "program": "NAP", "action_type": "Action Items", "time_allotted_min": 30,
+            "key_facts": {
+              "matter": "Re-visit the 10 crops the STC tabled on July 23 pending SED info on how other states set CEY",
+              "crops": ["Apples (0054)", "Apricots (0326)", "Cherries (0128)", "Garlic (0423)", "Grapes (0053)", "Honey (1190)", "Hops (0138)", "Peaches (0034)", "Pears (0144)", "Triticale (0158)"],
+              "recommended_action": "Accept 2027 NCT data as presented by STO for each crop",
+              "notes": "Cherries DR still uses crop code 1028 (agenda header + tables use 0128 — carried July 23 flag). Pears: consider viability in Fremont County."
+            }
+          },
+          {
+            "number": "6c", "title": "NAP — 2027 NCT Colorado (3 new crops)",
+            "presenter": "Janae Rader, Farm Program Specialist",
+            "program": "NAP", "action_type": "Action Items", "time_allotted_min": 10,
+            "key_facts": {
+              "crops": [
+                { "name": "Plums (0254)", "types": "MID (Midseason), LAT (Late)", "pp": 0, "uh": 0.55, "acd": "11/20" },
+                { "name": "Plumcot (0466)", "types": "single", "pp": 0, "uh": 0.65, "acd": "11/20", "note": "Consider decreasing historical yield for Fremont County" },
+                { "name": "Vetch (0435)", "types": "UMV (Utah Milkvetch)", "pp": 0, "uh": 0.85, "acd": "12/01" }
+              ]
+            }
+          },
+          {
+            "number": "6d", "title": "NAP — New Crop Requests (Ouray Grass FME/RDT)",
+            "presenter": "Janae Rader, Farm Program Specialist",
+            "program": "NAP", "action_type": "Action Items", "time_allotted_min": 10,
+            "key_facts": {
+              "matter": "Montrose-Gunnison-Ouray COC requests three new grass types",
+              "requests": [
+                { "type": "Grass FME (Fescue-Meadow) Fg Ir", "pp": 0, "uh": 0.92, "fpd": "10/15", "acd": "12/01", "yields_2019_2024": [null, 0.68, 0.88, 0.72, 1.07, 1.33], "prices_2019_2024": [131.70, 170.00, 191.00, 207.00, 205.00, null] },
+                { "type": "Grass RDT (Redtop) Fg Ir", "pp": 0, "uh": 0.92, "fpd": "10/15", "acd": "12/01", "yields_2019_2024": [null, 0.99, 1.43, 1.22, 0.98, 1.22] },
+                { "type": "Grass FME + RDT Gz Ir", "note": "grazing record parallel to Fg record" }
+              ]
+            }
+          },
+          {
+            "number": "7a1", "title": "SDRP — STC-member SDRP — 2024 SDRP Stage 2 M77 Ag LLC",
+            "presenter": "Julie Sporhase, Farm Program Specialist",
+            "program": "SDRP", "action_type": "Action Item", "time_allotted_min": 5,
+            "key_facts": {
+              "matter": "Sedgwick County COC requests approval — 2024 SDRP Stage 2 for M77 Ag LLC (DD Brase interest)",
+              "recommendation": "All program and payment eligibility requirements met — approve"
+            }
+          },
+          {
+            "number": "7a2", "title": "SDRP — STC-member SDRP — 2025 SDRP Stage 2 M77 Ag LLC",
+            "presenter": "Julie Sporhase, Farm Program Specialist",
+            "program": "SDRP", "action_type": "Action Item", "time_allotted_min": 5
+          },
+          {
+            "number": "7a3", "title": "SDRP — STC-member SDRP — 2024 SDRP Stage 2 McConnell Enterprise LLC",
+            "presenter": "Julie Sporhase, Farm Program Specialist",
+            "program": "SDRP", "action_type": "Action Item", "time_allotted_min": 5,
+            "key_facts": {
+              "producer": "McConnell Enterprises LLC (STC member Kyle McConnell has interest)",
+              "county": "Sedgwick",
+              "recommendation": "All program and payment eligibility requirements met — approve",
+              "recusal_note": "Kyle McConnell must recuse from vote"
+            }
+          },
+          {
+            "number": "7a4", "title": "SDRP — STC-member SDRP — 2024 SDRP Stage 2 Kyle McConnell",
+            "presenter": "Julie Sporhase, Farm Program Specialist",
+            "program": "SDRP", "action_type": "Action Item", "time_allotted_min": 5,
+            "key_facts": {
+              "producer": "Kyle McConnell (STC Member)",
+              "county": "Sedgwick",
+              "recommendation": "All program and payment eligibility requirements met — approve",
+              "recusal_note": "Kyle McConnell must recuse from vote"
+            }
+          },
+          {
+            "number": "8", "title": "MASC — FSA-321 Equitable Relief — Kit Carson — Carlyle C James Trust No 1",
+            "presenter": "Julie Sporhase, Farm Program Specialist",
+            "program": "MASC", "action_type": "Action Item", "time_allotted_min": 10,
+            "key_facts": {
+              "county": "Kit Carson",
+              "amount": "$523.06",
+              "matter": "Equitable relief on 2025 MASC application — COF entered approval under wrong DPE (Carlyle James individual instead of the revocable trust)",
+              "misaction_analysis": "Producer submitted timely application; met all eligibility; error was clearly COF's; discovered after MASC approval deadline",
+              "authority": "$5,000 STC authority under 1-MASC / 7-CP",
+              "recommendation": "Approve equitable relief for Carlyle C James Trust No 1"
+            }
+          },
+          {
+            "number": "9a", "title": "CRP — Cost Share Increase (July TABLED item) — Baca — Schroder Red Angus",
+            "presenter": "Hunter A. Cleveland, Agricultural Program Specialist",
+            "program": "CRP", "action_type": "Action Item", "time_allotted_min": 10,
+            "key_facts": {
+              "matter": "Returning from July 23 (tabled). STC previously requested staff to provide list of cost items that were included and considered when 2022PY rate was approved.",
+              "producer": "Schroder Red Angus",
+              "contract": "12006 · Tract 6810 · 125.94 acres · Grassland CRP Signup 203 · signed 08/04/2021",
+              "component": "COCRP6577 Water Well >300-600 ft, extent 400 ft",
+              "sto_recommendation": "Increased rate of $107/ft (reflective of 100% rate producer paid); recommend to DAFP",
+              "components_reviewed": {
+                "COCRP6571 Watering Facility": "4,700 gallons — $2,820.00",
+                "COCRP6573 Pipeline 1.25 inch": "2,700 feet — $2,200.00",
+                "COCRP6577 Water Well >300-600 ft": "400 feet — cost figures per July 23 packet"
+              }
+            }
+          },
+          {
+            "number": "9b", "title": "CRP — Producer Self-Certification Recommendation",
+            "presenter": "Hunter A. Cleveland, Agricultural Program Specialist",
+            "program": "CRP", "action_type": "Action Item", "time_allotted_min": 15,
+            "key_facts": {
+              "matter": "Review 2-CRP (Rev. 6) amendment 10 paragraph 508C — recommend to Colorado STAC which mid-contract management activities can be self-certified by CRP participants",
+              "policy": "2-CRP (Rev. 6) paragraph 428A requires participants perform at least 1 management activity during contract life (by year 6 for 10-yr, year 9 for 15-yr).",
+              "stac_subcommittee_vote": "4-1 to allow self-certification on ALL mid-contract management practices",
+              "dissenting_view": "Do not allow self-certification on haying — this practice just being brought back into the toolbox; historical experience shows producers hay too short (below 6\" stubble) when not checked. Alternative: random field inspections by NRCS or partner staff.",
+              "recommendation": "STC to determine which management activities can be self-certified"
+            }
+          },
+          {
+            "number": "10", "title": "DMC — CCC-802 Dairy Dissolution — Weld — Peschel's Dairy Inc.",
+            "presenter": "Doug Andresen, Agricultural Program Specialist",
+            "program": "DMC", "action_type": "Action Item", "time_allotted_min": 15,
+            "key_facts": {
+              "matter": "Approval of dissolution of Peschel's Dairy Inc. effective March 31, 2026 per 1-DMC (Rev. 1) paragraph 71J",
+              "coverage": "95% coverage for 2026 · Tier 1 $9.50 · Tier 2 $4.00",
+              "premium_due": "$6,750 total",
+              "remaining_premium": "$1,664 (prorated 90/365)",
+              "payments_received": "January and February 2026 (dairy was active Jan/Feb/Mar — 90 days). No repayments required.",
+              "recommendation": "Approve CCC-802 for Peschel's Dairy Inc. effective March 31, 2026"
+            }
+          },
+          {
+            "number": "11", "title": "Otero COC Actions Needed (Dara Belew presenting) — separate file",
+            "presenter": "Dara Belew, Otero/Crowley County Executive Director",
+            "action_type": "Multiple",
+            "key_facts": {
+              "review_only": ["ASCF apps approved", "2026 LFP apps approved", "Compliance revisions/corrections", "Late-file", "Common management farm changes", "Payment eligibility actively engaged", "CRP ownership changes", "SDRP Stage 1/2 apps approved"],
+              "actions_required": ["SDRP apps with PRF/AF", "SDRP apps with Duplicate Benefits", "NAP 2026 NOL prevent-plant acres (not for NAP)", "NAP 2026 NOL prevent-plant acres (NAP)", "NAP 2026 NOL planted acres"]
+            }
+          },
+          { "number": "12", "title": "Adjourn Executive Session", "action_type": "Action Item" }
+        ]
+      },
+      {
+        "session": "Regular Session",
+        "start_time": "15:30",
+        "agenda_items": [
+          { "number": "1", "title": "Call to Order", "action_type": "Procedural" },
+          { "number": "2", "title": "Approve Regular Session Minutes — July 23, 2026", "presenter": "Cindy Vukasin, Farm Program Chief", "action_type": "Action Item" },
+          { "number": "3", "title": "State Executive Director Report", "presenter": "Jerry Sonnenberg, State Executive Director", "action_type": "Report", "time_allotted_min": 10 },
+          { "number": "4", "title": "District Director Reports", "presenter": "D1 Scott Brase · D2 Jon Weishaar (Oral) · D3 Woody Woods · D4 Sam Montoya", "action_type": "Report", "time_allotted_min": 20 },
+          { "number": "5", "title": "Senior Leadership Reports", "presenter": "Kim Lacy · Cindy Vukasin · Corey Pelton · Jon Weishaar", "action_type": "Report", "time_allotted_min": 5 },
+          {
+            "number": "6", "title": "NAP — Delegation: Designate DD as STC Representative",
+            "presenter": "Janae Rader, Farm Program Specialist",
+            "program": "NAP", "action_type": "Action Item", "time_allotted_min": 5,
+            "key_facts": {
+              "matter": "Colorado STC policy — District Directors are delegated authority to act on behalf of STC for CCC-576s executed by STC members, COC members, CEDs, County Office employees and their spouses",
+              "not_delegated": "Applications executed by State Office employees and their spouses continue to require STC approval — DD authority does NOT extend here",
+              "policy_cite": "1-NAP (Rev. 2) subparagraph 4A",
+              "recommendation": "Approve policy as reaffirmed"
+            }
+          },
+          {
+            "number": "7", "title": "EFRP — CSFS EFRP Implementation Recommendation",
+            "presenter": "Hunter A. Cleveland, Agricultural Program Specialist",
+            "program": "EFRP", "action_type": "Action Item", "time_allotted_min": 15,
+            "key_facts": {
+              "matter": "Colorado State Forest Service (CSFS) letter of July 28, 2026 recommends EFRP implementation for Mountain Pine Beetle infestation",
+              "counties": ["Larimer", "Boulder", "Gilpin", "Clear Creek", "Jefferson", "Douglas", "Park", "Teller", "El Paso"],
+              "practices_all_counties": ["EF2 Softwood Forest Restoration", "EF3 Mixed Conifer Restoration", "EF9 Other Emergency Forest Restoration Measures"],
+              "signup_duration": "60 days · Oct 1 - Nov 30, 2026",
+              "estimated_funds_per_county": "$1,000,000",
+              "total_request": "$9,000,000",
+              "recommendation": "Request EFRP implementation for the 9 counties as described"
+            }
+          },
+          {
+            "number": "8", "title": "ARC/PLC — 2025 DAFP Yield Solicitation (Safflower)",
+            "presenter": "Doug Andresen, Farm Program Specialist",
+            "program": "ARC/PLC", "action_type": "Action Item", "time_allotted_min": 15,
+            "key_facts": {
+              "matter": "Update missing 2025 county yields for Safflower — completing what was not addressed at July 23 meeting",
+              "crop": "Safflower (all non-irrigated)",
+              "total_acres_planted": "8,096.44",
+              "producing_counties": "Moffat, Routt, La Plata, Dolores, Montezuma",
+              "policy_cite": "1-ARCPLC paragraph 134 (Other Yield Information); benchmark uses Olympic average of 5 crop years 2019-2023 for 2025 program year",
+              "method": "Average CO NASS & San Juan UT SCO Yield × County percent of State Average Benchmark Yield",
+              "sto_recommended_yields": {
+                "Arapahoe": { "actual": 606.75, "t_yield": 956.00, "unit": "lb/ac" },
+                "Dolores": { "actual": 606.75, "t_yield": 956.00, "unit": "lb/ac" },
+                "Elbert": { "actual": 698.92, "t_yield": 1108.43, "unit": "lb/ac" },
+                "Kit Carson": { "actual": 788.97, "t_yield": 1273.00, "unit": "lb/ac" },
+                "La Plata": { "actual": 788.97, "t_yield": 1273.00, "unit": "lb/ac" },
+                "Larimer": { "actual": 788.97, "t_yield": 1273.00, "unit": "lb/ac" },
+                "Lincoln": { "actual": 743.94, "t_yield": 1179.82, "unit": "lb/ac" },
+                "Logan": { "actual": 627.39, "t_yield": 956.00, "unit": "lb/ac" },
+                "Montezuma": { "actual": 657.99, "t_yield": 956.00, "unit": "lb/ac" },
+                "Prowers": { "actual": 788.97, "t_yield": 1273.00, "unit": "lb/ac" },
+                "Routt": { "actual": 610.50, "t_yield": 968.21, "unit": "lb/ac" },
+                "San Miguel": { "actual": 625.25, "t_yield": 991.59, "unit": "lb/ac" },
+                "Weld": { "actual": 623.64, "t_yield": 989.04, "unit": "lb/ac" }
+              },
+              "recommendation": "Yields approved as presented"
+            }
+          },
+          { "number": "9", "title": "State Committee Field Discussion Update", "action_type": "Discussion" },
+          { "number": "10", "title": "Adjourn Regular Session", "action_type": "Action Item" }
+        ]
+      }
+    ]
+  },
+  "flags": [
+    { "id": "AUG27-SDRP-RECUSAL", "severity": "warning", "summary": "Kyle McConnell has personal financial interest in Exec items 7.a.3 (McConnell Enterprise LLC) and 7.a.4 (Kyle McConnell individual) — must recuse from both votes." },
+    { "id": "AUG27-CHERRIES-CODE", "severity": "data_quality", "summary": "Cherries DR body still uses code 1028 (vs 0128 in header/tables) — carried over from July 23 packet, not corrected." },
+    { "id": "AUG27-EXEC-PACKET-925PP", "severity": "info", "summary": "Executive Session Packet is 925 pages. All discussion records are text-searchable; substantial page counts (Cure LFP series pp.37-435, SDRP pp.765-854) are largely scanned exhibits." },
+    { "id": "AUG27-EFRP-9M", "severity": "info", "summary": "EFRP recommendation totals $9M across 9 counties — well above STC's $400K threshold, so recommendation goes to ECP-PM at national level." }
+  ]
+}

@@ -248,5 +248,107 @@
       { "label": "Remand — Growing History and Agronomy Review", "description": "Remand to La Plata COC: (1) determine whether 65/100 buy-up on Unit 1528 was properly granted; (2) obtain agronomic expert input on low-density safflower seeding in this specific growing region; (3) revisit drought analysis using field-specific precipitation data.", "fsaRisk": "LOW — produces a better record.", "appellantRisk": "Continued delay.", "nadRisk": "LOW." },
       { "label": "Deny — Precipitation and Seeding Rate", "description": "Affirm COC. 2025 precipitation exceeded successful prior years. Seeding rate at ~2.5 lbs/acre versus 15–30 recommended constitutes failure to follow good farming practices — an ineligible cause of loss under 1-NAP paragraph 51F.", "fsaRisk": "LOW procedurally. MODERATE if EQIP conflict and Unit 1528 improper coverage grant are raised at NAD.", "appellantRisk": "Loss of 2025 NAP payment on 185 acres.", "nadRisk": "MODERATE — EQIP obligation and Unit 1528 improper coverage grant are viable NAD arguments." }
     ]
+  },
+  {
+    "id": "APPEAL-5-2026-BEEUTIFUL-THINGS",
+    "caseId": "Appeal 5",
+    "meetingDate": "2026-08-27",
+    "agendaItem": "Exec Session Item 3",
+    "title": "ELAP Appeal — Elbert County — 2025 Honeybee Colony Losses",
+    "appellants": "Beeutiful Things Inc.",
+    "county": "Elbert",
+    "program": "ELAP",
+    "presenter": "Corey Pelton, Farm Program Chief",
+    "meetingTimeMin": 90,
+    "overviewTime": "9:00 AM",
+    "producerTime": "9:30 AM",
+    "phoneJoin": "(970) 812-0909 · ID: 839520763#",
+    "status": "OPEN",
+    "archived": false,
+    "guestsAtMeeting": true,
+    "voteRecorded": null,
+    "advisoryNotes": "",
+    "dateCreated": "2026-08-20",
+    "cropInfo": {
+      "Program": "2025 ELAP Honeybee",
+      "Producer": "Beeutiful Things Inc.",
+      "POA": "Christine (Kris) DeMoss",
+      "Guest at STC": "Perry Welch (representing appellant)",
+      "COC Denial Letter": "March 17, 2026",
+      "COC Reconsideration": "May 13, 2026",
+      "Reconsideration Letter": "June 1, 2026",
+      "Initial CCC-771 Filed": "January 16, 2026 (14 days past late-filed window)",
+      "CY 2025 ARD (initial due)": "January 2, 2025",
+      "CY 2025 Late-Filed Deadline": "January 2, 2026",
+      "CCC-939H Claim": "537 initial · 287 additions · 776 eligible lost colonies",
+      "CCC-771 Nov 25 Inventory": "48 colonies",
+      "CCC-771 Nov 29 Movement": "537 colonies to Merced CA",
+      "Receipt Dec 18 2025": "816 colony purchase (not on CCC-771)",
+      "CCC-870 CCD Losses": "279 colonies before/during almond pollination"
+    },
+    "issueSummary": "Beeutiful Things Inc. appeals the Elbert County COC decision to disapprove their 2025 ELAP honeybee application for payment. The CCC-771 colony inventory report for CY 2025 was filed January 16, 2026 — 14 days past the late-filed window (subsequent-year ARD of January 2, 2026). Beyond timing, the record contains substantial internal inconsistencies: the CCC-939H application claims 537 initial + 287 additions + 776 losses, but the CCC-771 shows only 48 colonies in inventory Nov 25, 2025; a receipt for 816 colonies purchased Dec 18, 2025 does not appear on the CCC-771; and 279 CCD losses cited on CCC-870 are also not reflected. Producer position: the January 2 ARD does not align with migratory beekeeping timelines — bees ship to California November/December for almond pollination and inventory is not typically taken until mid-January.",
+    "fullText": "Beeutiful Things Inc. is a Colorado honeybee operation in Elbert County. Bees are shipped to California each November/December for almond pollination and returned mid-year.\n\nJanuary 28, 2025 — FSA sent Beeutiful Things a CCC-771 via email for the 2025 crop year and notified them to keep the form updated when moving bees.\n\nDecember 31, 2025 — FSA County Office sent POA Christine DeMoss a CCC-771 to report bee colony inventory (2 days before the late-filed deadline).\n\nJanuary 16, 2026 — POA Christine DeMoss submitted a CCC-771 for CY 2025 including beginning inventory, ending inventory, additions/reductions, and movement. Filed 14 days after the late-filed window closed (January 2, 2026).\n\nFebruary 27, 2026 — POA submitted a copy of a recorded deed to establish the headquarters of the operation.\n\nMarch 11, 2026 — Elbert County COC executive session reviewed the file.\n\nMarch 17, 2026 — 2025 ELAP Application Denial Letter issued.\n\nRequest for reconsideration filed.\n\nMay 13, 2026 — Elbert County COC reconsideration hearing (executive session). COC upheld disapproval.\n\nJune 1, 2026 — Elbert County COC reconsideration decision letter issued.\n\nRequest for STC appeal filed.\n\nAugust 27, 2026 — STC hearing scheduled 9:00 AM overview, 9:30 AM with producer (90 minutes). Guests Perry Welch (appellant representative) and Kris DeMoss (POA).\n\nRecord inconsistencies documented in the Agency Record summary:\n- Receipt for 816 colony purchase dated December 18, 2025 — not reflected on CCC-771 (CCC-771 only shows 48 colonies in inventory Nov 25, 2025).\n- CCC-870 Colony Collapse Disorder Certification section 8 states 279 colonies lost before/during pollination in almond orchards — not listed on CCC-771.\n- CCC-870 section 8 states substantial colony purchases needed to stay in business — CCC-771 shows no purchases.\n- Signed CCC-939H (Application for Payment) shows 537 initial colonies, 287 additions, 776 eligible lost colonies.\n- CCC-771 Part E shows 537 colonies moved from Elbert County CO to Merced County CA on November 29, 2025.\n\nAppellant's position (Perry Welch): The January 2 ARD does not align with actual beekeeping timelines. Bees ship to California in November/December and inventory is not taken again until mid-January.\n\nPOA position (Christine DeMoss): She sent a receipt of shipping for beginning 2026 inventory on December 30 and thought it would count as 2025 ending inventory.",
+    "theGood": [
+      "The January 2 acreage reporting date (ARD) is fundamentally incompatible with migratory beekeeping. Bees physically must ship to California in November/December for almond pollination — inventory reconciliation cannot practically occur until mid-January when the operation returns. This is a program design problem, not a Beeutiful Things problem.",
+      "The producer engaged in a substantial, active operation — receipts document 816 colonies purchased December 18, 2025. This is not a fly-by-night or opportunistic filing.",
+      "Colony Collapse Disorder is a nationally documented, well-recognized cause of honeybee loss. The producer certified via CCC-870 that CCD affected 279 colonies before and during almond pollination — a documented, credible cause of loss.",
+      "Documentation exists to reconstruct the actual inventory changes — purchase receipts, shipping records, and CCC-870 all corroborate that colonies were purchased and lost. The timeline was disorganized, but the underlying facts are documentable.",
+      "The producer used a professional POA (Christine DeMoss) to handle FSA filings — a good-faith effort to comply through recognized channels, not a producer trying to circumvent the system.",
+      "FSA sent the CCC-771 reminder to the POA on December 31, 2025 — 2 days before the late-filed deadline. This is not adequate agency notice for a producer to gather migratory-inventory data across two states.",
+      "The producer submitted supplementary documentation (recorded deed, CCC-870, receipts, CCC-871 correspondence) — showing engagement with the process even after the filing.",
+      "Colorado STC has authority to grant equitable relief under FSA Handbook 7-CP where documentation and good-faith compliance exist despite procedural missteps."
+    ],
+    "theBad": [
+      "The CY 2025 initial CCC-771 was due January 2, 2025 — filed 379 days late on January 16, 2026. Under 2-CP paragraph 27, the late-filed window closed on the subsequent year's ARD (January 2, 2026). The filing is 14 days beyond even that extended window.",
+      "The signed CCC-939H application (537 initial + 287 additions + 776 losses) is internally inconsistent with the CCC-771 in evidence (which shows only 48 colonies in inventory Nov 25, 2025). The two documents cannot both be correct.",
+      "1-ELAP (Rev. 1) subparagraph 170 A requires colony changes to be reported within 30 calendar days of buying, selling, reductions, losses, or splits — and within 30 days of movement between counties. The Dec 18 purchase of 816 colonies and the 279 CCD losses were never reported on the CCC-771 within the 30-day window.",
+      "The producer had a professional POA precisely to navigate these deadlines. Missing an ARD by a full year plus 14 days is not a minor error attributable to producer inexperience.",
+      "The 30-day reporting requirement exists precisely to prevent post-hoc reconstruction of losses. Allowing an application built from records that were never contemporaneously reported undermines the entire ELAP verification framework.",
+      "By signing CCC-939H the producer certified under 1-ELAP subparagraph 417A that information provided is true and correct — but the CCC-939H numbers cannot be reconciled with the CCC-771 filed 3 weeks earlier.",
+      "COC reviewed the record at both the March 11 initial session and the May 13 reconsideration hearing and upheld disapproval both times — COC did not find the paperwork explanation credible or sufficient."
+    ],
+    "redFlags": [
+      { "type": "REGULATORY", "text": "The January 2 ARD for a crop year that begins that same day (Jan 1 - Dec 31) is a widely-criticized regulatory design for migratory beekeeping. A producer must certify beginning-of-year inventory by the end of the first business day of the year. However, the STC cannot rewrite the ARD; only DAFP/national policy can address the fundamental design problem." },
+      { "type": "DOCUMENTATION", "text": "The record cannot support a payment calculation as filed. The CCC-771, CCC-939H, CCC-870, and supporting receipts contain material discrepancies. Even if the late-filing were excused, a specific dollar amount cannot be determined from the current documentation." },
+      { "type": "PROCEDURAL", "text": "FSA sent the CCC-771 reminder to POA on December 31, 2025 — only 2 days before the late-filed deadline (January 2, 2026). The record should document whether earlier reminders were sent (January 28, 2025 email is noted, but not intermediate reminders during the year)." },
+      { "type": "REGULATORY", "text": "2-CP paragraph 27 late-filed acreage rules permit filing by the subsequent year's ARD — the Jan 16, 2026 filing missed even this extended window. Handbook policy does not appear to provide a further late-filed remedy for this circumstance without an equitable-relief determination." }
+    ],
+    "commonSense": [
+      "The migratory beekeeping calendar and the January 2 ARD are genuinely incompatible. Any Colorado migratory beekeeper faces this problem, and the STC should note this in its decision text — whichever way it votes — so it can be raised with National Office as a program design issue.",
+      "But the producer's paperwork problem goes beyond just the ARD timing. Multiple discrepancies between CCC-771, CCC-939H, and supporting receipts suggest the producer's own records are not organized to a level that supports a specific payment amount. Even a sympathetic reading of the ARD issue does not solve the record inconsistencies.",
+      "The most defensible middle path is a remand to Elbert COC with direction to reconcile documentation before payment. This acknowledges the ARD design problem while requiring the producer to establish a reliable evidentiary basis for whatever payment is issued.",
+      "Denying outright is procedurally clean but forces the producer to NAD — where the ARD-design argument becomes a strong appellate issue. The record deserves a fuller reconciliation at the state level before that path."
+    ],
+    "contracts": [],
+    "resolutionOptions": [
+      {
+        "label": "Grant Full Relief",
+        "description": "Find that the January 2 ARD is fundamentally incompatible with migratory beekeeping. Accept the late-filed CCC-771. Direct Elbert COC to process payment on the 776 losses claimed on CCC-939H.",
+        "fsaRisk": "HIGH — establishes precedent that migratory beekeepers can late-file CCC-771 well past the late-filed window, and that CCC-939H numbers stand even when inconsistent with CCC-771.",
+        "appellantRisk": "None if granted.",
+        "nadRisk": "MODERATE if denied — ARD-design argument is a strong appellate issue."
+      },
+      {
+        "label": "Grant Partial Relief — Remand",
+        "description": "Accept the late-filed CCC-771 based on the migratory-beekeeping ARD incompatibility. Remand to Elbert COC to reconcile CCC-771 with CCC-939H, CCC-870, and receipts before a payment amount is determined. STC decision text should note the ARD design problem for National Office attention.",
+        "fsaRisk": "MODERATE — preserves late-filed relief for the specific migratory-beekeeping case while requiring documentation reconciliation.",
+        "appellantRisk": "Continued delay; payment amount may be less than the 776 claimed.",
+        "nadRisk": "LOW to MODERATE."
+      },
+      {
+        "label": "Refer to Mediation",
+        "description": "Refer to Colorado FSA mediation program before STC renders final determination. Allow parties to work through documentation reconciliation with a mediator.",
+        "fsaRisk": "LOW.",
+        "appellantRisk": "LOW — appeal rights preserved if mediation fails.",
+        "nadRisk": "LOW."
+      },
+      {
+        "label": "Deny — Late-Filed Beyond Window + Record Inconsistencies",
+        "description": "Affirm COC. CCC-771 filed 14 days past the late-filed window (2-CP paragraph 27). CCC-939H application internally inconsistent with CCC-771 in evidence. Multiple 30-day reporting violations under 1-ELAP paragraph 170 for the 816 colony purchase and 279 CCD losses.",
+        "fsaRisk": "LOW procedurally. MODERATE if ARD-design argument gains traction at NAD.",
+        "appellantRisk": "Loss of 2025 ELAP payment; forces NAD escalation to preserve rights.",
+        "nadRisk": "MODERATE — migratory-beekeeping ARD incompatibility is a viable NAD argument even against a clean procedural denial."
+      }
+    ]
   }
 ]

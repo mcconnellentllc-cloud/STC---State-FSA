@@ -2,9 +2,11 @@ import { useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import registry from "../data/meetings_registry.json";
 import july23 from "../data/meeting_2026-07-23_index.json";
+import aug27 from "../data/meeting_2026-08-27_index.json";
 
 const MEETING_DATA = {
   "2026-07-23": july23,
+  "2026-08-27": aug27,
 };
 
 const C = {
