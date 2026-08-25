@@ -125,13 +125,286 @@ NOTES:
 (Live notes will be added during the training session)`,
   },
   {
-    id: 'april-stc-meeting',
+    id: 'aug-27-stc-meeting',
     pinned: true,
-    date: '2026-04-TBD',
-    title: 'STC Meeting — April 2026',
-    location: 'Virtual / Zoom (no travel authorized)',
+    date: '2026-08-27',
+    title: 'STC Meeting — August 27, 2026',
+    location: 'Denver Federal Center (Lakewood, CO) OR Virtual via Teams · (970) 812-0909 ID: 499 641 44#',
+    tags: 'meeting, STC, august, ELAP, appeal, SDRP, CRP, EFRP, NAP, ARC-PLC, MASC, DMC, LFP, action-items',
+    source: 'Anticipated — Aug 27, 2026 (packets parsed 08/25)',
+    content: `COLORADO STC MEETING — AUGUST 27, 2026
+Executive Session opens 9:00 AM · Regular Session opens 3:30 PM
+Guests: Perry Welch + Kris DeMoss for ELAP Appeal only · Dara Belew for Otero COC items only
+
+⚠ RECUSAL REQUIRED: Kyle McConnell must recuse from Exec 7.a.3 (McConnell Enterprise LLC 2024 SDRP) and Exec 7.a.4 (Kyle McConnell 2024 SDRP) — personal financial interest.
+
+═════════════════════════════════════════════
+EXECUTIVE SESSION — 9:00 AM
+═════════════════════════════════════════════
+
+1. Call to Order
+2. Approve Exec Minutes — July 23, 2026 [Cindy Vukasin] ACTION
+3. ELAP APPEAL — Elbert — Beeutiful Things Inc. (90 min) [Corey Pelton] ACTION
+   → Overview 9:00 · Producer 9:30 · Guests Perry Welch + Kris DeMoss
+   → Case: 2025 ELAP honeybee application disapproved by Elbert COC
+   → Core issue: CCC-771 filed Jan 16, 2026 — 14 days PAST late-filed window
+   → Producer position: Jan 2 ARD incompatible with migratory beekeeping (bees ship to CA Nov/Dec)
+   → Full case analysis at /appeals (APPEAL-5-2026-BEEUTIFUL-THINGS)
+   → Separate call: (970) 812-0909 · ID: 839520763#
+
+4. LFP — Multiple items [Janae Rader / Cindy Vukasin]
+   4a. STO Employee 2026 LFP — Janae Rader & husband Blake Rader (Otero, 114 head, 50% share each)
+   4b. Kit Carson — Determine risk in grazing land / lease agreements (10 min)
+       Risk confirmed: F1740 (30 ac). No risk: F2402, F6191, F6192, F7904, F8845, F7488(2021), F8504, F8866
+       Under review: F7488(2020)
+   4c. Kit Carson — Cure family CCC-853s (30 min): 6 apps × 2 years
+       2020 Brad Cure · 2020 Eric Cure · 2020 Denis & Victoria Cure
+       2021 Brad Cure · 2021 Eric Cure · 2021 Denis & Victoria Cure
+       Brad 2020 recommended adjustment: livestock down (B/S dated 198 days post-trigger, no proof of yearlings grazing);
+       Mixed Forage NSG down to 184.670 ac; Grass NAG down to 1,783.255 ac; Wheat HRW to 0 (LS-SG did not trigger).
+
+5. NAP — SED Presentation on CEY (60 min) [Jerry Sonnenberg]
+   → Response to Montezuma COC memo. Excel workbook in Box (26.08.27_NAP_CEY Data_Jerry.xlsx)
+   → 39 sheets of CEY history 2018-2027 for every county × crop × type
+
+6. NAP — Multiple items [Janae Rader]
+   6a. NCT General Pricing Guidelines for Fg (10 min) — deferred from July 23
+   6b. 2027 NCT Colorado — 10 crops TABLED at July meeting (30 min)
+       Apples 0054 · Apricots 0326 · Cherries 0128 · Garlic 0423 · Grapes 0053 · Honey 1190 · Hops 0138 · Peaches 0034 · Pears 0144 · Triticale 0158
+       ⚠ Cherries DR still uses code 1028 in body (0128 in header) — carried July 23 flag
+   6c. 2027 NCT — 3 new crops (10 min): Plums 0254, Plumcot 0466, Vetch 0435
+   6d. NAP New Crop Requests (10 min): Ouray Grass FME Fg Ir, Grass RDT Fg Ir, Grass FME+RDT Gz Ir
+
+7. SDRP — STC-member SDRP applications (20 min) [Julie Sporhase] ACTION x4
+   7.a.1. 2024 SDRP Stage 2 M77 Ag LLC (DD Brase interest) — approve recommended
+   7.a.2. 2025 SDRP Stage 2 M77 Ag LLC
+   7.a.3. 2024 SDRP Stage 2 McConnell Enterprise LLC ⚠ KYLE RECUSE
+   7.a.4. 2024 SDRP Stage 2 Kyle McConnell ⚠ KYLE RECUSE
+
+8. MASC — FSA-321 Equitable Relief — Kit Carson — Carlyle C James Trust No 1 (10 min) [Julie Sporhase]
+   Amount: $523.06 (within STC $5K authority)
+   Misaction: COF entered approval under wrong DPE (Carlyle James individual vs revocable trust) — discovered post-deadline
+   Recommend: Approve equitable relief
+
+9. CRP — Multiple items [Hunter Cleveland]
+   9.a. Cost Share Increase — Baca — Schroder Red Angus (RETURNING FROM JULY 23 TABLED) (10 min) ACTION
+        Component COCRP6577 Water Well >300-600 ft, extent 400 ft
+        STO recommendation: $107/ft (100% rate producer paid) — recommend to DAFP
+        STC previously requested list of cost items considered when 2022PY rate was approved.
+   9.b. Producer Self-Certification Recommendation (15 min) ACTION
+        2-CRP (Rev. 6) am.10 par 508C now allows STC (in consultation with STAC) to designate self-certification for mid-contract mgmt
+        CRP STAC sub-committee vote: 4-1 to allow self-certification on ALL mid-contract mgmt practices
+        Dissenting view: NOT for haying (concern re: 6" stubble height maintenance, historical over-haying without inspection)
+
+10. DMC — CCC-802 Dissolution — Weld — Peschel's Dairy Inc. (15 min) [Doug Andresen] ACTION
+    Effective March 31, 2026 · 95% coverage · Tier 1 $9.50 / Tier 2 $4.00
+    Premium remaining: $1,664 (90/365 × $6,750) · No repayments required
+
+11. Otero COC Actions — [Dara Belew, separate file]
+    Review-only: ASCF apps, 2026 LFP apps, compliance revisions/late-file, common mgmt farm changes, payment eligibility, CRP ownership, SDRP Stage 1/2 apps
+    ACTIONS required: SDRP apps with PRF/AF, SDRP apps with duplicate benefits, NAP 2026 NOL (prevent-plant not for NAP + prevent-plant NAP + planted acres)
+
+12. Adjourn Executive Session
+
+═════════════════════════════════════════════
+REGULAR SESSION — 3:30 PM
+═════════════════════════════════════════════
+
+1. Call to Order
+2. Approve Regular Minutes — July 23, 2026 [Cindy Vukasin] ACTION
+3. SED Report (10 min) — Jerry Sonnenberg
+4. District Director Reports (20 min): D1 Brase · D2 Weishaar (Oral) · D3 Woods · D4 Montoya
+5. Senior Leadership Reports (5 min): Lacy · Vukasin · Pelton · Weishaar
+
+6. NAP — Delegation: Designate DD as STC Representative (5 min) [Janae Rader] ACTION
+   Policy: DD delegated authority to act on CCC-576s executed by STC members, COC members, CEDs, County Office employees + spouses
+   NOT delegated: State Office employees + spouses — continue to require full STC action
+   Authority: 1-NAP (Rev. 2) subparagraph 4A
+
+7. EFRP — CSFS Implementation Recommendation (15 min) [Hunter Cleveland] ACTION
+   CSFS letter dated July 28, 2026 — Mountain Pine Beetle infestation response
+   9 counties × $1M each = $9M total request
+   Counties: Larimer, Boulder, Gilpin, Clear Creek, Jefferson, Douglas, Park, Teller, El Paso
+   Practices: EF2 Softwood Forest Restoration, EF3 Mixed Conifer Restoration, EF9 Other
+   Signup: Oct 1 - Nov 30, 2026 (60 days)
+   → $9M request exceeds STC threshold — goes to ECP-PM at national level
+
+8. ARC/PLC — 2025 DAFP Yield Solicitation — SAFFLOWER (15 min) [Doug Andresen] ACTION
+   Only remaining crop from July 23 solicitation. 8,096.44 acres non-irrigated across
+   Moffat, Routt, La Plata, Dolores, Montezuma.
+   STO-recommended yields for 13 counties (lb/ac Actual / T-Yield):
+     Arapahoe 606.75/956 · Dolores 606.75/956 · Elbert 698.92/1108.43
+     Kit Carson 788.97/1273 · La Plata 788.97/1273 · Larimer 788.97/1273
+     Lincoln 743.94/1179.82 · Logan 627.39/956 · Montezuma 657.99/956
+     Prowers 788.97/1273 · Routt 610.50/968.21 · San Miguel 625.25/991.59 · Weld 623.64/989.04
+
+9. State Committee Field Discussion Update
+10. Adjourn Regular Session
+
+─────────────────────────────────────────────
+PRE-MEETING PREP CHECKLIST
+─────────────────────────────────────────────
+
+□ REVIEW Beeutiful Things ELAP case (/appeals) — 90 min appeal, know arguments cold
+□ CONFIRM recusal announcement plan for SDRP items 7.a.3 and 7.a.4
+□ REVIEW Kit Carson Cure LFP series — 6 apps, complex risk-in-lease analysis
+□ REVIEW Schroder CRP tabled item — new cost breakdown from staff
+□ REVIEW CRP self-certification recommendation + STAC sub-committee dissent (haying concern)
+□ CONFIRM which of the 10 tabled 2027 NCT crops STC is ready to approve after SED's CEY presentation
+□ REVIEW Aug 27 NAP CEY Excel workbook (39 sheets — CEY 2018-2027 all counties/crops)
+□ ARC/PLC Safflower yields — check reasonableness of Weld (623.64) vs Prowers/Kit Carson (788.97)
+
+─────────────────────────────────────────────
+DATA-QUALITY FLAGS TO RAISE
+─────────────────────────────────────────────
+
+1. Cherries DR still uses code 1028 in body vs 0128 in header/tables (carried July 23 flag — not corrected)
+2. Kyle McConnell recusal for SDRP 7.a.3 and 7.a.4 — must be recorded in minutes explicitly
+
+─────────────────────────────────────────────
+DATA FILES ON SITE
+─────────────────────────────────────────────
+
+· src/data/meeting_2026-08-27_index.json — full agenda + all Discussion Records + key facts
+· src/data/appeals_seed.json — APPEAL-5-2026-BEEUTIFUL-THINGS added
+· src/data/meetings_registry.json — Aug 27 upcoming; July 23 marked past with outcomes
+
+(Live notes will be added during the meeting.)`,
+  },
+  {
+    id: 'july-23-stc-meeting',
+    pinned: true,
+    date: '2026-07-23',
+    title: 'STC Meeting — July 23, 2026 (COMPLETED)',
+    location: 'Virtual Meeting via Teams · (970) 812-0909 ID: 434618184#',
+    tags: 'meeting, STC, july, ARC-PLC, CRP, ECP, NAP, NCT, action-items',
+    source: 'Anticipated — July 23, 2026 (packets parsed 07/15)',
+    content: `COLORADO STC MEETING — JULY 23, 2026
+Regular Session convenes 9:00 AM · Executive Session 10:30 AM
+Guests: None scheduled · Recusals: None in the July 23 record
+
+─────────────────────────────────────────────
+COMMITTEE MEMBERS (from June 24, 2026 minutes)
+─────────────────────────────────────────────
+· Don Brown, Chairperson
+· Kyle McConnell
+· Steve Raftopoulos
+· Joe Petrocco
+· Darrell Mackey
+(Project references "six STC members" — sixth not enumerated in available sources.)
+
+═════════════════════════════════════════════
+REGULAR SESSION — 9:00 AM
+═════════════════════════════════════════════
+
+1. Call to Order
+2. Approve Regular Session Minutes — June 25, 2026  [Cindy Vukasin] (ACTION)
+   ⚠ Agenda cites Jun 25; corpus contains Jun 24 minutes — confirm date.
+3. State Executive Director Report (10 min) — Jerry Sonnenberg (oral + written)
+4. District Director Reports (20 min)
+   D1 Scott Brase · D2 Jon Weishaar (oral) · D3 Woody Woods · D4 Sam Montoya
+5. Senior Leadership Reports (10 min)
+   Kim Lacy (Acting FL Chief) · Cindy Vukasin & Corey Pelton (FP Chiefs) · Jon Weishaar (DSED, oral)
+6. ARC/PLC — 2025 DAFP Yield Solicitation (30 min) — Doug Andresen  [ACTION]
+   Approve missing 2025 county yields as presented (corn, flaxseed, grain sorghum,
+   peanuts, sunflower seed; Exhibit 1 also includes soybeans).
+   Authority: 1-ARCPLC ¶134; benchmark = Olympic average of 5 crop years 2019-2023.
+7. State Committee Field Discussion Update
+8. Adjourn Regular Session
+
+═════════════════════════════════════════════
+EXECUTIVE SESSION — 10:30 AM
+═════════════════════════════════════════════
+
+1. Call to Order
+2. Approve Executive Session Minutes — June 25, 2026  [Cindy Vukasin] (ACTION)
+3. CRP — Cost Share Increase — Baca County — Schroder Red Angus (10 min) — Hunter Cleveland  [ACTION]
+   Contract 12006 · Tract 6810 · 125.94 ac · Grassland CRP Signup 203 · signed 08/04/2021
+   Component COCRP6577 (Water Well >300-600 ft), extent 400 ft
+   FY2022 max payable: $19.50/ft (100% = $39.00/ft) → cost share requested at that rate = $7,800.00
+   Actual: $107.07/ft · $42,828.66 total
+   STO recommends increased rate of $107/ft; recommend to DAFP
+   Authority: 2-CRP (Rev. 6) ¶509
+   ⚠ Cost-figure discrepancy: DR says $42,828.66; COC letter (scanned) says "roughly $46,668.00 on the well alone" — reconcile before vote.
+
+4a. ECP — Rio Blanco — Eleanor Carter (10 min) — Hunter Cleveland  [ACTION]
+    Disaster: Elk Fire (14,518 ac) + Lee Fire (137,755 ac), both 08/02/2025, lightning
+    Rio Blanco COC convened 06/04/2026; STC recommends approval to DAFP
+    Authority: Notice ECP-101 (≤$250K COC / $250,001-$400K STC / >$400K ECP-PM)
+
+4b. ECP — Rio Blanco — Mike Lopez (10 min) — Hunter Cleveland  [ACTION]
+    Same disaster basis and authority as 4a.
+
+5a. NAP — NCT General Pricing Guidelines for Fg crops (10 min) — Janae Rader  [ACTION]
+    Set guide/standard on Fg pricing.
+    AMP = Olympic average of 5 most recent crop years; benchmark NASS CO (CASS)
+    all-other-hay price $165.00 (2024). Alfalfa & AGM stay on RMA forage policy.
+
+5b. NAP — 2027 NCT Colorado (10 min) — Janae Rader  [ACTION]
+    Accept 2027 NCT data as presented for each crop (unless flagged):
+    · Apples (0054)     · Apricots (0326)   · Cherries (0128)    · Garlic (0423)
+    · Grapes (0053)     · Honey (1190)      · Hops (0138)        · Peaches (0034)
+    · Pears (0144)      · Triticale (0158) [multiple STC changes — see index]
+    ⚠ Cherries DR body says code 1028 (vs 0128 in header/tables) — flag NAP-CHERRY-CODE
+    ⚠ Grapes DR says "44 types of Cherries" (should read Grapes) — flag NAP-GRAPE-TYPO
+    ⚠ Hops DR dated 08.05.25, references 2026 record, no explicit action line — flag NAP-HOPS-DR
+
+5c. NAP — New Crop Request — Las Animas — Beans PNT De Ir (5 min) — Janae Rader  [ACTION]
+    Add Beans-pinto (PNT), dry edible (De), irrigated (Ir) for 2026+ in Las Animas (code 0047)
+    STO recommends: PP 0.63 · UH 0.80 · organic 0.65 · trans 0.65 · FPD 06/20 · NHD 10/31 · ACD 03/15
+    Yields: 2021 1079 · 2022 1079 · 2023 1079 · 2024 1179 · 2025 1179
+    AMP: $0.28/lb conventional & transitional; $0.56/lb organic (= RMA/FCIC)
+    COC requested PP 0.50; STO leaves 0.63 (COC 0.50 appears based on RMA PP coverage level, not a PP factor).
+
+5d. NAP — Annual grasses RAN & SUD — PP, UH, FPD (5 min) — Janae Rader  [ACTION]
+    SUD: PP 0.50 / UH 0.75 (Fg) · PP 0.50 / UH 1.00 (Gz) · FPD 6/15 or 07/15 by county
+    RAN: PP 0.77 / UH 0.93 (Fg) · PP 0.77 / UH 1.00 (Gz) · FPD 10/15 (16 counties)
+    Origin: Dolores County COC requested FPD for Sudan.
+
+5e. NAP Concern — Montezuma — Memo to STC — Cindy Vukasin  (DISCUSSION)
+    Montezuma COC requests review of CEY / Carrying-Capacity methodology.
+    Background: NCT software uses last 7 years, Olympic average of last 5.
+
+6. Adjourn Executive Session
+
+─────────────────────────────────────────────
+PRE-MEETING ACTION ITEMS
+─────────────────────────────────────────────
+
+□ Review Executive Session Packet — 476 pages (Discussion Records are all text-searchable; 217 pages of supporting exhibits are scanned images requiring OCR)
+□ Review Regular Session Packet — 28 pages
+□ Review SED July report (separate 3-page file)
+□ Review 2026 LFP Triggered Counties list (12 pp)
+□ Confirm minutes date (June 24 vs June 25, 2026) with Cindy Vukasin before item 2
+
+─────────────────────────────────────────────
+DATA-QUALITY FLAGS TO RAISE
+─────────────────────────────────────────────
+
+1. Baca/Schroder CRP cost figures — DR $42,828.66 vs COC letter "~$46,668.00" — need reconciliation before vote (item 3)
+2. Cherries crop code — DR body 1028 vs header/tables 0128 (item 5b Cherries)
+3. Grapes DR typo — "44 types of Cherries" should read Grapes (item 5b Grapes)
+4. Hops DR — dated 08.05.25, references 2026 record, sits in 2027 packet, no explicit action line (item 5b Hops)
+5. Two inserted exhibits (Montezuma minutes Feb 3, 2026 at pp.328-355; closing-date review pp.356-360) — not itemized on July 23 agenda at those locations
+6. Prior minutes date mismatch (June 25 on agenda vs June 24 in corpus)
+
+─────────────────────────────────────────────
+DATA FILES ON SITE
+─────────────────────────────────────────────
+
+· src/data/meeting_2026-07-23_shell.json — agenda + guests + recusals
+· src/data/meeting_2026-07-23_index.json — full packet index, key facts, OCR queue
+
+(Live notes will be added during the meeting.)`,
+  },
+  {
+    id: 'april-stc-meeting',
+    pinned: false,
+    date: '2026-04-23',
+    title: 'STC Meeting — April 23, 2026 (past)',
+    location: 'Virtual / Zoom',
     tags: 'meeting, STC, april, CRP, EFRP, cost-share, appeals',
-    source: 'Upcoming — April 2026',
+    source: 'Anticipated — April 2026',
     content: `COLORADO STC MEETING — APRIL 2026
 (Date TBD — will update when scheduled)
 

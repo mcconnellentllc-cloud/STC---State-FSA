@@ -1,0 +1,476 @@
+{
+  "schema_version": "1.0",
+  "index_title": "Colorado STC — July 23, 2026 Meeting — Machine-Readable Packet Index",
+  "generated_for": "STC Colorado / document-to-code preservation",
+  "page_numbering_note": "packet_pages values are the printed 'Page X of N' numbers, which equal the 1-based PDF page numbers for both packets (verified).",
+  "code_instructions": {
+    "purpose": "This JSON is the authoritative map of the July 23, 2026 STC meeting corpus. Code should treat it as the ingestion manifest: iterate sessions -> agenda_items -> documents, and pull page ranges from each source PDF.",
+    "how_to_consume": [
+      "1. Resolve each source_file against the file list in source_documents[] (match on file_name).",
+      "2. For each document, slice the PDF by packet_pages.start..end (inclusive, 1-based).",
+      "3. Respect text_layer: 'present' pages can be parsed from the embedded text layer; 'scanned_no_text' pages have NO reliable text and MUST be OCR'd before any field is trusted; 'partial' = mixed.",
+      "4. Never synthesize a value for a field marked PENDING_OCR or UNCLEAR. Surface the flag instead (STC rule 1: no assumptions).",
+      "5. All verbatim_* values are reproduced exactly from the source text layer; do not reformat numbers, dates, or handbook citations.",
+      "6. ocr_todo[] lists every scanned page span that must be OCR'd to complete field extraction."
+    ],
+    "field_dictionary": {
+      "agenda_items[].action_type": "one of: Action Item, Action Items, Informational, Oral, Written",
+      "documents[].doc_type": "section_cover | discussion_record | data_table | county_coc_minutes | agency_letter | application_case_file | plant_guide | reference | memo | exhibit_scanned",
+      "documents[].text_layer": "present | partial | scanned_no_text",
+      "key_facts": "verbatim values pulled from discussion_record text; each is source-cited by page.",
+      "flags[].severity": "info | warning | data_quality | blocker"
+    }
+  },
+  "meeting": {
+    "body": "USDA FSA Colorado State Committee (STC)",
+    "meeting_date": "2026-07-23",
+    "location": "Virtual Meeting via Teams",
+    "phone_conference": "(970) 812-0909  ID: 434618184#",
+    "committee_members_source": "26.06.24 Regular/Executive Session Minutes (most recent prior minutes in corpus)",
+    "committee_members": [
+      "Don Brown, Chairperson",
+      "Kyle McConnell, Member",
+      "Steve Raftopoulos, Member",
+      "Joe Petrocco, Member",
+      "Darrell Mackey, Member"
+    ],
+    "sessions": [
+      {
+        "session": "Regular Session",
+        "start_time": "09:00",
+        "packet_file": "26.07.23_ADMIN_Colorado_STC_Regular Session Packet.pdf",
+        "agenda_items": [
+          { "number": "1", "title": "Call to Order", "action_type": "Procedural", "documents": [] },
+          { "number": "2", "title": "Approve Regular Session Minutes — June 25, 2026", "presenter": "Cindy Vukasin, Farm Program Chief", "action_type": "Action Item", "note": "Agenda cites June 25, 2026; corpus contains June 24, 2026 minutes files.", "documents": [{ "doc_type": "reference", "source_file": "26.06.24_ADMIN_Colorado_STC_Regular Session Minutes without exhibits.pdf", "text_layer": "present", "packet_pages": { "start": 1, "end": 4 } }] },
+          { "number": "3", "title": "State Executive Director Report", "action_type": "Oral and Written (separate file)", "time_allotted_min": 10, "documents": [{ "doc_type": "reference", "source_file": "SED Jerry Sonnenberg July STC Report.pdf", "text_layer": "present", "packet_pages": { "start": 1, "end": 3 } }] },
+          { "number": "4", "title": "District Director Report", "action_type": "Oral/Written", "time_allotted_min": 20, "documents": [
+            { "doc_type": "reference", "label": "District 1 Update — Scott Brase", "source_file": "26.07.23_ADMIN_Colorado_STC_Regular Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 3, "end": 4 } },
+            { "doc_type": "reference", "label": "District 2 — Jon Weishaar (Oral, not in packet)", "source_file": "26.07.23_ADMIN_Colorado_STC_Regular Session Packet.pdf", "text_layer": "absent", "packet_pages": null },
+            { "doc_type": "reference", "label": "District 3 Update — Woody Woods", "source_file": "26.07.23_ADMIN_Colorado_STC_Regular Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 5, "end": 6 } },
+            { "doc_type": "reference", "label": "District 4 Update — Sam Montoya", "source_file": "26.07.23_ADMIN_Colorado_STC_Regular Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 7, "end": 7 } }
+          ] },
+          { "number": "5", "title": "Senior Leadership Reports", "action_type": "Written", "time_allotted_min": 10, "documents": [
+            { "doc_type": "reference", "label": "Acting Farm Loan Chief — Kim Lacy", "source_file": "26.07.23_ADMIN_Colorado_STC_Regular Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 8, "end": 8 } },
+            { "doc_type": "reference", "label": "Farm Program Chief — Cindy Vukasin", "source_file": "26.07.23_ADMIN_Colorado_STC_Regular Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 9, "end": 14 } },
+            { "doc_type": "reference", "label": "Farm Program Chief — Corey Pelton", "source_file": "26.07.23_ADMIN_Colorado_STC_Regular Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 14, "end": 14 } },
+            { "doc_type": "reference", "label": "Deputy SED — Jon Weishaar (Oral)", "source_file": "26.07.23_ADMIN_Colorado_STC_Regular Session Packet.pdf", "text_layer": "absent", "packet_pages": null }
+          ] },
+          { "number": "6", "title": "ARC/PLC — 2025 DAFP Yield Solicitation", "presenter": "Doug Andresen, Farm Program Specialist", "action_type": "Action Item", "time_allotted_min": 30, "packet_page_anchor": 15,
+            "documents": [
+              { "doc_type": "section_cover", "source_file": "26.07.23_ADMIN_Colorado_STC_Regular Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 15, "end": 15 } },
+              { "doc_type": "discussion_record", "source_file": "26.07.23_ADMIN_Colorado_STC_Regular Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 16, "end": 19 } },
+              { "doc_type": "data_table", "label": "Exhibit 1 — 2025 county yields & T-yields (Corn, Flaxseed, Peanuts, Grain Sorghum, Soybeans, Sunflower Seed) incl. state maps", "source_file": "26.07.23_ADMIN_Colorado_STC_Regular Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 19, "end": 28 } }
+            ],
+            "key_facts": {
+              "matter": "Review and determine missing ARC-CO yields (Crop Year 2025)",
+              "crops": "corn, flaxseed, grain sorghum, peanuts, sunflower seed (per DR); Exhibit 1 also includes soybeans",
+              "recommended_action": "It is recommended that the yields are approved as presented.",
+              "policy_cite": "1-ARCPLC paragraph 134 (Other Yield Information); benchmark uses Olympic average of 5 crop years 2019-2023 for 2025 program year",
+              "source": { "file": "26.07.23_ADMIN_Colorado_STC_Regular Session Packet.pdf", "pages": "16-28" }
+            }
+          },
+          { "number": "7", "title": "State Committee Field Discussion update", "action_type": "Informational", "documents": [] },
+          { "number": "8", "title": "Adjourn Regular Session", "action_type": "Action Item", "documents": [] }
+        ]
+      },
+      {
+        "session": "Executive Session",
+        "start_time": "10:30",
+        "packet_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf",
+        "agenda_items": [
+          { "number": "1", "title": "Call to Order", "action_type": "Procedural", "documents": [] },
+          { "number": "2", "title": "Approve Executive Session Minutes — June 25, 2026", "presenter": "Cindy Vukasin, Farm Program Chief", "action_type": "Action Item", "note": "Agenda cites June 25, 2026; corpus contains June 24, 2026 executive minutes.", "documents": [{ "doc_type": "reference", "source_file": "26.06.24_ADMIN_Colorado_STC_Executive Session Minutes wo exhibits.pdf", "text_layer": "present", "packet_pages": { "start": 1, "end": 13 } }] },
+          { "number": "3", "title": "CRP — Cost Share Increase Request — Baca County — Schroder Red Angus", "presenter": "Hunter A. Cleveland, Agricultural Program Specialist", "program": "CRP", "action_type": "Action Item", "time_allotted_min": 10, "packet_page_anchor": 3,
+            "documents": [
+              { "doc_type": "section_cover", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 3, "end": 3 } },
+              { "doc_type": "discussion_record", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 4, "end": 6 } },
+              { "doc_type": "exhibit_scanned", "label": "Baca COC letter (06/11/2026), Exec COC minutes 03/17/2026, Well Construction Report, invoices, FSA-848A/848B, NRCS-CPA-1155, CRP-1", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "scanned_no_text", "packet_pages": { "start": 7, "end": 26 } }
+            ],
+            "key_facts": {
+              "producer": "Schroder Red Angus",
+              "county": "Baca",
+              "contract_number": "12006",
+              "tract_number": "6810",
+              "acres_enrolled": "125.94",
+              "program_signup": "Grassland CRP Signup 203",
+              "contract_signed": "August 4, 2021",
+              "component": "COCRP6577 — Water Well: >300-600 Feet",
+              "component_extent": "400 feet",
+              "fy2022_rate_maximum_payable_per_foot": "$19.50",
+              "fy2022_rate_100pct_per_foot": "$39.00",
+              "cost_share_requested_at_fy2022_rate": "$7,800.00",
+              "actual_100pct_cost_per_foot": "$107.07",
+              "actual_100pct_total_cost_incurred": "$42,828.66",
+              "sto_recommended_increased_rate_per_foot": "$107",
+              "invoices_submitted": "August 21, 2025",
+              "coc_convened": "March 17, 2026",
+              "handbook_authority": "2-CRP (Rev. 6) paragraph 509; rate policy per 2-CRP (Rev. 6) (~50% of total reasonable cost)",
+              "other_components_reviewed": "COCRP6571 Watering Facility 4700 gal $2,820.00; COCRP6573 Pipeline 1.25-in 2700 ft $2,200.00",
+              "source": { "file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "pages": "4-6" }
+            },
+            "flags": ["See global flag CRP-COST-DISCREPANCY: DR states $42,828.66 total / $107.07 per foot; COC letter (p.7, scanned) states producer 'spent roughly $46,668.00 on the well alone'."]
+          },
+          { "number": "4a", "title": "ECP — Application Approval Request — Rio Blanco — Eleanor Carter", "presenter": "Hunter A. Cleveland, Agricultural Program Specialist", "program": "ECP", "action_type": "Action Item", "time_allotted_min": 10, "packet_page_anchor": 27,
+            "documents": [
+              { "doc_type": "section_cover", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 27, "end": 27 } },
+              { "doc_type": "discussion_record", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 28, "end": 29 } },
+              { "doc_type": "application_case_file", "label": "ECP-801 application + Rio Blanco COC minutes (06/04/2026) + case file", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "scanned_no_text", "packet_pages": { "start": 30, "end": 106 } }
+            ],
+            "key_facts": {
+              "producer": "Eleanor Carter",
+              "county": "Rio Blanco",
+              "disaster": "Elk Fire 08/02/2025 (14,518 ac, lightning); Lee Fire 08/02/2025 (137,755 ac, lightning)",
+              "coc_convened": "06/04/2026",
+              "recommended_action": "STC recommends approval of the ECP application to DAFP",
+              "approval_authority": "Notice ECP-101: <=$250,000 COC; $250,001-$400,000 STC; >$400,000 ECP-PM",
+              "review_cites": "paragraphs 94, 97, 277, 66-72, 624, 230, 301, 325, 326, 399; Exhibit 61 (FSA-23)",
+              "source": { "file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "pages": "28-29" }
+            }
+          },
+          { "number": "4b", "title": "ECP — Application Approval Request — Rio Blanco — Mike Lopez", "presenter": "Hunter A. Cleveland, Agricultural Program Specialist", "program": "ECP", "action_type": "Action Item", "time_allotted_min": 10, "packet_page_anchor": 107,
+            "documents": [
+              { "doc_type": "section_cover", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 107, "end": 107 } },
+              { "doc_type": "discussion_record", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 108, "end": 109 } },
+              { "doc_type": "application_case_file", "label": "ECP-801 application + Rio Blanco COC minutes (06/04/2026) + case file", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "scanned_no_text", "packet_pages": { "start": 110, "end": 173 } }
+            ],
+            "key_facts": {
+              "producer": "Mike Lopez",
+              "county": "Rio Blanco",
+              "disaster": "Elk Fire 08/02/2025 (14,518 ac, lightning); Lee Fire 08/02/2025 (137,755 ac, lightning)",
+              "coc_convened": "06/04/2026",
+              "recommended_action": "STC recommends approval of the ECP application to DAFP",
+              "approval_authority": "Notice ECP-101: <=$250,000 COC; $250,001-$400,000 STC; >$400,000 ECP-PM",
+              "source": { "file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "pages": "108-109" }
+            }
+          },
+          { "number": "5a", "title": "NAP — NCT General Pricing Guidelines for Fg crops", "presenter": "Janae Rader, Farm Program Specialist", "program": "NAP", "action_type": "Action Item", "time_allotted_min": 10, "packet_page_anchor": 174,
+            "documents": [
+              { "doc_type": "section_cover", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 174, "end": 174 } },
+              { "doc_type": "discussion_record", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 175, "end": 175 } },
+              { "doc_type": "data_table", "label": "Fg crop/type list vs NASS CASS all-other-hay % + CASS pricing tables", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 176, "end": 185 } }
+            ],
+            "key_facts": {
+              "matter": "Set a guide or standard on Fg pricing",
+              "method": "AMP = Olympic Average of 5 most recent consecutive crop years; benchmark = NASS Colorado (CASS) all-other-hay price ($165.00 for 2024)",
+              "note": "Alfalfa and AGM covered by RMA forage policy (RMA/FCIC price)",
+              "source": { "file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "pages": "175" }
+            }
+          },
+          { "number": "5b-1", "title": "2027 NCT — Apples", "program": "NAP", "action_type": "Action Item", "packet_page_anchor": 186,
+            "documents": [
+              { "doc_type": "section_cover", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 186, "end": 186 } },
+              { "doc_type": "discussion_record", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 187, "end": 187 } },
+              { "doc_type": "data_table", "label": "STO recommended yields/prices + NASS/exhibit tables", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 188, "end": 196 } }
+            ],
+            "key_facts": {
+              "crop_code": "0054",
+              "discussion_record_date": "07.23.26",
+              "presenter": "Janae Rader, Farm Program Specialist",
+              "recommended_action": "Accept the 2027 NCT data for Apples as presented by STO.",
+              "source": { "file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "pages": "187-187" },
+              "notes": "COM & SPC types; Fh/Pr covered by FCIC/RMA in Delta, Mesa, Montrose (NAP ineligible there); ARD Jan 15; ACD previously 11/20"
+            }
+          },
+          { "number": "5b-2", "title": "2027 NCT — Apricots", "program": "NAP", "action_type": "Action Item", "packet_page_anchor": 197,
+            "documents": [
+              { "doc_type": "section_cover", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 197, "end": 197 } },
+              { "doc_type": "discussion_record", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 198, "end": 198 } },
+              { "doc_type": "data_table", "label": "STO recommended yields/prices + NASS/exhibit tables", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 199, "end": 204 } }
+            ],
+            "key_facts": {
+              "crop_code": "0326",
+              "discussion_record_date": "07.23.26",
+              "presenter": "Janae Rader, Farm Program Specialist",
+              "recommended_action": "Accept the 2027 NCT data for Apricots as presented by STO.",
+              "source": { "file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "pages": "198-198" },
+              "notes": "Eligible NAP crop; PP factor 0 (perennial); ACD previously 11/20; ARD July 15"
+            }
+          },
+          { "number": "5b-3", "title": "2027 NCT — Cherries", "program": "NAP", "action_type": "Action Item", "packet_page_anchor": 205,
+            "documents": [
+              { "doc_type": "section_cover", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 205, "end": 205 } },
+              { "doc_type": "discussion_record", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 206, "end": 208 } },
+              { "doc_type": "data_table", "label": "STO recommended yields/prices + NASS/exhibit tables", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 209, "end": 221 } }
+            ],
+            "key_facts": {
+              "crop_code": "0128",
+              "discussion_record_date": "07.23.26",
+              "presenter": "Janae Rader, Farm Program Specialist",
+              "recommended_action": "Accept the 2027 NCT data for Cherries as presented by STO.",
+              "source": { "file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "pages": "206-208" },
+              "types": "SWT (Sweet), TRT (Tart)",
+              "organic": "Organic price/yield requested for SWT (factor 0.75; organic price 144% of AMP)",
+              "normal_harvest_date": "08/05 (CO counties)",
+              "code_note": "DR body text on p.206 reads 'Crop Code 1028' — conflicts with 0128 in header/tables (see flag NAP-CHERRY-CODE)."
+            }
+          },
+          { "number": "5b-4", "title": "2027 NCT — Garlic", "program": "NAP", "action_type": "Action Item", "packet_page_anchor": 222,
+            "documents": [
+              { "doc_type": "section_cover", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 222, "end": 222 } },
+              { "doc_type": "discussion_record", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 223, "end": 224 } },
+              { "doc_type": "data_table", "label": "STO recommended yields/prices + NASS/exhibit tables", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 225, "end": 227 } }
+            ],
+            "key_facts": {
+              "crop_code": "0423",
+              "discussion_record_date": "07.23.26",
+              "presenter": "Janae Rader, Farm Program Specialist",
+              "recommended_action": "Accept the 2027 NCT data for Garlic as presented by STO.",
+              "source": { "file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "pages": "223-224" },
+              "pp_factor": "0.30",
+              "uh_factor": "0.70",
+              "final_plant_date": "11/01 (CO counties)",
+              "acd": "previously 09/01"
+            }
+          },
+          { "number": "5b-5", "title": "2027 NCT — Grapes", "program": "NAP", "action_type": "Action Item", "packet_page_anchor": 228,
+            "documents": [
+              { "doc_type": "section_cover", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 228, "end": 228 } },
+              { "doc_type": "discussion_record", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 229, "end": 231 } },
+              { "doc_type": "data_table", "label": "STO recommended yields/prices + NASS/exhibit tables", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 232, "end": 247 } }
+            ],
+            "key_facts": {
+              "crop_code": "0053",
+              "discussion_record_date": "07.23.26",
+              "presenter": "Janae Rader, Farm Program Specialist",
+              "recommended_action": "Accept the 2027 NCT data for Grapes as presented by STO.",
+              "source": { "file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "pages": "229-231" },
+              "types": "44 varieties in Group A (RMA 161) and Group B (RMA 261)",
+              "pp_factor": "0",
+              "uh_factor": "0.60 (CO, all types)",
+              "normal_harvest_date": "11/01 (CO counties)",
+              "insurance": "FCIC/RMA covered in Mesa (NAP ineligible there)",
+              "source_typo_note": "p.229 DR reads 'There are 44 types of Cherries in Colorado' — should read Grapes (see flag NAP-GRAPE-TYPO)."
+            }
+          },
+          { "number": "5b-6", "title": "2027 NCT — Honey", "program": "NAP", "action_type": "Action Item", "packet_page_anchor": 248,
+            "documents": [
+              { "doc_type": "section_cover", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 248, "end": 248 } },
+              { "doc_type": "discussion_record", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 249, "end": 251 } },
+              { "doc_type": "data_table", "label": "STO recommended yields/prices + NASS/exhibit tables", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 252, "end": 256 } }
+            ],
+            "key_facts": {
+              "crop_code": "1190",
+              "discussion_record_date": "07.23.26",
+              "presenter": "Janae Rader, Farm Program Specialist",
+              "recommended_action": "Accept the 2027 NCT data for Honey as presented by STO.",
+              "source": { "file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "pages": "249-251" },
+              "pp_factor": "0.00",
+              "uh_factor": "0.85",
+              "normal_harvest_date": "12/31",
+              "acd": "12/31",
+              "not_insurable": "No FCIC/RMA 50/55 coverage nationwide"
+            }
+          },
+          { "number": "5b-7", "title": "2027 NCT — Hops", "program": "NAP", "action_type": "Action Item", "packet_page_anchor": 257,
+            "documents": [
+              { "doc_type": "section_cover", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 257, "end": 257 } },
+              { "doc_type": "discussion_record", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 258, "end": 259 } },
+              { "doc_type": "data_table", "label": "STO recommended yields/prices + NASS/exhibit tables", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 260, "end": 264 } }
+            ],
+            "key_facts": {
+              "crop_code": "0138",
+              "discussion_record_date": "07.23.26",
+              "presenter": "Janae Rader, Farm Program Specialist",
+              "recommended_action": "(No explicit 'STC Recommended Action' line printed on DR — see flag NAP-HOPS-DR)",
+              "source": { "file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "pages": "258-259" },
+              "pp_factor": "0.06",
+              "uh_factor": "0.86",
+              "final_plant_date": "05/10 (El Paso, Montrose, Weld)",
+              "normal_harvest_date": "09/15",
+              "dr_date_note": "DR dated 08.05.25 and references '2026 NCT record' though filed in the 2027 packet (see flag NAP-HOPS-DR)."
+            }
+          },
+          { "number": "5b-8", "title": "2027 NCT — Peaches", "program": "NAP", "action_type": "Action Item", "packet_page_anchor": 265,
+            "documents": [
+              { "doc_type": "section_cover", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 265, "end": 265 } },
+              { "doc_type": "discussion_record", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 266, "end": 267 } },
+              { "doc_type": "data_table", "label": "STO recommended yields/prices + NASS/exhibit tables", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 268, "end": 271 } }
+            ],
+            "key_facts": {
+              "crop_code": "0034",
+              "discussion_record_date": "07.23.26",
+              "presenter": "Janae Rader, Farm Program Specialist",
+              "recommended_action": "Accept the 2027 NCT data for Peaches as presented by STO.",
+              "source": { "file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "pages": "266-267" },
+              "types": "CLI (Cling), FRE (Freestone)",
+              "uh_factor": "0.75",
+              "normal_harvest_date": "09/30",
+              "insurance": "FCIC/RMA covered in Delta, Mesa, Montrose (NAP ineligible there)"
+            }
+          },
+          { "number": "5b-9", "title": "2027 NCT — Pears", "program": "NAP", "action_type": "Action Item", "packet_page_anchor": 272,
+            "documents": [
+              { "doc_type": "section_cover", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 272, "end": 272 } },
+              { "doc_type": "discussion_record", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 273, "end": 274 } },
+              { "doc_type": "data_table", "label": "STO recommended yields/prices + NASS/exhibit tables", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 275, "end": 289 } }
+            ],
+            "key_facts": {
+              "crop_code": "0144",
+              "discussion_record_date": "07.23.26",
+              "presenter": "Janae Rader, Farm Program Specialist",
+              "recommended_action": "Accept the 2027 NCT data for Pears as presented by STO. (Consider viability in Fremont County)",
+              "source": { "file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "pages": "273-274" },
+              "types": "ANJ, ASN, BLT, COM, SPC",
+              "pp_factor": "0.00",
+              "uh_factor": "0.75",
+              "organic": "organic yield factor 0.75; organic price 144% of AMP",
+              "normal_harvest_date": "09/20"
+            }
+          },
+          { "number": "5b-10", "title": "2027 NCT — Triticale", "program": "NAP", "action_type": "Action Item", "packet_page_anchor": 290,
+            "documents": [
+              { "doc_type": "section_cover", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 290, "end": 290 } },
+              { "doc_type": "discussion_record", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 291, "end": 293 } },
+              { "doc_type": "data_table", "label": "STO recommended yields/prices + Winter Wheat/All Hay NASS tables + 2027 Triticale price selection", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 294, "end": 327 } }
+            ],
+            "key_facts": {
+              "crop_code": "0158",
+              "discussion_record_date": "07.23.26",
+              "presenter": "Janae Rader, Farm Program Specialist",
+              "recommended_action": [
+                "Set Fg price based on % of NASS",
+                "Set Organic Price based on 120% of AMP",
+                "Set Seed price",
+                "Change Final Plant Date: Dolores, Montezuma, San Miguel from 10/31 to 05/15",
+                "Change Final Plant date: Crowley, Otero from 05/15 to 10/31",
+                "Leave acreage reporting date at 11/15",
+                "Leave application closing date at 09/01"
+              ],
+              "intended_uses": "FG, GR, SD",
+              "acd": "09/01",
+              "ard": "11/15",
+              "insurance": "Triticale for Grain (Gr) FCIC/RMA covered in listed counties (NAP ineligible there)",
+              "source": { "file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "pages": "291-293" }
+            }
+          },
+          { "number": "UNCLASSIFIED-1", "title": "Montezuma County COC Executive Minutes — February 3, 2026 (inserted exhibit)", "program": "NAP (placement unclear)", "action_type": "Exhibit", "packet_page_anchor": 328,
+            "documents": [{ "doc_type": "county_coc_minutes", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "partial", "packet_pages": { "start": 328, "end": 355 } }],
+            "key_facts": {
+              "note": "Montezuma County Committee meeting minutes (Feb 3, 2026). Physically located between the Triticale section and the New Crop Request; not itemized on the July 23 agenda at this location. Likely supports either Triticale FPD changes affecting Montezuma or agenda item 5e (Montezuma Memo).",
+              "source": { "file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "pages": "328-355" }
+            },
+            "flags": ["See global flag EXEC-INSERT-MONTEZUMA-MINUTES"]
+          },
+          { "number": "UNCLASSIFIED-2", "title": "NAP — Annual review/comparison of RMA-FCIC vs FSA NCT sales closing dates (reference)", "program": "NAP", "action_type": "Informational", "packet_page_anchor": 356,
+            "documents": [{ "doc_type": "reference", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 356, "end": 360 } }],
+            "key_facts": {
+              "discussion_record_date": "03.24.26",
+              "recommended_action": "No Changes",
+              "matter": "Annual review and comparison of RMA/FCIC and FSA NCT sales closing dates",
+              "policy_cite": "1-NAP paragraph 300",
+              "source": { "file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "pages": "356-360" }
+            },
+            "flags": ["See global flag EXEC-INSERT-CLOSINGDATE-REVIEW: dated 03.24.26, not a July 23 agenda action item; appears to be reference/appendix."]
+          },
+          { "number": "5c", "title": "NAP — New Crop Request — Las Animas — Beans PNT De Ir", "program": "NAP", "action_type": "Action Item", "time_allotted_min": 5, "packet_page_anchor": 361,
+            "documents": [
+              { "doc_type": "section_cover", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 361, "end": 361 } },
+              { "doc_type": "discussion_record", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 362, "end": 367 } },
+              { "doc_type": "agency_letter", "label": "Las Animas/Huerfano COC crop request memo (05/22/2025) + COC exec minutes (03/25/2025)", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "partial", "packet_pages": { "start": 368, "end": 404 } },
+              { "doc_type": "data_table", "label": "Beans (code 047/0047) NASS yield/price exhibit tables", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 405, "end": 430 } }
+            ],
+            "key_facts": {
+              "crop_code": "0047",
+              "presenter": "Janae Rader, Farm Program Specialist",
+              "discussion_record_date": "07.23.26",
+              "matter": "Add Beans - pinto (PNT), intended use dry edible (De), practice irrigated (Ir) as NAP-covered for 2026 and succeeding years (Las Animas County)",
+              "recommended_action": "Approve new crop request as recommended by STO",
+              "sto_recommended": {
+                "pp_factor": "0.63",
+                "uh_factor": "0.80",
+                "certified_organic_factor": "0.65",
+                "transitional_organic_factor": "0.65",
+                "final_planting_date": "06/20",
+                "normal_harvest_date": "10/31",
+                "application_closing_date": "03/15"
+              },
+              "sto_recommended_yield_by_year": {
+                "2021": "1079",
+                "2022": "1079",
+                "2023": "1079",
+                "2024": "1179",
+                "2025": "1179"
+              },
+              "coc_requested": {
+                "pp_factor": "0.50",
+                "uh_factor": "0.80",
+                "certified_organic_factor": "0.96",
+                "transitional_organic_factor": "0.65",
+                "final_planting_date": "06/20",
+                "normal_harvest_date": "10/31",
+                "application_closing_date": "03/15"
+              },
+              "amp": "$0.28/lb conventional & transitional; $0.56/lb organic (previously set for 2026; equals RMA/FCIC)",
+              "discussion": "COC requested PP 0.50; STO recommends leaving 0.63 (no supporting documentation; 0.50 appears based on RMA PP coverage level, not a PP factor).",
+              "source": { "file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "pages": "362-367" }
+            }
+          },
+          { "number": "5d", "title": "NAP — Establish PP, UH, final plant date for annual grasses (RAN & SUD)", "program": "NAP", "action_type": "Action Item", "time_allotted_min": 5, "packet_page_anchor": 431,
+            "documents": [
+              { "doc_type": "section_cover", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 431, "end": 431 } },
+              { "doc_type": "discussion_record", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 432, "end": 435 } },
+              { "doc_type": "plant_guide", "label": "NRCS Sorghum plant guide + Annual Ryegrass cover-crop fact sheets + county PP/prevented-planting tables", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "partial", "packet_pages": { "start": 436, "end": 469 } }
+            ],
+            "key_facts": {
+              "presenter": "Janae Rader, Farm Program Specialist",
+              "discussion_record_date": "07.23.26",
+              "matter": "Set final plant date, PP and UH for 2 annual grasses previously treated as perennial: RAN (Annual Wild Ryegrass), SUD (Sudan)",
+              "recommended_action": [
+                "Accept STO recommended Grass SUD: PP 0.50 / UH 0.75 (Fg); PP 0.50 / UH 1.00 (Gz); FPD 6/15 (Dolores, Montezuma, San Miguel) or 07/15 (Adams, Alamosa, Broomfield, Conejos, Costilla, Denver, Fremont, Logan, Phillips)",
+                "Accept STO recommended Grass RAN: PP 0.77 / UH 0.93 (Fg); PP 0.77 / UH 1.00 (Gz); FPD 10/15 (Adams, Boulder, Broomfield, Conejos, Costilla, Delta, Denver, Dolores, Fremont, La Plata, Moffat, Montezuma, Routt, Saguache, San Miguel, Weld)"
+              ],
+              "origin": "Dolores County COC requested a final plant date for Sudan grass",
+              "source": { "file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "pages": "432-435" }
+            }
+          },
+          { "number": "5e", "title": "NAP Concern — Montezuma — Memo to STC", "presenter": "Cindy Vukasin, Farm Program Chief", "program": "NAP", "action_type": "Informational/Action", "packet_page_anchor": 470,
+            "documents": [
+              { "doc_type": "section_cover", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 470, "end": 470 } },
+              { "doc_type": "discussion_record", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "present", "packet_pages": { "start": 471, "end": 471 } },
+              { "doc_type": "exhibit_scanned", "label": "Montezuma COC memo (attached exhibit)", "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "text_layer": "scanned_no_text", "packet_pages": { "start": 472, "end": 476 } }
+            ],
+            "key_facts": {
+              "presenter": "Cindy Vukasin, Farm Program Chief",
+              "discussion_record_date": "07.23.26",
+              "matter": "Montezuma COC requests review/clarification of data standards and calculation procedure used to determine NCT County Expected Yields (CEY) and Carrying Capacity (CC)",
+              "background": "NCT software calculates CEY from most recent 7 years of data, taking Olympic average of the most recent 5 years.",
+              "source": { "file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "pages": "471" }
+            }
+          },
+          { "number": "6", "title": "Adjourn Executive Session", "action_type": "Action Item", "documents": [] }
+        ]
+      }
+    ]
+  },
+  "source_documents": [
+    { "file_name": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "pages": 476, "role": "Executive Session board packet (agenda embedded pp.1-2)" },
+    { "file_name": "26.07.23_ADMIN_Colorado_STC_Regular Session Packet.pdf", "pages": 28, "role": "Regular Session board packet (agenda embedded p.1)" },
+    { "file_name": "26.07.23_ADMIN_Colorado_STC_Executive Session Agenda.pdf", "pages": 2, "role": "Executive agenda (standalone)" },
+    { "file_name": "26.07.23_ADMIN_Colorado_STC_Regular Session Agenda.pdf", "pages": 1, "role": "Regular agenda (standalone)" },
+    { "file_name": "SED Jerry Sonnenberg July STC Report.pdf", "pages": 3, "role": "Regular agenda item 3 — SED written report (separate file)" },
+    { "file_name": "2026 LFP  Counties and Pasture Type Triggered.pdf", "pages": 12, "role": "Reference — LFP triggered counties/pasture types as of 07-16-2026" },
+    { "file_name": "26.06.24_ADMIN_Colorado_STC_Regular Session Minutes without exhibits.pdf", "pages": 4, "role": "Prior minutes referenced by Regular item 2" },
+    { "file_name": "26.06.24_ADMIN_Colorado_STC_Regular Session Minutes with exhibits.pdf", "pages": 51, "role": "Prior minutes (with exhibits)" },
+    { "file_name": "26.06.24_ADMIN_Colorado_STC_Executive Session Minutes wo exhibits.pdf", "pages": 13, "role": "Prior minutes referenced by Executive item 2" }
+  ],
+  "flags": [
+    { "id": "SCANNED-PAGES", "severity": "blocker", "summary": "217 of 476 Executive-packet pages have no reliable text layer (scanned images). All supporting exhibits (COC minutes, invoices, well reports, ECP-801 applications, FSA-848/NRCS forms, Montezuma memo) require OCR before any field on them can be extracted. Discussion Records and section covers DO have text.", "rule": "STC rule 1 (no assumptions) & rule 2 (read in full)" },
+    { "id": "CRP-COST-DISCREPANCY", "severity": "data_quality", "summary": "Baca/Schroder CRP: Discussion Record (p.4-6) states actual cost $107.07/ft and $42,828.66 total; the Baca COC letter (p.7, scanned) states the producer 'spent roughly $46,668.00 on the well alone.' The two source figures differ — do not reconcile; surface both.", "rule": "STC rule 5 (precise numbers)" },
+    { "id": "NAP-CHERRY-CODE", "severity": "data_quality", "summary": "Cherries Discussion Record body (p.206) reads 'Crop Code 1028'; the section header, agenda, and data tables use 0128. Treat crop code as UNCLEAR pending confirmation (0128 vs 1028).", "rule": "STC rule 1" },
+    { "id": "NAP-GRAPE-TYPO", "severity": "data_quality", "summary": "Grapes Discussion Record (p.229) reads 'There are 44 types of Cherries in Colorado' — source copy/paste error; context is Grapes (Crop Code 0053).", "rule": "STC rule 1" },
+    { "id": "NAP-HOPS-DR", "severity": "data_quality", "summary": "Hops Discussion Record (p.258) is dated 08.05.25 and references '2026 NCT record review'; it sits in the 2027 NCT review packet and prints no explicit 'STC Recommended Action' line. Appears to be a carried-forward/prior-year record — confirm before treating as a 2027 action.", "rule": "STC rule 1" },
+    { "id": "EXEC-INSERT-MONTEZUMA-MINUTES", "severity": "warning", "summary": "Montezuma County COC Executive Minutes (Feb 3, 2026) are inserted at packet pp.328-355, between the Triticale section and the New Crop Request, and are not itemized at that location on the July 23 agenda. Placement/ownership unclear (Triticale FPD change vs item 5e Montezuma memo).", "rule": "STC rule 1" },
+    { "id": "EXEC-INSERT-CLOSINGDATE-REVIEW", "severity": "warning", "summary": "A NAP Discussion Record (pp.356-360) dated 03.24.26, 'Annual review/comparison of RMA-FCIC vs FSA NCT sales closing dates,' recommended action 'No Changes,' is not a July 23 agenda action item. Treated here as reference/appendix.", "rule": "STC rule 7 (fact vs analysis)" },
+    { "id": "MINUTES-DATE-MISMATCH", "severity": "warning", "summary": "Both agendas' item 2 cite prior minutes dated 'June 25, 2026'; the minutes files in the corpus are dated 'June 24, 2026.' Confirm which date is correct.", "rule": "STC rule 1" },
+    { "id": "COMMITTEE-COUNT", "severity": "info", "summary": "Project notes reference 'all six STC members'; the most recent minutes (June 24, 2026) enumerate five voting members (Brown, McConnell, Raftopoulos, Petrocco, Mackey). Sixth member not enumerated in available sources.", "rule": "STC rule 1" }
+  ],
+  "ocr_todo": [
+    { "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "pages": { "start": 7, "end": 26 }, "content": "Baca/Schroder CRP exhibits (COC letter, 03/17/2026 minutes, well report, invoices, FSA-848A/B, NRCS-CPA-1155, CRP-1)" },
+    { "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "pages": { "start": 30, "end": 106 }, "content": "ECP Carter case file (ECP-801 application, Rio Blanco COC minutes 06/04/2026)" },
+    { "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "pages": { "start": 110, "end": 173 }, "content": "ECP Lopez case file (ECP-801 application, Rio Blanco COC minutes 06/04/2026)" },
+    { "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "pages": { "start": 329, "end": 355 }, "content": "Montezuma COC minutes body (Feb 3, 2026) — partial scan" },
+    { "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "pages": { "start": 370, "end": 404 }, "content": "Las Animas/Huerfano COC minutes & request exhibits — partial scan" },
+    { "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "pages": { "start": 442, "end": 469 }, "content": "Annual-grass PP/prevented-planting county tables & fact sheets — partial scan" },
+    { "source_file": "26.07.23_ADMIN_Colorado_STC_Executive Session Packet.pdf", "pages": { "start": 472, "end": 476 }, "content": "Montezuma memo to STC (attached exhibit)" }
+  ]
+}

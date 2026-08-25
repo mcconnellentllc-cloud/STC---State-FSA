@@ -5,12 +5,15 @@ import { useAuth } from '../auth/AuthContext';
 const memberLinks = [
   { to: '/', label: 'Dashboard', icon: '▣' },
   { to: '/summary', label: 'Meeting Agenda', icon: '📋' },
-  { to: '/meetings', label: 'Meetings', icon: '📅' },
+  { to: '/meetings', label: 'Meetings (Calendar)', icon: '📅' },
+  { to: '/board-meetings', label: 'Board Meetings', icon: '🏛' },
+  { to: '/board-actions', label: 'Board Actions', icon: '✓' },
   { to: '/journal', label: 'Journal', icon: '✎' },
   { to: '/documents', label: 'Documents', icon: '📄' },
   { to: '/issues', label: 'County Issues', icon: '⚠' },
   { to: '/appeals', label: 'Appeals', icon: '⚖️' },
   { to: '/cost-share-rates', label: 'Cost Share Rates', icon: '$' },
+  { to: '/arc-plc', label: 'ARC / PLC', icon: '🌾' },
 ];
 
 const adminMainLinks = [

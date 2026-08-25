@@ -1,0 +1,85 @@
+{
+  "_description": "Registry of Colorado FSA STC meetings the site knows about. Each entry maps a meeting date to its index JSON (if parsed) plus lightweight metadata for the /board-meetings index. Add new meetings here when project delivers parsed data.",
+  "meetings": [
+    {
+      "date": "2026-08-27",
+      "title": "STC Meeting — August 27, 2026",
+      "location": "Denver Federal Center (Lakewood, CO) OR Virtual via Teams",
+      "sessions": ["Executive Session (9:00 AM)", "Regular Session (3:30 PM)"],
+      "status": "upcoming",
+      "indexFile": "meeting_2026-08-27_index",
+      "actionCount": 20,
+      "hasAppeals": true,
+      "appealsRef": ["APPEAL-5-2026-BEEUTIFUL-THINGS"],
+      "priorMeetingRef": "2026-07-23",
+      "note": "925-page exec packet (parsed). Highlights: Beeutiful Things ELAP appeal (Elbert, 90 min), Kit Carson Cure LFP series (6 apps × 2020/2021), STC-member SDRP items 7.a.3 & 7.a.4 (McConnell recuse), Schroder CRP cost-share (returning from July 23 tabled), 13-county Safflower ARC/PLC yields, $9M EFRP request across 9 mountain pine beetle counties."
+    },
+    {
+      "date": "2026-07-23",
+      "title": "STC Meeting — July 23, 2026",
+      "location": "Virtual Meeting via Teams",
+      "sessions": ["Regular Session", "Executive Session"],
+      "status": "past",
+      "indexFile": "meeting_2026-07-23_index",
+      "shellFile": "meeting_2026-07-23_shell",
+      "actionCount": 11,
+      "hasAppeals": false,
+      "priorMeetingRef": "2026-06-24",
+      "note": "MINUTES APPROVED. Exec: 2 ECPs approved (Rio Blanco Carter + Lopez), Las Animas Beans PNT De Ir new-crop approved. TABLED: Schroder CRP cost-share, all 10 2027 NCT crops (returning Aug 27). Regular: 2025 ARC-CO county yields APPROVED for corn/flaxseed/sorghum/peanuts/soybeans/sunflower — Mackey/Petrocco motion passed."
+    },
+    {
+      "date": "2026-06-24",
+      "title": "STC Meeting — June 24, 2026",
+      "location": "Virtual Meeting via Teams",
+      "sessions": ["Regular Session", "Executive Session"],
+      "status": "past",
+      "indexFile": null,
+      "shellFile": null,
+      "actionCount": 0,
+      "hasAppeals": false,
+      "priorMeetingRef": null,
+      "note": "Prior minutes referenced by July 23 agenda item 2. Minutes files exist in Box but not yet parsed to JSON."
+    },
+    {
+      "date": "2026-04-23",
+      "title": "STC Meeting — April 23, 2026",
+      "location": "Virtual Meeting via Teams",
+      "sessions": ["Regular Session", "Executive Session"],
+      "status": "past",
+      "indexFile": null,
+      "shellFile": null,
+      "actionCount": 4,
+      "hasAppeals": true,
+      "appealsRef": ["APPEAL-1-2026-EBRIGHT", "APPEAL-2-2026-3RLAMB", "APPEAL-3-2026-PROCTOR", "APPEAL-4-2026-RIVEREDGE"],
+      "priorMeetingRef": "2026-03-24",
+      "note": "4 appeals — see /appeals for full case analysis. Full meeting minutes not yet parsed."
+    },
+    {
+      "date": "2026-03-24",
+      "title": "STC Meeting — March 24, 2026",
+      "location": "Virtual Meeting via Teams",
+      "sessions": ["Regular Session"],
+      "status": "past",
+      "indexFile": null,
+      "shellFile": null,
+      "actionCount": 0,
+      "hasAppeals": true,
+      "appealsRef": ["APPEAL-1-2026-EBRIGHT"],
+      "priorMeetingRef": null,
+      "note": "Otero County delegation authorization, FBA program update, Ebright CRP appeal (continued to April 23). See Journal for detailed notes."
+    },
+    {
+      "date": "2026-03-17",
+      "title": "STC Special Session — Otero/Crowley COC Admin Leave",
+      "location": "Virtual",
+      "sessions": ["Special Session"],
+      "status": "past",
+      "indexFile": null,
+      "shellFile": null,
+      "actionCount": 1,
+      "hasAppeals": false,
+      "priorMeetingRef": null,
+      "note": "Chairperson Brown authorized to sign admin leave letters for Otero/Crowley COC members. See Journal."
+    }
+  ]
+}

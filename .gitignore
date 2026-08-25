@@ -2,3 +2,6 @@
 node_modules/
 server/data/
 dist/
+
+# Delivery drops for meeting-packet parsing (see scripts/extract-doc.mjs)
+.packets/
