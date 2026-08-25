@@ -67,16 +67,39 @@ function SectionTitle({ children }) {
   return <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: C.navy, marginBottom: 10, paddingBottom: 5, borderBottom: `2px solid ${C.border}`, ...mono }}>{children}</div>;
 }
 
-function AgendaItem({ item, session }) {
+// Parse "HH:MM" or "HH:MM AM/PM" into minutes since midnight
+function parseStart(s) {
+  if (!s) return null;
+  const m = String(s).trim().match(/^(\d{1,2}):(\d{2})\s*(AM|PM|am|pm)?/);
+  if (!m) return null;
+  let h = parseInt(m[1], 10);
+  const min = parseInt(m[2], 10);
+  const ap = m[3]?.toUpperCase();
+  if (ap === "PM" && h < 12) h += 12;
+  if (ap === "AM" && h === 12) h = 0;
+  return h * 60 + min;
+}
+function fmtClock(minSinceMidnight) {
+  if (minSinceMidnight == null) return "";
+  const h24 = Math.floor(minSinceMidnight / 60) % 24;
+  const m = minSinceMidnight % 60;
+  const ap = h24 >= 12 ? "PM" : "AM";
+  const h12 = ((h24 + 11) % 12) + 1;
+  return `${h12}:${String(m).padStart(2, "0")} ${ap}`;
+}
+
+function AgendaItem({ item, session, startMin }) {
   const [open, setOpen] = useState(false);
   const t = normalizeType(item.action_type);
   const typeCfg = TYPE_BG[t];
   const kf = item.key_facts;
   const hasBody = !!(kf || item.note || item.flags?.length);
+  const clock = fmtClock(startMin);
   return (
     <div style={{ background: "#fff", border: `1px solid ${C.border}`, borderLeft: t === "action" ? `4px solid ${C.green}` : `4px solid ${C.border}`, borderRadius: 6, marginBottom: 8 }}>
       <div onClick={() => hasBody && setOpen(!open)} style={{ padding: "10px 14px", cursor: hasBody ? "pointer" : "default", display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
         <span style={{ background: C.navy, color: C.goldLight, borderRadius: 4, padding: "2px 8px", fontSize: 11, fontWeight: 700, ...mono, minWidth: 32, textAlign: "center" }}>{item.number}</span>
+        {clock && <span style={{ background: C.goldLight, color: C.navy, borderRadius: 4, padding: "2px 8px", fontSize: 11, fontWeight: 700, ...mono, whiteSpace: "nowrap" }}>~{clock}</span>}
         <div style={{ flex: 1, minWidth: 240 }}>
           <div style={{ fontSize: 13.5, fontWeight: 700, color: C.navy, ...serif, lineHeight: 1.35 }}>{item.title}</div>
           {item.presenter && <div style={{ fontSize: 11, color: C.slate, marginTop: 2 }}>🎙 {item.presenter}</div>}
@@ -220,17 +243,29 @@ function MeetingDetail({ date }) {
           </div>
         )}
 
-        {m.sessions.map(sess => (
-          <div key={sess.session} style={{ marginBottom: 32 }}>
-            <div style={{ background: C.navy, color: "#fff", padding: "10px 16px", borderRadius: "6px 6px 0 0", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-              <span style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", ...mono }}>{sess.session}</span>
-              <span style={{ fontSize: 11, color: C.slateLight, ...mono }}>starts {sess.start_time}</span>
+        {[...m.sessions].sort((a, b) => (parseStart(a.start_time) ?? 0) - (parseStart(b.start_time) ?? 0)).map(sess => {
+          const sessStart = parseStart(sess.start_time);
+          let running = sessStart;
+          const totalMin = sess.agenda_items.reduce((s, it) => s + (it.time_allotted_min || 0), 0);
+          const sessEnd = sessStart != null ? sessStart + totalMin : null;
+          return (
+            <div key={sess.session} style={{ marginBottom: 32 }}>
+              <div style={{ background: C.navy, color: "#fff", padding: "10px 16px", borderRadius: "6px 6px 0 0", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
+                <span style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", ...mono }}>{sess.session}</span>
+                <span style={{ fontSize: 11, color: C.slateLight, ...mono }}>
+                  {sessStart != null ? `${fmtClock(sessStart)}${sessEnd != null ? ` – ~${fmtClock(sessEnd)}` : ""}` : `starts ${sess.start_time}`}
+                </span>
+              </div>
+              <div style={{ padding: 12, background: "#fff", border: `1px solid ${C.border}`, borderTop: "none", borderRadius: "0 0 6px 6px" }}>
+                {sess.agenda_items.map(item => {
+                  const itemStart = running;
+                  running = running != null ? running + (item.time_allotted_min || 0) : null;
+                  return <AgendaItem key={item.number} item={item} session={sess.session} startMin={itemStart} />;
+                })}
+              </div>
             </div>
-            <div style={{ padding: 12, background: "#fff", border: `1px solid ${C.border}`, borderTop: "none", borderRadius: "0 0 6px 6px" }}>
-              {sess.agenda_items.map(item => <AgendaItem key={item.number} item={item} session={sess.session} />)}
-            </div>
-          </div>
-        ))}
+          );
+        })}
 
         {data.ocr_todo?.length > 0 && (
           <div style={{ marginBottom: 24 }}>
