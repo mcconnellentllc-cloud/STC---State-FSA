@@ -674,6 +674,115 @@ function IssuesForDetermination({ appeal }) {
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
+   HANDBOOK POLICY — direct links to controlling policy for open appeals.
+   For each cited handbook paragraph or CFR section: what it requires, what
+   the record gets right about it, and what the record gets wrong about it.
+   Renders as a stack of policy cards. Hidden when handbookPolicy[] is empty.
+   Shape: appeal.handbookPolicy[] = [{
+     cite, title, sourceLabel, url, urlLabel,
+     whatItRequires, whatIsRight, whatIsWrong
+   }]
+   ───────────────────────────────────────────────────────────────────────────── */
+function HandbookPolicy({ appeal }) {
+  const items = appeal.handbookPolicy || [];
+  if (items.length === 0) return null;
+  return (
+    <div style={{ marginBottom: 28 }}>
+      <div style={SECTION_TITLE_STYLE}>Handbook Policy — What's Right / What's Wrong ({items.length})</div>
+      <div style={{ fontSize: 12, color: T.slate, marginBottom: 12, fontStyle: "italic", lineHeight: 1.6 }}>
+        Controlling policy for this appeal. Each entry links to the source, describes what the
+        rule requires, and shows what the record supports vs. what the record fails to support.
+      </div>
+      {items.map((item, i) => (
+        <div key={i} style={{
+          background: "#fff",
+          border: `1px solid ${T.border}`,
+          borderLeft: `5px solid ${T.blue}`,
+          borderRadius: 8,
+          padding: "14px 18px",
+          marginBottom: 12,
+        }}>
+          <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", flexWrap: "wrap", gap: 8, marginBottom: 4 }}>
+            <div style={{ display: "flex", alignItems: "baseline", gap: 10, flexWrap: "wrap" }}>
+              <span style={{
+                fontFamily: "'IBM Plex Mono', monospace",
+                fontSize: 11, fontWeight: 700,
+                color: "#fff", background: T.blue,
+                padding: "2px 8px", borderRadius: 4,
+                letterSpacing: "0.06em",
+              }}>{item.cite}</span>
+              <span style={{ fontFamily: "Georgia, serif", fontSize: 15, fontWeight: 700, color: T.navy }}>
+                {item.title}
+              </span>
+            </div>
+            {item.url && (
+              <a
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontFamily: "'IBM Plex Mono', monospace",
+                  fontSize: 11, color: T.blue, textDecoration: "none",
+                  border: `1px solid ${T.blue}`, borderRadius: 4,
+                  padding: "3px 8px", whiteSpace: "nowrap",
+                }}
+                title={item.sourceLabel || ""}
+              >
+                {item.urlLabel || "Source"} ↗
+              </a>
+            )}
+          </div>
+          {item.sourceLabel && (
+            <div style={{ fontSize: 11, color: T.slate, fontFamily: "'IBM Plex Mono', monospace", marginBottom: 10 }}>
+              {item.sourceLabel}
+            </div>
+          )}
+          {item.whatItRequires && (
+            <div style={{ marginBottom: 10, fontSize: 13, lineHeight: 1.7, color: T.navy }}>
+              <strong style={{
+                display: "inline-block",
+                fontSize: 10, fontFamily: "'IBM Plex Mono', monospace",
+                letterSpacing: "0.08em", textTransform: "uppercase",
+                color: T.slate, marginRight: 6,
+              }}>What it requires:</strong>
+              {item.whatItRequires}
+            </div>
+          )}
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginTop: 4 }}>
+            {item.whatIsRight && (
+              <div style={{
+                background: T.greenLight,
+                borderLeft: `3px solid ${T.green}`,
+                borderRadius: "0 6px 6px 0",
+                padding: "10px 12px",
+              }}>
+                <div style={{ fontWeight: 700, fontSize: 11, color: T.green, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 6, fontFamily: "'IBM Plex Mono', monospace" }}>
+                  ✓ What's Right
+                </div>
+                <div style={{ fontSize: 13, lineHeight: 1.65, color: T.navy }}>{item.whatIsRight}</div>
+              </div>
+            )}
+            {item.whatIsWrong && (
+              <div style={{
+                background: T.redLight,
+                borderLeft: `3px solid ${T.red}`,
+                borderRadius: "0 6px 6px 0",
+                padding: "10px 12px",
+              }}>
+                <div style={{ fontWeight: 700, fontSize: 11, color: T.red, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 6, fontFamily: "'IBM Plex Mono', monospace" }}>
+                  ✗ What's Wrong
+                </div>
+                <div style={{ fontSize: 13, lineHeight: 1.65, color: T.navy }}>{item.whatIsWrong}</div>
+              </div>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
    CASE FILE RESEARCH — renders appeal.caseFileResearch[] as clickable chips.
    Each item links to the source document at the right page via `#page=N`
    anchors. Hidden when the array is empty.
@@ -958,7 +1067,10 @@ function AppealDetail({ appeals, onUpdateAdvisory }) {
         {/* 0. CASE BRIEF SUMMARY */}
         <CaseBriefSummary appeal={appeal} />
 
-        {/* 0b. ISSUES FOR STC DETERMINATION (renders only when issues[] is non-empty) */}
+        {/* 0b. HANDBOOK POLICY — direct links + what's right/wrong (open appeals) */}
+        <HandbookPolicy appeal={appeal} />
+
+        {/* 0c. ISSUES FOR STC DETERMINATION (renders only when issues[] is non-empty) */}
         <IssuesForDetermination appeal={appeal} />
 
         {/* 1. PLAIN LANGUAGE SUMMARY */}
