@@ -1,0 +1,243 @@
+{
+  "schema_version": "1.0",
+  "index_title": "Colorado STC — 2026-02-10 Meeting — Index (from approved minutes)",
+  "meeting": {
+    "body": "USDA FSA Colorado State Committee (STC)",
+    "meeting_date": "2026-02-10",
+    "sessions": [
+      {
+        "session": "Regular Session",
+        "start_time": "",
+        "guests": [],
+        "agenda_items": [
+          {
+            "number": "1",
+            "title": "Call to Order",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "2",
+            "title": "Otero COC Actions",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "3",
+            "title": "STC Orientation and Training",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "4",
+            "title": "Monthly Leadership Reports",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": [
+              {
+                "number": "4A",
+                "title": "State Executive Director Report",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "4B",
+                "title": "District Director Reports",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "4C",
+                "title": "Acting Farm Loan Chief Report",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "4D",
+                "title": "Farm Program Chief Reports",
+                "action_type": "Discussion",
+                "motions": []
+              }
+            ]
+          },
+          {
+            "number": "5",
+            "title": "Noninsured Crop Disaster Assistance Program (NAP)",
+            "action_type": "Action Item",
+            "motions": [
+              "McConnell moved to accept and approve the COC recommended Losses as listed above and",
+              "motion.  Motion passed.",
+              "McConnell moved to accept and approve the COC recommended Losses as listed above and"
+            ],
+            "sub_items": [
+              {
+                "number": "5A",
+                "title": "2025 DAFP Yield Solicitation",
+                "action_type": "Action Item",
+                "motions": [
+                  "McConnell moved to accept and approve the proposed missing yields (shown in tables above",
+                  "Steve Raftopoulos seconded the motion.  Motion passed."
+                ]
+              }
+            ]
+          },
+          {
+            "number": "8",
+            "title": "Adjournment",
+            "action_type": "Action Item",
+            "motions": [
+              "There being no further business, the Regular Session was adjourned at 11:57 a.m. The next"
+            ],
+            "sub_items": []
+          }
+        ]
+      },
+      {
+        "session": "Executive Session",
+        "start_time": "",
+        "guests": [],
+        "agenda_items": [
+          {
+            "number": "1",
+            "title": "Call to Order",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "2",
+            "title": "Emergency Conservation Reserve Program (ECP)",
+            "action_type": "Action Item",
+            "motions": [],
+            "sub_items": [
+              {
+                "number": "2A",
+                "title": "321 Equitable Relief – Misaction/Misinformation – Montezuma – Valley View Ranch",
+                "action_type": "Action Item",
+                "motions": [
+                  "Motion passed."
+                ]
+              },
+              {
+                "number": "2B",
+                "title": "Cost Share Review",
+                "action_type": "Action Item",
+                "motions": [
+                  "Steve Raftopoulos moved to request a Cost Share Review from the ECP-Program Manager",
+                  "Terrain, Mult-Strand Replace.  Kyle McConnell seconded the motion.  Motion passed."
+                ]
+              }
+            ]
+          },
+          {
+            "number": "3",
+            "title": "Noninsured Crop Disaster Assistance Program (NAP)",
+            "action_type": "Action Item",
+            "motions": [],
+            "sub_items": [
+              {
+                "number": "3A",
+                "title": "2026 – Crop Table Review",
+                "action_type": "Action Item",
+                "motions": [
+                  "McConnell moved to approve the proposed County Expected Yield (CEY) and Average",
+                  "NCT. Steve Raftopoulos seconded the motion.  Motion passed.",
+                  "Mackey moved to approve the proposed County Expected Yield (CEY) and Average"
+                ]
+              }
+            ]
+          },
+          {
+            "number": "4",
+            "title": "Supplemental Disaster Relief Program (SDRP)",
+            "action_type": "Action Item",
+            "motions": [],
+            "sub_items": [
+              {
+                "number": "4A",
+                "title": "2024 Ad Hoc NCT Pueblo Honey Tb",
+                "action_type": "Action Item",
+                "motions": [
+                  "McConnell moved to approve the proposed historical yields, historical prices, County",
+                  "seconded the motion.  Motion passed."
+                ]
+              }
+            ]
+          },
+          {
+            "number": "5",
+            "title": "Emergency Commodity Assistance Program ( ECAP)",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": [
+              {
+                "number": "5A",
+                "title": "321 Equitable Relief – Misaction/Misinformation or Programmatic Relief – Bent –",
+                "action_type": "Discussion",
+                "motions": []
+              }
+            ]
+          },
+          {
+            "number": "1",
+            "title": "Participant demonstrated a good faith effort and complied with program deadlines",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "2",
+            "title": "Participant relied on information provided by the COF that a valid ECAP",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "3",
+            "title": "CED discovered the COF failed to update and obtain signature on the ECAP",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "4",
+            "title": "After reviewing the updated application, it was noted the producer would be",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "5",
+            "title": "participant meets all applicant eligibility including foreign person regulations,",
+            "action_type": "Action Item",
+            "motions": [
+              "Motion passed."
+            ],
+            "sub_items": []
+          },
+          {
+            "number": "6",
+            "title": "Adjournment",
+            "action_type": "Action Item",
+            "motions": [
+              "There being no further business, the Executive Session was adjourned at 2:45 p.m. The next"
+            ],
+            "sub_items": []
+          }
+        ]
+      }
+    ],
+    "location": "Colorado State Office Denver Federal Center",
+    "committee_members": [
+      "Don Brown, Chairperson",
+      "Darrell Mackey, Member",
+      "Kyle McConnell, Member",
+      "Steve Raftopoulos, Member",
+      "Joe Petrocco, Member (Via Teams)"
+    ]
+  },
+  "source_note": "Built from approved minutes PDFs — captures every numbered agenda item and any motions passed. For Discussion Records with pre-vote background, see the packet PDFs on Teams."
+}

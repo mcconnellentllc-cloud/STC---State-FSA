@@ -1,0 +1,222 @@
+{
+  "schema_version": "1.0",
+  "index_title": "Colorado STC — 2026-01-06 Meeting — Index (from approved minutes)",
+  "meeting": {
+    "body": "USDA FSA Colorado State Committee (STC)",
+    "meeting_date": "2026-01-06",
+    "sessions": [
+      {
+        "session": "Regular Session",
+        "start_time": "",
+        "guests": [],
+        "agenda_items": [
+          {
+            "number": "1",
+            "title": "Call to Order",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "2",
+            "title": "Approve Regular Session Minutes",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": [
+              {
+                "number": "2A",
+                "title": "The Acting STC reviewed the Regular Session minutes from the December 4, 2025, meeting.",
+                "action_type": "Discussion",
+                "motions": []
+              }
+            ]
+          },
+          {
+            "number": "3",
+            "title": "Monthly Leadership Reports",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": [
+              {
+                "number": "3A",
+                "title": "State Executive Director Report",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "3B",
+                "title": "District Director Reports",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "3C",
+                "title": "Acting Farm Loan Chief Report",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "3D",
+                "title": "Farm Program Chief Reports",
+                "action_type": "Discussion",
+                "motions": []
+              }
+            ]
+          },
+          {
+            "number": "4",
+            "title": "Noninsured Crop Disaster Assistance Program (NAP)",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": [
+              {
+                "number": "4A",
+                "title": "CPLGW authorization - correction",
+                "action_type": "Discussion",
+                "motions": []
+              }
+            ]
+          },
+          {
+            "number": "5",
+            "title": "Risk Management (RMA)",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": [
+              {
+                "number": "5A",
+                "title": "Consultation 202508R0141 T Yield Change",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5B",
+                "title": "Consultation 202508R0145 Final Plant Date Sorghum",
+                "action_type": "Discussion",
+                "motions": []
+              }
+            ]
+          },
+          {
+            "number": "6",
+            "title": "Adjournment",
+            "action_type": "Action Item",
+            "motions": [
+              "There being no further business, the Regular Session was adjourned at 2:45 p.m. The next"
+            ],
+            "sub_items": []
+          }
+        ]
+      },
+      {
+        "session": "Executive Session",
+        "start_time": "",
+        "guests": [],
+        "agenda_items": [
+          {
+            "number": "1",
+            "title": "Call to Order",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "2",
+            "title": "Conservation Reserve Program (CRP)",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": [
+              {
+                "number": "2A",
+                "title": "321 Equitable Relief – Misaction/Misinformation – Saguache – CREP SU 61 – Darwin",
+                "action_type": "Discussion",
+                "motions": []
+              }
+            ]
+          },
+          {
+            "number": "1",
+            "title": "Erroneously approved CRP-1 on paper",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "2",
+            "title": "County office did not timely load CRP-1 approval date into the COLS software.",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": [
+              {
+                "number": "2B",
+                "title": "321 Equitable Relief – Misaction/Misinformation – Saguache – CREP SU 61 – Gene",
+                "action_type": "Discussion",
+                "motions": []
+              }
+            ]
+          },
+          {
+            "number": "1",
+            "title": "Erroneously approved CRP-1 on paper",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "2",
+            "title": "County office did not timely load CRP-1 approval date into the COLS software.",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "3",
+            "title": "Noninsured Crop Disaster Assistance Program (NAP)",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": [
+              {
+                "number": "3A",
+                "title": "321 Equitable Relief – Programmatic Relief – Moffat – McStay Brothers – 23 Late Filed",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "3A",
+                "title": "key item to consider when deciding whether to exercise discretion to consider relief is if",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "3D",
+                "title": "through H for Rye with the intended use of forage and grain.",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "3B",
+                "title": "2026 – Crop Table Review",
+                "action_type": "Discussion",
+                "motions": []
+              }
+            ]
+          },
+          {
+            "number": "4",
+            "title": "Adjournment",
+            "action_type": "Action Item",
+            "motions": [
+              "There being no further business, the Executive Session was adjourned at 3:50 p.m. The next"
+            ],
+            "sub_items": []
+          }
+        ]
+      }
+    ],
+    "location": "Via TEAMs",
+    "committee_members": [
+      "Jerry Sonnenberg, Acting State Committee"
+    ]
+  },
+  "source_note": "Built from approved minutes PDFs — captures every numbered agenda item and any motions passed. For Discussion Records with pre-vote background, see the packet PDFs on Teams."
+}

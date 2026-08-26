@@ -1,10 +1,29 @@
 import { useState, useMemo, useEffect } from "react";
 import { Link } from "react-router-dom";
 import registry from "../data/meetings_registry.json";
+import dec04_2025 from "../data/meeting_2025-12-04_index.json";
+import jan06 from "../data/meeting_2026-01-06_index.json";
+import feb10 from "../data/meeting_2026-02-10_index.json";
+import feb11 from "../data/meeting_2026-02-11_index.json";
+import mar24 from "../data/meeting_2026-03-24_index.json";
+import apr23 from "../data/meeting_2026-04-23_index.json";
+import may28 from "../data/meeting_2026-05-28_index.json";
+import jun24 from "../data/meeting_2026-06-24_index.json";
 import july23 from "../data/meeting_2026-07-23_index.json";
 import aug27 from "../data/meeting_2026-08-27_index.json";
 
-const MEETING_DATA = { "2026-07-23": july23, "2026-08-27": aug27 };
+const MEETING_DATA = {
+  "2025-12-04": dec04_2025,
+  "2026-01-06": jan06,
+  "2026-02-10": feb10,
+  "2026-02-11": feb11,
+  "2026-03-24": mar24,
+  "2026-04-23": apr23,
+  "2026-05-28": may28,
+  "2026-06-24": jun24,
+  "2026-07-23": july23,
+  "2026-08-27": aug27,
+};
 const STORAGE_KEY = "fsa_board_actions_v1";
 
 const C = {

@@ -1,0 +1,578 @@
+{
+  "schema_version": "1.0",
+  "index_title": "Colorado STC — 2026-05-28 Meeting — Index (from approved minutes)",
+  "meeting": {
+    "body": "USDA FSA Colorado State Committee (STC)",
+    "meeting_date": "2026-05-28",
+    "sessions": [
+      {
+        "session": "Regular Session",
+        "start_time": "9:  00 AM",
+        "guests": [],
+        "agenda_items": [
+          {
+            "number": "1",
+            "title": "Call to Order",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "2",
+            "title": "Approval of Regular Session Minutes",
+            "action_type": "Action Item",
+            "motions": [
+              "consideration and discussion, Kyle McConnell moved to approve and accept the minutes. Steve",
+              "Raftopoulos seconded the motion. The motion passed."
+            ],
+            "sub_items": []
+          },
+          {
+            "number": "3",
+            "title": "Leadership Reports",
+            "action_type": "Action Item",
+            "motions": [],
+            "sub_items": [
+              {
+                "number": "3A",
+                "title": "2025 DAFP Yield Solicitation",
+                "action_type": "Action Item",
+                "motions": [
+                  "Petrocco moved to accept and approve the proposed missing yields (shown in tables above in",
+                  "Oats and Wheat.  Kyle McConnell seconded the motion.  Motion passed."
+                ]
+              }
+            ]
+          },
+          {
+            "number": "5",
+            "title": "Adjourn Regular Session",
+            "action_type": "Action Item",
+            "motions": [
+              "Having no other business to discuss, the Regular Session meeting was adjourned at 10:14 a.m."
+            ],
+            "sub_items": [
+              {
+                "number": "5A",
+                "title": "STC Calculated Yields where RMA or NASS County Yield Data is Missing or NASS",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5B",
+                "title": "Missing T-Yields",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025  Irri gat e d",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025  All  T -",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025  All",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025  All",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5A",
+                "title": "STC Calculated Yields where RMA or NASS County Yield Data is Missing or NASS",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5B",
+                "title": "Missing T-Yields",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025  Irri gat e d",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025  All  T -",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025  All",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025  All",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "Y  2025",
+                "action_type": "Discussion",
+                "motions": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "session": "Executive Session",
+        "start_time": "",
+        "guests": [
+          "Dara Belew, CED – for Otero/Crowley COC items only"
+        ],
+        "agenda_items": [
+          {
+            "number": "1",
+            "title": "Call to Order",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "2",
+            "title": "Approve Executive Session Minutes",
+            "action_type": "Action Item",
+            "motions": [],
+            "sub_items": [
+              {
+                "number": "2A",
+                "title": "April 23, 2026, Minutes",
+                "action_type": "Action Item",
+                "motions": [
+                  "Steve Raftopoulos seconded the motion. Motion passed."
+                ]
+              }
+            ]
+          },
+          {
+            "number": "3",
+            "title": "Conservation Reserve Program (CRP)",
+            "action_type": "Action Item",
+            "motions": [],
+            "sub_items": [
+              {
+                "number": "3A",
+                "title": "321 Equitable Relief – Misaction/Misinformation – Alamosa – Oklahoma Judicial",
+                "action_type": "Action Item",
+                "motions": [
+                  "McConnell, moved to recommend DAFP approve the Equitable Relief Request-",
+                  "October 1, 2024.  Steve Raftopoulos seconded the motion. Motion passed."
+                ]
+              }
+            ]
+          },
+          {
+            "number": "4",
+            "title": "Conservation Reserve Program (CRP)",
+            "action_type": "Action Item",
+            "motions": [],
+            "sub_items": [
+              {
+                "number": "4A",
+                "title": "Establishment of additional FY26 CRP Cost Share component and rate",
+                "action_type": "Action Item",
+                "motions": [
+                  "knowledge, Kyle McConnell moved to add the proposed CRP Component and increase the",
+                  "seconded the motion.  The motion passed."
+                ]
+              }
+            ]
+          },
+          {
+            "number": "5",
+            "title": "Emergency Forest Restoration Program (EFRP)",
+            "action_type": "Action Item",
+            "motions": [],
+            "sub_items": [
+              {
+                "number": "5A",
+                "title": "Establishment of additional FY2026 EFRP Cost Share components and rates",
+                "action_type": "Action Item",
+                "motions": [
+                  "Raftopoulos moved to add the proposed components and the proposed rate as presented and",
+                  "shown above.  Kyle McConnell seconded the motion.  The motion passed."
+                ]
+              }
+            ]
+          },
+          {
+            "number": "6",
+            "title": "Emergency Conservation Program (ECP)",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": [
+              {
+                "number": "6A",
+                "title": "Hunter Cleveland, Farm Program Specialist, presented the STC with the following",
+                "action_type": "Discussion",
+                "motions": []
+              }
+            ]
+          },
+          {
+            "number": "7",
+            "title": "Noninsured Crop Disaster Assistance Program (NAP)",
+            "action_type": "Action Item",
+            "motions": [],
+            "sub_items": [
+              {
+                "number": "7A",
+                "title": "2026 – Crop Table Review",
+                "action_type": "Action Item",
+                "motions": [
+                  "McConnell moved to approve the proposed County Expected Yield (CEY) and Average",
+                  "2026 NCT. Kyle McConnell, seconded the motion.  Motion passed."
+                ]
+              },
+              {
+                "number": "7B",
+                "title": "New Crop Requests for NCT",
+                "action_type": "Action Item",
+                "motions": [
+                  "McConnell moved to approve the San Miguel a County’s request to add a new non-",
+                  "above.  Steve Raftopoulos seconded the motion.  Motion passed.",
+                  "McConnell moved to approve the Dolores County’s request to add a new irrigated (Ir)"
+                ]
+              }
+            ]
+          },
+          {
+            "number": "8",
+            "title": "Otero COC Actions",
+            "action_type": "Action Item",
+            "motions": [],
+            "sub_items": [
+              {
+                "number": "8A",
+                "title": "Supplemental Disaster Program (SDRP)",
+                "action_type": "Action Item",
+                "motions": [
+                  "the applications.  Motion passed"
+                ]
+              },
+              {
+                "number": "8B",
+                "title": "Livestock Indemnity Program (LIP)",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "8C",
+                "title": "Common Management (CM)",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "8D",
+                "title": "Payment Eligibility (PL)",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "8E",
+                "title": "Non-Insured Crop Disaster Program (NAP) Application for Coverage-late file",
+                "action_type": "Discussion",
+                "motions": []
+              }
+            ]
+          },
+          {
+            "number": "9",
+            "title": "Adjournment",
+            "action_type": "Action Item",
+            "motions": [
+              "There being no further business, the Executive Session was adjourned at 11:50 a.m. The next"
+            ],
+            "sub_items": []
+          }
+        ]
+      }
+    ],
+    "location": "Virtual Meeting via Teams",
+    "committee_members": [
+      "Don Brown, Chairperson",
+      "Kyle McConnell, Member",
+      "Steve Raftopoulos, Member",
+      "Joe Petrocco, Member"
+    ]
+  },
+  "source_note": "Built from approved minutes PDFs — captures every numbered agenda item and any motions passed. For Discussion Records with pre-vote background, see the packet PDFs on Teams."
+}

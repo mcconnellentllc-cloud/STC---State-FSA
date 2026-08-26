@@ -1,0 +1,349 @@
+{
+  "schema_version": "1.0",
+  "index_title": "Colorado STC — 2026-03-24 Meeting — Index (from approved minutes)",
+  "meeting": {
+    "body": "USDA FSA Colorado State Committee (STC)",
+    "meeting_date": "2026-03-24",
+    "sessions": [
+      {
+        "session": "Regular Session",
+        "start_time": "",
+        "guests": [],
+        "agenda_items": [
+          {
+            "number": "1",
+            "title": "Call to Order",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "2",
+            "title": "Monthly Leadership Reports",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": [
+              {
+                "number": "2A",
+                "title": "State Executive Director Report",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "2B",
+                "title": "District Director Reports",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "2C",
+                "title": "Acting Farm Loan Chief Report",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "2D",
+                "title": "Farm Program Chief Reports",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "2E",
+                "title": "Deputy State Executive Director Report",
+                "action_type": "Discussion",
+                "motions": []
+              }
+            ]
+          },
+          {
+            "number": "3",
+            "title": "Otero COC Action",
+            "action_type": "Action Item",
+            "motions": [],
+            "sub_items": [
+              {
+                "number": "3A",
+                "title": "Delegation of Authority from COC to CED",
+                "action_type": "Action Item",
+                "motions": [
+                  "Raftopoulos, moved to delegate Otero/Crowley COC authorities listed in exhibit 1 to Dara"
+                ]
+              }
+            ]
+          },
+          {
+            "number": "4",
+            "title": "County Committee Elections",
+            "action_type": "Action Item",
+            "motions": [],
+            "sub_items": [
+              {
+                "number": "4A",
+                "title": "Review of 2025 COC Election Reports",
+                "action_type": "Action Item",
+                "motions": [
+                  "Steve Raftopoulos, seconded the motion. Motion passed."
+                ]
+              },
+              {
+                "number": "4B",
+                "title": "STC to Appoint 2026 SDA Advisors",
+                "action_type": "Action Item",
+                "motions": [
+                  "with policy (Exhibit 4).   Kyle McConnell moved to approve the all counties SDA",
+                  "recommendations as presented.  Steve Raftopoulos, seconded the motion.  Motion passed."
+                ]
+              }
+            ]
+          },
+          {
+            "number": "5",
+            "title": "Noninsured Crop Disaster Assistance Program (NAP)",
+            "action_type": "Action Item",
+            "motions": [
+              "McConnell moved to accept and approve the COC recommended Losses as listed above and",
+              "motion.  Motion passed.",
+              "McConnell moved to accept and approve the COC recommended Losses as listed above and"
+            ],
+            "sub_items": [
+              {
+                "number": "5B",
+                "title": "NCT Dates and Factors Data – Per STC Request",
+                "action_type": "Discussion",
+                "motions": []
+              }
+            ]
+          },
+          {
+            "number": "6",
+            "title": "STC Policy and Delegation Review",
+            "action_type": "Action Item",
+            "motions": [],
+            "sub_items": [
+              {
+                "number": "6A",
+                "title": "AGRICULTURE FOREIGN INVESTMENT DISCLOSURE (AFIDA)",
+                "action_type": "Action Item",
+                "motions": [
+                  "Raftopoulos, moved to approve STC policies and delegations of authority as presented. Kyle",
+                  "McConnell seconded the motion.  Motion passed."
+                ]
+              },
+              {
+                "number": "6B",
+                "title": "EMERGENCY RELIEF PROGRAM (ERP)",
+                "action_type": "Action Item",
+                "motions": [
+                  "McConnell moved to approve STC policies and delegations of authority as presented. Darrell",
+                  "Mackey seconded the motion.  Motion passed."
+                ]
+              },
+              {
+                "number": "6C",
+                "title": "FARM STORAGE FACILITY LOAN (FSFL)",
+                "action_type": "Action Item",
+                "motions": [
+                  "McConnell moved to approve STC policies and delegations of authority as presented. Joe",
+                  "Petrocco seconded the motion.  Motion passed."
+                ]
+              },
+              {
+                "number": "6D",
+                "title": "COMMODITY LOANS (8-LP)",
+                "action_type": "Action Item",
+                "motions": [
+                  "McConnell moved to approve STC policies and delegations of authority as presented. Steve",
+                  "Raftopoulos, seconded the motion.  Motion passed."
+                ]
+              },
+              {
+                "number": "6E",
+                "title": "PAYMENT LIMITATION (PL) 5-PL",
+                "action_type": "Action Item",
+                "motions": [
+                  "McConnell moved to approve STC policies and delegations of authority as presented. Darrell",
+                  "Mackey seconded the motion.  Motion passed."
+                ]
+              },
+              {
+                "number": "6F",
+                "title": "PAYMENT LIMITATION (PL) 6-PL",
+                "action_type": "Action Item",
+                "motions": [
+                  "McConnell moved to approve STC policies and delegations of authority as presented. Darrell",
+                  "Mackey seconded the motion.  Motion passed.",
+                  "McConnell moved to approve STC policies and delegations of authority as presented. Steve"
+                ]
+              }
+            ]
+          },
+          {
+            "number": "8",
+            "title": "Adjournment",
+            "action_type": "Action Item",
+            "motions": [
+              "There being no further business, the Regular Session was adjourned at 2:36 p.m. The next"
+            ],
+            "sub_items": []
+          }
+        ]
+      },
+      {
+        "session": "Executive Session",
+        "start_time": "",
+        "guests": [],
+        "agenda_items": [
+          {
+            "number": "1",
+            "title": "Call to Order",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "2",
+            "title": "Approve Executive Session Minutes",
+            "action_type": "Action Item",
+            "motions": [],
+            "sub_items": [
+              {
+                "number": "2A",
+                "title": "December 4, 2025, Minutes",
+                "action_type": "Action Item",
+                "motions": [
+                  "presented. Kyle McConnell seconded the motion. Motion passed."
+                ]
+              }
+            ]
+          },
+          {
+            "number": "3",
+            "title": "Conservation Reserve Program (CRP)",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": [
+              {
+                "number": "3A",
+                "title": "Appeal – Bent – John and Stepanie Ebright",
+                "action_type": "Discussion",
+                "motions": []
+              }
+            ]
+          },
+          {
+            "number": "4",
+            "title": "Common Provisions (CP)",
+            "action_type": "Action Item",
+            "motions": [],
+            "sub_items": [
+              {
+                "number": "4A",
+                "title": "Reaffirmation of Action Between Meetings – Not for NAP Prevent Plant",
+                "action_type": "Action Item",
+                "motions": [
+                  "in Exhibit 1, Kyle McConnell moved to re-affirm the STC February 11, 2026 determination",
+                  "motion.  Motion passed."
+                ]
+              },
+              {
+                "number": "4B",
+                "title": "Not for NAP Prevent Plant Applications – Otero",
+                "action_type": "Action Item",
+                "motions": [
+                  "in Exhibit 2, Kyle McConnell moved to overturn and disapprove the CCC-576 Part B, Notice",
+                  "Motion passed."
+                ]
+              },
+              {
+                "number": "4C",
+                "title": "Not for NAP Prevent Plant Applications – Otero",
+                "action_type": "Action Item",
+                "motions": [
+                  "in Exhibit 3, Kyle McConnell moved to overturn and disapprove the CCC-576 Part B, Notice",
+                  "Motion passed."
+                ]
+              }
+            ]
+          },
+          {
+            "number": "5",
+            "title": "Noninsured Crop Disaster Assistance Program (NAP)",
+            "action_type": "Action Item",
+            "motions": [],
+            "sub_items": [
+              {
+                "number": "5A",
+                "title": "Reaffirmation of Action Between Meetings – NAP Prevent Plant",
+                "action_type": "Action Item",
+                "motions": [
+                  "procedure in Exhibit 4, Kyle McConnell moved to re-affirm the STC February 11, 2026",
+                  "Raftopoulos, seconded the motion.  Motion passed."
+                ]
+              },
+              {
+                "number": "5B",
+                "title": "STC Requested Information – NCT grazing period & carrying capacity",
+                "action_type": "Discussion",
+                "motions": []
+              },
+              {
+                "number": "5C",
+                "title": "2026 – Crop Table Review",
+                "action_type": "Action Item",
+                "motions": [
+                  "McConnell moved to approve the proposed County Expected Yield (CEY) and Average",
+                  "NCT. Steve Raftopoulos, seconded the motion.  Motion passed.",
+                  "McConnell moved to approve the proposed County Expected Yield (CEY) and Average"
+                ]
+              }
+            ]
+          },
+          {
+            "number": "6",
+            "title": "Conservation Reserve Program (CRP)",
+            "action_type": "Action Item",
+            "motions": [],
+            "sub_items": [
+              {
+                "number": "6A",
+                "title": "Standard Payment Reduction Waiver for Payne Legacy LCC—El Paso",
+                "action_type": "Action Item",
+                "motions": [
+                  "McConnell moved to approve the El Paso COC recommendation to waive 100% of the",
+                  "Darrell Mackey seconded the motion.  Motion passed."
+                ]
+              },
+              {
+                "number": "6B",
+                "title": "Contract Management Activity Request – Haying",
+                "action_type": "Action Item",
+                "motions": [
+                  "McConnell moved to recommend haying as an approved management activity for CRP in",
+                  "the motion.  Motion passed."
+                ]
+              }
+            ]
+          },
+          {
+            "number": "7",
+            "title": "Adjournment",
+            "action_type": "Action Item",
+            "motions": [
+              "There being no further business, the Executive Session was adjourned at 4:45 p.m. The next"
+            ],
+            "sub_items": []
+          }
+        ]
+      }
+    ],
+    "location": "Colorado State Office Denver Federal Center",
+    "committee_members": [
+      "Don Brown, Chairperson",
+      "Darrell Mackey, Member",
+      "Kyle McConnell, Member",
+      "Steve Raftopoulos,, Member",
+      "Joe Petrocco, Member (Via Teams)"
+    ]
+  },
+  "source_note": "Built from approved minutes PDFs — captures every numbered agenda item and any motions passed. For Discussion Records with pre-vote background, see the packet PDFs on Teams."
+}

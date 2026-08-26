@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "index_title": "Colorado STC — 2026-02-11 Meeting — Index (from approved minutes)",
+  "meeting": {
+    "body": "USDA FSA Colorado State Committee (STC)",
+    "meeting_date": "2026-02-11",
+    "sessions": [
+      {
+        "session": "Executive Session",
+        "start_time": "",
+        "guests": [],
+        "agenda_items": [
+          {
+            "number": "1",
+            "title": "E-Mail from Jerry Sonnenberg, SED",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "2",
+            "title": "Common Provisions (CP) / Noninsured Crop Disaster Assistance Program (NAP)",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          }
+        ]
+      }
+    ],
+    "location": "E-mail",
+    "committee_members": [
+      "Don Brown, Chairperson",
+      "Darrell Mackey, Member",
+      "Kyle McConnell, Member",
+      "Steve Raftopoulos, Member",
+      "Joe Petrocco, Member"
+    ]
+  },
+  "source_note": "Built from approved minutes PDFs — captures every numbered agenda item and any motions passed. For Discussion Records with pre-vote background, see the packet PDFs on Teams."
+}

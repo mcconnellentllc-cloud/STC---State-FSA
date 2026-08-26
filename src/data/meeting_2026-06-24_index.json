@@ -1,0 +1,324 @@
+{
+  "schema_version": "1.0",
+  "index_title": "Colorado STC — 2026-06-24 Meeting — Index (from approved minutes)",
+  "meeting": {
+    "body": "USDA FSA Colorado State Committee (STC)",
+    "meeting_date": "2026-06-24",
+    "sessions": [
+      {
+        "session": "Regular Session",
+        "start_time": "12:18 PM",
+        "guests": [],
+        "agenda_items": [
+          {
+            "number": "1",
+            "title": "Call to Order",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "2",
+            "title": "Approval of Regular Session Minutes",
+            "action_type": "Action Item",
+            "motions": [
+              "consideration and discussion, Steve Raftopoulos moved to approve and accept the minutes. Joe",
+              "Petrocco seconded the motion. The motion passed."
+            ],
+            "sub_items": []
+          },
+          {
+            "number": "3",
+            "title": "Leadership Reports",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "4",
+            "title": "Risk Management (RMA)",
+            "action_type": "Action Item",
+            "motions": [],
+            "sub_items": [
+              {
+                "number": "4A",
+                "title": "Consultation 202608R0151 T Yield Change",
+                "action_type": "Action Item",
+                "motions": [
+                  "Petrocco moved to concur with RMAs T-Yield changes on Wheat for the 2027 crop year",
+                  "Raftopoulos seconded the motion.  Motion passed."
+                ]
+              },
+              {
+                "number": "4B",
+                "title": "Consultation 202608R0155 T Yield Change",
+                "action_type": "Action Item",
+                "motions": [
+                  "Raftopoulos moved to concur with RMAs revised policy regarding broadcast seeded acreage",
+                  "Joe Petrocco seconded the motion.  Motion passed."
+                ]
+              }
+            ]
+          },
+          {
+            "number": "5",
+            "title": "Adjourn Regular Session",
+            "action_type": "Action Item",
+            "motions": [
+              "Having no other business to discuss, the Regular Session meeting was adjourned at 1:45 p.m."
+            ],
+            "sub_items": []
+          }
+        ]
+      },
+      {
+        "session": "Executive Session",
+        "start_time": "",
+        "guests": [
+          "Eric Hanagan, Appellant – Appeal only (Via Teams)"
+        ],
+        "agenda_items": [
+          {
+            "number": "1",
+            "title": "Call to Order",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "2",
+            "title": "Approve Executive Session Minutes",
+            "action_type": "Action Item",
+            "motions": [],
+            "sub_items": [
+              {
+                "number": "2A",
+                "title": "May 28, 2026, Minutes",
+                "action_type": "Action Item",
+                "motions": [
+                  "presented. Joe Petrocco seconded the motion. Motion passed."
+                ]
+              }
+            ]
+          },
+          {
+            "number": "3",
+            "title": "Noninsured Crop Disaster Assistance Program (NAP)",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": [
+              {
+                "number": "3A",
+                "title": "Reconsideration/Appeal – Otero – Eric Hanagan and Kimberlee Hanagan",
+                "action_type": "Discussion",
+                "motions": []
+              }
+            ]
+          },
+          {
+            "number": "1",
+            "title": "How does the documentation provided do not meet drought requirements?",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "2",
+            "title": "Was the STC decision only based on the drought monitor and an meeting a D3?",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "1",
+            "title": "Did the Colorado STC make a proper determination when disapproving the CCC-576",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "2",
+            "title": "Did the STC make a proper determination when disapproving the CCC-576 Part I",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "1",
+            "title": "Ineligible Cause of Loss during the Coverage Period.",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "2",
+            "title": "Lack of Irrigation Water is Not an Eligible Cause of Loss",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "3",
+            "title": "Intent to Plant Not Fully Supported",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "4",
+            "title": "Lack of reasonable probability of having adequate water",
+            "action_type": "Action Item",
+            "motions": [],
+            "sub_items": [
+              {
+                "number": "4A",
+                "title": "review of the Actual Production History and Approved Yield records also indicates",
+                "action_type": "Action Item",
+                "motions": [
+                  "were not met.  Steve Raftopoulos moved to disapprove and uphold the original February 11,",
+                  "Raftopoulos moved to disapprove and uphold the April 23, 2026, disapproval of the CCCC-",
+                  "seconded the motion.  Motion passed unanimously."
+                ]
+              },
+              {
+                "number": "4B",
+                "title": "Equitable Relief – Programmatic Relief – La Plata – 26 Late File Application for",
+                "action_type": "Action Item",
+                "motions": [
+                  "and is within the STC authority.  Steve Raftopoulos moved to grant equitable relief on the late",
+                  "the motion.  Motion passed and relief granted."
+                ]
+              },
+              {
+                "number": "4C",
+                "title": "2027 NCT Colorado Review",
+                "action_type": "Action Item",
+                "motions": [
+                  "Petrocco moved to approve the proposed County Expected Yield (CEY) and Average",
+                  "Raftopoulos seconded the motion.  Motion passed.",
+                  "Petrocco moved to approve the proposed County Expected Yield (CEY) and Average"
+                ]
+              },
+              {
+                "number": "4D",
+                "title": "New Crop Requests",
+                "action_type": "Action Item",
+                "motions": [
+                  "Raftopoulos moved to approve the Elbert County’s request to add a new irrigated (Ir)",
+                  "Petrocco moved to approve Montezuma County’s request to add Sorghum – Grain (GRS)",
+                  "Motion passed."
+                ]
+              },
+              {
+                "number": "4E",
+                "title": "NCT – COC Concern – Delta/Montrose & Dolores",
+                "action_type": "Discussion",
+                "motions": []
+              }
+            ]
+          },
+          {
+            "number": "4",
+            "title": "Conservation Reserve Program (CRP)",
+            "action_type": "Action Item",
+            "motions": [],
+            "sub_items": [
+              {
+                "number": "4A",
+                "title": "Establishment of additional FY26 CRP Cost Share component and rate",
+                "action_type": "Action Item",
+                "motions": [
+                  "knowledge, Kyle McConnell moved to add the proposed CRP Component as presented with",
+                  "motion passed."
+                ]
+              }
+            ]
+          },
+          {
+            "number": "5",
+            "title": "Emergency Conservation Program (ECP)",
+            "action_type": "Action Item",
+            "motions": [],
+            "sub_items": [
+              {
+                "number": "5A",
+                "title": "321 Equitable Relief Request – Misaction/Misinformation – Rio Blanco – ECP",
+                "action_type": "Action Item",
+                "motions": [
+                  "McConnell moved to recommend DAFP approve the Equitable Relief Request-",
+                  "Darrell Mackey seconded the motion.  Motion passed."
+                ]
+              },
+              {
+                "number": "5B",
+                "title": "ECP Application Review- Rio Blanco County- S. Robinson",
+                "action_type": "Action Item",
+                "motions": [
+                  "Raftopoulos moved to recommend the ECP-PM approve the ECP application for Rio Blanco",
+                  "County producer S. Robinson. Joe Petrocco seconded the motion. Motion Passed."
+                ]
+              },
+              {
+                "number": "5C",
+                "title": "Agriculture Land Market Value Review- Archuleta County",
+                "action_type": "Discussion",
+                "motions": []
+              }
+            ]
+          },
+          {
+            "number": "6",
+            "title": "Otero COC Actions",
+            "action_type": "Action Item",
+            "motions": [],
+            "sub_items": [
+              {
+                "number": "6A",
+                "title": "Assistance for Specialty Crop Farmers (ASCF)",
+                "action_type": "Action Item",
+                "motions": [
+                  "Motion passed."
+                ]
+              },
+              {
+                "number": "6B",
+                "title": "Livestock Indemnity Program (LIP)",
+                "action_type": "Action Item",
+                "motions": [
+                  "STC moved to take the 2025 LIP application (CCC-852) for Emma Richardson from the",
+                  "for Emma Richardson.  Joe Petrocco seconded the motion. Motion Passed.  Application is"
+                ]
+              },
+              {
+                "number": "6C",
+                "title": "Common Management (CM) – Prevent Plant – Not for NAP",
+                "action_type": "Action Item",
+                "motions": [
+                  "the 2026 Notice of Loss, prevent plant - Not for NAP requests (CCC-576).  Motion passed."
+                ]
+              }
+            ]
+          },
+          {
+            "number": "7",
+            "title": "Adjournment",
+            "action_type": "Action Item",
+            "motions": [
+              "There being no further business, the Executive Session was adjourned at 12:17 p.m. The next"
+            ],
+            "sub_items": []
+          }
+        ]
+      }
+    ],
+    "location": "Colorado State Office Denver Federal Center",
+    "committee_members": [
+      "Don Brown, Chairperson",
+      "Kyle McConnell, Member (Via Teams)",
+      "Steve Raftopoulos, Member",
+      "Joe Petrocco, Member",
+      "Darrell Mackey, Member (Via Teams)"
+    ]
+  },
+  "source_note": "Built from approved minutes PDFs — captures every numbered agenda item and any motions passed. For Discussion Records with pre-vote background, see the packet PDFs on Teams."
+}

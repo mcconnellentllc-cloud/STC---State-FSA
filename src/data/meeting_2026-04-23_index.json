@@ -1,0 +1,345 @@
+{
+  "schema_version": "1.0",
+  "index_title": "Colorado STC — 2026-04-23 Meeting — Index (from approved minutes)",
+  "meeting": {
+    "body": "USDA FSA Colorado State Committee (STC)",
+    "meeting_date": "2026-04-23",
+    "sessions": [
+      {
+        "session": "Regular Session",
+        "start_time": "4:40 PM",
+        "guests": [],
+        "agenda_items": [
+          {
+            "number": "1",
+            "title": "Call to Order",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "2",
+            "title": "Approval of Regular Session Minutes",
+            "action_type": "Action Item",
+            "motions": [
+              "to approve and accept the minutes. Darrell Mackey seconded the motion. The motion passed."
+            ],
+            "sub_items": []
+          },
+          {
+            "number": "3",
+            "title": "Leadership Reports",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "4",
+            "title": "County Committee SDA Advisor Appointments",
+            "action_type": "Action Item",
+            "motions": [
+              "Morgan Counties. After due consideration and discussion, Joe Petrocco moved to appoint the",
+              "presented. Kyle McConnell seconded the motion. The motion passed."
+            ],
+            "sub_items": []
+          },
+          {
+            "number": "5",
+            "title": "County Committee Local Administrative Area (LAA) Review",
+            "action_type": "Action Item",
+            "motions": [
+              "and discussion, Kyle McConnll moved to approve all of the 2026 Colorado LAA boundary",
+              "certifications as submitted. Darrell Mackey seconded the motion. The motion passed."
+            ],
+            "sub_items": []
+          },
+          {
+            "number": "6",
+            "title": "Noninsured Crop Disaster Assistance Program (NAP)",
+            "action_type": "Action Item",
+            "motions": [
+              "After due consideration and discussion, Steve Raftopoulos moved to concur with the COC",
+              "After due consideration and discussion, Steve Raftopoulos moved to concur with the COC"
+            ],
+            "sub_items": []
+          },
+          {
+            "number": "7",
+            "title": "State Committee Field Discussion update",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "8",
+            "title": "Adjourn Regular Session",
+            "action_type": "Action Item",
+            "motions": [
+              "Having no other business to discuss, Darrell Mackey moved to adjourn the Regular Session",
+              "meeting. Joe Petrocco seconded the motion. The motion passed.",
+              "The Regular Session meeting was adjourned at 5:38 p.m."
+            ],
+            "sub_items": []
+          }
+        ]
+      },
+      {
+        "session": "Executive Session",
+        "start_time": "9:02 AM",
+        "guests": [
+          "CRP Appeal at 9:30 a.m.  (Only)"
+        ],
+        "agenda_items": [
+          {
+            "number": "1",
+            "title": "Call to Order",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "2",
+            "title": "Approval of Executive Session Minutes",
+            "action_type": "Action Item",
+            "motions": [
+              "Darrell Mackey moved to approve and accept the minutes as corrected. Joe Petrocco seconded",
+              "the motion. The motion passed."
+            ],
+            "sub_items": []
+          },
+          {
+            "number": "3",
+            "title": "Conservation Reserve Program (CRP) Appeal via Teams at 9:30 a.m.",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "1",
+            "title": "Are the CRP contracts out of compliance with the terms and conditions of contracts?",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "2",
+            "title": "Did the appellants show a good faith effort to comply with the terms and conditions of the",
+            "action_type": "Action Item",
+            "motions": [
+              "discussion, Steve Raftopoulos moved to terminate the CRP contracts due to non compliance and",
+              "seconded the motion. The motion passed unanimously."
+            ],
+            "sub_items": []
+          },
+          {
+            "number": "4",
+            "title": "Loan Deficiency Payment (LDP) Appeal via TEAMS at 11:00 a.m.",
+            "action_type": "Action Item",
+            "motions": [
+              "discussion, Joe Petrocco moved to deny 3R Lamb Feeding, LLC’s 2024 LDP application for",
+              "pelts. Kyle McConnell seconded the motion. The motion passed with a dissenting vote by Kyle",
+              "discussion, Joe Petrocco moved to deny Sumner Rule’s 2024 LDP application for pelts. Darrell"
+            ],
+            "sub_items": []
+          },
+          {
+            "number": "5",
+            "title": "Noninsured Crop Disaster Assistance Program (NAP) Appeal via Teams at 1:00 p.m.",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "1",
+            "title": "Did the Otero COC make a proper determination when disapproving the notice of loss on",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "2",
+            "title": "Did the Otero COC make a proper determination when disapproving the application for",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "1",
+            "title": "Appellant did not provide adequate documentation that heat, wind/excess wind or",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "2",
+            "title": "Appellant failed to explain how being in a status of D1 (moderately dry) on October 8",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "3",
+            "title": "Appellant failed to document how much irrigation water was used on the mixed forage",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "4",
+            "title": "Appellant late filed a notice of loss on November 5, 2024, 21 days after normal harvest",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "5",
+            "title": "STC questioned if the Appellants crops production loss on mixed forage 2 or more inter-",
+            "action_type": "Action Item",
+            "motions": [
+              "Raftopoulos moved to disapprove Joseph Proctors (Appellant) 2024 NAP CCC-576 Part G",
+              "through H, application for payment.  Kyle McConnell seconded the motion. The motion passed"
+            ],
+            "sub_items": []
+          },
+          {
+            "number": "6",
+            "title": "Noninsured Crop Disaster Assistance Program (NAP) Appeal via Teams at 2:30 p.m.",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "1",
+            "title": "Did the La Plata COC make a proper determination when disapproving the notice of loss on",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "2",
+            "title": "Did the La Plata COC make a proper determination when disapproving the application for",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "1",
+            "title": "Appellant did not provide adequate documentation that drought or excess winds occurred",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "2",
+            "title": "Appellant has a pattern of reported losses inconsistent with other similarly situated",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "3",
+            "title": "Appellants seeding rate is below the recommended seeding rate per acre and other similar",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "4",
+            "title": "Appellant claimed a disaster event every year Safflower was planted with actual",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "5",
+            "title": "Appellant has a consistent history of a high number of un-harvested acres.",
+            "action_type": "Action Item",
+            "motions": [
+              "After due consideration and discussion, Kyle McConnell moved to disapprove River Edge Dairy",
+              "motion. The motion passed unanimously."
+            ],
+            "sub_items": []
+          },
+          {
+            "number": "7",
+            "title": "Otero COC Actions",
+            "action_type": "Procedural",
+            "motions": [],
+            "sub_items": []
+          },
+          {
+            "number": "8",
+            "title": "Noninsured Crop Disaster Assistance Program (NAP) 2026 National Crop Table (NCT)",
+            "action_type": "Action Item",
+            "motions": [
+              "McConnell moved to approve the proposed County Expected Yield (CEY) and Average",
+              "Steve Raftopoulos, seconded the motion.  Motion passed.",
+              "McConnell moved to approve the proposed County Expected Yield (CEY) and Average"
+            ],
+            "sub_items": []
+          },
+          {
+            "number": "9",
+            "title": "Supplemental Disaster Relief Program (SDRP)",
+            "action_type": "Action Item",
+            "motions": [
+              "McConnell moved to approve the proposed historical yields, historical prices, County",
+              "Motion passed.",
+              "McConnell moved to approve the proposed historical yields, historical prices, County"
+            ],
+            "sub_items": []
+          },
+          {
+            "number": "10",
+            "title": "Marketing Assistance Program (MASC)",
+            "action_type": "Action Item",
+            "motions": [
+              "McConnell moved to approve equitable relief under Misaction/Misinformation for Cross Roads",
+              "Farms LLC 2025 MASC Application.  Joe Petrocco seconded the motion.  The motion passed."
+            ],
+            "sub_items": []
+          },
+          {
+            "number": "11",
+            "title": "Conservation Reserve Program (CRP)",
+            "action_type": "Action Item",
+            "motions": [
+              "CRP Cost Share rates as presented by the STO and shown in the table above. The motion passed."
+            ],
+            "sub_items": []
+          },
+          {
+            "number": "12",
+            "title": "Emergency Forest Restoration Program (EFRP)",
+            "action_type": "Action Item",
+            "motions": [
+              "motion passed.",
+              "motion passed."
+            ],
+            "sub_items": []
+          },
+          {
+            "number": "13",
+            "title": "Adjourn Executive Session",
+            "action_type": "Action Item",
+            "motions": [
+              "Having no further business to discuss, Steve Raftopoulos moved to adjourn the Executive",
+              "Session meeting. Kyle McConnell seconded the motion. The motion passed.",
+              "The Executive Session meeting was adjourned at 4:40 p.m."
+            ],
+            "sub_items": []
+          }
+        ]
+      }
+    ],
+    "location": "Virtual Meeting via Teams",
+    "committee_members": [
+      "Don Brown, Chairperson",
+      "Darrell Mackey, Member",
+      "Kyle McConnell, Member",
+      "Steve Raftopoulos, Member",
+      "Joe Petrocco, Member"
+    ]
+  },
+  "source_note": "Built from approved minutes PDFs — captures every numbered agenda item and any motions passed. For Discussion Records with pre-vote background, see the packet PDFs on Teams."
+}
