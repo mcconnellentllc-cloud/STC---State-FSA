@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useApiFetch } from '../auth/apiFetch';
+import meetingsRegistry from '../data/meetings_registry.json';
+
+// Meetings the Meeting Agenda view supports natively (voting guide baked in).
+// Any other meeting is opened in /board-meetings/:date for its detail view.
+const NATIVE_MEETING_DATE = '2026-04-23';
 
 /* ══════════════════════════════════════════════════════════════════
    DOCUMENT URLS — set these in Render env (VITE_*) to wire clickable
@@ -505,10 +510,32 @@ function daysUntil(dateStr) {
 
 export default function Summary() {
   const apiFetch = useApiFetch();
+  const navigate = useNavigate();
   const [issues, setIssues] = useState([]);
   const [nctSummary, setNctSummary] = useState(null);
   const [loading, setLoading] = useState(true);
   const [expandedItems, setExpandedItems] = useState({});
+  const [selectedMeeting, setSelectedMeeting] = useState(NATIVE_MEETING_DATE);
+
+  // Meetings sorted newest first for the dropdown, with a marker showing
+  // which meeting the Meeting-Agenda voting guide currently reflects.
+  const meetingOptions = useMemo(() => {
+    return [...meetingsRegistry.meetings]
+      .sort((a, b) => b.date.localeCompare(a.date))
+      .map(m => ({
+        ...m,
+        isNative: m.date === NATIVE_MEETING_DATE,
+        isParsed: !!m.indexFile,
+      }));
+  }, []);
+
+  const handleMeetingChange = (e) => {
+    const date = e.target.value;
+    setSelectedMeeting(date);
+    if (date === NATIVE_MEETING_DATE) return; // stay on this page for the native meeting
+    // For any other meeting, jump to its detail view in Board Meetings
+    navigate(`/board-meetings/${date}`);
+  };
 
   useEffect(() => {
     Promise.all([
@@ -530,35 +557,108 @@ export default function Summary() {
     [issues]
   );
 
+  // Compute the next meeting from the registry (upcoming first, else nearest future date,
+  // else fall back to the native April 23 voting guide).
+  const nextMeeting = useMemo(() => {
+    const today = new Date().toISOString().slice(0, 10);
+    const sorted = [...meetingsRegistry.meetings].sort((a, b) => a.date.localeCompare(b.date));
+    const upcoming = sorted.find(m => m.status === 'upcoming') ||
+                     sorted.find(m => m.date >= today) ||
+                     meetingsRegistry.meetings.find(m => m.date === NATIVE_MEETING_DATE);
+    return upcoming;
+  }, []);
+  const nextMeetingDateLabel = useMemo(() => {
+    if (!nextMeeting) return 'TBD';
+    const [y, m, d] = nextMeeting.date.split('-').map(Number);
+    return new Date(Date.UTC(y, m - 1, d)).toLocaleDateString('en-US', {
+      weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC',
+    });
+  }, [nextMeeting]);
+
   const toggleItem = (num) => setExpandedItems(prev => ({ ...prev, [num]: !prev[num] }));
 
   if (loading) return <div className="loading"><div className="spinner" /></div>;
 
   return (
     <div>
-      <div className="page-header">
-        <h2>Meeting Agenda</h2>
-      </div>
-
-      {/* ── Meeting Banner ── */}
-      <div className="card" style={{
-        marginBottom: 20, padding: '20px 24px',
-        borderLeft: '4px solid var(--accent)',
-        background: 'linear-gradient(135deg, var(--card-bg, #fff) 0%, rgba(var(--accent-rgb, 0,123,255), 0.03) 100%)',
-      }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 12 }}>
-          <div>
-            <div style={{ fontSize: '0.78rem', textTransform: 'uppercase', fontWeight: 700, color: 'var(--accent)', marginBottom: 4 }}>
-              Next Meeting
-            </div>
-            <h3 style={{ margin: 0 }}>Colorado STC Meeting — April 23, 2026</h3>
-            <div style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', marginTop: 4 }}>
-              Appeals follow-up · Cost share rates · Otero/Crowley COC status | {daysUntil('2026-04-23')} days away · <Link to="/appeals" style={{ color: 'var(--accent)' }}>Full Appeals docket →</Link>
-            </div>
-          </div>
-          <Link to="/meetings" className="btn btn-secondary">Full Meeting Notes</Link>
+      <div className="page-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
+        <h2 style={{ margin: 0 }}>Meeting Agenda</h2>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <label htmlFor="meeting-selector" style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: 700 }}>
+            View meeting
+          </label>
+          <select
+            id="meeting-selector"
+            value={selectedMeeting}
+            onChange={handleMeetingChange}
+            style={{
+              padding: '6px 10px', borderRadius: 5,
+              border: '1px solid var(--border, #d0d0d0)',
+              fontSize: '0.9rem', background: 'var(--card-bg, #fff)',
+              color: 'var(--text-primary)', minWidth: 260,
+            }}
+          >
+            {meetingOptions.map(m => (
+              <option key={m.date} value={m.date}>
+                {m.title}{m.status === 'upcoming' ? ' · upcoming' : ''}
+                {m.isNative ? ' (this view)' : m.isParsed ? ' → detail' : ' — packet pending'}
+              </option>
+            ))}
+          </select>
         </div>
       </div>
+
+      {/* ── Meeting Banner (dynamic — next meeting from registry) ── */}
+      {nextMeeting && (() => {
+        const days = daysUntil(nextMeeting.date);
+        const label = days > 0 ? `${days} days away` : days === 0 ? 'TODAY' : `${Math.abs(days)} days ago`;
+        const isNative = nextMeeting.date === NATIVE_MEETING_DATE;
+        const detailLink = isNative ? null : `/board-meetings/${nextMeeting.date}`;
+        return (
+          <div className="card" style={{
+            marginBottom: 20, padding: '20px 24px',
+            borderLeft: '4px solid var(--accent)',
+            background: 'linear-gradient(135deg, var(--card-bg, #fff) 0%, rgba(var(--accent-rgb, 0,123,255), 0.03) 100%)',
+          }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 12 }}>
+              <div>
+                <div style={{ fontSize: '0.78rem', textTransform: 'uppercase', fontWeight: 700, color: 'var(--accent)', marginBottom: 4 }}>
+                  Next Meeting
+                </div>
+                <h3 style={{ margin: 0 }}>{nextMeeting.title}</h3>
+                <div style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', marginTop: 4 }}>
+                  {nextMeetingDateLabel} · <strong>{label}</strong>
+                  {nextMeeting.location && <> · {nextMeeting.location}</>}
+                  {nextMeeting.hasAppeals && nextMeeting.appealsRef?.length > 0 && (
+                    <> · <Link to="/appeals" style={{ color: 'var(--accent)' }}>{nextMeeting.appealsRef.length} appeal{nextMeeting.appealsRef.length > 1 ? 's' : ''} →</Link></>
+                  )}
+                </div>
+                {nextMeeting.note && (
+                  <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginTop: 6, lineHeight: 1.5 }}>
+                    {nextMeeting.note}
+                  </div>
+                )}
+              </div>
+              {detailLink
+                ? <Link to={detailLink} className="btn btn-secondary">Full Meeting Detail</Link>
+                : <Link to="/meetings" className="btn btn-secondary">Full Meeting Notes</Link>}
+            </div>
+          </div>
+        );
+      })()}
+
+      {/* Show the April 23 voting guide below as a REFERENCE (native meeting), only when
+          the user is viewing a different current meeting. Kept intact for historical context. */}
+      {nextMeeting && nextMeeting.date !== NATIVE_MEETING_DATE && (
+        <div className="card" style={{ marginBottom: 20, padding: '14px 18px', background: 'var(--card-bg, #fafafa)', border: '1px dashed var(--border, #d0d0d0)' }}>
+          <div style={{ fontSize: '0.78rem', textTransform: 'uppercase', fontWeight: 700, color: 'var(--text-muted)', letterSpacing: '0.06em' }}>
+            April 23 voting guide (below — reference)
+          </div>
+          <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: 4 }}>
+            The rich voting guide below covers the April 23, 2026 meeting. For {nextMeeting.title.replace('STC Meeting — ', '')}, use "Full Meeting Detail" above or pick a meeting from the dropdown.
+          </div>
+        </div>
+      )}
 
       {/* ── At a Glance ── */}
       <div style={{ display: 'flex', gap: 12, marginBottom: 20, flexWrap: 'wrap' }}>

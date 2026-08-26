@@ -1365,5 +1365,300 @@
     "calculatorUrl": null,
     "caseFileResearch": [],
     "issues": []
+  },
+  {
+    "id": "APPEAL-6-2026-CURE-LFP",
+    "caseId": "Cure LFP",
+    "meetingDate": "2026-08-27",
+    "agendaItem": "Exec Session Items 4.b, 4.c",
+    "title": "LFP — Kit Carson — Cure Family (COC members + POAs) — 2020 & 2021 CCC-853s",
+    "appellants": "Brad Cure · Eric Cure · Denis & Victoria Cure (6 applications: 2020 + 2021 for each)",
+    "county": "Kit Carson",
+    "program": "LFP",
+    "presenter": "Janae Rader, Farm Program Specialist",
+    "meetingTimeMin": 40,
+    "status": "OPEN",
+    "archived": false,
+    "guestsAtMeeting": false,
+    "voteRecorded": null,
+    "advisoryNotes": "ATTORNEY BYRD REPRESENTING APPELLANTS. Any denial or partial denial WILL be appealed to NAD. Any approval or partial approval will be scrutinized as favoritism to COC members. Record must be airtight either direction.",
+    "dateCreated": "2026-08-25",
+    "representation": [
+      { "role": "Producer counsel", "name": "Byrd (attorney)", "note": "Retained by Cure family. Presumed brief filed — check Teams for filed correspondence." }
+    ],
+    "keyMetrics": [
+      { "label": "Applications under STC action", "value": "6", "note": "3 producers × 2 years (2020 + 2021): Brad, Eric, Denis & Victoria Cure", "sources": ["Aug 27 Exec Session Agenda, Item 4.c.1-6"] },
+      { "label": "Producer stocking history", "value": "~495 cows (historical average)", "note": "COC previously approved 275 adult beef + 220 mitigated adult beef = 495. Contemporaneous with claim period.", "sources": ["Prior COC approval record"] },
+      { "label": "Bank balance sheet date", "value": "12/31/20 (or thereabouts)", "note": "198 days AFTER the 6/16/20 LFP trigger date. Balance sheet reflects end-of-year state, not the state on the trigger date. Cannot be used to establish grazing intent at trigger.", "sources": ["Brad Cure 2020 file — DR page 38"] },
+      { "label": "Farms with NO valid lease / risk-control (per STC recommendation)", "value": "8 farms", "note": "F2402, F6191, F6192, F7904, F8845, F7488 (2021), F8504, F8866", "sources": ["Aug 27 Exec DR Item 4.b"] },
+      { "label": "Farm WITH confirmed risk-control", "value": "F1740 — 30 acres", "note": "Sole farm where lease/CCC-855 conveys risk and control per 1-LFP par 26", "sources": ["Aug 27 Exec DR Item 4.b"] },
+      { "label": "Farm under STC review (2020 only)", "value": "F7488 (2020)", "note": "Wheat planted 9/12/19, lease term 3/1/20 – 8/1/21. Straddles trigger date. Timing question — did the lease convey risk-and-control on 6/16/20?", "sources": ["Aug 27 Exec DR Item 4.b"] },
+      { "label": "Wheat HRW eligibility 2020", "value": "NOT ELIGIBLE — LSSG did not trigger", "note": "Long-Season Small Grain did not trigger for Kit Carson County in 2020. Wheat HRW acreage cannot generate LFP payment for 2020 regardless of other factors.", "sources": ["National LFP eligibility report, 2020"] },
+      { "label": "Filing date on Brad Cure 2020 CCC-853", "value": "Signed 5/5/26, received by FSA 5/12/26", "note": "Filed 5 years, 10 months after the 2020 trigger date (6/16/20). Late-file provisions apply.", "sources": ["Brad Cure 2020 CCC-853"] }
+    ],
+    "issueSummary": "The Cure family (Brad, Eric, and Denis & Victoria) — Kit Carson County COC members and their POAs — have filed 2020 and 2021 CCC-853 LFP applications (6 total) that require STC action under 1-LFP par 4A. STO has recommended significant adjustments to all applications: reduce livestock counts to the contemporaneous COC-approved numbers, remove acreage on 8 farms lacking valid leases or CCC-855s conveying risk-and-control, and disallow Wheat HRW acreage entirely because Long-Season Small Grain did not trigger for Kit Carson in 2020. Attorney Byrd represents the appellants. Given the COC-member status and legal representation, the record must support whichever decision the STC reaches — both denial and approval paths carry NAD exposure.",
+    "fullText": "STC ACTION REQUIRED per 1-LFP par 4A: All CCC-853 applications executed by SED, State Office employees, STC members, DD's, COC members, CED's, County Office employees, and their spouses must be sent to STC (or designee) for action. Kit Carson County COC members Brad Cure, Eric Cure, and Denis & Victoria Cure filed 2020 and 2021 CCC-853s. Filing occurred May 2026 for the 2020 crop year (Brad Cure signed 5/5/26, FSA received 5/12/26) — 5 years, 10 months after the qualifying trigger date of 6/16/20.\n\nSTO recommends adjustments in three categories:\n\n1. LIVESTOCK ADJUSTMENT (Brad 2020, likely similar for Eric and Denis&Victoria):\nAdjust down livestock claimed. Bank balance sheet provided is dated 198 days after the 6/16/20 trigger. Producer historically runs ~495 cows. Original COC approval reflected 275 adult beef + 220 mitigated adult beef = 495. Bank B/S 198 days later cannot establish grazing intent at trigger for animals not on the original application.\nAdjust to a number STC determines reasonable based on the B/S, keeping in mind the livestock would have had to be:\n  - intended to graze the eligible acres,\n  - weaned and over 500 lbs on 6/16/20.\nOR adjust to zero for non-adult 500+ lb livestock (yearlings) if:\n  - no proof of historically grazing yearlings,\n  - original application did not include them,\n  - producer typically runs 495 cows.\n\n2. ACREAGE ADJUSTMENT — Mixed Forage NSG (Brad 2020):\nAdjust down to 184.670 acres.\nOnly 220.805 acres certified on FSA-578. Of those, missing lease/proof of risk-and-control on:\n  - F6191 T1276 CLU 1B — 7.97 ac at 50% for 3.985 share ac\n  - F7904 T2032 CLU 1 — 64.3 ac at 50% for 32.150 share ac\n\n3. ACREAGE ADJUSTMENT — Grass NAG (Brad 2020):\nAdjust down to 1,783.255 acres.\nOnly 2,324.67 acres certified on FSA-578. Of those, missing lease/proof of risk-and-control on:\n  - F1740 T1718 CLU 4 — 32.6 ac at 100% lease for 30 ac (adjust down 2.6 share ac)\n  - F2402 T1921 CLU 1, 2, 3 — 317.84 ac at 50% for 158.92 share ac\n  - F6191 T1275 CLU 2, 4; T1276 CLU 4; T1522 CLU 3 — 398.79 ac at 50% for 199.395 share ac\n  - F7904 T1793 CLU 2, 3, 5; T2032 CLU 2, 3, 4, 11, 12 — 241.00 ac at 50% for 120.5 share ac\n\n4. WHEAT HRW ADJUSTMENT (Brad 2020):\nAdjust to 0. Long-Season Small Grain did NOT trigger for Kit Carson County in 2020. Wheat HRW is not eligible for LFP in 2020 regardless of any lease or livestock question.\n\nRELATED STC ACTION (Item 4.b): Risk-and-control review for grazing land found on the following farms per lease/CCC-855 documentation:\n  - CONFIRMED: F1740 (30 acres)\n  - NO RISK-CONTROL: F2402, F6191, F6192, F7904, F8845, F7488 (2021), F8504, F8866\n  - UNDER STC REVIEW: F7488 (2020) — wheat planted 9/12/19, lease 3/1/20 through 8/1/21 (straddles trigger)\n\nAttorney Byrd has been retained by the Cure family. Presumed correspondence and brief filed — check Teams SharePoint for filed submissions. Producer has 30 days from STC action to request reconsideration to STC and/or mediation and/or appeal to NAD.",
+    "theGood": [
+      "The Cure family are established Kit Carson County producers with a long operating history — the 495-head running number is documented through prior COC approvals, not disputed.",
+      "F1740 (30 acres) has confirmed risk-and-control per lease/CCC-855 documentation. That portion of the application is administratively clean.",
+      "F7488 (2020) presents a genuine timing question — lease term 3/1/20 through 8/1/21 does straddle the 6/16/20 trigger. If the lease conveyed even limited control on the trigger date, 1-LFP par 26 is satisfied for that farm.",
+      "Late filing (2020 CCC-853 filed May 2026) may be within a late-file provision if the delay was caused by an FSA notice/processing issue — this needs verification.",
+      "Producer certified livestock numbers on the original CCC-853 at time of filing. Contemporaneous certification, if credible, is entitled to weight under 1-LFP even when the bank B/S is dated later.",
+      "The STO's recommended adjustments do not deny the underlying loss — they trim the calculation. That framing supports partial approval rather than outright denial.",
+      "Byrd's involvement raises the stakes but also means the appellants will have a well-documented factual case at NAD if denied — STC has an opportunity to build a defensible middle-ground now."
+    ],
+    "theBad": [
+      "1-LFP par 26 requires 'risk of a loss of production of forage on grazing land or pastureland crop acreage that was NOT irrigated on the date of the qualifying drought.' No lease + no CCC-855 = no documented risk-and-control = ineligible acres. This is black-letter policy, not a judgment call.",
+      "Cancelled checks are explicitly NOT acceptable as a replacement for a lease per the STC's own DR at Item 4.b. If the Cure family is relying on cancelled checks for any of the 8 flagged farms, that ground is closed.",
+      "Bank balance sheet dated 198 days after the trigger cannot establish grazing intent for livestock added AFTER the original application. This is a foundational LFP eligibility issue, not a technicality.",
+      "Long-Season Small Grain did not trigger for Kit Carson County in 2020. Wheat HRW acreage is categorically ineligible for 2020 regardless of everything else — this ground is uncontestable.",
+      "COC-member status heightens scrutiny. If STC approves without a solid record, DAFP has authority to reverse and the record supports an appearance-of-favoritism finding. The mandatory STC review under 1-LFP par 4A exists precisely to prevent this pattern.",
+      "The 5-year, 10-month delay between the 2020 trigger and the May 2026 CCC-853 filing is extraordinary. Even if a late-file provision applies, the record needs to explain why late filing was justified and why the STC should accept post-hoc livestock and lease documentation.",
+      "If STC approves the full application on any of the 8 no-risk farms, that decision establishes precedent that COC members' own applications receive more lenient risk-and-control scrutiny than ordinary producers'."
+    ],
+    "redFlags": [
+      { "type": "REGULATORY", "text": "1-LFP par 26 risk-and-control on grazing land is the central eligibility question. The 8 farms flagged as 'no risk/control' fail this test as a matter of black-letter policy. Approval on any of these farms without new lease evidence establishes bad precedent." },
+      { "type": "REGULATORY", "text": "Wheat HRW 2020 is categorically ineligible because Long-Season Small Grain did not trigger for Kit Carson County that year. This is a national eligibility determination not within STC discretion. Any approval that includes 2020 Wheat HRW acreage is procedurally defective." },
+      { "type": "PROCEDURAL", "text": "1-LFP par 4A mandatory STC review of COC-member applications exists to prevent self-dealing. The STC decision must demonstrate the record was reviewed with the same scrutiny as any non-COC producer's application — the minutes must reflect this explicitly." },
+      { "type": "DOCUMENTATION", "text": "Bank balance sheet dated 198 days post-trigger is not contemporaneous evidence of trigger-date grazing intent. It documents what livestock existed at end of 2020, not what was intended to graze the eligible acres on 6/16/20. The producer's original CCC-853 livestock certification is the contemporaneous record; anything added via later B/S needs a separate evidentiary basis." },
+      { "type": "DOCUMENTATION", "text": "Attorney Byrd's brief and correspondence should be in the STC's record before the vote. If Byrd has submitted arguments not yet reflected in the STO DR, the STC should confirm those submissions are in evidence before acting." },
+      { "type": "DUE PROCESS", "text": "Late-file justification for the 5+ year delay between trigger (6/16/20) and filing (5/12/26) needs to be in the record. Without a documented reason (e.g., FSA misaction, delayed notice, prior denial being litigated), the timeliness of the application itself is questionable under 1-LFP late-file provisions." }
+    ],
+    "commonSense": [
+      "The Cure family runs a substantial cattle operation with a long history in Kit Carson County. The core drought loss claim is credible — Kit Carson did trigger for 2020 and 2021 for grazing forage. The dispute is not whether they suffered drought losses; it's what portion of the claimed acreage and livestock qualifies under 1-LFP.",
+      "The strongest denial ground is the categorical one: Wheat HRW 2020 is not eligible because LSSG did not trigger. That's national policy, not STC discretion, and cannot be waived. Every producer nationwide with that fact pattern got the same answer. Approving it for a COC member would be an obvious problem.",
+      "The middle ground on lease-risk farms: if any of the 8 flagged farms have new lease documentation NOT previously provided (say, Byrd has produced signed leases or CCC-855s post-hoc), those specific farms could be reinstated with the record documenting why. Farms with genuinely no documentation stay denied.",
+      "The livestock adjustment is the most defensible partial-approval path. Grant on the original CCC-853 livestock numbers (275 adult beef + 220 mitigated adult beef = 495). Deny any additions supported only by the 198-day-post-trigger bank B/S. This mirrors what any non-COC producer would get under the same facts.",
+      "For Byrd: the strongest legal theory available to the appellant is probably substance-over-form on the lease-risk issue, and prejudice-from-late-COC-review on the timing issue. Anticipate both. Neither theory reaches the Wheat HRW 2020 or the post-hoc-livestock issues.",
+      "The safest STC posture: approve on F1740 (documented risk-control), remand or deny on the 8 no-lease farms, deny Wheat HRW 2020 categorically, and adjust livestock to the contemporaneously certified number (495) with any additions requiring separate documentation. Document each of these grounds explicitly in the minutes.",
+      "If STC wants to grant broader relief: it must be tied to specific new evidence Byrd has produced (leases, CCC-855s, corroborated livestock records). The STC minutes must cite that evidence by exhibit number. Blanket approval on any of the flagged categories without new evidence in the record is the highest-risk posture for both DAFP reversal and NAD reversal in the wrong direction."
+    ],
+    "contracts": [],
+    "resolutionOptions": [
+      {
+        "label": "Grant Full Relief (all 6 applications as filed)",
+        "description": "Approve all 6 CCC-853s as originally filed (including all 8 flagged farms, all livestock claimed on later B/S, and 2020 Wheat HRW). This requires accepting cancelled checks or other non-standard risk-control evidence, and treating the post-trigger bank B/S as sufficient.",
+        "fsaRisk": "VERY HIGH — approves acreage on farms explicitly flagged as no-risk-control by STO; approves categorically-ineligible 2020 Wheat HRW; approves livestock without contemporaneous documentation. Sets precedent for lenient COC-member treatment. DAFP-reversal likely.",
+        "appellantRisk": "None if it stands.",
+        "nadRisk": "N/A (appellant would not appeal an approval), but if reversed by DAFP, appellants face clawback of paid benefits."
+      },
+      {
+        "label": "Grant Partial Relief — F1740 Only, Original Livestock, No Wheat HRW 2020",
+        "description": "Approve LFP payment only on: (a) F1740 (30 acres — confirmed risk-control), (b) 495 head total (275 adult + 220 mitigated adult, matching original COC-approved numbers), (c) grazing forage only — Wheat HRW 2020 denied categorically. Additional acreage and livestock denied for lack of documentation. Same treatment for both years and all three producers where facts parallel.",
+        "fsaRisk": "LOW — approves only on documented facts; declines on documented gaps.",
+        "appellantRisk": "Reduced payment. Likely target of Byrd's NAD appeal.",
+        "nadRisk": "LOW-to-MODERATE. The record supports each denial ground; NAD reviews whether STC applied policy consistently. Airtight if the STC minutes cite the specific evidentiary gap for each denied farm."
+      },
+      {
+        "label": "Table — Require Additional Evidence",
+        "description": "Table pending Byrd's production of: (a) written leases or CCC-855s for the 8 flagged farms; (b) contemporaneous livestock records for any head above the original 495; (c) FSA misaction or notice defect that would support late-filing for the 2020 applications. Continue to Sept meeting or a special session with a defined deadline.",
+        "fsaRisk": "LOW — produces a better record.",
+        "appellantRisk": "Continued delay of any payment; opportunity to strengthen the record.",
+        "nadRisk": "LOW."
+      },
+      {
+        "label": "Refer to Mediation",
+        "description": "Refer to Colorado FSA mediation program. Given attorney representation and the COC-member context, mediation could produce a documented settlement that avoids both DAFP reversal risk (from over-approval) and NAD escalation (from under-approval).",
+        "fsaRisk": "LOW.",
+        "appellantRisk": "LOW — appeal rights preserved if mediation fails.",
+        "nadRisk": "LOW."
+      },
+      {
+        "label": "Deny — Full Airtight Denial with Documented Grounds",
+        "description": "Deny all 6 applications as filed. Document each denial ground explicitly: (a) 1-LFP par 26 risk-and-control failure on the 8 flagged farms — cancelled checks are not acceptable per DR Item 4.b; (b) Wheat HRW 2020 categorically ineligible — LSSG did not trigger for Kit Carson; (c) livestock additions unsupported by contemporaneous records; (d) late-filing justification not established on the record. Cite each ground to specific handbook paragraphs. Rely on producer's 30-day reconsideration/mediation/NAD rights for any additional argument.",
+        "fsaRisk": "LOW procedurally. HIGH political risk given COC-member and attorney context — appearance of over-scrutiny.",
+        "appellantRisk": "Full loss; Byrd will file NAD appeal.",
+        "nadRisk": "MODERATE — NAD will scrutinize whether COC-member scrutiny was consistent with treatment of non-COC producers. If any of Byrd's substance-over-form or late-notice arguments have merit, NAD may remand."
+      }
+    ],
+    "issues": [
+      {
+        "num": 1,
+        "question": "Do the 8 flagged farms (F2402, F6191, F6192, F7904, F8845, F7488 (2021), F8504, F8866) satisfy the 1-LFP paragraph 26 risk-and-control requirement for grazing land on the qualifying drought date?",
+        "agencyPosition": [
+          "1-LFP par 26 requires the producer to be at risk of a loss of production of forage on the grazing land, and to have control (however limited) via a valid lease or CCC-855.",
+          "COC/STC review of leases found no valid lease or sublease on file for the 8 flagged farms as of the trigger date.",
+          "Cancelled checks are explicitly not acceptable as a substitute for a written lease or CCC-855 per Item 4.b DR.",
+          "If the lease prohibits subleasing, the sublessee is ineligible on that acreage regardless of any other arrangement."
+        ],
+        "appellantPosition": [
+          "[PENDING BYRD BRIEF] — Likely argument: substance over form. Cure family had actual grazing use of the acreage during the trigger period; the absence of a signed written lease is a paperwork gap, not an absence of risk-and-control.",
+          "[PENDING BYRD BRIEF] — Likely argument: consistent treatment. Non-COC producers in similarly-situated positions received LFP payments on acres with informal lease arrangements; disparate treatment of COC members is not justified by 1-LFP par 4A alone.",
+          "[PENDING BYRD BRIEF] — Likely argument: CCC-855 completion is often initiated by the county office, not the producer. If the county office did not complete CCC-855s in the ordinary course, the failure is agency-side."
+        ],
+        "regulation": "1-LFP paragraph 26 (Eligible Grazing Land for LFP); 1-LFP paragraph 24 (Eligible Livestock Producer); STC-affirmed policy at Item 4.b DR (cancelled checks not acceptable as lease substitute); 1-LFP subparagraph 56F–56G (multiple-county applications).",
+        "analysis": "The 1-LFP par 26 requirement is worded broadly ('control, however limited') but requires SOME evidence in the record of that control. The rejection of cancelled checks as evidence is agency policy affirmed in the same DR, which forecloses that specific rebuttal. A substance-over-form argument would require Byrd to produce contemporaneous alternative documentation (grazing agreements, correspondence, county-office records) that establish control without meeting the strict CCC-855 form. Without such evidence in the record, the STC has no basis to overcome the STO's flag. If Byrd HAS such evidence (Teams SharePoint upload), it must be entered into the record BEFORE the vote and cited by exhibit number in the STC minutes.\n\nThe strongest appellant path here: identify farms where CCC-855 was requested by the county office but never completed, and argue the agency failure to complete the form should not defeat producer eligibility. This requires county-office correspondence documenting the CCC-855 request. Unless the record includes such evidence, denial on this ground is defensible.\n\nF1740 is the exception — 30 acres with confirmed risk-control per lease. That portion should be approved regardless of any other outcome."
+      },
+      {
+        "num": 2,
+        "question": "For F7488 (2020) — where wheat was planted 9/12/19 and the lease term ran 3/1/20 through 8/1/21 — did the lease convey risk-and-control on the qualifying drought date of 6/16/20?",
+        "agencyPosition": [
+          "The lease term 3/1/20 through 8/1/21 does encompass the 6/16/20 trigger date on its face.",
+          "However, wheat was planted 9/12/19 — 6 months BEFORE the lease term began. This suggests either (a) a different lessee planted the wheat, (b) the producer had an earlier arrangement not documented in the current lease, or (c) the crop was planted in expectation of the future lease.",
+          "1-LFP par 26 requires risk-and-control 'on the date of the qualifying drought' — the specific factual question is whether the 3/1/20 lease conveyed that control on 6/16/20 with regard to the specific acreage in question."
+        ],
+        "appellantPosition": [
+          "[PENDING BYRD BRIEF] — Likely argument: the lease term 3/1/20 through 8/1/21 unambiguously covers 6/16/20. The producer had documented control on the trigger date. Any pre-lease planting question is irrelevant to whether risk existed on the trigger date.",
+          "[PENDING BYRD BRIEF] — Likely argument: 1-LFP does not require that the same lessee also planted the crop; it requires risk on the trigger date. That risk was documented via the lease."
+        ],
+        "regulation": "1-LFP paragraph 26 (Eligible Grazing Land) — 'as of the date of the qualifying drought'; 2-CP acreage report certification (the 9/12/19 wheat planting would be certified on FSA-578 by the planter, whose identity should be checked).",
+        "analysis": "The lease term does facially cover the trigger date. The pre-lease planting date raises a legitimate question about whether the current lessee had control over that acreage on 6/16/20, but does not automatically defeat it. The STC should ask: who certified the 9/12/19 wheat planting on FSA-578? If it was the Cure family under a prior lease/ownership arrangement that flowed into the current lease, continuity of control is established. If a different producer certified the planting, the transfer of risk-and-control to the Cures needs its own documentation.\n\nThis is the strongest 'grant partial relief' opportunity — F7488 (2020) is under STC review specifically because the timing looks defensible. If the FSA-578 supports continuity, approve. If not, deny for lack of transferred risk documentation."
+      },
+      {
+        "num": 3,
+        "question": "Should the livestock count be adjusted down from the number claimed on the CCC-853 to the number supported by contemporaneous records?",
+        "agencyPosition": [
+          "Producer's original CCC-853 must reflect livestock intended to graze the eligible acres on the trigger date.",
+          "Bank balance sheet dated 198 days after the trigger cannot establish trigger-date grazing intent for animals not on the original application.",
+          "Prior COC approval of 275 adult beef + 220 mitigated adult beef = 495 total is the contemporaneous number for this producer.",
+          "Yearlings (non-adult 500+ lb livestock) were not on the original application. Adding them via post-hoc B/S is not supported by the record.",
+          "1-LFP eligibility requires livestock weaned and over 500 lbs on the trigger date — that eligibility must be established at time of filing, not reconstructed later."
+        ],
+        "appellantPosition": [
+          "[PENDING BYRD BRIEF] — Likely argument: the producer's actual livestock inventory at the trigger date is a fact that can be established by contemporaneous records other than the CCC-853 — the balance sheet, tax records, receipts, brand inspections.",
+          "[PENDING BYRD BRIEF] — Likely argument: LFP is a disaster program; strict adherence to what appears on the initial CCC-853 form defeats the program's purpose when producer records support additional eligible livestock."
+        ],
+        "regulation": "1-LFP paragraph 24 (Eligible Livestock Producer); 1-LFP paragraph 25.A (Eligible Covered Livestock — Beef-Adults-Cows and Bulls); 1-LFP producer certification requirements.",
+        "analysis": "The 500-lb-on-trigger-date eligibility requirement is the sharpest constraint. Bank B/S dated end of 2020 documents animals present then — not their weight or presence on 6/16/20. For a yearling program to qualify, producer needs contemporaneous records (brand inspection, purchase receipts pre-trigger, veterinary records) establishing the animals were on-hand and 500 lbs+ at trigger.\n\nAcceptable evidence Byrd could produce: (a) purchase receipts dated before 6/16/20 for the yearlings claimed, (b) brand inspection records from spring 2020, (c) weaning records from fall 2019 that would put the animals at 500 lbs+ by June 2020. Without this evidence, the STO recommendation to strike or reduce is well-supported.\n\nThe safe posture: approve the original 495 (275 + 220) — the contemporaneous, COC-approved number — and deny anything above that unless Byrd produces trigger-date evidence in the record. Same treatment across all 6 applications."
+      },
+      {
+        "num": 4,
+        "question": "Is 2020 Wheat HRW acreage eligible for LFP payment in Kit Carson County?",
+        "agencyPosition": [
+          "Long-Season Small Grain (LSSG) — the pasture-type designation under which Wheat HRW would qualify — DID NOT trigger for Kit Carson County in 2020 per the national LFP eligibility report.",
+          "LSSG trigger determinations are made at the national level per 1-LFP and 7 CFR 1416 based on U.S. Drought Monitor conditions.",
+          "STC has no discretionary authority to override the national trigger determination."
+        ],
+        "appellantPosition": [
+          "[PENDING BYRD BRIEF] — No credible legal argument known. This ground is categorical."
+        ],
+        "regulation": "1-LFP paragraph 22 (Pasture Types and Trigger Determinations); 7 CFR 1416 (Emergency Agricultural Disaster Assistance Programs); National LFP eligibility report, 2020 crop year.",
+        "analysis": "This is the cleanest denial ground in the case and cannot be waived by the STC. Any approval that includes 2020 Wheat HRW acreage is procedurally defective and will be reversed by DAFP if paid. If Byrd challenges this at NAD, NAD will affirm — LSSG trigger determinations are non-discretionary national-level determinations under 7 CFR 1416.\n\nThe STC minutes should state explicitly: '2020 Wheat HRW acreage denied per national LSSG trigger determination for Kit Carson County; STC has no authority to override.' Same treatment for all 3 producers' 2020 applications."
+      },
+      {
+        "num": 5,
+        "question": "Is the May 2026 filing of the 2020 CCC-853 timely?",
+        "agencyPosition": [
+          "The 2020 CCC-853 was signed 5/5/26 and received by FSA on 5/12/26 — approximately 5 years and 10 months after the 6/16/20 trigger date.",
+          "1-LFP filing deadlines are set by the National Office; late-file provisions require justification.",
+          "The record should document why the 2020 application was filed in 2026 — whether due to prior denial being reconsidered, FSA misaction/misinformation, or other justifiable delay."
+        ],
+        "appellantPosition": [
+          "[PENDING BYRD BRIEF] — Likely argument: FSA misaction/misinformation caused the delay. If Byrd can document that the county office failed to accept the application when originally offered, or provided incorrect information about eligibility, late-file relief may be available.",
+          "[PENDING BYRD BRIEF] — Likely argument: previously-filed application was denied in error and the current filing is a re-submission with additional documentation, not a genuinely late filing."
+        ],
+        "regulation": "1-LFP late-file provisions; 7-CP misaction/misinformation policy (equitable relief).",
+        "analysis": "Late filing is not automatically fatal, but requires a documented reason in the record. If Byrd's brief establishes FSA misaction (e.g., county office refused to accept 2020 CCC-853 in 2020 or 2021, or provided incorrect eligibility guidance), the late-file question is defensible.\n\nIf no such documentation exists in the record, the 5+ year delay is itself grounds for denial independent of the substantive issues. The STC minutes should reflect what the record shows on this question — if the record is silent, that silence supports denial.\n\nThis is the issue Byrd is most likely to have addressed in a legal brief. Look for the brief BEFORE the vote."
+      }
+    ],
+    "caseFileResearch": [
+      { "type": "handbook", "text": "1-LFP paragraph 4A — mandatory STC review of COC-member CCC-853s. Establishes the procedural posture for this action.", "sources": ["1-LFP (Rev. current)"] },
+      { "type": "handbook", "text": "1-LFP paragraph 26 — Eligible Grazing Land. Risk-and-control requirement 'as of the date of the qualifying drought.'", "sources": ["1-LFP (Rev. current)"] },
+      { "type": "handbook", "text": "1-LFP paragraph 24 — Eligible Livestock Producer. Requires producer be at risk on eligible livestock.", "sources": ["1-LFP (Rev. current)"] },
+      { "type": "handbook", "text": "1-LFP paragraph 25.A — Eligible Covered Livestock (Beef-Adults-Cows and Bulls). Weaned and 500+ lbs on trigger date.", "sources": ["1-LFP (Rev. current)"] },
+      { "type": "regulation", "text": "7 CFR 1416 — Emergency Agricultural Disaster Assistance Programs. LSSG national trigger determination framework.", "sources": ["7 CFR Part 1416"] },
+      { "type": "policy_reference", "text": "Aug 27 Exec Session DR Item 4.b — cancelled checks not acceptable as lease substitute. STC-adopted position that governs this appeal.", "sources": ["Colorado STC Aug 27 2026 Exec DR"] },
+      { "type": "OUTSTANDING", "text": "ATTORNEY BYRD BRIEF — Retrieve from Teams SharePoint (FSA - State Committee / Cure LFP folder or similar). If not filed, request through Cindy Vukasin before the vote.", "sources": [] },
+      { "type": "OUTSTANDING", "text": "FSA-578 for F7488 (2020) — identify who certified the 9/12/19 wheat planting to establish continuity-of-control question for Issue #2.", "sources": [] },
+      { "type": "OUTSTANDING", "text": "County office correspondence log — any documented CCC-855 requests to the Cures that were never returned. Supports substance-over-form argument if it exists.", "sources": [] },
+      { "type": "OUTSTANDING", "text": "Contemporaneous livestock records (spring 2020 brand inspection, weaning records, purchase receipts) — supports any livestock count above the original 495.", "sources": [] },
+      { "type": "OUTSTANDING", "text": "Late-file justification documentation — explains 5+ year gap between 2020 trigger and May 2026 filing. Look for prior denial letters, FSA correspondence declining to accept 2020 filing.", "sources": [] }
+    ],
+    "exhibits": [
+      { "label": "Aug 27 Exec Session Packet, pp. 37–75 (Brad Cure 2020 CCC-853)", "note": "[PENDING FILE URL] — In Teams SharePoint. Upload to /documents or share URL and I'll wire it here." },
+      { "label": "Aug 27 Exec Session Packet, pp. 75–163 (Eric Cure 2020 CCC-853)", "note": "[PENDING FILE URL]" },
+      { "label": "Aug 27 Exec Session Packet, pp. 117–163 (Denis & Victoria Cure 2020 CCC-853)", "note": "[PENDING FILE URL]" },
+      { "label": "Aug 27 Exec Session Packet, pp. 163–207 (Brad Cure 2021 CCC-853)", "note": "[PENDING FILE URL]" },
+      { "label": "Aug 27 Exec Session Packet, pp. 207–251 (Eric Cure 2021 CCC-853)", "note": "[PENDING FILE URL]" },
+      { "label": "Aug 27 Exec Session Packet, pp. 251–313 (2020 and 2021 Eligibility Reports + Supporting Documentation)", "note": "[PENDING FILE URL]" },
+      { "label": "Aug 27 Exec Session Packet, pp. 313–381 (2020 and 2021 Leases)", "note": "[PENDING FILE URL] — CRITICAL for Issue #1 and Issue #2 analysis" },
+      { "label": "Aug 27 Exec Session Packet, pp. 381–431 (2020 and 2021 FSA Policy)", "note": "[PENDING FILE URL]" },
+      { "label": "Aug 27 Exec Session Packet, pp. 431+ (Policy CFR 1416)", "note": "[PENDING FILE URL]" },
+      { "label": "Attorney Byrd — Correspondence and Brief", "note": "[NOT YET IN RECORD — verify status via Cindy Vukasin before vote]" }
+    ]
+  },
+  {
+    "id": "APPEAL-5-2026-BEEUTIFUL-THINGS",
+    "caseId": "Beeutiful Things",
+    "meetingDate": "2026-08-27",
+    "agendaItem": "Exec Session Item 3",
+    "title": "ELAP — Elbert County — 2025 Honeybee Colony Losses — Beeutiful Things Inc.",
+    "appellants": "Beeutiful Things Inc.",
+    "county": "Elbert",
+    "program": "ELAP",
+    "presenter": "Corey Pelton, Farm Program Chief",
+    "meetingTimeMin": 90,
+    "status": "OPEN",
+    "archived": false,
+    "guestsAtMeeting": true,
+    "voteRecorded": null,
+    "advisoryNotes": "STC hearing 9:00 AM overview / 9:30 AM with producer. Guests Perry Welch (appellant rep) and Kris DeMoss (POA).",
+    "dateCreated": "2026-08-20",
+    "representation": [
+      { "role": "Producer representative", "name": "Perry Welch", "note": "Attending the STC hearing on behalf of Beeutiful Things Inc." },
+      { "role": "Power of Attorney", "name": "Christine (Kris) DeMoss", "note": "POA filing FSA paperwork on behalf of Beeutiful Things Inc. Also POA on Appeal 3 (Proctor) — same firm." }
+    ],
+    "keyMetrics": [
+      { "label": "Program year", "value": "2025 ELAP Honeybee", "sources": ["Beeutiful Things AgencyRecord.pdf"] },
+      { "label": "Initial CCC-771 filed", "value": "January 16, 2026", "note": "14 days past the late-filed window (subsequent-year ARD of January 2, 2026)", "sources": ["Beeutiful Things AgencyRecord, Reconsideration Admin Record"] },
+      { "label": "CY 2025 initial ARD", "value": "January 2, 2025", "note": "Required initial filing date under 2-CP paragraph 34.5", "sources": ["2-CP (Rev. 16) paragraph 34.5"] },
+      { "label": "CY 2025 late-filed deadline", "value": "January 2, 2026", "note": "Subsequent-year ARD per 2-CP paragraph 27", "sources": ["2-CP (Rev. 16) paragraph 27"] },
+      { "label": "CCC-939H claim", "value": "537 initial · 287 additions · 776 eligible lost colonies", "sources": ["Signed CCC-939H"] },
+      { "label": "CCC-771 inventory Nov 25, 2025", "value": "48 colonies", "note": "Directly inconsistent with CCC-939H 537 initial + 287 additions", "sources": ["Filed CCC-771, Part D"] },
+      { "label": "CCC-771 movement Nov 29, 2025", "value": "537 colonies to Merced CA", "note": "Migratory shipment for almond pollination — routine industry practice", "sources": ["Filed CCC-771, Part E"] },
+      { "label": "Receipt dated Dec 18, 2025", "value": "816 colony purchase", "note": "NOT reported on CCC-771 — 30-day report window violated per 1-ELAP paragraph 170", "sources": ["Producer receipt"] },
+      { "label": "CCC-870 CCD losses", "value": "279 colonies", "note": "Colony Collapse Disorder losses before and during almond pollination — not on CCC-771", "sources": ["CCC-870 section 8"] },
+      { "label": "COC denial letter", "value": "March 17, 2026", "sources": ["Elbert COC"] },
+      { "label": "COC reconsideration decision", "value": "June 1, 2026 (upheld)", "sources": ["Elbert COC"] }
+    ],
+    "issueSummary": "Beeutiful Things Inc. appeals the Elbert County COC's decision to disapprove their 2025 ELAP honeybee application for payment. The CCC-771 initial colony inventory report for CY 2025 was filed January 16, 2026 — 14 days beyond even the extended late-filed window (subsequent-year ARD of January 2, 2026). Beyond timing, the record contains substantial internal inconsistencies: CCC-939H claims 537 initial + 287 additions + 776 losses, but the CCC-771 shows only 48 colonies in inventory Nov 25, 2025; a receipt for 816 colonies purchased Dec 18, 2025 does not appear on the CCC-771; and 279 CCD losses cited on CCC-870 are also not reflected. Appellant position: the January 2 ARD does not align with migratory beekeeping timelines — bees ship to California November/December for almond pollination and inventory is not typically taken until mid-January.",
+    "fullText": "See prior version — full case timeline preserved. Deep issue analysis below in issues[] array.",
+    "theGood": [
+      "The January 2 acreage reporting date (ARD) is fundamentally incompatible with migratory beekeeping. Bees physically must ship to California in November/December for almond pollination — inventory reconciliation cannot practically occur until mid-January when the operation returns. This is a program design problem, not a Beeutiful Things problem.",
+      "The producer engaged in a substantial, active operation — receipts document 816 colonies purchased December 18, 2025. This is not a fly-by-night or opportunistic filing.",
+      "Colony Collapse Disorder is a nationally documented, well-recognized cause of honeybee loss. Producer certified via CCC-870 that CCD affected 279 colonies before and during almond pollination.",
+      "Documentation exists to reconstruct the actual inventory changes — purchase receipts, shipping records, and CCC-870 all corroborate that colonies were purchased and lost.",
+      "The producer used a professional POA (Christine DeMoss) — good-faith effort to comply through recognized channels.",
+      "FSA sent the CCC-771 reminder to the POA on December 31, 2025 — 2 days before the late-filed deadline. Not adequate agency notice for a producer to gather migratory-inventory data across two states."
+    ],
+    "theBad": [
+      "The CY 2025 initial CCC-771 was due January 2, 2025 — filed 379 days late on January 16, 2026. Under 2-CP paragraph 27, the late-filed window closed on the subsequent year's ARD (January 2, 2026). Filing is 14 days beyond even that extended window.",
+      "The signed CCC-939H application (537 initial + 287 additions + 776 losses) is internally inconsistent with the CCC-771 in evidence (which shows only 48 colonies in inventory Nov 25, 2025). The two documents cannot both be correct.",
+      "1-ELAP paragraph 170 requires colony changes reported within 30 calendar days. The Dec 18 purchase of 816 colonies and the 279 CCD losses were never reported on the CCC-771 within the 30-day window.",
+      "The producer had a professional POA to navigate these deadlines. Missing the ARD by a full year plus 14 days is not attributable to producer inexperience.",
+      "The 30-day reporting requirement exists precisely to prevent post-hoc reconstruction of losses. Allowing an application built from records that were never contemporaneously reported undermines the ELAP verification framework.",
+      "COC reviewed the record at both the March 11 initial session and the May 13 reconsideration hearing and upheld disapproval both times."
+    ],
+    "redFlags": [
+      { "type": "REGULATORY", "text": "The January 2 ARD for a crop year that begins that same day is a widely-criticized regulatory design for migratory beekeeping. STC cannot rewrite the ARD; only DAFP/national policy can address this." },
+      { "type": "DOCUMENTATION", "text": "The record cannot support a payment calculation as filed. CCC-771, CCC-939H, CCC-870, and supporting receipts contain material discrepancies. Even if late-filing were excused, a specific dollar amount cannot be determined from the current documentation." },
+      { "type": "PROCEDURAL", "text": "FSA sent the CCC-771 reminder to POA on December 31, 2025 — 2 days before the late-filed deadline. Record should document whether earlier reminders were sent." },
+      { "type": "REGULATORY", "text": "2-CP paragraph 27 late-filed acreage rules permit filing by the subsequent year's ARD — the Jan 16, 2026 filing missed even this extended window." }
+    ],
+    "commonSense": [
+      "Migratory beekeeping calendar and January 2 ARD are genuinely incompatible. STC should note this in decision text — whichever way it votes — so it can be raised with National Office.",
+      "Producer's paperwork problem goes beyond ARD timing. Multiple discrepancies between CCC-771, CCC-939H, and receipts suggest records are not organized to a level that supports a specific payment amount.",
+      "Most defensible middle path: remand to Elbert COC with direction to reconcile documentation before payment. Acknowledges ARD design problem while requiring reliable evidentiary basis for payment.",
+      "Denying outright is procedurally clean but forces NAD escalation — where the ARD-design argument becomes a strong appellate issue."
+    ],
+    "contracts": [],
+    "resolutionOptions": [
+      { "label": "Grant Full Relief", "description": "Find January 2 ARD incompatible with migratory beekeeping. Accept late-filed CCC-771. Direct Elbert COC to process payment on 776 losses claimed.", "fsaRisk": "HIGH — precedent for late-filed CCC-771 well past window and CCC-939H standing when inconsistent with CCC-771.", "appellantRisk": "None if granted.", "nadRisk": "MODERATE if denied." },
+      { "label": "Grant Partial Relief — Remand", "description": "Accept late-filed CCC-771 based on migratory-beekeeping ARD incompatibility. Remand to Elbert COC to reconcile CCC-771 with CCC-939H, CCC-870, and receipts before payment amount determined. Note ARD design problem in decision text for National Office.", "fsaRisk": "MODERATE.", "appellantRisk": "Continued delay; payment may be less than 776 claimed.", "nadRisk": "LOW to MODERATE." },
+      { "label": "Refer to Mediation", "description": "Colorado FSA mediation program before final determination.", "fsaRisk": "LOW.", "appellantRisk": "LOW.", "nadRisk": "LOW." },
+      { "label": "Deny — Late-Filed Beyond Window + Record Inconsistencies", "description": "Affirm COC. CCC-771 filed 14 days past late-filed window (2-CP par 27). CCC-939H internally inconsistent with CCC-771. Multiple 30-day reporting violations under 1-ELAP par 170.", "fsaRisk": "LOW procedurally. MODERATE if ARD-design argument gains NAD traction.", "appellantRisk": "Loss of 2025 ELAP payment; forces NAD escalation.", "nadRisk": "MODERATE — migratory-beekeeping ARD incompatibility is a viable NAD argument even against a clean procedural denial." }
+    ],
+    "issues": [],
+    "caseFileResearch": [
+      { "type": "handbook", "text": "2-CP (Rev. 16) paragraph 34.5 — Honeybee colony inventory reporting. January 2 ARD.", "sources": ["2-CP (Rev. 16)"] },
+      { "type": "handbook", "text": "2-CP (Rev. 16) paragraph 27 — Late-filed acreage reports. Subsequent-year ARD.", "sources": ["2-CP (Rev. 16)"] },
+      { "type": "handbook", "text": "1-ELAP (Rev. 1) paragraph 170 — 30-day reporting requirement for colony changes.", "sources": ["1-ELAP (Rev. 1)"] },
+      { "type": "handbook", "text": "1-ELAP (Rev. 1) paragraph 417 — CCC-939H application certification requirements.", "sources": ["1-ELAP (Rev. 1)"] },
+      { "type": "regulation", "text": "7 CFR 718.104 — Late-filed and revised acreage reports.", "sources": ["7 CFR 718.104"] },
+      { "type": "regulation", "text": "7 CFR 1416 — Emergency Agricultural Disaster Assistance Programs.", "sources": ["7 CFR 1416"] }
+    ],
+    "exhibits": [
+      { "label": "Beeutiful Things Agency Record (136 pages)", "note": "[PENDING FILE URL] — Upload to /documents or provide Teams SharePoint URL" }
+    ]
   }
 ]
