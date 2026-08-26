@@ -1471,6 +1471,68 @@
         "nadRisk": "MODERATE — NAD will scrutinize whether COC-member scrutiny was consistent with treatment of non-COC producers. If any of Byrd's substance-over-form or late-notice arguments have merit, NAD may remand."
       }
     ],
+    "handbookPolicy": [
+      {
+        "cite": "1-LFP par 4A",
+        "title": "Mandatory STC Review of COC-Member Applications",
+        "sourceLabel": "1-LFP (Rev. current), paragraph 4A",
+        "url": "https://www.fsa.usda.gov/resources/programs/livestock-forage-disaster-program",
+        "urlLabel": "FSA Livestock Forage Disaster Program",
+        "whatItRequires": "All CCC-853 applications executed by SED, State Office employees, STC members, DDs, COC members, CEDs, County Office employees, and their spouses must be sent to STC (or designee) for action. Purpose: prevent self-dealing and preserve program integrity.",
+        "whatIsRight": "The Kit Carson County office properly recognized the Cure family as COC members and referred all 6 CCC-853s (3 producers × 2 years) to STC for mandatory review under par 4A. The procedural referral is correct — this is exactly what par 4A contemplates.",
+        "whatIsWrong": "The mandatory STC review only accomplishes its purpose if the STC applies the SAME standard of scrutiny it would apply to any non-COC producer. STC minutes must explicitly reflect this — if the record supports approval, approve; if the record supports denial, deny. A silent record on scrutiny standard would itself be an appearance-of-favoritism problem regardless of the actual vote."
+      },
+      {
+        "cite": "1-LFP par 26",
+        "title": "Eligible Grazing Land — Risk and Control",
+        "sourceLabel": "1-LFP (Rev. current), paragraph 26",
+        "url": "https://www.fsa.usda.gov/resources/programs/livestock-forage-disaster-program",
+        "urlLabel": "FSA Livestock Forage Disaster Program",
+        "whatItRequires": "Producer must be at risk of loss of production of forage on grazing land or pastureland crop acreage AS OF THE DATE OF THE QUALIFYING DROUGHT, with control (however limited) documented by a valid lease or CCC-855. Grazing land must not have been irrigated on the trigger date.",
+        "whatIsRight": "F1740 (30 acres) has a signed lease conveying risk-and-control on the 6/16/20 trigger date. That farm satisfies par 26 and should be approved. F7488 (2020) is a genuine timing question — lease term 3/1/20–8/1/21 does encompass the trigger date on its face; whether continuity of control extends back to the 9/12/19 wheat planting is answerable from the FSA-578.",
+        "whatIsWrong": "8 farms (F2402, F6191, F6192, F7904, F8845, F7488 (2021), F8504, F8866) have no lease and no CCC-855 in the record. Cancelled checks are explicitly not acceptable as a lease substitute per the STC's own DR Item 4.b. Absent new lease documentation from attorney Byrd entered into the record before the vote, these 8 farms fail par 26 as a matter of black-letter policy. Approval on any of these farms without new evidence establishes bad precedent for future COC-member reviews."
+      },
+      {
+        "cite": "1-LFP par 24",
+        "title": "Eligible Livestock Producer",
+        "sourceLabel": "1-LFP (Rev. current), paragraph 24",
+        "url": "https://www.fsa.usda.gov/resources/programs/livestock-forage-disaster-program",
+        "urlLabel": "FSA Livestock Forage Disaster Program",
+        "whatItRequires": "Producer must own or lease eligible livestock and be at risk on those livestock on the qualifying drought date. Livestock must be intended to graze the eligible acreage on that date.",
+        "whatIsRight": "The contemporaneous COC-approved count is 275 adult beef + 220 mitigated adult beef = 495 head. This is the number established at time of prior approval and is the trigger-date evidentiary baseline for these producers. Approval on 495 is well-supported by the record.",
+        "whatIsWrong": "Any livestock count above 495 is supported only by a bank balance sheet dated ~198 days AFTER the 6/16/20 trigger date. That B/S documents end-of-year state, not trigger-date grazing intent. Yearlings added via post-hoc B/S were not on the original application and lack contemporaneous spring-2020 documentation. Livestock additions above 495 fail par 24 absent trigger-date corroboration."
+      },
+      {
+        "cite": "1-LFP par 25.A",
+        "title": "Eligible Covered Livestock — Beef Adults (Cows and Bulls)",
+        "sourceLabel": "1-LFP (Rev. current), paragraph 25.A",
+        "url": "https://www.fsa.usda.gov/resources/programs/livestock-forage-disaster-program",
+        "urlLabel": "FSA Livestock Forage Disaster Program",
+        "whatItRequires": "Beef livestock qualify as adults if weaned AND at least 500 pounds on the qualifying drought date. Non-adult livestock (yearlings) require separate demonstration of the 500-lb threshold on trigger date.",
+        "whatIsRight": "The 275 adult beef + 220 mitigated adult beef in the prior COC approval documents animals that satisfied par 25.A at the historical trigger-date review. This baseline is intact.",
+        "whatIsWrong": "Any yearlings claimed via post-hoc records lack proof of the 500-lb-on-trigger-date threshold. Acceptable evidence would be: (a) purchase receipts dated before 6/16/20, (b) spring 2020 brand inspection records, (c) fall 2019 weaning records showing weight trajectory. Absent this evidence in the STC record, yearling additions fail par 25.A."
+      },
+      {
+        "cite": "1-LFP par 22 + 7 CFR Part 1416",
+        "title": "Pasture-Type Trigger Determinations — LSSG (Long-Season Small Grain)",
+        "sourceLabel": "1-LFP paragraph 22; 7 CFR Part 1416",
+        "url": "https://www.ecfr.gov/current/title-7/subtitle-B/chapter-XIV/subchapter-B/part-1416",
+        "urlLabel": "7 CFR Part 1416 — Emergency Agricultural Disaster Assistance",
+        "whatItRequires": "Pasture-type trigger determinations (including LSSG under which Wheat HRW qualifies) are made at the NATIONAL level per 1-LFP and 7 CFR Part 1416 based on U.S. Drought Monitor conditions for the specific county. STC has NO discretionary authority to override a national trigger determination.",
+        "whatIsRight": "The national LFP eligibility report for CY 2020 documents which pasture types triggered in Kit Carson County. That report governs; the STC's role is to apply, not to revisit.",
+        "whatIsWrong": "LSSG did NOT trigger for Kit Carson County in 2020. Any approval that includes 2020 Wheat HRW acreage is procedurally defective and will be reversed by DAFP if paid. This ground is categorical, not discretionary — no legal argument reaches it. The STC minutes must state explicitly: '2020 Wheat HRW acreage denied per national LSSG trigger determination for Kit Carson County; STC has no authority to override.'"
+      },
+      {
+        "cite": "1-LFP late-filed provisions + 7-CP misaction/misinformation",
+        "title": "Late-Filed CCC-853 — Equitable Relief Framework",
+        "sourceLabel": "1-LFP late-filing provisions; 7-CP (Rev. 4) equitable relief",
+        "url": "https://www.ecfr.gov/current/title-7/subtitle-B/chapter-XIV/subchapter-B/part-1416",
+        "urlLabel": "7 CFR Part 1416 — Emergency Agricultural Disaster Assistance",
+        "whatItRequires": "Late-filed applications require a documented reason in the record — typically FSA misaction (county office refused to accept the timely filing) or FSA misinformation (county office provided incorrect eligibility guidance that caused the producer to delay). Producer bears the burden of establishing the late-file justification.",
+        "whatIsRight": "If attorney Byrd's brief documents FSA misaction — e.g., the Kit Carson County office refused to accept a 2020 CCC-853 in 2020 or 2021, or provided incorrect guidance — the late-file provisions can be satisfied and substantive analysis proceeds normally.",
+        "whatIsWrong": "The 2020 CCC-853 was signed 5/5/26 and received by FSA 5/12/26 — 5 years, 10 months after the 6/16/20 trigger. That is an extraordinary delay. Absent Byrd producing documentation of FSA misaction, the timeliness of the application itself is grounds for denial independent of the substantive issues. STC minutes should reflect what the record shows on this question — silence supports denial."
+      }
+    ],
     "issues": [
       {
         "num": 1,
@@ -1647,6 +1709,68 @@
       { "label": "Grant Partial Relief — Remand", "description": "Accept late-filed CCC-771 based on migratory-beekeeping ARD incompatibility. Remand to Elbert COC to reconcile CCC-771 with CCC-939H, CCC-870, and receipts before payment amount determined. Note ARD design problem in decision text for National Office.", "fsaRisk": "MODERATE.", "appellantRisk": "Continued delay; payment may be less than 776 claimed.", "nadRisk": "LOW to MODERATE." },
       { "label": "Refer to Mediation", "description": "Colorado FSA mediation program before final determination.", "fsaRisk": "LOW.", "appellantRisk": "LOW.", "nadRisk": "LOW." },
       { "label": "Deny — Late-Filed Beyond Window + Record Inconsistencies", "description": "Affirm COC. CCC-771 filed 14 days past late-filed window (2-CP par 27). CCC-939H internally inconsistent with CCC-771. Multiple 30-day reporting violations under 1-ELAP par 170.", "fsaRisk": "LOW procedurally. MODERATE if ARD-design argument gains NAD traction.", "appellantRisk": "Loss of 2025 ELAP payment; forces NAD escalation.", "nadRisk": "MODERATE — migratory-beekeeping ARD incompatibility is a viable NAD argument even against a clean procedural denial." }
+    ],
+    "handbookPolicy": [
+      {
+        "cite": "2-CP par 34.5",
+        "title": "Honeybee Colony Inventory Reporting — January 2 ARD",
+        "sourceLabel": "2-CP (Rev. 16), paragraph 34.5",
+        "url": "https://www.fsa.usda.gov/resources/programs/emergency-assistance-for-livestock-honey-bees-and-farm-raised-fish-program-elap",
+        "urlLabel": "FSA ELAP Program Page",
+        "whatItRequires": "Beekeepers must file an initial CCC-771 by the acreage reporting date (ARD) of January 2 for the current crop year. Purpose: establish colony baseline before the crop year begins.",
+        "whatIsRight": "Beeutiful Things engaged a professional POA (Christine DeMoss) to navigate FSA compliance — a good-faith recognition that beekeeping paperwork requires expert help. FSA did send a CCC-771 reminder to the POA on December 31, 2025.",
+        "whatIsWrong": "The CY 2025 initial CCC-771 was due January 2, 2025 — it was filed 379 days late on January 16, 2026. The gap is not marginal; it is more than a full year past the initial ARD. The January 2 ARD is genuinely incompatible with migratory beekeeping (bees ship to California in November/December for almond pollination and inventory reconciliation cannot practically occur until mid-January when the operation returns), but STC cannot rewrite the ARD — only DAFP / national policy can address this. The STC decision should note the ARD design problem in decision text so it can be raised with the National Office regardless of vote."
+      },
+      {
+        "cite": "2-CP par 27",
+        "title": "Late-Filed Acreage Reports — Subsequent-Year ARD Window",
+        "sourceLabel": "2-CP (Rev. 16), paragraph 27",
+        "url": "https://www.ecfr.gov/current/title-7/section-718.104",
+        "urlLabel": "7 CFR § 718.104 — Late-Filed and Revised Acreage Reports",
+        "whatItRequires": "Late-filed acreage reports may still be accepted if filed by the subsequent year's ARD — i.e., the CY 2025 CCC-771 could still have been accepted if filed by January 2, 2026.",
+        "whatIsRight": "Par 27 provides an extended window that recognizes reporting delays happen. The producer had until January 2, 2026 — a full year of grace beyond the initial ARD — to file the CY 2025 report.",
+        "whatIsWrong": "Beeutiful Things filed January 16, 2026 — 14 days beyond even the extended late-filed window. Once the subsequent-year ARD passed, par 27 no longer authorizes acceptance. This is not an 'almost on time' issue; the extended window itself was missed."
+      },
+      {
+        "cite": "1-ELAP par 170",
+        "title": "30-Day Reporting Requirement for Colony Changes",
+        "sourceLabel": "1-ELAP (Rev. 1), paragraph 170",
+        "url": "https://www.fsa.usda.gov/resources/programs/emergency-assistance-for-livestock-honey-bees-and-farm-raised-fish-program-elap",
+        "urlLabel": "FSA ELAP Program Page",
+        "whatItRequires": "All colony inventory changes (purchases, losses, movements, deaths from any cause including CCD) must be reported to FSA within 30 calendar days of the change. Purpose: prevent post-hoc reconstruction of losses and preserve verification integrity.",
+        "whatIsRight": "The 30-day rule is a fair notice standard — it puts producers on regular reporting cadence rather than requiring only annual reconciliation. Producers who report changes as they happen satisfy the rule regardless of ARD timing questions.",
+        "whatIsWrong": "The December 18, 2025 receipt for 816 colonies purchased was NEVER reported on CCC-771 within 30 days. The 279 CCD losses cited on CCC-870 were NEVER reported on CCC-771 within 30 days. Even if late-filing on the initial CCC-771 were excused, the individual colony changes were not contemporaneously reported. Allowing an application built from records never contemporaneously reported undermines the ELAP verification framework."
+      },
+      {
+        "cite": "1-ELAP par 417",
+        "title": "CCC-939H Application Certification",
+        "sourceLabel": "1-ELAP (Rev. 1), paragraph 417",
+        "url": "https://www.fsa.usda.gov/resources/programs/emergency-assistance-for-livestock-honey-bees-and-farm-raised-fish-program-elap",
+        "urlLabel": "FSA ELAP Program Page",
+        "whatItRequires": "The CCC-939H application is a signed producer certification of colony counts, additions, and losses. Numbers on the CCC-939H must be internally consistent with the CCC-771 inventory report and any supporting CCC-870 loss forms.",
+        "whatIsRight": "The producer's use of both CCC-939H (application) and CCC-870 (loss form) shows awareness of the ELAP paperwork framework — the producer is engaging with the correct forms.",
+        "whatIsWrong": "Material discrepancies between forms: CCC-939H claims 537 initial + 287 additions = 824 total pre-loss colonies. CCC-771 filed Jan 16, 2026 shows only 48 colonies in inventory Nov 25, 2025. CCC-870 cites 279 CCD losses not reflected on CCC-771. The Dec 18 purchase of 816 colonies from a receipt is on neither form. These forms cannot all be simultaneously correct — a payment calculation as filed cannot be supported by the record. Even if late-filing were excused, a specific dollar amount cannot be determined until the documentation is reconciled."
+      },
+      {
+        "cite": "7 CFR § 718.104",
+        "title": "Late-Filed and Revised Acreage Reports — Federal Regulation",
+        "sourceLabel": "7 CFR § 718.104",
+        "url": "https://www.ecfr.gov/current/title-7/section-718.104",
+        "urlLabel": "7 CFR § 718.104 (eCFR)",
+        "whatItRequires": "The federal regulation governing late-filed acreage reports across FSA programs. Late-filed acreage reports may be accepted subject to conditions FSA prescribes — 2-CP par 27 implements these conditions for the honey-bee ARD.",
+        "whatIsRight": "The regulation contemplates late-filing as an exception, not the rule. Providing an implementation framework (via 2-CP) is a fair balancing of program integrity and producer opportunity.",
+        "whatIsWrong": "The Jan 16, 2026 filing missed the outer bound of the regulation's tolerance as implemented through 2-CP par 27. Once that outer bound passes, there is no residual regulatory authority to accept the report on late-filed grounds alone. Any acceptance requires a separate equitable relief basis (misaction / misinformation) not currently established in the record."
+      },
+      {
+        "cite": "7 CFR Part 1416",
+        "title": "Emergency Agricultural Disaster Assistance Programs — ELAP Framework",
+        "sourceLabel": "7 CFR Part 1416",
+        "url": "https://www.ecfr.gov/current/title-7/subtitle-B/chapter-XIV/subchapter-B/part-1416",
+        "urlLabel": "7 CFR Part 1416 (eCFR)",
+        "whatItRequires": "ELAP eligibility is governed by 7 CFR Part 1416 subpart-specific provisions for honeybees. Colony Collapse Disorder (CCD) is a recognized cause of loss for ELAP honey-bee coverage when contemporaneously documented.",
+        "whatIsRight": "CCD is a well-recognized, nationally documented cause of honey-bee loss — the peril is not in dispute. If the producer had contemporaneously reported the 279 CCD losses on the CCC-771 within the 30-day window, ELAP coverage on those losses would have been available.",
+        "whatIsWrong": "The regulation's verification framework depends on contemporaneous inventory reporting. Post-hoc CCC-870 loss claims not reflected on any prior CCC-771 cannot be independently verified. The peril (CCD) is real; the record supporting the specific colony count lost to that peril is not established."
+      }
     ],
     "issues": [],
     "caseFileResearch": [
