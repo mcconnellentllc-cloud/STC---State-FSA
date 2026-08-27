@@ -7,6 +7,7 @@ const memberLinks = [
   { to: '/summary', label: 'Meeting Agenda', icon: '📋' },
   { to: '/meetings', label: 'Meetings (Calendar)', icon: '📅' },
   { to: '/board-meetings', label: 'Board Meetings', icon: '🏛' },
+  { to: '/board-meetings/2026-08-27/follow', label: 'Live Follow (Aug 27)', icon: '🎯' },
   { to: '/board-actions', label: 'Board Actions', icon: '✓' },
   { to: '/journal', label: 'Journal', icon: '✎' },
   { to: '/documents', label: 'Documents', icon: '📄' },
