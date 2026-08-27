@@ -674,6 +674,137 @@ function IssuesForDetermination({ appeal }) {
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
+   INDUSTRY CONTEXT — background on standard industry practices relevant to
+   the appeal's cause-of-loss claim. Currently used on the Beeutiful Things
+   ELAP appeal to render CCD-preventive beekeeping treatments and the
+   hearing questions that flow from them. Renders as: framing paragraph,
+   treatment categories with drug/product tables, and a hearing-questions
+   block. Hidden when appeal.industryContext is not set.
+   Shape: appeal.industryContext = {
+     title, framing,
+     categories: [{ name, note, treatments: [{name, brand, type, note}] }],
+     hearingQuestions: [{ question, expectedAnswer, whyItMatters }]
+   }
+   ───────────────────────────────────────────────────────────────────────────── */
+function IndustryContext({ appeal }) {
+  const ctx = appeal.industryContext;
+  if (!ctx) return null;
+  return (
+    <div style={{ marginBottom: 28 }}>
+      <div style={SECTION_TITLE_STYLE}>{ctx.title || "Industry Context"}</div>
+      {ctx.framing && (
+        <div style={{
+          background: "#FFFBEB",
+          border: `1px solid ${T.gold}`,
+          borderLeft: `5px solid ${T.gold}`,
+          borderRadius: 8,
+          padding: "12px 16px",
+          marginBottom: 14,
+          fontSize: 14,
+          lineHeight: 1.7,
+          color: T.navy,
+        }}>
+          {ctx.framing}
+        </div>
+      )}
+      {(ctx.categories || []).map((cat, i) => (
+        <div key={i} style={{
+          background: "#fff",
+          border: `1px solid ${T.border}`,
+          borderRadius: 8,
+          padding: "14px 18px",
+          marginBottom: 12,
+        }}>
+          <div style={{ fontFamily: "Georgia, serif", fontSize: 15, fontWeight: 700, color: T.navy, marginBottom: 4 }}>
+            {cat.name}
+          </div>
+          {cat.note && (
+            <div style={{ fontSize: 13, color: T.slate, lineHeight: 1.65, marginBottom: 10, fontStyle: "italic" }}>
+              {cat.note}
+            </div>
+          )}
+          {(cat.treatments || []).length > 0 && (
+            <div style={{ overflowX: "auto" }}>
+              <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
+                <thead>
+                  <tr style={{ background: T.navy, color: "#fff" }}>
+                    {["Active ingredient", "Brand", "Type", "Notes"].map(h => (
+                      <th key={h} style={{ padding: "6px 10px", textAlign: "left", fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, letterSpacing: "0.06em", fontWeight: 700 }}>
+                        {h}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {cat.treatments.map((t, j) => (
+                    <tr key={j} style={{ background: j % 2 === 0 ? "#F8FAFC" : "#fff", borderBottom: `1px solid ${T.border}` }}>
+                      <td style={{ padding: "6px 10px", fontWeight: 700, color: T.navy }}>{t.name}</td>
+                      <td style={{ padding: "6px 10px", color: T.blue }}>{t.brand || "—"}</td>
+                      <td style={{ padding: "6px 10px", fontSize: 12, color: T.slate }}>{t.type || "—"}</td>
+                      <td style={{ padding: "6px 10px", fontSize: 12, color: T.slate }}>{t.note || ""}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
+      ))}
+      {(ctx.hearingQuestions || []).length > 0 && (
+        <div style={{ marginTop: 18 }}>
+          <div style={{
+            fontFamily: "'IBM Plex Mono', monospace",
+            fontSize: 12, fontWeight: 700, letterSpacing: "0.1em",
+            textTransform: "uppercase", color: T.navy, marginBottom: 10,
+          }}>
+            Hearing Questions ({ctx.hearingQuestions.length})
+          </div>
+          {ctx.hearingQuestions.map((q, i) => (
+            <div key={i} style={{
+              background: "#fff",
+              border: `1px solid ${T.border}`,
+              borderLeft: `4px solid ${T.purple}`,
+              borderRadius: 8,
+              padding: "12px 16px",
+              marginBottom: 10,
+            }}>
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 10, marginBottom: 6 }}>
+                <span style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: 24, height: 24,
+                  borderRadius: "50%",
+                  background: T.purple,
+                  color: "#fff",
+                  fontWeight: 800,
+                  fontSize: 12,
+                  flexShrink: 0,
+                  fontFamily: "'IBM Plex Mono', monospace",
+                }}>{i + 1}</span>
+                <span style={{ fontWeight: 700, fontSize: 14, color: T.navy, lineHeight: 1.5 }}>{q.question}</span>
+              </div>
+              {q.expectedAnswer && (
+                <div style={{ marginTop: 6, marginLeft: 34, fontSize: 13, lineHeight: 1.65 }}>
+                  <span style={{ fontSize: 10, fontFamily: "'IBM Plex Mono', monospace", letterSpacing: "0.08em", textTransform: "uppercase", color: T.slate, marginRight: 6 }}>Expected answer:</span>
+                  <span style={{ color: T.navy }}>{q.expectedAnswer}</span>
+                </div>
+              )}
+              {q.whyItMatters && (
+                <div style={{ marginTop: 6, marginLeft: 34, fontSize: 13, lineHeight: 1.65, color: T.slate, fontStyle: "italic" }}>
+                  <span style={{ fontSize: 10, fontFamily: "'IBM Plex Mono', monospace", letterSpacing: "0.08em", textTransform: "uppercase", color: T.slate, marginRight: 6, fontStyle: "normal" }}>Why it matters:</span>
+                  {q.whyItMatters}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
    HANDBOOK POLICY — direct links to controlling policy for open appeals.
    For each cited handbook paragraph or CFR section: what it requires, what
    the record gets right about it, and what the record gets wrong about it.
@@ -1069,6 +1200,9 @@ function AppealDetail({ appeals, onUpdateAdvisory }) {
 
         {/* 0b. HANDBOOK POLICY — direct links + what's right/wrong (open appeals) */}
         <HandbookPolicy appeal={appeal} />
+
+        {/* 0b.5. INDUSTRY CONTEXT — practice standards + hearing questions */}
+        <IndustryContext appeal={appeal} />
 
         {/* 0c. ISSUES FOR STC DETERMINATION (renders only when issues[] is non-empty) */}
         <IssuesForDetermination appeal={appeal} />

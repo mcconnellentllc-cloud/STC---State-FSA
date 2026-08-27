@@ -1783,6 +1783,75 @@
     ],
     "exhibits": [
       { "label": "Beeutiful Things Agency Record (136 pages)", "note": "[PENDING FILE URL] — Upload to /documents or provide Teams SharePoint URL" }
-    ]
+    ],
+    "industryContext": {
+      "title": "Colony Collapse — Standard Beekeeping Preventive Treatments",
+      "framing": "There is no single medicine that prevents Colony Collapse Disorder — CCD is a syndrome, not a single disease. Responsible beekeepers treat the underlying stressors that drive CCD-like collapse. The producer's compliance with these standard practices is directly relevant to whether the loss is properly attributable to CCD (an eligible cause of loss) versus unmanaged mite or pathogen load (a good-management failure).",
+      "categories": [
+        {
+          "name": "Varroa mite control (primary CCD driver)",
+          "note": "Varroa destructor mites are the primary vector for the viruses (Deformed Wing Virus, IAPV, ABPV) implicated in CCD. Uncontrolled Varroa is the single biggest CCD risk factor — a beekeeper with no documented mite management program has a hard time attributing losses to CCD rather than to Varroa.",
+          "treatments": [
+            { "name": "Amitraz", "brand": "Apivar", "type": "Synthetic miticide", "note": "Most widely used — slow-release strips" },
+            { "name": "Oxalic acid", "brand": "—", "type": "Organic acid", "note": "Cheap, effective; vaporization or drip application" },
+            { "name": "Formic acid", "brand": "Formic Pro / MAQS", "type": "Organic acid", "note": "Penetrates capped brood — one of few treatments that does" },
+            { "name": "Thymol", "brand": "Apiguard, ApiLife VAR", "type": "Essential oil", "note": "Temperature-sensitive; effective in warm weather" },
+            { "name": "Hop beta acids", "brand": "HopGuard", "type": "Botanical extract", "note": "Organic, honey-flow compatible" }
+          ]
+        },
+        {
+          "name": "Nosema (noh-SEE-muh) treatments",
+          "note": "Gut microsporidian parasite (N. apis, N. ceranae). Contributes to colony weakening — not a direct CCD cause but a co-stressor. Antibiotic option is limited in the US since 2019.",
+          "treatments": [
+            { "name": "Fumagillin", "brand": "Fumagilin-B", "type": "Antibiotic", "note": "Historically the standard; US supply has been intermittent since 2019" }
+          ]
+        },
+        {
+          "name": "Foulbrood antibiotics (bacterial diseases)",
+          "note": "All bee antibiotics now require a Veterinary Feed Directive (VFD) — vet prescription — under the 2017 rule change.",
+          "treatments": [
+            { "name": "Terramycin (oxytetracycline)", "brand": "—", "type": "Antibiotic (VFD required)", "note": "American / European foulbrood" },
+            { "name": "Tylan (tylosin)", "brand": "—", "type": "Antibiotic (VFD required)", "note": "American foulbrood" },
+            { "name": "Lincomycin", "brand": "—", "type": "Antibiotic (VFD required)", "note": "American foulbrood" }
+          ]
+        },
+        {
+          "name": "Nutritional support (not medicine, but critical for CCD resilience)",
+          "note": "Poor nutrition weakens colonies and amplifies every other stressor. Standard practice includes supplemental feeding in fall pre-migration and spring post-almond.",
+          "treatments": [
+            { "name": "Pollen substitute patties", "brand": "MegaBee, Global, Ultra Bee, Bee-Pro", "type": "Protein supplement", "note": "Fed in fall + spring to build brood" },
+            { "name": "Sugar syrup with essential oils", "brand": "Honey-B-Healthy", "type": "Feeding stimulant (thymol / lemongrass)", "note": "Standard fall feeding additive" },
+            { "name": "Probiotics", "brand": "SuperDFM-HoneyBee", "type": "Gut flora supplement", "note": "Growing use in commercial operations" }
+          ]
+        }
+      ],
+      "hearingQuestions": [
+        {
+          "question": "Did the producer monitor Varroa mite loads on a documented schedule?",
+          "expectedAnswer": "Alcohol wash or sugar shake tests conducted at least quarterly, with written mite-count logs.",
+          "whyItMatters": "No mite monitoring = no basis to attribute collapse to CCD versus Varroa. If mite counts were never taken, the CCD claim becomes indistinguishable from an unmanaged infestation — which is a management failure, not an eligible cause of loss."
+        },
+        {
+          "question": "What Varroa treatment did the producer apply in fall 2024 and spring 2025, and when?",
+          "expectedAnswer": "Fall treatment (typically Apivar or Formic Pro) after honey pull, and a spring rotation before almond pollination departure. Product name, application dates, and quantities in a written log.",
+          "whyItMatters": "Migratory operations that ship to almond pollination without a documented fall Varroa treatment carry substantially elevated collapse risk. A missing fall treatment on the 2024 record undercuts the CCD attribution for 2025 losses."
+        },
+        {
+          "question": "Is there a Nosema test result or fumagillin treatment in the 2024–2025 record?",
+          "expectedAnswer": "Ideally, a Nosema spore count from a lab (Beltsville USDA lab or a state ag lab) and a treatment decision documented from the result.",
+          "whyItMatters": "Nosema is a common co-stressor in California-almond migratory operations. Failure to test or treat weakens the CCD attribution."
+        },
+        {
+          "question": "Is the operation enrolled in the USDA National Honey Bee Survey or the Bee Informed Partnership's monitoring program?",
+          "expectedAnswer": "Enrollment confirmation letter or lab-result correspondence from the past 24 months.",
+          "whyItMatters": "Enrollment demonstrates the producer is engaged with the industry's standard monitoring practices. Absence isn't disqualifying but its presence bolsters CCD-attribution credibility."
+        },
+        {
+          "question": "Where are the treatment application records (product, date, hive/yard identifier, applicator name)?",
+          "expectedAnswer": "A paper or electronic log kept contemporaneously with each treatment.",
+          "whyItMatters": "Ties into the 1-ELAP par 170 30-day reporting question already on the record — the CCC-771 inconsistency problem is a documentation problem, and the treatment log is part of the same broader question about whether the operation kept contemporaneous records at all."
+        }
+      ]
+    }
   }
 ]
