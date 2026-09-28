@@ -1,11 +1,44 @@
 import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 
-// Aug 27, 2026 agenda × packet-page map. Page numbers are best estimates from
-// the packet structure — editable inline in the UI; overrides persist to
-// localStorage per user. Add new meetings by defining a second AGENDA entry
-// keyed by meeting date; the route currently only wires 2026-08-27.
+// Meeting agenda × packet-page maps for the Live Follow page. Page numbers
+// are best estimates from packet structure — editable inline in the UI;
+// overrides persist to localStorage per user. Add new meetings by defining
+// another AGENDAS entry keyed by meeting date; routing is via
+// /board-meetings/:date/follow (see App.jsx).
 const AGENDAS = {
+  '2026-09-29': {
+    title: 'Sept 29, 2026 — Exec (11:00 AM)',
+    docs: {
+      EXEC:  { label: 'Exec Session Packet (313 pp)', pages: 313, tone: '#1E4A8A' },
+      CEY:   { label: 'Item 8 — CEY (Jerry, separate)', pages: null, tone: '#B91C1C' },
+      OTPP:  { label: 'Item 9a — Otero PP Discussion (25 pp)', pages: 25, tone: '#D97706' },
+      PROW:  { label: 'Walk-on — Prowers 321 (13 pp)', pages: 13, tone: '#6D28D9' },
+      CRPSC: { label: 'Item 5.c — STC-member CRP (separate)', pages: null, tone: '#64748B' },
+      ECPCC: { label: 'Item 7.c — Archuleta COC-member ECP (separate)', pages: null, tone: '#64748B' },
+    },
+    sessions: [
+      { session: 'Executive Session', start: '11:00 AM', items: [
+        { n: '1',    t: 'Call to Order' },
+        { n: '2',    t: 'Approve Executive Session Minutes', type: 'action' },
+        { n: '3.a',  t: 'LFP — STO Employee 2026 Apps (Rader)', type: 'action', doc: 'EXEC', page: 3 },
+        { n: '4.a.1', t: 'NCT — Delta Grapes ARO (new type)', type: 'action', doc: 'EXEC', page: 49 },
+        { n: '4.a.2', t: 'NCT — La Plata Beets Hyb (new crop)', type: 'action', doc: 'EXEC', page: 73 },
+        { n: '5.a',  t: 'CRP — Virtual Fencing PY26 Cost Share', type: 'action', doc: 'EXEC', page: 125 },
+        { n: '5.b',  t: 'CRP — Grassland Signup 208 — STC MEMBER', type: 'action', doc: 'EXEC', page: 135, alt: '⚠ STC-member offer — confirm recusal' },
+        { n: '5.c',  t: 'CRP — Signup Offer — STC MEMBER (separate)', type: 'action', doc: 'CRPSC', alt: '⚠ STC-member offer — confirm recusal' },
+        { n: '6.a',  t: 'EFRP — Virtual Fencing PY26 Cost Share', type: 'action', doc: 'EXEC', page: 246 },
+        { n: '7.a',  t: 'ECP — Baca Land Value Review (no action)', type: 'discussion', doc: 'EXEC', page: 258 },
+        { n: '7.b',  t: 'ECP — Moffat / J. Halandras', type: 'action', doc: 'EXEC', page: 262 },
+        { n: '7.c',  t: 'ECP — Archuleta COC MEMBER (separate)', type: 'action', doc: 'ECPCC', alt: 'COC-member application' },
+        { n: '8',    t: 'NAP — SED CEY Discussion (60 min)', type: 'discussion', doc: 'CEY', alt: 'Separate file — 1,309-row workbook; staff analysis in scratchpad' },
+        { n: '9.a',  t: 'Otero PP — 36 producers — Staff asks REVERSE', type: 'action', doc: 'OTPP', page: 1, alt: 'Doug Andresen — see Discussion Record tab' },
+        { n: '9.b',  t: 'Otero — Other (Dara Belew)', type: 'discussion' },
+        { n: 'W',    t: 'WALK-ON — Prowers ARC/PLC 321 Adams Family', type: 'action', doc: 'PROW', page: 1, alt: 'Not on printed agenda — walk-on likely' },
+        { n: '10',   t: 'Adjourn Executive Session' },
+      ]},
+    ],
+  },
   '2026-08-27': {
     title: 'Aug 27, 2026',
     docs: {

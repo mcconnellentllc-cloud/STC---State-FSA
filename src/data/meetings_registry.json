@@ -2,6 +2,34 @@
   "_description": "Registry of Colorado FSA STC meetings the site knows about. Each entry maps a meeting date to its index JSON (if parsed) plus lightweight metadata for the /board-meetings index. Add new meetings here when project delivers parsed data.",
   "meetings": [
     {
+      "date": "2026-09-29",
+      "title": "STC Meeting — September 29, 2026",
+      "location": "Denver Federal Center (Lakewood, CO) OR Virtual via Teams",
+      "sessions": [
+        "Executive Session (11:00 AM)"
+      ],
+      "status": "upcoming",
+      "indexFile": "meeting_2026-09-29_index",
+      "actionCount": 12,
+      "hasAppeals": false,
+      "priorMeetingRef": "2026-09-24",
+      "note": "EXECUTIVE ONLY at 11:00 AM (313-page packet). Guest: Dara Belew (CED) for Otero items. THE BIG DAY. Item 8 — SED-led CEY discussion (60 min, 1,309-row reconsideration). Item 9a — Otero/Crowley Prevent Plant, staff (Andresen) explicitly asking STC to reverse 36 prior denials. Walk-on likely: Prowers ARC/PLC 321 Adams Family LLC misaction (2025 payments issue this month). STC-member CRP recusals at 5.b, 5.c. Archuleta COC-member ECP at 7.c."
+    },
+    {
+      "date": "2026-09-24",
+      "title": "STC Meeting — September 24, 2026",
+      "location": "Denver Federal Center (Lakewood, CO) OR Virtual via Teams",
+      "sessions": [
+        "Regular Session (9:00 AM)"
+      ],
+      "status": "past",
+      "indexFile": "meeting_2026-09-24_index",
+      "actionCount": 0,
+      "hasAppeals": false,
+      "priorMeetingRef": "2026-08-27",
+      "note": "REPORTS ONLY (no votes). SED Jerry Sonnenberg's report: CEY repair is his top priority; held producer meetings at Pueblo State Fair, Delta, Grand Junction; met CSU Extension. Staffing update: hiring CEDs (Sedgwick, Phillips, Saguache/Rio Grande) + Farm Loan Chief + PAs across multiple counties. Weld office lease targeting June 2027. Next meeting scheduled Sept 29."
+    },
+    {
       "date": "2026-08-27",
       "title": "STC Meeting \u2014 August 27, 2026",
       "location": "Denver Federal Center (Lakewood, CO) OR Virtual via Teams",
