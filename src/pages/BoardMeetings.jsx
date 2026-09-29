@@ -11,7 +11,6 @@ import may28 from "../data/meeting_2026-05-28_index.json";
 import jun24 from "../data/meeting_2026-06-24_index.json";
 import july23 from "../data/meeting_2026-07-23_index.json";
 import aug27 from "../data/meeting_2026-08-27_index.json";
-import sep24 from "../data/meeting_2026-09-24_index.json";
 import sep29 from "../data/meeting_2026-09-29_index.json";
 
 const MEETING_DATA = {
@@ -25,7 +24,6 @@ const MEETING_DATA = {
   "2026-06-24": jun24,
   "2026-07-23": july23,
   "2026-08-27": aug27,
-  "2026-09-24": sep24,
   "2026-09-29": sep29,
 };
 
