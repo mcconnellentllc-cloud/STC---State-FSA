@@ -443,6 +443,20 @@
       }
     ]
   },
+  "meeting_notes": [
+    {
+      "id": "SDRP-TOTALS-CO",
+      "topic": "SDRP Colorado Payment Totals",
+      "detail": "Stage 1: $204 million. Stage 2: $21 million. ~10:1 ratio — Stage 1 dominant. Total SDRP flowing to Colorado producers ~$225M.",
+      "source": "Stated at Sept 29 meeting"
+    },
+    {
+      "id": "GS-STAFFING-GOAL-40",
+      "topic": "Long-Range GS Staffing Goal",
+      "detail": "Target of 40 GS positions filled. Referenced as a long-range operational goal for the Colorado State Office.",
+      "source": "Stated at Sept 29 meeting"
+    }
+  ],
   "flags": [
     {
       "id": "CEY-DATA-QUALITY",
