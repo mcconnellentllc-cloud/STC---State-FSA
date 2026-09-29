@@ -244,6 +244,22 @@ function MeetingDetail({ date }) {
           </div>
         )}
 
+        {data.meeting_notes?.length > 0 && (
+          <div style={{ marginBottom: 24 }}>
+            <SectionTitle>Meeting Notes ({data.meeting_notes.length})</SectionTitle>
+            {data.meeting_notes.map(n => (
+              <div key={n.id} style={{ background: "#fff", border: `1px solid ${C.gold}`, borderLeft: `4px solid ${C.gold}`, borderRadius: 6, padding: "10px 14px", marginBottom: 6 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
+                  <Badge bg="#FEF3C7" c={C.gold}>NOTE</Badge>
+                  <span style={{ fontSize: 12.5, fontWeight: 700, color: C.navy, ...serif }}>{n.topic}</span>
+                </div>
+                <div style={{ fontSize: 12.5, color: C.navy, lineHeight: 1.6 }}>{n.detail}</div>
+                {n.source && <div style={{ fontSize: 10, color: C.slate, marginTop: 4, ...mono }}>{n.source}</div>}
+              </div>
+            ))}
+          </div>
+        )}
+
         {data.flags?.length > 0 && (
           <div style={{ marginBottom: 24 }}>
             <SectionTitle>Data-Quality Flags ({data.flags.length})</SectionTitle>
