@@ -1,6 +1,7 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useEffect, useMemo, useState } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
+import meetingsRegistry from '../data/meetings_registry.json';
 
 const memberLinks = [
   { to: '/', label: 'Dashboard', icon: '▣' },
@@ -33,6 +34,117 @@ const adminResourceLinks = [
   { to: '/settings', label: 'Settings', icon: '⚙' },
 ];
 
+const MONTH_NAMES = [
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December',
+];
+
+// Compact Year / Month picker for the sidebar. Reads meetings_registry
+// directly so it stays in sync with whatever meetings are on file. When both
+// dropdowns are set, matching meetings render as clickable rows underneath
+// (multiple rows only when a month has more than one meeting, e.g. Feb 10/11).
+function MeetingPicker() {
+  const navigate = useNavigate();
+  const meetings = useMemo(
+    () => [...(meetingsRegistry?.meetings || [])].sort((a, b) => b.date.localeCompare(a.date)),
+    []
+  );
+
+  const [year, setYear] = useState('');
+  const [month, setMonth] = useState('');
+
+  const years = useMemo(() => {
+    const s = new Set(meetings.map(m => m.date.slice(0, 4)));
+    return [...s].sort((a, b) => b.localeCompare(a));
+  }, [meetings]);
+
+  const monthsForYear = useMemo(() => {
+    const rows = year ? meetings.filter(m => m.date.startsWith(year + '-')) : meetings;
+    const s = new Set(rows.map(m => m.date.slice(5, 7)));
+    return [...s].sort((a, b) => b.localeCompare(a));
+  }, [meetings, year]);
+
+  useEffect(() => {
+    if (month && !monthsForYear.includes(month)) setMonth('');
+  }, [month, monthsForYear]);
+
+  const matches = useMemo(() => {
+    if (!year || !month) return [];
+    return meetings.filter(m => m.date.startsWith(`${year}-${month}`));
+  }, [meetings, year, month]);
+
+  const selectStyle = {
+    width: '100%',
+    padding: '6px 8px',
+    background: 'rgba(255,255,255,0.08)',
+    border: '1px solid rgba(255,255,255,0.15)',
+    borderRadius: 4,
+    color: 'inherit',
+    fontSize: '0.82rem',
+    fontFamily: 'inherit',
+    cursor: 'pointer',
+    marginBottom: 6,
+  };
+
+  return (
+    <div style={{ padding: '10px 14px 6px', borderTop: '1px solid rgba(255,255,255,0.1)', borderBottom: '1px solid rgba(255,255,255,0.1)', margin: '6px 0' }}>
+      <div style={{ fontSize: '0.7rem', letterSpacing: '0.08em', textTransform: 'uppercase', opacity: 0.6, marginBottom: 8 }}>
+        Jump to Meeting
+      </div>
+      <select value={year} onChange={e => setYear(e.target.value)} style={selectStyle} aria-label="Year">
+        <option value="">Year…</option>
+        {years.map(y => <option key={y} value={y}>{y}</option>)}
+      </select>
+      <select
+        value={month}
+        onChange={e => setMonth(e.target.value)}
+        style={{ ...selectStyle, opacity: monthsForYear.length ? 1 : 0.5 }}
+        disabled={!monthsForYear.length}
+        aria-label="Month"
+      >
+        <option value="">Month…</option>
+        {monthsForYear.map(mm => (
+          <option key={mm} value={mm}>{MONTH_NAMES[parseInt(mm, 10) - 1]}</option>
+        ))}
+      </select>
+      {year && month && matches.length === 0 && (
+        <div style={{ fontSize: '0.75rem', opacity: 0.6, padding: '4px 0' }}>No meeting</div>
+      )}
+      {matches.length === 1 && (
+        <button
+          onClick={() => { navigate(`/board-meetings/${matches[0].date}`); }}
+          style={{
+            width: '100%', textAlign: 'left', padding: '6px 8px',
+            background: 'rgba(200,149,42,0.15)', border: '1px solid rgba(200,149,42,0.4)',
+            borderRadius: 4, color: 'inherit', fontSize: '0.82rem', fontWeight: 600,
+            cursor: 'pointer', marginTop: 2,
+          }}
+        >
+          Open {matches[0].date}
+        </button>
+      )}
+      {matches.length > 1 && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 4, marginTop: 2 }}>
+          {matches.map(m => (
+            <button
+              key={m.date}
+              onClick={() => { navigate(`/board-meetings/${m.date}`); }}
+              style={{
+                textAlign: 'left', padding: '6px 8px',
+                background: 'rgba(200,149,42,0.15)', border: '1px solid rgba(200,149,42,0.4)',
+                borderRadius: 4, color: 'inherit', fontSize: '0.8rem', fontWeight: 600,
+                cursor: 'pointer',
+              }}
+            >
+              Open {m.date}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function Sidebar() {
   const { user, profile, isAdmin, logout } = useAuth();
 
@@ -64,6 +176,7 @@ export default function Sidebar() {
             <span>{label}</span>
           </NavLink>
         ))}
+        <MeetingPicker />
         <div className="sidebar-divider">Resources</div>
         {resourceLinks.map(({ to, label, icon }) => (
           <NavLink
