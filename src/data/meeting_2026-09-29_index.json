@@ -455,6 +455,12 @@
       "topic": "Long-Range GS Staffing Goal",
       "detail": "Target of 40 GS positions filled. Referenced as a long-range operational goal for the Colorado State Office.",
       "source": "Stated at Sept 29 meeting"
+    },
+    {
+      "id": "VIRTUAL-FENCE-COSTS-2026",
+      "topic": "Virtual Fence Collar Costs — Rate-Setting Reference (Items 5a / 6a)",
+      "detail": "Two structural cost approaches: (1) BASE-STATION SYSTEMS — Vence ~$40/collar/yr subscription + $10-12.5K base station + $18-24/head/yr data; Gallagher eShepherd $250/collar (3-yr warranty) + ~$5K base station (only where cell weak) + ~$18/collar/yr; Halter bundled collars + ~$4.5K infrastructure + ~$84/head/yr. Best economics at larger herds amortizing base station. (2) CELLULAR / NO BASE STATION — Nofence $289-$345/collar (5-yr warranty), no base station, subscription $54-$78/collar/yr after Yr-1 waiver. Higher collar capex but scales linearly, better for smaller/scattered herds. 200-head first-year ballpark: Vence ~$22K, Halter ~$21K, Gallagher ~$55K, Nofence ~$58K. NRCS EQIP 645 (Fence — Virtual) 2025 CO payment schedule runs ~$100-$150/head — worth cross-checking so CRP/EFRP rate stays aligned with NRCS.",
+      "source": "Research pulled during Sept 29 meeting; vendor and public rate data 2025-Feb 2026"
     }
   ],
   "flags": [
