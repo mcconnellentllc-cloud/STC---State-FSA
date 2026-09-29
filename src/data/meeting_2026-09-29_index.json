@@ -1,0 +1,494 @@
+{
+  "schema_version": "1.0",
+  "index_title": "Colorado STC — September 29, 2026 Meeting — Executive Session Packet Index",
+  "generated_for": "STC Colorado / Sept 29 prep",
+  "meeting": {
+    "body": "USDA FSA Colorado State Committee (STC)",
+    "meeting_date": "2026-09-29",
+    "location": "Colorado State Office · Denver Federal Center · Lakewood CO 80225 · OR Virtual Meeting via Teams",
+    "phone_conference": "970-812-0909 · ID: 702540090#",
+    "committee_members_source": "Aug 27, 2026 Regular Session Minutes",
+    "committee_members": [
+      "Don Brown, Chairperson",
+      "Kyle McConnell, Member",
+      "Steve Raftopoulos, Member",
+      "Joe Petrocco, Member",
+      "Darrell Mackey, Member"
+    ],
+    "guests": [
+      { "name": "Dara Belew, CED", "for": "Otero COC items only (Item 9)" }
+    ],
+    "recusals": [],
+    "sessions": [
+      {
+        "session": "Executive Session",
+        "start_time": "11:00",
+        "packet_file": "26.09.29_ADMIN_Colorado_STC_Executive_Session_Packet.pdf",
+        "agenda_items": [
+          {
+            "number": "1",
+            "title": "Call to Order",
+            "action_type": "Procedural",
+            "documents": []
+          },
+          {
+            "number": "2",
+            "title": "Approve Executive Session Minutes",
+            "presenter": "Cindy Vukasin, Farm Program Chief",
+            "action_type": "Action Item",
+            "key_facts": {
+              "summary": "Approve minutes from the prior Executive Session (Aug 27).",
+              "staff_recommendation": "Approve as presented.",
+              "pros_for": [
+                "Standard procedural approval — minutes reflect what happened",
+                "Aug 27 Exec set the CEY discussion in motion (Item 5) that returns tomorrow as Item 8 — approving keeps the record continuous"
+              ],
+              "cons_risks": [
+                "Verify the Aug 27 minutes accurately capture the DD delegation for CCC-576s that passed in Regular session that day",
+                "Confirm the record reflects the Otero PP determinations Doug is asking STC to reconsider (Item 9a)"
+              ]
+            }
+          },
+          {
+            "number": "3.a",
+            "title": "LFP — STO Employee 2026 LFP Applications",
+            "presenter": "Cindy Vukasin, Farm Program Chief",
+            "program": "LFP",
+            "action_type": "Action Item",
+            "time_allotted_min": 5,
+            "packet_page_anchor": 3,
+            "key_facts": {
+              "summary": "Carrying from Aug 27 Item 4a — LFP applications for Rader family (Janae + Blake) in Otero County.",
+              "producers": "Janae Rader (Farm Program Specialist) + Blake Rader (husband) — each 50% share",
+              "county": "Otero (2026 LFP)",
+              "policy": "STO-employee LFP requires STC action per policy reaffirmed March 24, 2026",
+              "cause": "Drought — Otero qualified April 14, 2026, start date April 1, 2026",
+              "livestock": "114 Beef Adults — Cows and Bulls",
+              "grazing_land": "Native pasture, 57 AUs (federal lease recorded as AUM)",
+              "additional": "Raders will also file with Las Animas County (second-county 2026)",
+              "staff_recommendation": "Approve 2026 LFP applications for Janae Rader and Blake Rader in Otero County.",
+              "pros_for": [
+                "Standard STO-employee approval — process functioning as intended",
+                "Cause (drought) is documented via LFP county qualification date",
+                "Livestock counts and grazing land documented"
+              ],
+              "cons_risks": [
+                "STO employee applications warrant scrutiny — verify no procedural cuts",
+                "Confirm Las Animas second-county filing tracked correctly"
+              ]
+            }
+          },
+          {
+            "number": "4.a.1",
+            "title": "NAP NCT — Delta — Grapes ARO — Fh Pr Ir (New Type)",
+            "presenter": "Janae Rader, Farm Program Specialist",
+            "program": "NAP",
+            "action_type": "Action Item",
+            "time_allotted_min": 10,
+            "packet_page_anchor": 49,
+            "key_facts": {
+              "summary": "Add ARO type to Delta grapes coverage (Fresh, Processing, Irrigated).",
+              "matter": "New type addition to existing Delta Grapes NAP coverage",
+              "county": "Delta",
+              "staff_recommendation": "Approve as presented (typical NCT new-crop pattern).",
+              "pros_for": [
+                "Extends coverage for a documented CO specialty crop",
+                "No conflict flagged in existing CEY table for Delta Grapes"
+              ],
+              "cons_risks": [
+                "Verify Rader has NASS/Extension basis for the price and yield used",
+                "Confirm ARO is not RMA-insurable in Delta (NAP requires non-insurability)"
+              ]
+            }
+          },
+          {
+            "number": "4.a.2",
+            "title": "NAP NCT — La Plata — Beets Hyb — Fr Ir (New Crop)",
+            "presenter": "Janae Rader, Farm Program Specialist",
+            "program": "NAP",
+            "action_type": "Action Item",
+            "time_allotted_min": 10,
+            "packet_page_anchor": 73,
+            "key_facts": {
+              "summary": "New Beets Hybrid Fresh Irrigated crop coverage for La Plata County.",
+              "matter": "New crop request",
+              "county": "La Plata",
+              "staff_recommendation": "Approve as presented.",
+              "pros_for": [
+                "La Plata Beets HYB FH I not currently in CEY table — fills a coverage gap",
+                "Consistent with adjacent-county Beets HYB FH I coverage (Crowley, Otero)"
+              ],
+              "cons_risks": [
+                "New crop with no La Plata production history — CEY set from contiguous-county comparables",
+                "Verify no RMA insurability in La Plata"
+              ]
+            }
+          },
+          {
+            "number": "5.a",
+            "title": "CRP — PY26 Cost Share Establishment — Virtual Fencing",
+            "presenter": "Hunter A. Cleveland, Farm Program Specialist",
+            "program": "CRP",
+            "action_type": "Action Item",
+            "time_allotted_min": 10,
+            "packet_page_anchor": 125,
+            "key_facts": {
+              "summary": "New CRP PY26 cost-share component for virtual fencing (companion to Item 6a EFRP virtual fencing).",
+              "matter": "STC to approve, modify, or reject the rate for virtual fencing under CRP",
+              "staff_recommendation": "Establish rate as presented in packet.",
+              "pros_for": [
+                "Virtual fencing is a well-documented modern practice — cost data mature enough to set a rate",
+                "Consistent CRP + EFRP treatment (paired with Item 6a) creates cross-program symmetry"
+              ],
+              "cons_risks": [
+                "Verify the rate reflects Colorado-specific cost data, not a national fallback",
+                "Confirm the rate is not below installation cost (rate too low deters uptake)"
+              ]
+            }
+          },
+          {
+            "number": "5.b",
+            "title": "CRP — Grassland CRP Signup 208 Offer Review — STC Member",
+            "presenter": "Hunter A. Cleveland, Farm Program Specialist",
+            "action_type": "Action Item",
+            "time_allotted_min": 5,
+            "packet_page_anchor": 135,
+            "note": "STC-MEMBER offer — the affected member must recuse. Confirm who before the meeting.",
+            "flags": [
+              "RECUSAL: an STC member has a Grassland CRP Signup 208 offer under review. That member cannot participate."
+            ],
+            "key_facts": {
+              "summary": "One STC member has a Grassland CRP Signup 208 offer requiring committee approval.",
+              "matter": "STC-member CRP offer review",
+              "staff_recommendation": "Standard review; affected member recuses.",
+              "pros_for": [
+                "STC review of STC-member offers is a required conflict-of-interest safeguard",
+                "Committee has done this at prior meetings (Aug 27 Item 7a.3, 7a.4)"
+              ],
+              "cons_risks": [
+                "Verify quorum holds without the recused member",
+                "Ensure recusal is logged on the record with the member's absence for this item only"
+              ]
+            }
+          },
+          {
+            "number": "5.c",
+            "title": "CRP — CRP Signup Offer Review — STC Member (Separate File)",
+            "presenter": "Hunter A. Cleveland, Farm Program Specialist",
+            "action_type": "Action Item",
+            "time_allotted_min": 5,
+            "note": "SECOND STC-member CRP offer — separate file. Different member than 5b (otherwise wouldn't be broken out).",
+            "flags": [
+              "RECUSAL: another STC member has a CRP signup offer under review. That member cannot participate."
+            ],
+            "key_facts": {
+              "summary": "Second STC-member CRP offer review (different member from 5b).",
+              "matter": "STC-member CRP signup offer",
+              "staff_recommendation": "Standard review; affected member recuses.",
+              "pros_for": [
+                "Same conflict-of-interest safeguard as 5b",
+                "Separate handling from 5b means clear one-member-recused-per-item posture"
+              ],
+              "cons_risks": [
+                "Verify quorum holds without the recused member",
+                "If Kyle is either 5b or 5c, confirm exposure before the meeting starts"
+              ]
+            }
+          },
+          {
+            "number": "6.a",
+            "title": "EFRP — PY26 Cost Share Establishment — Virtual Fencing",
+            "presenter": "Hunter A. Cleveland, Farm Program Specialist",
+            "program": "EFRP",
+            "action_type": "Action Item",
+            "time_allotted_min": 10,
+            "packet_page_anchor": 246,
+            "key_facts": {
+              "summary": "EFRP cost-share for virtual fencing — companion to 5a CRP virtual fencing.",
+              "matter": "Establish EFRP virtual fencing rate",
+              "staff_recommendation": "Establish rate consistent with Item 5a.",
+              "pros_for": [
+                "Pairs with 5a for consistent CRP/EFRP treatment of the same practice",
+                "Removes friction for producers using virtual fencing in EFRP-eligible restoration"
+              ],
+              "cons_risks": [
+                "EFRP is 75% cost share vs CRP 50% — verify the rates are set at the correct percentages",
+                "Confirm no rate cap issue vs. National Office guidance"
+              ]
+            }
+          },
+          {
+            "number": "7.a",
+            "title": "ECP — Average Market Land Value Review — Baca County",
+            "presenter": "Hunter A. Cleveland, Farm Program Specialist",
+            "program": "ECP",
+            "action_type": "Informational",
+            "time_allotted_min": 5,
+            "packet_page_anchor": 258,
+            "key_facts": {
+              "summary": "No action — annual review per 1-ECP ¶179C (ECP C/S ≤ 50% of ag market value unless DAFP waives).",
+              "matter": "Annual STC review of Baca COC land value determinations",
+              "authority": "1-ECP (Rev. 8) ¶179C",
+              "pros_for": [
+                "Standard annual review — required duty",
+                "Sets baseline for any Baca ECP applications in the coming year"
+              ],
+              "cons_risks": [
+                "Ask whether Baca is receiving ECP applications this cycle (if yes, the values matter operationally)",
+                "Confirm COC-set values documented at COC level"
+              ]
+            }
+          },
+          {
+            "number": "7.b",
+            "title": "ECP Application Review — Moffat County — J. Halandras",
+            "presenter": "Hunter A. Cleveland, Farm Program Specialist",
+            "program": "ECP",
+            "action_type": "Action Item",
+            "time_allotted_min": 10,
+            "packet_page_anchor": 262,
+            "key_facts": {
+              "summary": "Individual ECP application from producer J. Halandras in Moffat County.",
+              "matter": "Merits review of the application",
+              "staff_recommendation": "Review packet material; act on the merits.",
+              "pros_for": [
+                "Individual producer relief in a documented drought/disaster context",
+                "ECP process functioning as intended"
+              ],
+              "cons_risks": [
+                "Verify the application meets standard ECP eligibility criteria",
+                "Ensure cost-share request stays within program limits (50% ceiling per 1-ECP ¶179C)"
+              ]
+            }
+          },
+          {
+            "number": "7.c",
+            "title": "ECP Application Review and Approval — COC Member — Archuleta County (Separate File)",
+            "presenter": "Hunter A. Cleveland, Farm Program Specialist",
+            "program": "ECP",
+            "action_type": "Action Item",
+            "time_allotted_min": 10,
+            "note": "COC-MEMBER application — requires STC action.",
+            "flags": [
+              "COC-member application requires mandatory STC review per handbook."
+            ],
+            "key_facts": {
+              "summary": "Archuleta COC member has an ECP application requiring STC-level action.",
+              "matter": "COC-member ECP application",
+              "staff_recommendation": "Review and act on the merits.",
+              "pros_for": [
+                "Mandatory STC review is a standard COC-member safeguard",
+                "Application handled openly on the record"
+              ],
+              "cons_risks": [
+                "Ensure consistency with how other COC-member ECP applications have been treated (no favoritism, no over-restriction)",
+                "Kyle: confirm no Archuleta ties before voting"
+              ]
+            }
+          },
+          {
+            "number": "8",
+            "title": "NAP — SED Discussion and Presentation on CEY",
+            "presenter": "Jerry Sonnenberg, State Executive Director",
+            "program": "NAP",
+            "action_type": "Discussion",
+            "time_allotted_min": 60,
+            "note": "THE main event — 60-minute SED-led discussion. Separate file contains the CEY workbook (26.08.27_NAP_CEY Data_Jerry.xlsx, 39 tabs, 1,309 rows). Full analysis in scratchpad.",
+            "flags": [
+              "82.3% of the 1,309 CEY rows are yellow (below 95% of their own multi-year average) — Jerry is asking STC to fix",
+              "Data-quality suspects: Sugar Beet Yuma (unit anomaly + Woody's RMA-insurable finding), Sorghum Montezuma (single 2027 stub value = 1.0 bu/ac), Onions Red 27.09 (identical value stamped across Otero/Crowley/Fremont — propagation error)",
+              "Jerry's methodology (arithmetic mean 2018-2026) differs from 1-NAP standard (5-year Olympic average) — worth noting in any motion"
+            ],
+            "key_facts": {
+              "summary": "SED-led discussion on whether/how to revise NAP County Expected Yields (CEY) that Jerry says have been systematically depressed by using disaster-year production data.",
+              "matter": "Reconsider how CEYs are set across 1,309 rows (63 crops × 65 counties)",
+              "authority": "1-NAP handbook — CEY should reflect 'average production potential… STC should ensure that the yield information is comparable with previously approved yields and justify any deviations'",
+              "sed_position": "Current CEYs violate the handbook standard; 82.3% of rows are below their own average, some as low as 17% of average",
+              "moral_hazard_answer": "Lincoln County sorghum: 23 bu × $4.61 × 65% = $68.92/ac NAP guarantee — nowhere near break-even. Producers cannot game NAP at those levels",
+              "options_on_the_table": [
+                "1. 95-105% band normalize (touches 1,240 rows / 94.7%)",
+                "2. Do nothing (0 rows)",
+                "3. 'Do no harm' floor at 100% (raises 1,137 rows / 86.9%)",
+                "4. Combination / case-by-case"
+              ],
+              "middle_path_motion": "Direct SED + FPC to (a) reconcile data-quality issues flagged (Sugar Beet Yuma, Sorghum Montezuma, Onions Red statewide, Mixed Forage baselines) and (b) propose a specific CEY methodology (Olympic vs arithmetic, symmetric vs one-way) for STC adoption at October regular meeting",
+              "pros_for": [
+                "1-NAP handbook language Jerry cites is authentic and Jerry's reading is defensible",
+                "82.3% yellow is not a rounding issue — it's systematic depression relative to production potential",
+                "Otero/Crowley are among the most-suppressed counties (78.8% and 87.7% yellow respectively) — ties directly to the Item 9a Otero PP question",
+                "Producer safety net is measurably reduced by current CEYs — Lincoln sorghum guarantee at $68.92/ac makes the moral-hazard concern implausible",
+                "Jerry has spent weeks gathering primary producer data (Pueblo State Fair, Delta, Grand Junction, CSU Extension) — proposal is not underprepared"
+              ],
+              "cons_risks": [
+                "Options 1 and 3 both touch 87-95% of the entire CEY table — mass revision on a same-morning email creates documentation burden",
+                "Option 3 is asymmetric (floor without ceiling) — 'not a formula, a policy'",
+                "Jerry's arithmetic mean methodology differs from the 1-NAP-standard 5-year Olympic average — approving Option 1/3 without noting this creates a documentation gap",
+                "103 blue rows (≥106% of avg) would be CUT under Option 1 — those may reflect prior STC deviations justified in the record",
+                "Data-quality problems (identical-value propagation, unit anomalies, single-year stubs) should be fixed regardless of policy option — voting on those rows as-is bakes in errors"
+              ]
+            }
+          },
+          {
+            "number": "9.a",
+            "title": "Otero County — Prevent Plant — Review Previous Determinations",
+            "presenter": "Doug Andresen, Farm Program Specialist (via Dara Belew, CED for Otero as guest)",
+            "program": "NAP / Prevent Plant / Compliance",
+            "action_type": "Action Item",
+            "time_allotted_min": 30,
+            "note": "STAFF IS ASKING FOR REVERSAL. Doug Andresen's discussion record explicitly requests STC reconsider its Aug prior determinations. This is not a neutral presentation.",
+            "flags": [
+              "36 Otero/Crowley producers denied Prevent Plant — this is the scope",
+              "STC 'acting as the Otero COC' — the actual COC is currently disempowered per March 17 admin action",
+              "Both Otero and Crowley WERE in D3+ on every crop's final plant date in 2026 — the D3 test was met",
+              "The 2026 denial was under the ineligibility provision (inadequate water beginning BEFORE 3/15 NAP closing), not under the D3 test",
+              "Canal-company reduction notices were issued AFTER 3/15 in most cases — that supports the 'reasonable expectation of adequate water on 3/15' argument",
+              "2025 vs 2026 goalpost-shift: 2025 producers were told INELIGIBLE because they were NOT in D3+; 2026 same producers told INELIGIBLE because they were on drought monitor for TOO LONG",
+              "Gardner Farms Otero: RMA approved PP on Fields 1 & 3, NAP disapproved PP on Field 4 — same producer, same year, adjacent fields",
+              "Steve Raftopoulos's own doubt is in the record: 'how can we determine that there was not going to be adequate water on 3/15?'",
+              "Doug's appeal warning: denying PP on 3/15-water grounds will be hard to defend on NAD appeal"
+            ],
+            "key_facts": {
+              "summary": "Doug Andresen is asking STC (acting as Otero/Crowley COC) to reconsider Aug denials of Prevent Plant claims for 36 producers in Otero and Crowley counties.",
+              "matter": "Review previous Otero/Crowley Prevent Planting determinations",
+              "authority": "7 CFR 718.103 (prevented planted acreage), 2-CP (Rev. 16) ¶36-37 (PP procedure), 1-NAP ¶51 (NAP causes of loss), 1-NAP ¶300 (NAP application closing dates)",
+              "sed_position_via_doug": "Reverse the 36 denials. Canal-notice-after-3/15 supports reasonable-expectation-of-adequate-water test. RMA/NAP inconsistency is an equity failure. 2025-vs-2026 goalpost shift is not defensible policy administration.",
+              "reg_reading_that_matters": "2-CP ¶37D lists as ineligible: 'inadequate supply of irrigation water beginning before … the NAP application closing date for the crop.' The operative question is when the water inadequacy started — if canal notices were dated after 3/15, the ineligibility rule doesn't attach.",
+              "tracks_available": [
+                "A. Reverse all 36 denials as Doug recommends — most producer-favorable, matches D3+ facts and the reasonable-expectation reading",
+                "B. Reverse subset with carve-out — approve where producer can show canal-company reduction letter dated after 3/15; uphold denials without such documentation. Operationally clean split",
+                "C. Uphold + set going-forward standard — keep the Aug denial; adopt a bright-line COC rule for 2027 (e.g., specific water-notice date test). Highest NAD-appeal exposure"
+              ],
+              "pros_for": [
+                "D3+ threshold test was met on every crop's final plant date in 2026",
+                "Canal-company reduction letters after 3/15 support the 'reasonable expectation' test",
+                "RMA approved PP on same producer's adjacent fields (Gardner Farms) — inconsistent NAP treatment is an equity failure",
+                "Steve Raftopoulos already had doubt on the record at the Aug determination — that doubt is unresolved",
+                "36 producers denied is a systemic pattern, not an individual error",
+                "Doug is warning that denials will be hard to defend on NAD appeal — reversing now is procedurally cleaner than being reversed by NAD",
+                "Ties directly to Item 8 CEY discussion: Otero/Crowley are also the most CEY-suppressed counties. Same pattern of under-service to SE Colorado"
+              ],
+              "cons_risks": [
+                "Reopening prior STC determinations weakens the finality of committee action generally",
+                "If producers already received NAD-appeal-rights notices on current denials, reconsideration restarts the 30-day clock per 7 CFR 780.9 and may complicate active appeals",
+                "The Aug 27 delegation moved CCC-576 authority to DDs — clarify procedurally whether STC still holds these 36 or whether they now sit with the DD",
+                "Setting a going-forward standard (Track B or C) requires a definitional debate that could consume additional time beyond the 30-min allocation",
+                "Reversing all 36 without documenting the reasonable-expectation basis creates its own record vulnerability"
+              ]
+            }
+          },
+          {
+            "number": "9.b",
+            "title": "Otero County — Other",
+            "presenter": "Dara Belew, County Executive Director",
+            "action_type": "TBD",
+            "time_allotted_min": 15,
+            "note": "Open Otero item — Dara's discretion. May include walk-on items.",
+            "key_facts": {
+              "summary": "Dara Belew's discretion — any additional Otero/Crowley COC items she surfaces.",
+              "pros_for": [
+                "Gives Dara a chance to surface time-sensitive Otero items that emerged since Aug 27"
+              ],
+              "cons_risks": [
+                "If substantial walk-on emerges, STC needs to decide whether to act same-day or table",
+                "No advance packet material — decisions on the fly should be minimized"
+              ]
+            }
+          },
+          {
+            "number": "WALK-ON",
+            "title": "ARC/PLC — Prowers County — Adams Family LLC — FSA-321 Misaction",
+            "presenter": "Doug Andresen, Farm Program Specialist",
+            "program": "ARC/PLC",
+            "action_type": "Action Item",
+            "time_allotted_min": 10,
+            "note": "NOT ON PRINTED AGENDA. Full staff discussion record dated 09/29/2026 is prepared. Likely walk-on or folded into Item 9b/other. Confirm with Chair at meeting start.",
+            "flags": [
+              "This item is not listed on the printed Sept 29 Exec agenda — walk-on likely",
+              "2025 ARC/PLC payments issue in October 2026 (this month) — if 321 not approved, Adams loses 2025 eligibility"
+            ],
+            "key_facts": {
+              "summary": "Adams Family LLC transferred a farm KS→CO in Feb 2025; Prowers County office failed to complete the CCC-505 base reduction on contract #11541 for over a year, leaving Adams to sign an initially incorrect CCC-866. Corrected CCC-866 signed May 15, 2026 — after 2025 late-file period, requires equitable relief.",
+              "producer": "Adams Family LLC (Jerry Adams, member)",
+              "county": "Prowers County",
+              "farm": "#5464, 2 CRP contracts (#11541, #11542)",
+              "timeline": [
+                "Feb 19, 2025: farm transferred from Stanton County, KS to Prowers",
+                "Mar 19, 2025: Adams signed CCC-866 — erroneous (CCC-505 base reduction not completed)",
+                "Sep 9-16, 2025: Prowers reduced base for #11542; revised CCC-866 signed within 2025 late-file window",
+                "May 5, 2026: State Office runs pending-CCC-505 report; discovers #11541 base reduction never done",
+                "May 15, 2026: Adams signs corrected CCC-866 with correct base acres (AFTER 2025 late-file period)"
+              ],
+              "authority": "1-ARCPLC (Rev. 1) ¶251C — equitable relief under misinformation/misaction",
+              "misaction_test": "Whether incorrect ARC/PLC info was conveyed by FSA and whether the participant had reason to know it was incorrect. Prowers failed to complete CCC-505; Adams had no reason to know base figures were wrong.",
+              "staff_recommendation": "Approve FSA-321 (box 15A) and approve the CCC-866 signed May 15, 2026.",
+              "pros_for": [
+                "Clean misinformation/misaction fact pattern — agency-side documented failure to complete required CCC-505 base reduction",
+                "Producer promptly signed corrected version once discovered",
+                "Denial would strip 2025 ARC/PLC payment eligibility (payments issue October 2026)",
+                "1-ARCPLC ¶251C test is met: incorrect information conveyed by agency; producer had no reason to know"
+              ],
+              "cons_risks": [
+                "Setting a precedent for late-signed CCC-866s requires the misaction test to be tight — verify the fact pattern doesn't leak into general late-filing tolerance",
+                "Confirm Prowers office has corrected its CCC-505 tracking so this doesn't recur"
+              ]
+            }
+          },
+          {
+            "number": "10",
+            "title": "Adjourn Executive Session",
+            "action_type": "Action Item",
+            "documents": []
+          }
+        ]
+      }
+    ]
+  },
+  "flags": [
+    {
+      "id": "CEY-DATA-QUALITY",
+      "severity": "data_quality",
+      "summary": "1,309 CEY rows analyzed. 82.3% yellow (<95% of avg). Data-quality suspects: Sugar Beet Yuma (unit anomaly + RMA-insurable per Woody Woods), Sorghum Montezuma (single-year stub), Onions Red 27.09 (identical value across Otero/Crowley/Fremont — propagation error).",
+      "rule": "1-NAP: CEY should reflect average production potential; STC ensure comparable with prior; justify deviations"
+    },
+    {
+      "id": "OTERO-PP-STAFF-RECOMMENDS-REVERSE",
+      "severity": "warning",
+      "summary": "Doug Andresen (Farm Program Specialist) is explicitly asking STC to reverse the Aug denial of 36 Otero/Crowley Prevent Plant claims. Staff position is not neutral. D3+ threshold was met; canal notices dated after 3/15 support reasonable-expectation reading.",
+      "rule": "7 CFR 718.103 + 2-CP (Rev. 16) ¶37"
+    },
+    {
+      "id": "PROWERS-321-WALK-ON",
+      "severity": "info",
+      "summary": "Full ARC/PLC 321 discussion record prepared for Adams Family LLC (Prowers) but NOT on printed agenda. Walk-on expected. Impacts 2025 ARC/PLC payment issue in October 2026.",
+      "rule": "1-ARCPLC (Rev. 1) ¶251C"
+    },
+    {
+      "id": "STC-MEMBER-CRP-RECUSALS",
+      "severity": "warning",
+      "summary": "Items 5.b and 5.c are STC-member CRP offer reviews. Two different members likely. Recusal required for the affected member. Kyle: confirm before meeting whether either is you.",
+      "rule": "Standard STC conflict-of-interest procedure"
+    },
+    {
+      "id": "COC-MEMBER-ECP-ARCHULETA",
+      "severity": "info",
+      "summary": "Item 7.c is an ECP application from an Archuleta COC member. Kyle: confirm no Archuleta ties before voting.",
+      "rule": "1-ECP standard COC-member handling"
+    },
+    {
+      "id": "SEPT-24-REPORTS-ONLY",
+      "severity": "info",
+      "summary": "Sept 24 Regular Session was reports-only, no votes. Sept 29 Exec is the first substantive action meeting since Aug 27. Sept 24 SED report confirmed Jerry has been 'almost exclusively devoted to the repair of CEY's' — Item 8 is his priority ask.",
+      "rule": null
+    }
+  ],
+  "related_documents_in_scratchpad": [
+    "otero_pp_dr.txt — Doug Andresen's Otero/Crowley PP discussion record (25 pages, full text)",
+    "prowers_321.txt — Prowers ARC/PLC 321 discussion record (13 pages, full text)",
+    "sept29_exec_agenda.txt — printed final agenda",
+    "sept24_regular.txt — Sept 24 Regular Session packet (reports only)",
+    "aug27_minutes.txt — Aug 27 Regular Session minutes (source for committee members, delegation shift)",
+    "rma_pm26053_ri.txt — RMA 2027 Rainfall Index changes (background for PRF/apiculture/forage)",
+    "cey_flat.csv — 1,309-row flat CEY dataset with color-band classification",
+    "cey_analysis.txt — Full CEY analysis text output (band counts, drops, Otero/Crowley breakdowns)"
+  ]
+}
