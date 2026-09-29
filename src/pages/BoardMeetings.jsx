@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import registry from "../data/meetings_registry.json";
 import dec04_2025 from "../data/meeting_2025-12-04_index.json";
@@ -326,10 +326,67 @@ function TopBar() {
   );
 }
 
+const MONTH_NAMES = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December",
+];
+
 function MeetingsIndex() {
-  const meetings = [...registry.meetings].sort((a, b) => b.date.localeCompare(a.date));
-  const upcoming = meetings.filter(m => m.status === "upcoming");
-  const past = meetings.filter(m => m.status !== "upcoming");
+  const meetings = useMemo(
+    () => [...registry.meetings].sort((a, b) => b.date.localeCompare(a.date)),
+    []
+  );
+
+  // Year / month picker state. Empty string = "All".
+  const [year, setYear] = useState("");
+  const [month, setMonth] = useState("");
+
+  // Years present in the registry, newest first.
+  const years = useMemo(() => {
+    const s = new Set(meetings.map(m => m.date.slice(0, 4)));
+    return [...s].sort((a, b) => b.localeCompare(a));
+  }, [meetings]);
+
+  // Months present in the selected year (1-12 strings, padded), newest first.
+  // If no year is picked, show every month that has meetings across the whole registry.
+  const monthsForYear = useMemo(() => {
+    const rows = year ? meetings.filter(m => m.date.startsWith(year + "-")) : meetings;
+    const s = new Set(rows.map(m => m.date.slice(5, 7)));
+    return [...s].sort((a, b) => b.localeCompare(a));
+  }, [meetings, year]);
+
+  // If the current month selection is no longer valid for the newly-picked
+  // year, reset it. Keeps the two dropdowns in sync.
+  useEffect(() => {
+    if (month && !monthsForYear.includes(month)) setMonth("");
+  }, [month, monthsForYear]);
+
+  // Filter the meeting list by whatever the pickers have selected.
+  const filtered = useMemo(() => {
+    return meetings.filter(m => {
+      if (year && !m.date.startsWith(year + "-")) return false;
+      if (month && m.date.slice(5, 7) !== month) return false;
+      return true;
+    });
+  }, [meetings, year, month]);
+
+  const upcoming = filtered.filter(m => m.status === "upcoming");
+  const past = filtered.filter(m => m.status !== "upcoming");
+  const isFiltered = !!(year || month);
+
+  const selectStyle = {
+    padding: "8px 12px",
+    background: "#fff",
+    border: `1px solid ${C.border}`,
+    borderRadius: 4,
+    fontSize: 14,
+    color: C.navy,
+    fontWeight: 600,
+    ...mono,
+    cursor: "pointer",
+    minWidth: 140,
+  };
+
   return (
     <div style={{ background: C.cream, minHeight: "100vh" }}>
       <TopBar />
@@ -341,15 +398,63 @@ function MeetingsIndex() {
           <h1 style={{ color: "#fff", fontSize: 28, fontWeight: 800, margin: 0, ...serif }}>Board Meetings</h1>
         </div>
       </div>
+
       <div style={{ maxWidth: 960, margin: "0 auto", padding: "24px 20px" }}>
+        {/* Year / month picker */}
+        <div style={{ background: "#fff", border: `1px solid ${C.border}`, borderLeft: `5px solid ${C.gold}`, borderRadius: 6, padding: "14px 18px", marginBottom: 20 }}>
+          <div style={{ fontSize: 11, color: C.slate, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", ...mono, marginBottom: 8 }}>
+            Jump to Meeting
+          </div>
+          <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
+            <label style={{ display: "flex", alignItems: "center", gap: 6 }}>
+              <span style={{ fontSize: 12, color: C.slate, ...mono }}>Year</span>
+              <select value={year} onChange={e => setYear(e.target.value)} style={selectStyle}>
+                <option value="">All years</option>
+                {years.map(y => <option key={y} value={y}>{y}</option>)}
+              </select>
+            </label>
+            <label style={{ display: "flex", alignItems: "center", gap: 6 }}>
+              <span style={{ fontSize: 12, color: C.slate, ...mono }}>Month</span>
+              <select value={month} onChange={e => setMonth(e.target.value)} style={selectStyle}>
+                <option value="">All months</option>
+                {monthsForYear.map(mm => (
+                  <option key={mm} value={mm}>{MONTH_NAMES[parseInt(mm, 10) - 1]}</option>
+                ))}
+              </select>
+            </label>
+            {isFiltered && (
+              <button
+                type="button"
+                onClick={() => { setYear(""); setMonth(""); }}
+                style={{ padding: "8px 14px", background: "#F3F4F6", color: C.navy, border: `1px solid ${C.border}`, borderRadius: 4, fontSize: 12, fontWeight: 700, ...mono, cursor: "pointer" }}
+              >
+                Clear
+              </button>
+            )}
+            <span style={{ marginLeft: "auto", fontSize: 12, color: C.slate, ...mono }}>
+              {filtered.length} of {meetings.length} meeting{meetings.length === 1 ? "" : "s"}
+            </span>
+          </div>
+        </div>
+
+        {filtered.length === 0 && (
+          <div style={{ background: "#fff", border: `1px solid ${C.border}`, borderRadius: 6, padding: "20px 18px", color: C.slate, fontSize: 14, textAlign: "center" }}>
+            No meetings match this year/month. <button onClick={() => { setYear(""); setMonth(""); }} style={{ background: "none", border: "none", color: C.blue, cursor: "pointer", textDecoration: "underline", fontSize: 14, ...mono }}>Clear filter</button>
+          </div>
+        )}
+
         {upcoming.length > 0 && (
           <div style={{ marginBottom: 30 }}>
             <SectionTitle>Upcoming</SectionTitle>
             {upcoming.map(m => <MeetingCard key={m.date} m={m} />)}
           </div>
         )}
-        <SectionTitle>Past Meetings</SectionTitle>
-        {past.map(m => <MeetingCard key={m.date} m={m} />)}
+        {past.length > 0 && (
+          <>
+            <SectionTitle>{isFiltered ? "Meetings" : "Past Meetings"}</SectionTitle>
+            {past.map(m => <MeetingCard key={m.date} m={m} />)}
+          </>
+        )}
       </div>
     </div>
   );
