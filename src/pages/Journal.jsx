@@ -13,12 +13,12 @@ const PINNED_ENTRIES = [
     location: 'Sent — hunter.cleveland@usda.gov',
     tags: 'email, hunter-cleveland, virtual-fencing, ecp, cost-share, rate-setting, vence, nofence, gallagher, halter, collars, base-station, cellular',
     source: 'Follow-up from Sept 29, 2026 STC Meeting (Items 5.a CRP / 6.a EFRP virtual fence cost-share discussion)',
-    content: `EMAIL TO HUNTER CLEVELAND — VIRTUAL FENCE COLLAR COST COMPARISON
+    content: `EMAIL TO HUNTER CLEVELAND - VIRTUAL FENCE COLLAR COST COMPARISON
 Sent by: Kyle McConnell (Colorado STC Member)
 Date: September 30, 2026
 To: hunter.cleveland@usda.gov
 Cc (optional): cindy.vukasin@usda.gov, Jerry.Sonnenberg@usda.gov
-Subject: Virtual Fence Cost-Share Rate — Base-Station vs Cellular Comparison for ECP
+Subject: Virtual Fence Cost Numbers - ECP Rate Setting
 
 ─────────────────────────────────────────────
 FULL EMAIL BODY (as sent)
@@ -26,51 +26,51 @@ FULL EMAIL BODY (as sent)
 
 Hunter,
 
-Following up from yesterday's meeting on the virtual fence cost-share discussion. I want to make sure we have solid market data in front of us when we set the ECP payment rate — since collar systems break into two structurally different cost profiles, I put together a quick comparison of the current 2026 options so we can compare apples to apples.
+Following up on yesterday's virtual fence discussion. I pulled some current numbers on collar systems so we've got market data when we set the ECP payment rate. Two setups to compare - collars that need a base station, and cellular collars that don't.
 
-OPTION 1 — COLLAR SYSTEMS THAT REQUIRE A BASE STATION
+With base station:
 
-• Vence (Merck Animal Health): ~$40/collar/yr bundled subscription + ~$10/battery; base station ~$10,000 self-install or $12,500 Vence-installed (~$6,000 alternate for low-cell areas); data $18/head/yr (base) or $24/head/yr (cellular fallback).
+- Vence (Merck) - collar subscription runs about $40/yr per head plus $10 batteries. Base station is $10,000 self-install or $12,500 if they install it. Data fee is $18/head/yr on the base setup, or $24/head/yr if you use their cellular fallback.
 
-• Gallagher eShepherd: $250/neckband (3-year warranty); ~$5,000 base station only where cell service is poor; recurring ~$1.50/collar/month (~$18/collar/yr).
+- Gallagher eShepherd - $250 per neckband, 3-year warranty. Base station about $5,000, only needed where cell service is poor. Monthly runs $1.50 per collar.
 
-• Halter: collar cost bundled with subscription; ~$4,500 infrastructure starting point; <$7/head/month (~$84/head/yr all-in).
+- Halter - collars bundled with the subscription. Infrastructure starts around $4,500. Runs about $7/head/month all in.
 
-OPTION 2 — CELLULAR COLLAR SYSTEMS (NO BASE STATION REQUIRED)
+Cellular, no base station:
 
-• Nofence: $289–$345 per collar (recent US pricing $289); NO base station — uses cellular; 5-year warranty; Yr-1 subscription waived under US expansion promo, then $54–$78/collar/yr ($4.50–$6.50/collar/month, tiered by herd size at 50-head threshold).
+- Nofence - $289 to $345 per collar (recent US price is $289). 5-year warranty. First year subscription waived under their US expansion promo. After that, $4.50 to $6.50 per collar per month, depending on herd size (bigger herds get the lower rate at 50+ head).
 
-BALLPARK FIRST-YEAR TOTAL — 200-HEAD REFERENCE OPERATION
+First year cost, 200 head reference:
 
-• Vence (base station): ~$22,000
-• Halter (base-station-lite): ~$21,000
-• Gallagher eShepherd (base station): ~$55,000
-• Nofence (cellular): ~$58,000
+- Vence: around $22,000
+- Halter: around $21,000
+- Gallagher: around $55,000
+- Nofence: around $58,000
 
-Economics diverge over time: base-station systems (Vence in particular) front-load infrastructure but keep per-head recurring very low, so they win at larger herds where the base station amortizes across many head. Cellular (Nofence) is higher per-collar capex but scales linearly and is better suited to smaller herds or scattered acreage a base station wouldn't cover.
+Base station systems have the bigger up-front cost but stay cheap year to year, so they pencil out better on larger herds where the base station spreads over more head. Cellular is higher on the collar side but scales one for one, and works better on scattered ground where a base station wouldn't reach.
 
-ONE CROSS-CHECK WORTH NAMING FOR THE RATE-SETTING: NRCS EQIP Practice Standard 645 (Fence — Virtual) 2025 Colorado payment schedule was running approximately $100–$150/head. Keeping the FSA rate aligned with NRCS avoids producer confusion and reduces the chance of one program undercutting the other.
+One thing worth checking - NRCS EQIP 645 (virtual fence) 2025 Colorado payment schedule was running $100 to $150 per head. If the ECP rate we set is way off from that, producers get confused and one program undercuts the other. Can you pull the CO NRCS 645 rate for 2026?
 
-Would you be able to pull the Colorado NRCS EQIP 645 2026 rate for confirmation, and let me know whether you'd like to see the ECP rate structured per-collar, per-head, or as a percentage of documented invoice cost? Happy to jump on a call if it would be easier.
+Also, would you rather see the ECP rate written as per collar, per head, or as a percentage of the actual invoice? Let me know what works best on your end.
+
+Give me a call if that's easier.
 
 Thanks,
-
-Kyle McConnell
-Colorado FSA State Committee
+Kyle
 
 ─────────────────────────────────────────────
-REFERENCE SOURCES (not sent in email)
+REFERENCE SOURCES (not sent in email - for my file)
 ─────────────────────────────────────────────
 
-• Vence pricing — Farm Progress, Lancaster Farming, Western Landowners Alliance (2024-2026 coverage)
-• Nofence pricing — Nofence US expansion release, DTN Progressive Farmer, New York Ag Connection
-• Gallagher eShepherd — Farm Progress, NCAT "Beyond Barbed Wire"
-• Halter — Wikipedia, industry press
-• NRCS 645 — Rangelands Gateway VF Vendors Comparison (Feb 2026)
+- Vence pricing - Farm Progress, Lancaster Farming, Western Landowners Alliance (2024-2026 coverage)
+- Nofence pricing - Nofence US expansion release, DTN Progressive Farmer, New York Ag Connection
+- Gallagher eShepherd - Farm Progress, NCAT "Beyond Barbed Wire"
+- Halter - Wikipedia, industry press
+- NRCS 645 - Rangelands Gateway VF Vendors Comparison (Feb 2026)
 
 Cross-references in the app:
-• /board-meetings/2026-09-29 → Meeting Notes → VIRTUAL-FENCE-COSTS-2026 entry
-• Sept 29 agenda Items 5.a (CRP virtual fencing) and 6.a (EFRP virtual fencing) — the parent discussion that prompted this outreach`,
+- /board-meetings/2026-09-29 -> Meeting Notes -> VIRTUAL-FENCE-COSTS-2026 entry
+- Sept 29 agenda Items 5.a (CRP virtual fencing) and 6.a (EFRP virtual fencing) - the parent discussion that prompted this outreach`,
   },
   {
     id: 'march-24-meeting-otero-delegation',
