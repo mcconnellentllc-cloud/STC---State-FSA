@@ -14,6 +14,7 @@ const memberLinks = [
   { to: '/documents', label: 'Documents', icon: '📄' },
   { to: '/issues', label: 'County Issues', icon: '⚠' },
   { to: '/appeals', label: 'Appeals', icon: '⚖️' },
+  { to: '/cure-lfp-tracker', label: 'Cure LFP Tracker', icon: '📂' },
   { to: '/cost-share-rates', label: 'Cost Share Rates', icon: '$' },
   { to: '/arc-plc', label: 'ARC / PLC', icon: '🌾' },
 ];

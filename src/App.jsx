@@ -36,6 +36,7 @@ import CostShareRates from './pages/CostShareRates';
 import AppealsTraining from './pages/AppealsTraining';
 import Appeals from './pages/Appeals';
 import BoardMeetings from './pages/BoardMeetings';
+import CureLfpTracker from './pages/CureLfpTracker';
 import BoardActions from './pages/BoardActions';
 import ArcPlc from './pages/ArcPlc';
 import MeetingFollow from './pages/MeetingFollow';
@@ -127,6 +128,7 @@ export default function App() {
           <Route path="/board-meetings/:date" element={<BoardMeetings />} />
           <Route path="/board-meetings/:date/follow" element={<MeetingFollow />} />
           <Route path="/meeting-follow" element={<MeetingFollow />} />
+          <Route path="/cure-lfp-tracker" element={<CureLfpTracker />} />
           <Route path="/board-actions" element={<BoardActions />} />
           <Route path="/arc-plc" element={<ArcPlc />} />
           <Route path="/search" element={<Search />} />
