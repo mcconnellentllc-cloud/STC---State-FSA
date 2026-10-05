@@ -1,0 +1,233 @@
+{
+  "schema_version": "1.0",
+  "tracker_title": "Cure LFP Series — Missing Documentation & Issues Tracker",
+  "last_updated": "2026-10-05",
+  "case_summary": "Kit Carson County COC members Brad Cure, Eric Cure, and Denis & Victoria Cure filed six CCC-853 LFP applications (2020 and 2021 crop years, two applications per producer per year — three producers × two years = six total). STC action required under 1-LFP Par. 4A because the applicants are COC members. Attorney Byrd represents the appellants. Any STC denial will be appealed to NAD; any STC approval will be scrutinized as COC-member favoritism. Record must be airtight either direction.",
+  "parent_appeal_ref": "APPEAL-6-2026-CURE-LFP",
+  "lead_counsel": {
+    "producer_counsel": "Byrd (attorney, representing Cure family)",
+    "fsa_presenter": "Janae Rader, Farm Program Specialist",
+    "fsa_chief": "Cindy Vukasin, Farm Program Chief"
+  },
+  "key_dates": {
+    "aug_27_2026": "First STC packet distribution (925-page Exec Session packet, Cure LFP series pp. 37-435)",
+    "brad_cure_2020_signed": "2026-05-05",
+    "brad_cure_2020_received_by_fsa": "2026-05-12",
+    "qualifying_trigger_2020": "2020-06-16 (Kit Carson LFP trigger for 2020)",
+    "late_file_delay": "5 years, 10 months from 2020 trigger to Brad Cure 2020 filing",
+    "sept_29_2026": "STC did not reach final determination; continued pending Byrd brief",
+    "next_action_target": "October 2026 regular meeting OR special session once Byrd documents filed"
+  },
+  "applications": [
+    {
+      "id": "BRAD-CURE-2020",
+      "producer": "Brad Cure",
+      "crop_year": 2020,
+      "status": "ACTIVE - Awaiting Byrd documentation; STO recommends significant adjustments",
+      "signed_date": "2026-05-05",
+      "received_by_fsa": "2026-05-12",
+      "packet_page_range": "37-75",
+      "sto_recommended_adjustments": {
+        "livestock": "Adjust DOWN. Bank balance sheet dated 198 days after 6/16/20 trigger — cannot establish grazing intent at trigger for animals not on original application. Producer historically runs ~495 cows (275 adult beef + 220 mitigated adult beef per original COC approval). Zero out yearling claims absent trigger-date proof of 500+ lb weight and grazing history.",
+        "mixed_forage_nsg": "Adjust DOWN to 184.670 share acres (from 220.805 certified). Missing lease/risk-and-control on: F6191 T1276 CLU 1B (7.97 ac @ 50% = 3.985 share), F7904 T2032 CLU 1 (64.3 ac @ 50% = 32.150 share)",
+        "grass_nag": "Adjust DOWN to 1,783.255 share acres (from 2,324.67 certified). Missing lease/risk-and-control on: F1740 T1718 CLU 4 (32.6 ac @ 100% = 30 ac baseline, down 2.6), F2402 T1921 CLU 1/2/3 (317.84 ac @ 50% = 158.92 share), F6191 T1275 CLU 2/4 + T1276 CLU 4 + T1522 CLU 3 (398.79 ac @ 50% = 199.395 share), F7904 T1793 CLU 2/3/5 + T2032 CLU 2/3/4/11/12 (241.00 ac @ 50% = 120.5 share)",
+        "wheat_hrw": "Adjust to 0. Long-Season Small Grain did NOT trigger for Kit Carson in 2020. Wheat HRW is categorically ineligible for 2020 LFP in Kit Carson regardless of lease/livestock."
+      },
+      "missing_documentation": [
+        "Written leases or CCC-855s for F2402, F6191, F6192, F7904, F8845, F7488 (2021), F8504, F8866 (8 farms flagged as 'no risk-control' by STO)",
+        "Contemporaneous livestock records establishing animals above 495 were on-hand and 500+ lb on 6/16/20 (brand inspections, pre-trigger purchase receipts, weaning records from fall 2019)",
+        "Documentation of FSA misaction (if any) that would support late-filing of the 2020 application (county-office refusal to accept in 2020-2021, or incorrect eligibility guidance)",
+        "Attorney Byrd's brief and any supporting exhibits (not yet filed as of Aug 27; status unverified as of Oct 5)",
+        "F7488 (2020) — FSA-578 showing who certified the 9/12/19 wheat planting (to establish continuity of risk-and-control through the trigger date)"
+      ],
+      "legal_issues": [
+        "LATE FILING — 5 years, 10 months after trigger. Independent grounds for denial absent documented FSA misaction.",
+        "RISK-AND-CONTROL — 1-LFP Par. 26 requires 'control, however limited' with some evidence in record. Cancelled checks explicitly rejected as substitute per STO's own DR. 8 farms have no lease and no CCC-855.",
+        "LIVESTOCK ELIGIBILITY — 500-lb-on-trigger-date requirement. Bank B/S 198 days post-trigger cannot establish presence or weight on 6/16/20.",
+        "WHEAT HRW CATEGORICAL — Long-Season Small Grain non-trigger is a national-level determination under 7 CFR 1416. STC has no authority to override; NAD will affirm."
+      ],
+      "nad_risk_if_denied": "MODERATE — NAD will scrutinize whether COC-member treatment is consistent with non-COC producers. If Byrd produces substance-over-form or late-notice evidence, NAD may remand.",
+      "nad_risk_if_approved": "HIGH — Approval above the original 495-head figure or on any of the 8 flagged farms without new evidence in record creates DAFP reversal exposure and bad precedent for future COC-member reviews.",
+      "safe_middle_posture": "Approve 495 head (275 + 220, the contemporaneous COC-approved number). Approve F1740 (30 ac confirmed). Deny the 8 risk-control-missing farms absent new Byrd evidence. Deny Wheat HRW categorically. F7488 (2020) — approve if FSA-578 supports continuity of control, otherwise deny."
+    },
+    {
+      "id": "ERIC-CURE-2020",
+      "producer": "Eric Cure",
+      "crop_year": 2020,
+      "status": "ACTIVE - Awaiting Byrd documentation; STO recommends similar adjustments as Brad 2020",
+      "signed_date": "PENDING (not captured in index)",
+      "received_by_fsa": "PENDING (not captured in index)",
+      "packet_page_range": "75-117 (approx — verify)",
+      "sto_recommended_adjustments": "Presumed similar to Brad Cure 2020 (livestock down to COC-approved number, acreage adjustments on same 8 flagged farms, Wheat HRW to 0 categorically). Specific per-application figures not parsed into index.",
+      "missing_documentation": [
+        "Specific per-application STO Discussion Record pages from Aug 27 packet (not parsed)",
+        "Signed/received dates on CCC-853",
+        "Same category of missing items as Brad 2020: written leases/CCC-855s for 8 farms, contemporaneous livestock records, Byrd brief, FSA-578 continuity"
+      ],
+      "legal_issues": [
+        "Same categorical issues as Brad Cure 2020 (late file, risk-and-control, livestock eligibility, Wheat HRW)",
+        "Potentially different acreage mix or livestock count — need to confirm from source packet"
+      ],
+      "safe_middle_posture": "Same framework as Brad 2020 applied to Eric's specific acres and livestock."
+    },
+    {
+      "id": "DENIS-VICTORIA-CURE-2020",
+      "producer": "Denis and Victoria Cure",
+      "crop_year": 2020,
+      "status": "ACTIVE - Awaiting Byrd documentation; STO recommends similar adjustments as Brad 2020",
+      "signed_date": "PENDING (not captured in index)",
+      "received_by_fsa": "PENDING (not captured in index)",
+      "packet_page_range": "117-163 (approx — verify)",
+      "sto_recommended_adjustments": "Presumed similar to Brad Cure 2020 pattern. Specific per-application figures not parsed into index.",
+      "missing_documentation": [
+        "Specific per-application STO DR pages",
+        "Signed/received dates on CCC-853",
+        "Same category of missing items: written leases/CCC-855s, contemporaneous livestock records, Byrd brief"
+      ],
+      "legal_issues": [
+        "Same categorical issues as Brad Cure 2020",
+        "Joint-signatory considerations (Denis AND Victoria) — ensure both signatures present and dated"
+      ],
+      "safe_middle_posture": "Same framework as Brad 2020."
+    },
+    {
+      "id": "BRAD-CURE-2021",
+      "producer": "Brad Cure",
+      "crop_year": 2021,
+      "status": "ACTIVE - Awaiting Byrd documentation; STO recommends adjustments",
+      "signed_date": "PENDING (not captured in index)",
+      "received_by_fsa": "PENDING (not captured in index)",
+      "packet_page_range": "163-207 (approx — verify)",
+      "sto_recommended_adjustments": "Similar pattern to 2020 but with 2021-specific trigger date and crop eligibility. Wheat HRW question may differ for 2021 (verify Kit Carson Long-Season Small Grain trigger status for 2021). F7488 is on the no-risk-control list for 2021 but under STC review for 2020.",
+      "missing_documentation": [
+        "Verification of 2021 Kit Carson LSSG trigger status for Wheat HRW",
+        "Written leases/CCC-855s for same 8 flagged farms",
+        "Contemporaneous 2021 livestock records at the 2021 trigger date",
+        "Byrd brief"
+      ],
+      "legal_issues": [
+        "Late filing (same 5+ year delay from 2021 trigger)",
+        "Risk-and-control on same 8 farms (F7488 is specifically no-risk-control for 2021)",
+        "2021-specific crop and livestock eligibility"
+      ],
+      "safe_middle_posture": "Mirror Brad 2020 framework; verify 2021 LSSG status for Wheat HRW before any adjustment."
+    },
+    {
+      "id": "ERIC-CURE-2021",
+      "producer": "Eric Cure",
+      "crop_year": 2021,
+      "status": "ACTIVE - Awaiting Byrd documentation",
+      "signed_date": "PENDING (not captured in index)",
+      "received_by_fsa": "PENDING (not captured in index)",
+      "packet_page_range": "207-251 (approx — verify)",
+      "sto_recommended_adjustments": "Similar pattern. Specific figures not parsed.",
+      "missing_documentation": [
+        "Specific per-application STO DR pages",
+        "Signed/received dates",
+        "Same category of missing items"
+      ],
+      "legal_issues": [
+        "Same categorical issues as other 2021 applications"
+      ],
+      "safe_middle_posture": "Same framework."
+    },
+    {
+      "id": "DENIS-VICTORIA-CURE-2021",
+      "producer": "Denis and Victoria Cure",
+      "crop_year": 2021,
+      "status": "ACTIVE - Awaiting Byrd documentation",
+      "signed_date": "PENDING (not captured in index)",
+      "received_by_fsa": "PENDING (not captured in index)",
+      "packet_page_range": "251-315 (approx — verify)",
+      "sto_recommended_adjustments": "Similar pattern. Specific figures not parsed.",
+      "missing_documentation": [
+        "Specific per-application STO DR pages",
+        "Signed/received dates",
+        "Same category of missing items"
+      ],
+      "legal_issues": [
+        "Same categorical issues",
+        "Joint-signatory considerations"
+      ],
+      "safe_middle_posture": "Same framework."
+    }
+  ],
+  "cross_cutting_issues": [
+    {
+      "id": "BYRD-BRIEF-NOT-IN-RECORD",
+      "severity": "blocker",
+      "topic": "Attorney Byrd Brief and Correspondence",
+      "status": "NOT YET IN STC RECORD as of Oct 5, 2026",
+      "detail": "Byrd represents the Cure family. The expected brief and any supporting exhibits (leases, CCC-855s, livestock records, FSA misaction documentation) have not been filed into the STC's record as of Aug 27 or confirmed by Oct 5. The record MUST include whatever Byrd intends to argue BEFORE the STC votes. If Byrd has materials not yet submitted, STC acting without them creates reversal risk at NAD on due-process grounds.",
+      "action_needed": "Request status check from Cindy Vukasin — has Byrd filed anything? If yes, retrieve from Teams SharePoint and enter into record with exhibit numbers. If no, formally notify Byrd via Cindy that submissions must be received by [SPECIFIC DATE] to be considered at the next meeting."
+    },
+    {
+      "id": "RISK-CONTROL-8-FARMS",
+      "severity": "warning",
+      "topic": "Risk-and-Control Documentation on 8 Farms",
+      "detail": "F2402, F6191, F6192, F7904, F8845, F7488 (2021), F8504, F8866 flagged by STO as having NO lease and NO CCC-855 conveying risk-and-control. Cancelled checks explicitly rejected as substitute per STO DR. Unless Byrd produces new lease documentation, these farms fail 1-LFP Par. 26.",
+      "exception_f1740": "F1740 (30 acres) — CONFIRMED risk-and-control per existing lease. Should be approved regardless of other outcomes.",
+      "exception_f7488_2020": "F7488 (2020) — UNDER STC REVIEW. Lease term 3/1/20 through 8/1/21 facially covers 6/16/20 trigger. Pre-lease wheat planting on 9/12/19 raises continuity question — resolve via FSA-578 certification review.",
+      "action_needed": "Confirm current lease/CCC-855 status for each of the 8 farms. If Byrd has new documentation, enter into record. If not, denial on these specific farms is defensible."
+    },
+    {
+      "id": "LIVESTOCK-ABOVE-495",
+      "severity": "warning",
+      "topic": "Livestock Claims Above Historical 495-Head Baseline",
+      "detail": "Producer historically runs ~495 cows (275 adult beef + 220 mitigated adult beef per prior COC approval). Any claim above 495 must be supported by contemporaneous records establishing animals were on-hand AND 500+ lb on the trigger date. Bank B/S dated 198 days after 6/16/20 cannot establish trigger-date state.",
+      "acceptable_evidence_byrd_could_produce": [
+        "Pre-trigger purchase receipts for yearlings (dated before 6/16/20 for the 2020 app; before the 2021 trigger for the 2021 app)",
+        "Brand inspection records from spring 2020 (or 2021)",
+        "Weaning records from fall 2019 (or 2020) that put animals at 500+ lb by June",
+        "Veterinary records at trigger date"
+      ],
+      "action_needed": "Without trigger-date evidence, STO recommendation to reduce to 495 is well-supported. Apply uniformly across all 6 applications."
+    },
+    {
+      "id": "WHEAT-HRW-2020-CATEGORICAL",
+      "severity": "blocker",
+      "topic": "Wheat HRW 2020 Categorically Ineligible for Kit Carson",
+      "detail": "Long-Season Small Grain did NOT trigger for Kit Carson County in 2020. Wheat HRW is categorically ineligible for 2020 LFP regardless of lease, livestock, or any other factor. This is a national-level LSSG trigger determination under 7 CFR 1416 that STC has no authority to override. NAD will affirm.",
+      "stc_minute_language_recommended": "'2020 Wheat HRW acreage denied per national LSSG trigger determination for Kit Carson County; STC has no authority to override.'",
+      "action_needed": "Apply uniformly to all three 2020 applications (Brad, Eric, Denis & Victoria). Verify 2021 Kit Carson LSSG status before applying to 2021 applications."
+    },
+    {
+      "id": "LATE-FILE-5-YEAR-DELAY",
+      "severity": "warning",
+      "topic": "Late Filing: 5+ Years After Trigger",
+      "detail": "Brad Cure 2020 CCC-853 signed 5/5/26 and received by FSA 5/12/26 — 5 years, 10 months after the 6/16/20 trigger. Other applications presumably filed around the same time (May 2026). Late filing is not automatically fatal but requires documented reason in record.",
+      "defensible_late_file_reasons": [
+        "Documented FSA misaction (county office refused to accept application in 2020-2021)",
+        "Documented FSA misinformation (incorrect eligibility guidance given to producer)",
+        "Previously-filed application denied in error, current filing is re-submission"
+      ],
+      "action_needed": "Byrd brief most likely addresses this. If no documented reason in record, late-filing itself is independent grounds for denial."
+    },
+    {
+      "id": "COC-MEMBER-SCRUTINY",
+      "severity": "info",
+      "topic": "COC-Member Status Adds Scrutiny on Both Sides",
+      "detail": "All three Cure producers are Kit Carson COC members, triggering mandatory STC review under 1-LFP Par. 4A. Attorney Byrd's involvement raises stakes. Denial = NAD appeal with well-prepared factual case. Approval = scrutiny for COC-member favoritism. Record must be airtight either direction.",
+      "action_needed": "STC minutes should document the specific evidence relied on for each adjustment, cite exhibit numbers for any Byrd submissions, and apply the same standards used for non-COC-member producers."
+    }
+  ],
+  "outstanding_items_before_vote": [
+    "RETRIEVE: Attorney Byrd's brief and correspondence from Teams SharePoint (FSA - State Committee / Cure LFP folder). Status to be confirmed via Cindy Vukasin.",
+    "VERIFY: Signed/received dates on Eric Cure 2020, Denis & Victoria Cure 2020, Brad Cure 2021, Eric Cure 2021, Denis & Victoria Cure 2021 (only Brad 2020 captured in parsed index).",
+    "CONFIRM: 2021 Kit Carson Long-Season Small Grain trigger status for Wheat HRW eligibility.",
+    "RESOLVE: F7488 (2020) continuity of risk-and-control via FSA-578 certification review for 9/12/19 wheat planting.",
+    "DOCUMENT: FSA misaction or lack thereof for the 5+ year late filing on the 2020 applications.",
+    "DECIDE: Target date for next STC action on Cure series — October regular meeting, or special session with defined deadline for Byrd submissions?"
+  ],
+  "documents_referenced": [
+    "Aug 27, 2026 Exec Session Packet (925 pages) — Cure LFP series pp. 37-435",
+    "Brad Cure 2020 CCC-853 (signed 5/5/26, received 5/12/26)",
+    "Brad Cure 2020 STO Discussion Record (packet p. 38, bank B/S date reference)",
+    "1-LFP Par. 4A (STC mandatory review for COC-member applications)",
+    "1-LFP Par. 26 (Eligible Grazing Land, risk-and-control standard)",
+    "7 CFR 1416 (national LSSG trigger determinations)",
+    "FSA-578 Acreage Reports for all claimed farms",
+    "CCC-855 Risk-and-Control forms (missing or not-yet-produced for 8 flagged farms)",
+    "[PENDING] Attorney Byrd brief and exhibits"
+  ]
+}

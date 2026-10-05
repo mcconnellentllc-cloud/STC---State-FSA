@@ -2,6 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useApiFetch } from '../auth/apiFetch';
 import { useAuth } from '../auth/AuthContext';
+import meetingsRegistry from '../data/meetings_registry.json';
+
+/* ── Next-meeting prep + Sept 29 follow-up actions ──────────────── */
+const UPCOMING_PREP_ITEMS = [
+  { label: 'Otero/Crowley PP — producer responses', detail: 'Doug Andresen letter (10/1/26) sent to 36 producers requiring proof of water-expectation + any form of intent-to-plant. 30-day response window. STC to review returned documentation.', status: 'in-flight' },
+  { label: 'CEY methodology adoption', detail: 'SED + Farm Program Chief directed to reconcile data-quality flags (Sugar Beet Yuma, Sorghum Montezuma, Onions Red Otero/Crowley/Fremont propagation error) + propose methodology for October adoption.', status: 'in-flight' },
+  { label: 'Virtual fencing rate — Items 5a / 6a', detail: 'Awaiting Hunter Cleveland response on CO NRCS EQIP 645 2026 rate + preferred rate structure (per collar / per head / % of invoice).', status: 'in-flight' },
+  { label: 'Cure LFP series — 6 Kit Carson applications', detail: 'Awaiting attorney Byrd brief and supporting documentation. See Cure LFP Tracker for per-application status.', status: 'blocker', link: '/cure-lfp-tracker' },
+  { label: 'Prowers ARC/PLC 321 Adams Family', detail: 'Approved as walk-on 9/29 — October 2026 ARC/PLC payments can proceed.', status: 'done' },
+];
 
 /* ── Upcoming deadlines ────────────────────────────────────────── */
 const DEADLINES = [];
@@ -53,6 +63,68 @@ export default function Dashboard() {
         <div className="banner-subtitle">USDA Farm Service Agency</div>
         <h2>Colorado FSA State Committee &mdash; Project Field Archive</h2>
         <p>Meeting notes, documents, expenses, and resources for Colorado STC operations.</p>
+      </div>
+
+      {/* Next-meeting prep banner */}
+      {(() => {
+        const upcoming = (meetingsRegistry?.meetings || []).find(m => m.status === 'upcoming');
+        if (!upcoming) return null;
+        return (
+          <div className="card" style={{
+            marginBottom: 16, padding: '16px 20px',
+            borderLeft: '4px solid var(--accent, #1a4a8a)',
+            background: 'linear-gradient(135deg, var(--card-bg, #fff) 0%, rgba(26,74,138,0.04) 100%)',
+          }}>
+            <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', fontWeight: 700, color: 'var(--accent, #1a4a8a)', letterSpacing: '0.08em', marginBottom: 6 }}>
+              Next STC Meeting
+            </div>
+            <h3 style={{ margin: '0 0 8px', fontSize: '1.15rem' }}>{upcoming.title}</h3>
+            <div style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', marginBottom: 10, lineHeight: 1.6 }}>
+              📍 {upcoming.location}{upcoming.sessions?.length ? ' · ' + upcoming.sessions.join(' / ') : ''}
+            </div>
+            {upcoming.note && (
+              <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', background: 'rgba(0,0,0,0.03)', padding: '8px 12px', borderRadius: 4, lineHeight: 1.6, marginBottom: 10 }}>
+                {upcoming.note}
+              </div>
+            )}
+            {upcoming.indexFile ? (
+              <Link to={`/board-meetings/${upcoming.date}`} className="btn btn-primary" style={{ textDecoration: 'none', fontSize: '0.85rem' }}>Open Meeting Agenda →</Link>
+            ) : (
+              <span style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>Agenda pending — index file not yet generated.</span>
+            )}
+          </div>
+        );
+      })()}
+
+      {/* Sept 29 follow-up tracker */}
+      <div className="card" style={{ marginBottom: 20, padding: '14px 20px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10, flexWrap: 'wrap', gap: 6 }}>
+          <h4 style={{ margin: 0, fontSize: '0.98rem' }}>Sept 29 Follow-Up Actions</h4>
+          <Link to="/board-meetings/2026-09-29" style={{ fontSize: '0.78rem', color: 'var(--accent, #1a4a8a)' }}>Sept 29 cliff notes →</Link>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+          {UPCOMING_PREP_ITEMS.map((item, i) => {
+            const statusCfg = {
+              'blocker':   { bg: 'rgba(220,53,69,0.08)',  color: '#b91c1c', label: 'BLOCKER'   },
+              'in-flight': { bg: 'rgba(240,173,78,0.08)', color: '#d97706', label: 'IN FLIGHT' },
+              'done':      { bg: 'rgba(21,128,61,0.08)',  color: '#15803d', label: 'DONE'      },
+            }[item.status] || { bg: 'rgba(0,0,0,0.03)', color: '#64748b', label: item.status.toUpperCase() };
+            const body = (
+              <>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 3, flexWrap: 'wrap' }}>
+                  <span style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.05em', color: statusCfg.color, background: statusCfg.bg, padding: '2px 6px', borderRadius: 3 }}>{statusCfg.label}</span>
+                  <span style={{ fontWeight: 700, fontSize: '0.9rem' }}>{item.label}</span>
+                </div>
+                <div style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', lineHeight: 1.55 }}>{item.detail}</div>
+              </>
+            );
+            return item.link ? (
+              <Link key={i} to={item.link} style={{ textDecoration: 'none', color: 'inherit', padding: '8px 12px', background: statusCfg.bg, borderRadius: 4, borderLeft: `3px solid ${statusCfg.color}` }}>{body}</Link>
+            ) : (
+              <div key={i} style={{ padding: '8px 12px', background: statusCfg.bg, borderRadius: 4, borderLeft: `3px solid ${statusCfg.color}` }}>{body}</div>
+            );
+          })}
+        </div>
       </div>
 
       {/* Deadline alerts */}
